@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Generation 9 - Paldea Pokedex</title>
+
+<style>
+body {
+  margin:0;
+  font-family:Arial, sans-serif;
+  /* Fixed background to match Gen 8 style */
+  background: url('pokemon-wallpaper.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color:#222;
+}
+
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 25px;
+  background:rgba(255,255,255,0.9);
+  border-bottom:2px solid #dcdcdc;
+}
+
+.logo-left { height:60px; cursor:pointer; }
+.logo-right { height:50px; }
+
+.container {
+  padding:30px;
+  backdrop-filter: blur(4px);
+}
+
+.title {
+  font-size:32px;
+  margin-bottom:10px;
+  text-align:center;
+  color:#111;
+}
+
+/* Section Headers */
+.section-header {
+  width: 100%;
+  padding: 10px;
+  margin: 30px 0 15px 0;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.common-head { border-bottom: 4px solid #facc15; color: #856404; }
+.scarlet-head { border-bottom: 4px solid #ef4444; color: #991b1b; }
+.violet-head { border-bottom: 4px solid #a855f7; color: #6b21a8; }
+
+.pokemon-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap:20px;
+  justify-items:center;
+}
+
+.pokemon-card {
+  padding:20px 10px;
+  width:150px;
+  background:rgba(255,255,255,0.95);
+  cursor:pointer;
+  text-align:center;
+  border-radius:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.pokemon-card:hover { transform: translateY(-5px); }
+
+/* Border logic for sections */
+.card-common { border-left: 6px solid #facc15; border-right: 6px solid #facc15; }
+.card-scarlet { border-left: 6px solid #ef4444; border-right: 6px solid #ef4444; }
+.card-violet { border-left: 6px solid #a855f7; border-right: 6px solid #a855f7; }
+
+.pokedex-number { font-size: 14px; color: #777; display: block; margin-bottom: 5px; }
+.pokemon-name { font-size: 18px; font-weight: bold; color: #111; }
+
+.back-btn {
+    background: linear-gradient(to right, #ef4444, #a855f7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <img src="pokedex.png" class="logo-left" onclick="location.href='index.html'">
+  <a href="index.html" class="back-btn">Back to Hub</a>
+  <img src="pokemon.png" class="logo-right">
+</div>
+
+<div class="container">
+  <div class="title">Generation 9: Paldea</div>
+
+  <div class="section-header common-head">Paldean Native Species (Commons)</div>
+<div class="pokemon-grid">
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0906</span> <div class="pokemon-name">Sprigatito</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0907</span> <div class="pokemon-name">Floragato</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0908</span> <div class="pokemon-name">Meowscarada</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0909</span> <div class="pokemon-name">Fuecoco</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0910</span> <div class="pokemon-name">Crocalor</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0911</span> <div class="pokemon-name">Skeledirge</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0912</span> <div class="pokemon-name">Quaxly</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0913</span> <div class="pokemon-name">Quaxwell</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0914</span> <div class="pokemon-name">Quaquaval</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0915</span> <div class="pokemon-name">Lechonk</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0916</span> <div class="pokemon-name">Oinkologne</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0917</span> <div class="pokemon-name">Tarountula</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0918</span> <div class="pokemon-name">Spidops</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0919</span> <div class="pokemon-name">Nymble</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0920</span> <div class="pokemon-name">Lokix</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0921</span> <div class="pokemon-name">Pawmi</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0922</span> <div class="pokemon-name">Pawmo</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0923</span> <div class="pokemon-name">Pawmot</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0924</span> <div class="pokemon-name">Tandemaus</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0925</span> <div class="pokemon-name">Maushold</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0926</span> <div class="pokemon-name">Fidough</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0927</span> <div class="pokemon-name">Dachsbun</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0928</span> <div class="pokemon-name">Smoliv</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0929</span> <div class="pokemon-name">Dolliv</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0930</span> <div class="pokemon-name">Arboliva</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0931</span> <div class="pokemon-name">Squawkabilly</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0932</span> <div class="pokemon-name">Nacli</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0933</span> <div class="pokemon-name">Naclstack</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0934</span> <div class="pokemon-name">Garganacl</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0935</span> <div class="pokemon-name">Charcadet</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0938</span> <div class="pokemon-name">Tadbulb</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0939</span> <div class="pokemon-name">Bellibolt</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0940</span> <div class="pokemon-name">Wattrel</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0941</span> <div class="pokemon-name">Kilowattrel</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0942</span> <div class="pokemon-name">Maschiff</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0943</span> <div class="pokemon-name">Mabosstiff</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0944</span> <div class="pokemon-name">Shroodle</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0945</span> <div class="pokemon-name">Grafaiai</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0946</span> <div class="pokemon-name">Bramblin</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0947</span> <div class="pokemon-name">Brambleghast</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0948</span> <div class="pokemon-name">Toedscool</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0949</span> <div class="pokemon-name">Toedscruel</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0950</span> <div class="pokemon-name">Klawf</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0951</span> <div class="pokemon-name">Capsakid</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0952</span> <div class="pokemon-name">Scovillain</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0953</span> <div class="pokemon-name">Rellor</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0954</span> <div class="pokemon-name">Rabsca</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0955</span> <div class="pokemon-name">Flittle</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0956</span> <div class="pokemon-name">Espathra</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0957</span> <div class="pokemon-name">Tinkatink</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0958</span> <div class="pokemon-name">Tinkatuff</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0959</span> <div class="pokemon-name">Tinkaton</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0960</span> <div class="pokemon-name">Wiglett</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0961</span> <div class="pokemon-name">Wugtrio</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0962</span> <div class="pokemon-name">Bombirdier</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0963</span> <div class="pokemon-name">Finizen</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0964</span> <div class="pokemon-name">Palafin</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0965</span> <div class="pokemon-name">Varoom</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0966</span> <div class="pokemon-name">Revavroom</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0967</span> <div class="pokemon-name">Cyclizar</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0968</span> <div class="pokemon-name">Orthworm</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0969</span> <div class="pokemon-name">Glimmet</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0970</span> <div class="pokemon-name">Glimmora</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0971</span> <div class="pokemon-name">Greavard</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0972</span> <div class="pokemon-name">Houndstone</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0973</span> <div class="pokemon-name">Flamigo</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0974</span> <div class="pokemon-name">Cetoddle</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0975</span> <div class="pokemon-name">Cetitan</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0976</span> <div class="pokemon-name">Veluza</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0977</span> <div class="pokemon-name">Dondozo</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0978</span> <div class="pokemon-name">Tatsugiri</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0979</span> <div class="pokemon-name">Annihilape</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0980</span> <div class="pokemon-name">Clodsire</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0981</span> <div class="pokemon-name">Farigiraf</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0982</span> <div class="pokemon-name">Dudunsparce</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0983</span> <div class="pokemon-name">Kingambit</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0996</span> <div class="pokemon-name">Frigibax</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0997</span> <div class="pokemon-name">Arctibax</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0998</span> <div class="pokemon-name">Baxcalibur</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#0999</span> <div class="pokemon-name">Gimmighoul</div> </div>
+  <div class="pokemon-card card-common"> <span class="pokedex-number">#1000</span> <div class="pokemon-name">Gholdengo</div> </div>
+</div>
+
+<div class="section-header scarlet-head">The Ancient Past (Scarlet)</div>
+<div class="pokemon-grid">
+  <div class="pokemon-card card-scarlet"> <span class="pokedex-number">#0936</span> <div class="pokemon-name">Armarouge</div> </div>
+  <div class="pokemon-card card-scarlet"> <span class="pokedex-number">#0984</span> <div class="pokemon-name">Great Tusk</div> </div>
+  <div class="pokemon-card card-scarlet"> <span class="pokedex-number">#0985</span> <div class="pokemon-name">Scream Tail</div> </div>
+  <div class="pokemon-card card-scarlet"> <span class="pokedex-number">#0986</span> <div class="pokemon-name">Brute Bonnet</div> </div>
+  <div class="pokemon-card card-scarlet"> <span class="pokedex-number">#0987</span> <div class="pokemon-name">Flutter Mane</div> </div>
+  <div class="pokemon-card card-scarlet"> <span class="pokedex-number">#0988</span> <div class="pokemon-name">Slither Wing</div> </div>
+  <div class="pokemon-card card-scarlet"> <span class="pokedex-number">#0989</span> <div class="pokemon-name">Sandy Shocks</div> </div>
+  <div class="pokemon-card card-scarlet"> <span class="pokedex-number">#1005</span> <div class="pokemon-name">Roaring Moon</div> </div>
+  <div class="pokemon-card card-scarlet"> <span class="pokedex-number">#1007</span> <div class="pokemon-name">Koraidon</div> </div>
+  <div class="pokemon-card card-scarlet"> <span class="pokedex-number">#1009</span> <div class="pokemon-name">Walking Wake</div> </div>
+  <div class="pokemon-card card-scarlet"> <span class="pokedex-number">#1020</span> <div class="pokemon-name">Gouging Fire</div> </div>
+  <div class="pokemon-card card-scarlet"> <span class="pokedex-number">#1021</span> <div class="pokemon-name">Raging Bolt</div> </div>
+</div>
+
+<div class="section-header violet-head">The Iron Future (Violet)</div>
+<div class="pokemon-grid">
+  <div class="pokemon-card card-violet"> <span class="pokedex-number">#0937</span> <div class="pokemon-name">Ceruledge</div> </div>
+  <div class="pokemon-card card-violet"> <span class="pokedex-number">#0990</span> <div class="pokemon-name">Iron Treads</div> </div>
+  <div class="pokemon-card card-violet"> <span class="pokedex-number">#0991</span> <div class="pokemon-name">Iron Bundle</div> </div>
+  <div class="pokemon-card card-violet"> <span class="pokedex-number">#0992</span> <div class="pokemon-name">Iron Hands</div> </div>
+  <div class="pokemon-card card-violet"> <span class="pokedex-number">#0993</span> <div class="pokemon-name">Iron Jugulis</div> </div>
+  <div class="pokemon-card card-violet"> <span class="pokedex-number">#0994</span> <div class="pokemon-name">Iron Moth</div> </div>
+  <div class="pokemon-card card-violet"> <span class="pokedex-number">#0995</span> <div class="pokemon-name">Iron Thorns</div> </div>
+  <div class="pokemon-card card-violet"> <span class="pokedex-number">#1006</span> <div class="pokemon-name">Iron Valiant</div> </div>
+  <div class="pokemon-card card-violet"> <span class="pokedex-number">#1008</span> <div class="pokemon-name">Miraidon</div> </div>
+  <div class="pokemon-card card-violet"> <span class="pokedex-number">#1010</span> <div class="pokemon-name">Iron Leaves</div> </div>
+  <div class="pokemon-card card-violet"> <span class="pokedex-number">#1022</span> <div class="pokemon-name">Iron Boulder</div> </div>
+  <div class="pokemon-card card-violet"> <span class="pokedex-number">#1023</span> <div class="pokemon-name">Iron Crown</div> </div>
+</div>
+
+<div class="section-header treasure-head">Hidden Treasures of Paldea</div>
+<div class="pokemon-grid">
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1001</span> <div class="pokemon-name">Wo-Chien</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1002</span> <div class="pokemon-name">Chien-Pao</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1003</span> <div class="pokemon-name">Ting-Lu</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1004</span> <div class="pokemon-name">Chi-Yu</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1011</span> <div class="pokemon-name">Dipplin</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1012</span> <div class="pokemon-name">Poltchageist</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1013</span> <div class="pokemon-name">Sinistcha</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1014</span> <div class="pokemon-name">Okidogi</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1015</span> <div class="pokemon-name">Munkidori</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1016</span> <div class="pokemon-name">Fezandipiti</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1017</span> <div class="pokemon-name">Ogerpon</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1018</span> <div class="pokemon-name">Archaludon</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1019</span> <div class="pokemon-name">Hydrapple</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1024</span> <div class="pokemon-name">Terapagos</div> </div>
+  <div class="pokemon-card card-treasure"> <span class="pokedex-number">#1025</span> <div class="pokemon-name">Pecharunt</div> </div>
+</div>
+</div>
+
+</body>
+</html>

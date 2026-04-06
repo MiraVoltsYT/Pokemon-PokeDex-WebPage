@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pokémon Generations Hub</title>
+
+<style>
+body {
+  margin:0;
+  font-family:Arial, sans-serif;
+  background: url('pokemon-wallpaper.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color:#222;
+}
+
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 25px;
+  background:rgba(255,255,255,0.9);
+  border-bottom:2px solid #dcdcdc;
+}
+
+.logo-left { height:60px; }
+.logo-right { height:50px; }
+
+.container {
+  padding:30px;
+  backdrop-filter: blur(4px);
+}
+
+.title {
+  font-size:32px;
+  margin-bottom:30px;
+  text-align:center;
+  color:#111;
+}
+
+.gen-list {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:30px;
+  justify-items:center;
+}
+
+.generation {
+  padding:25px 15px;
+  width:180px;
+  background:rgba(255,255,255,0.95);
+  border-left:6px solid #3B82F6;
+  cursor:pointer;
+  text-align:center;
+  font-weight:bold;
+  font-size:18px;
+  border-radius:15px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.generation:hover {
+  transform: translateY(-6px);
+  background: rgba(240, 246, 255, 1);
+}
+
+.note {
+  font-size:12px;
+  color:#555;
+  margin-top:6px;
+}
+
+/* Generation colors */
+.gen1 { border-left-color:#3B82F6; } /* Blue */
+.gen2 { border-left-color:#34D399; } /* Green */
+.gen3 { border-left-color:#FBBF24; } /* Yellow */
+.gen4 { border-left-color:#F472B6; } /* Pink */
+.gen5 { border-left-color:#F87171; } /* Red */
+.gen6 { border-left-color:#A78BFA; } /* Purple-light */
+.gen7 { border-left-color:#10B981; } /* Teal */
+.gen8 { border-left-color:#F59E0B; } /* Orange */
+.gen9 { border-left-color:#7C3AED; } /* Purple for Scarlet/Violet */
+.gen10, .gen11, .gen12 { border-left-color:#9CA3AF; } /* Gray placeholders */
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <img src="pokedex.png" class="logo-left">
+  <img src="pokemon.png" class="logo-right">
+</div>
+
+<div class="container">
+  <div class="title">Pokémon Generations</div>
+
+  <div class="gen-list">
+    <div class="generation gen1" onclick="location.href='gen1.html'">Generation 1</div>
+    <div class="generation gen2" onclick="location.href='gen2.html'">Generation 2</div>
+    <div class="generation gen3" onclick="location.href='gen3.html'">Generation 3</div>
+    <div class="generation gen4" onclick="location.href='gen4.html'">Generation 4</div>
+    <div class="generation gen5" onclick="location.href='gen5.html'">Generation 5</div>
+    <div class="generation gen6" onclick="location.href='gen6.html'">Generation 6</div>
+    <div class="generation gen7" onclick="location.href='gen7.html'">Generation 7</div>
+    <div class="generation gen8" onclick="location.href='gen8.html'">Generation 8</div>
+    <div class="generation gen9" onclick="location.href='gen9.html'">Generation 9</div>
+
+    <div class="generation gen10" onclick="location.href='gen10.html'">
+        Generation 10
+        <div class="note">Release Year: 2026</div>
+    </div>
+
+    <div class="generation gen11" onclick="location.href='gen11.html'">
+        Generation 11
+        <div class="note">Estimated: 2027–2030</div>
+    </div>
+
+    <div class="generation gen12" onclick="location.href='gen12.html'">
+        Generation 12
+        <div class="note">Estimated: Unknown</div>
+    </div>
+</div>
+
+</body>
+</html>

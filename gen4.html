@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Generation 4 - Sinnoh Pokedex</title>
+
+<style>
+body {
+  margin:0;
+  font-family:Arial, sans-serif;
+  background: url('pokemon-wallpaper.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color:#222;
+}
+
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 25px;
+  background:rgba(255,255,255,0.9);
+  border-bottom:2px solid #dcdcdc;
+}
+
+.logo-left { height:60px; cursor:pointer; }
+.logo-right { height:50px; }
+
+.container {
+  padding:30px;
+  backdrop-filter: blur(4px);
+}
+
+.title {
+  font-size:32px;
+  margin-bottom:10px;
+  text-align:center;
+  color:#111;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #444;
+}
+
+.pokemon-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap:20px;
+  justify-items:center;
+}
+
+.pokemon-card {
+  padding:20px 10px;
+  width:150px;
+  background:rgba(255,255,255,0.95);
+  border-left:6px solid #F472B6; /* Gen 4 Pink */
+  cursor:pointer;
+  text-align:center;
+  border-radius:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 240, 246, 1);
+}
+
+.pokedex-number {
+  font-size: 14px;
+  color: #777;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.pokemon-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #111;
+}
+
+.back-btn {
+    background: #F472B6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <img src="pokedex.png" class="logo-left" onclick="location.href='index.html'">
+  <a href="index.html" class="back-btn">Back to Hub</a>
+  <img src="pokemon.png" class="logo-right">
+</div>
+
+<div class="container">
+  <div class="title">Generation 4</div>
+  <div class="subtitle">Sinnoh Region (#387 - #493)</div>
+
+  <div class="pokemon-grid">
+    <div class="pokemon-card" onclick="location.href='turtwig.html'"><span class="pokedex-number">#387</span><div class="pokemon-name">Turtwig</div></div>
+    <div class="pokemon-card" onclick="location.href='grotle.html'"><span class="pokedex-number">#388</span><div class="pokemon-name">Grotle</div></div>
+    <div class="pokemon-card" onclick="location.href='torterra.html'"><span class="pokedex-number">#389</span><div class="pokemon-name">Torterra</div></div>
+    <div class="pokemon-card" onclick="location.href='chimchar.html'"><span class="pokedex-number">#390</span><div class="pokemon-name">Chimchar</div></div>
+    <div class="pokemon-card" onclick="location.href='monferno.html'"><span class="pokedex-number">#391</span><div class="pokemon-name">Monferno</div></div>
+    <div class="pokemon-card" onclick="location.href='infernape.html'"><span class="pokedex-number">#392</span><div class="pokemon-name">Infernape</div></div>
+    <div class="pokemon-card" onclick="location.href='piplup.html'"><span class="pokedex-number">#393</span><div class="pokemon-name">Piplup</div></div>
+    <div class="pokemon-card" onclick="location.href='prinplup.html'"><span class="pokedex-number">#394</span><div class="pokemon-name">Prinplup</div></div>
+    <div class="pokemon-card" onclick="location.href='empoleon.html'"><span class="pokedex-number">#395</span><div class="pokemon-name">Empoleon</div></div>
+    <div class="pokemon-card" onclick="location.href='starly.html'"><span class="pokedex-number">#396</span><div class="pokemon-name">Starly</div></div>
+    <div class="pokemon-card" onclick="location.href='staravia.html'"><span class="pokedex-number">#397</span><div class="pokemon-name">Staravia</div></div>
+    <div class="pokemon-card" onclick="location.href='staraptor.html'"><span class="pokedex-number">#398</span><div class="pokemon-name">Staraptor</div></div>
+    <div class="pokemon-card" onclick="location.href='bidoof.html'"><span class="pokedex-number">#399</span><div class="pokemon-name">Bidoof</div></div>
+    <div class="pokemon-card" onclick="location.href='bibarel.html'"><span class="pokedex-number">#400</span><div class="pokemon-name">Bibarel</div></div>
+    <div class="pokemon-card" onclick="location.href='kricketot.html'"><span class="pokedex-number">#401</span><div class="pokemon-name">Kricketot</div></div>
+    <div class="pokemon-card" onclick="location.href='kricketune.html'"><span class="pokedex-number">#402</span><div class="pokemon-name">Kricketune</div></div>
+    <div class="pokemon-card" onclick="location.href='shinx.html'"><span class="pokedex-number">#403</span><div class="pokemon-name">Shinx</div></div>
+    <div class="pokemon-card" onclick="location.href='luxio.html'"><span class="pokedex-number">#404</span><div class="pokemon-name">Luxio</div></div>
+    <div class="pokemon-card" onclick="location.href='luxray.html'"><span class="pokedex-number">#405</span><div class="pokemon-name">Luxray</div></div>
+    <div class="pokemon-card" onclick="location.href='budew.html'"><span class="pokedex-number">#406</span><div class="pokemon-name">Budew</div></div>
+    <div class="pokemon-card" onclick="location.href='roserade.html'"><span class="pokedex-number">#407</span><div class="pokemon-name">Roserade</div></div>
+    <div class="pokemon-card" onclick="location.href='cranidos.html'"><span class="pokedex-number">#408</span><div class="pokemon-name">Cranidos</div></div>
+    <div class="pokemon-card" onclick="location.href='rampardos.html'"><span class="pokedex-number">#409</span><div class="pokemon-name">Rampardos</div></div>
+    <div class="pokemon-card" onclick="location.href='shieldon.html'"><span class="pokedex-number">#410</span><div class="pokemon-name">Shieldon</div></div>
+    <div class="pokemon-card" onclick="location.href='bastiodon.html'"><span class="pokedex-number">#411</span><div class="pokemon-name">Bastiodon</div></div>
+    <div class="pokemon-card" onclick="location.href='burmy.html'"><span class="pokedex-number">#412</span><div class="pokemon-name">Burmy</div></div>
+    <div class="pokemon-card" onclick="location.href='wormadam.html'"><span class="pokedex-number">#413</span><div class="pokemon-name">Wormadam</div></div>
+    <div class="pokemon-card" onclick="location.href='mothim.html'"><span class="pokedex-number">#414</span><div class="pokemon-name">Mothim</div></div>
+    <div class="pokemon-card" onclick="location.href='combee.html'"><span class="pokedex-number">#415</span><div class="pokemon-name">Combee</div></div>
+    <div class="pokemon-card" onclick="location.href='vespiquen.html'"><span class="pokedex-number">#416</span><div class="pokemon-name">Vespiquen</div></div>
+    <div class="pokemon-card" onclick="location.href='pachirisu.html'"><span class="pokedex-number">#417</span><div class="pokemon-name">Pachirisu</div></div>
+    <div class="pokemon-card" onclick="location.href='buizel.html'"><span class="pokedex-number">#418</span><div class="pokemon-name">Buizel</div></div>
+    <div class="pokemon-card" onclick="location.href='floatzel.html'"><span class="pokedex-number">#419</span><div class="pokemon-name">Floatzel</div></div>
+    <div class="pokemon-card" onclick="location.href='cherubi.html'"><span class="pokedex-number">#420</span><div class="pokemon-name">Cherubi</div></div>
+    <div class="pokemon-card" onclick="location.href='cherrim.html'"><span class="pokedex-number">#421</span><div class="pokemon-name">Cherrim</div></div>
+    <div class="pokemon-card" onclick="location.href='shellos.html'"><span class="pokedex-number">#422</span><div class="pokemon-name">Shellos</div></div>
+    <div class="pokemon-card" onclick="location.href='gastrodon.html'"><span class="pokedex-number">#423</span><div class="pokemon-name">Gastrodon</div></div>
+    <div class="pokemon-card" onclick="location.href='ambipom.html'"><span class="pokedex-number">#424</span><div class="pokemon-name">Ambipom</div></div>
+    <div class="pokemon-card" onclick="location.href='drifloon.html'"><span class="pokedex-number">#425</span><div class="pokemon-name">Drifloon</div></div>
+    <div class="pokemon-card" onclick="location.href='drifblim.html'"><span class="pokedex-number">#426</span><div class="pokemon-name">Drifblim</div></div>
+    <div class="pokemon-card" onclick="location.href='buneary.html'"><span class="pokedex-number">#427</span><div class="pokemon-name">Buneary</div></div>
+    <div class="pokemon-card" onclick="location.href='lopunny.html'"><span class="pokedex-number">#428</span><div class="pokemon-name">Lopunny</div></div>
+    <div class="pokemon-card" onclick="location.href='mismagius.html'"><span class="pokedex-number">#429</span><div class="pokemon-name">Mismagius</div></div>
+    <div class="pokemon-card" onclick="location.href='honchkrow.html'"><span class="pokedex-number">#430</span><div class="pokemon-name">Honchkrow</div></div>
+    <div class="pokemon-card" onclick="location.href='glameow.html'"><span class="pokedex-number">#431</span><div class="pokemon-name">Glameow</div></div>
+    <div class="pokemon-card" onclick="location.href='purugly.html'"><span class="pokedex-number">#432</span><div class="pokemon-name">Purugly</div></div>
+    <div class="pokemon-card" onclick="location.href='chingling.html'"><span class="pokedex-number">#433</span><div class="pokemon-name">Chingling</div></div>
+    <div class="pokemon-card" onclick="location.href='stunky.html'"><span class="pokedex-number">#434</span><div class="pokemon-name">Stunky</div></div>
+    <div class="pokemon-card" onclick="location.href='skuntank.html'"><span class="pokedex-number">#435</span><div class="pokemon-name">Skuntank</div></div>
+    <div class="pokemon-card" onclick="location.href='bronzor.html'"><span class="pokedex-number">#436</span><div class="pokemon-name">Bronzor</div></div>
+    <div class="pokemon-card" onclick="location.href='bronzong.html'"><span class="pokedex-number">#437</span><div class="pokemon-name">Bronzong</div></div>
+    <div class="pokemon-card" onclick="location.href='bonsly.html'"><span class="pokedex-number">#438</span><div class="pokemon-name">Bonsly</div></div>
+    <div class="pokemon-card" onclick="location.href='mime-jr.html'"><span class="pokedex-number">#439</span><div class="pokemon-name">Mime Jr.
