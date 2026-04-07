@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Meowscarada #0908</title>
+
+<style>
+:root {
+  --glamour-pink: #f472b6;
+  --night-green: #065f46;
+  --velvet-purple: #4c1d95;
+  --mask-black: #111827;
+  --panel-bg: rgba(17, 24, 39, 0.9);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(rgba(6, 95, 70, 0.8), rgba(17, 24, 39, 0.95)), url('flower-petals.jpg');
+  background-size: cover;
+  color: #f1f5f9;
+  line-height: 1.6;
+}
+
+.header {
+  background: var(--mask-black);
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--glamour-pink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(244, 114, 182, 0.3);
+}
+
+.nav-btn {
+  color: var(--glamour-pink);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--glamour-pink);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover { background: var(--glamour-pink); color: white; }
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-art { width: 100%; filter: drop-shadow(0 0 20px var(--glamour-pink)); }
+
+.id-badge {
+  background: var(--glamour-pink);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  width: fit-content;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 2px; }
+
+.type-tag {
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+.grass { background: #22c55e; color: #052e16; }
+.dark { background: #374151; color: white; }
+
+.stats-container { margin-top: 30px; }
+.stat-row { margin-bottom: 15px; }
+.stat-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; font-weight: bold; }
+.stat-bar-bg { background: rgba(255,255,255,0.1); height: 12px; border-radius: 10px; overflow: hidden; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #22c55e, var(--glamour-pink)); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: var(--panel-bg); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
+
+h3 { color: var(--glamour-pink); border-bottom: 1px solid #334155; padding-bottom: 10px; margin-top: 0; }
+
+.shiny-preview {
+  text-align: center;
+  background: rgba(0,0,0,0.4);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #7c2d12;
+  margin-top: 20px;
+}
+
+.lock-warning {
+  color: #f87171;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.evolution-chain {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+  background: rgba(0,0,0,0.2);
+  padding: 15px;
+  border-radius: 10px;
+}
+.evo-arrow { font-size: 24px; color: var(--glamour-pink); font-weight: bold; }
+.evo-img { width: 80px; filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: #22c55e; display: block; margin-bottom: 5px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: var(--glamour-pink);">STARTER_DATABASE_v3.1</div>
+  <a href="index.html" class="nav-btn">RETURN TO HUB</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/908.png" class="main-art" alt="Meowscarada">
+      <div class="shiny-preview">
+        <p class="lock-warning">⚠️ SECURITY ALERT: SHINY LOCKED ⚠️</p>
+        <p style="font-size: 11px; color: #888; margin-bottom: 10px;">(Unavailable via standard Starter encounter)</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/908.png" style="width: 140px;" alt="Shiny Meowscarada">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0908 - THE MAGICIAN</span>
+      <h1>MEOWSCARADA</h1>
+      <div style="margin: 15px 0;">
+        <span class="type-tag grass">Grass</span>
+        <span class="type-tag dark">Dark</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>PERFORMANCE METRICS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>76</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 30%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>110</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 55%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>70</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 28%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>81</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 32%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>70</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 28%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--glamour-pink);"><span>SPEED (ELITE)</span> <span>123</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 62%; background: var(--glamour-pink);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE FLORAGATO EVOLUTION</h3>
+      <div class="evolution-chain">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/906.png" class="evo-img" title="Sprigatito">
+        <span class="evo-arrow">→</span>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/907.png" class="evo-img" title="Floragato">
+        <span class="evo-arrow">→</span>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/908.png" class="evo-img" style="border: 1px solid var(--glamour-pink); border-radius: 50%;" title="Meowscarada">
+      </div>
+      <div class="info-block" style="margin-top: 20px;">
+        <strong>Biological Overview</strong>
+        <p>Meowscarada uses the reflective lining of its cape to manipulate light, creating illusions that allow it to "disappear" mid-battle. Its fur is impregnated with a sweet-scented pollen that causes opponents to lose focus and become entranced by its movements.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Behavioral Patterns</strong>
+        <p>This Pokémon is notoriously proud and sensitive. If its trainer gives more attention to another Pokémon, Meowscarada may act out or feign indifference. It is a master of sleight-of-hand, often stealing items from unsuspecting foes without them noticing.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>BATTLE STRATEGY</h3>
+      <div class="info-block">
+        <strong>Flower Trick (Signature Move)</strong>
+        <p>Meowscarada sets a rigged flower bomb on the target. This move **never misses** and is **guaranteed to result in a Critical Hit**, bypassing all defensive stat boosts the opponent might have.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Protean (Hidden Ability)</strong>
+        <p>A rare trait among the species. Meowscarada changes its type to match the move it is about to use, granting it a permanent 1.5x STAB boost for any attack once per switch-in.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Held Items</strong>
+        <ul style="list-style: none; padding: 0;">
+          <li style="background: rgba(255,255,255,0.05); margin-bottom: 5px; padding: 10px; border-left: 4px solid var(--glamour-pink);"><strong>Focus Sash:</strong> Guarantees a move even if hit by a super-effective attack.</li>
+          <li style="background: rgba(255,255,255,0.05); margin-bottom: 5px; padding: 10px; border-left: 4px solid var(--glamour-pink);"><strong>Choice Band:</strong> Maximizes its physical wall-breaking potential.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table style="width: 100%; text-align: left; border-collapse: collapse;">
+      <tr style="border-bottom: 1px solid #334155;">
+        <th style="padding: 10px;">HEIGHT</th>
+        <th style="padding: 10px;">WEIGHT</th>
+        <th style="padding: 10px;">CATEGORY</th>
+        <th style="padding: 10px;">EGG GROUP</th>
+      </tr>
+      <tr>
+        <td style="padding: 10px;">4' 11" (1.5 m)</td>
+        <td style="padding: 10px;">68.8 lbs (31.2 kg)</td>
+        <td style="padding: 10px;">Magician Pokémon</td>
+        <td style="padding: 10px;">Field / Grass</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

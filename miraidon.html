@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Miraidon #1008</title>
+
+<style>
+:root {
+  --electric-violet: #8b5cf6;
+  --neon-blue: #0ea5e9;
+  --cyber-black: #0f172a;
+  --panel-bg: rgba(30, 41, 59, 0.85);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('pokemon-wallpaper.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #f1f5f9;
+  line-height: 1.6;
+}
+
+.header {
+  background: var(--cyber-black);
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--electric-violet);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+}
+
+.nav-btn {
+  color: var(--neon-blue);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--neon-blue);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--neon-blue);
+  color: white;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 20px var(--neon-blue));
+}
+
+.quick-specs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.id-badge {
+  background: var(--electric-violet);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  width: fit-content;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 2px; }
+
+.type-tag {
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.electric { background: #facc15; color: #422006; }
+.dragon { background: #6366f1; color: white; }
+
+.stats-container {
+  margin-top: 30px;
+}
+
+.stat-row {
+  margin-bottom: 15px;
+}
+
+.stat-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.stat-bar-bg {
+  background: rgba(255,255,255,0.1);
+  height: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.stat-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--neon-blue), var(--electric-violet));
+  border-radius: 10px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  background: var(--panel-bg);
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(5px);
+}
+
+h3 { color: var(--neon-blue); border-bottom: 1px solid #334155; padding-bottom: 10px; margin-top: 0; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(255,255,255,0.05); 
+  margin-bottom: 8px; 
+  padding: 10px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--electric-violet);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: rgba(0,0,0,0.4);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #444;
+  margin-top: 20px;
+}
+
+.info-block {
+  margin-bottom: 20px;
+}
+
+.info-block strong {
+  color: var(--neon-blue);
+  display: block;
+  margin-bottom: 5px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: var(--electric-violet);">PARADOX_DATA_v2.0</div>
+  <a href="index.html" class="nav-btn">RETURN TO HUB</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1008.png" class="main-art" alt="Miraidon">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: #888; margin-bottom: 10px;">SHINY VARIANT DETECTED (Chrome/Silver)</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/1008.png" style="width: 140px;" alt="Shiny Miraidon">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#1008 - IRON SERPENT</span>
+      <h1>MIRAIDON</h1>
+      <div style="margin: 15px 0;">
+        <span class="type-tag electric">Electric</span>
+        <span class="type-tag dragon">Dragon</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>BASE POWER ANALYSIS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>100</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 40%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>85</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 34%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>100</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 40%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--neon-blue);"><span>SP. ATTACK (CRITICAL)</span> <span>135</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 65%; background: var(--neon-blue);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>115</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 50%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #f472b6;"><span>SPEED</span> <span>135</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 65%; background: #f472b6;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE IRON SERPENT</h3>
+      <div class="info-block">
+        <strong>Biological Overview</strong>
+        <p>Miraidon is classified as a Paradox Pokémon, a mysterious entity recovered from the lowest depths of Area Zero. Unlike biological lifeforms, Miraidon's structure appears to be a fusion of highly advanced futuristic technology and dragon-like organic features. Its "skin" is a hyper-conductive metallic alloy that glows with internal neon energy.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Behavioral Patterns</strong>
+        <p>Miraidon is exceptionally intelligent and analytical. While Koraidon relies on primitive instinct, Miraidon scans its environment with infrared sensors. It is stoic and rarely aggressive unless its "Rider" or territory is threatened. Interestingly, researchers have noted its refined tastes—it is notoriously picky about its food, showing a distinct preference for sandwiches made with rare Herba Mystica over standard Pokémon kibble.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>The Future Descendant</strong>
+        <p>Scientific data suggests Miraidon is a descendant of the Pokémon Cyclizar from thousands of years in the future. In this timeline, it has evolved (or been modified) to utilize jet propulsion and pure electrical currents for movement, rendering the organic wheels of its ancestor obsolete.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Hadron Engine (Ability)</strong>
+        <p>Upon entering battle, Miraidon activates its internal reactor. This creates **Electric Terrain**, which supercharges the Pokémon's Special Attack stat by approximately 30%. This makes Miraidon one of the most dangerous offensive threats in existence.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Transformation Modes</strong>
+        <p>Miraidon is capable of shifting its physical form to suit its needs:</p>
+        <ul>
+          <li><strong>Ultimate Mode:</strong> Its standing combat form, where its energy whiskers fully deploy.</li>
+          <li><strong>Drive/Aquatic/Glide Mode:</strong> Its wheels and jet thrusters activate for rapid travel across any terrain.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Competitive Gear</strong>
+        <ul class="item-list">
+          <li><strong>Choice Specs:</strong> Multiplies Sp. Atk by 1.5x. Combined with Hadron Engine, it can one-shot almost any opponent.</li>
+          <li><strong>Assault Vest:</strong> Capitalizes on its 115 Sp. Defense, making it a "Tank" that can't be easily taken down by other Special attackers.</li>
+          <li><strong>Life Orb:</strong> A balanced boost for players who need to switch moves frequently.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table style="width: 100%; text-align: left; border-collapse: collapse;">
+      <tr style="border-bottom: 1px solid #334155;">
+        <th style="padding: 10px;">HEIGHT</th>
+        <th style="padding: 10px;">WEIGHT</th>
+        <th style="padding: 10px;">ORIGIN</th>
+        <th style="padding: 10px;">SIGNATURE MOVE</th>
+      </tr>
+      <tr>
+        <td style="padding: 10px;">11' 06" (3.5 m)</td>
+        <td style="padding: 10px;">529.1 lbs (240.0 kg)</td>
+        <td style="padding: 10px;">Area Zero (Timeline Shift)</td>
+        <td style="padding: 10px;">Electro Drift</td>
+      </tr>
+    </table>
+    <p style="margin-top: 20px; font-size: 14px; font-style: italic; color: #94a3b8;">
+      *Electro Drift Note: Damage is increased by 33.3% if the move is Super Effective against the target.
+    </p>
+  </div>
+
+<div style="text-align: center; margin: 60px 0; border-top: 1px dashed #00ff41; padding-top: 40px;">
+    <p style="color: #666; font-family: monospace; font-size: 12px;">UNAUTHORIZED ACCESS DETECTED: REDIRECTING TO SUB-SERVER...</p>
+    <a href="errormiraidon.html" style="color: #00ff41; text-decoration: none; font-family: 'Courier New', Courier; font-weight: bold; font-size: 20px; border: 2px solid #000; background: #111; padding: 15px 30px; box-shadow: 0 0 15px #00ff41; display: inline-block;">
+        [DECRYPT_UNSTABLE_FILES.pkg]
+    </a>
+</div>
+
+</div>
+
+</body>
+</html>

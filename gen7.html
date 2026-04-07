@@ -36,6 +36,22 @@ body {
   color:#111;
 }
 
+.search-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#pokedexSearch {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #F97316; /* Gen 7 Orange */
+  border-radius: 25px;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
 .subtitle {
   text-align: center;
   margin-bottom: 30px;
@@ -45,16 +61,16 @@ body {
 
 .pokemon-grid {
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap:20px;
   justify-items:center;
 }
 
 .pokemon-card {
-  padding:20px 10px;
-  width:150px;
+  padding:15px 5px;
+  width:160px;
   background:rgba(255,255,255,0.95);
-  border-left:6px solid #F97316; /* Gen 7 Orange */
+  border-left:6px solid #F97316; 
   cursor:pointer;
   text-align:center;
   border-radius:15px;
@@ -64,18 +80,28 @@ body {
 
 .pokemon-card:hover {
   transform: translateY(-5px);
-  background: rgba(FFF7ED, 1);
+  background: rgba(255, 247, 237, 1);
+}
+
+.pokemon-card img {
+  width: 100px;
+  height: 100px;
+  margin: 10px 0;
+  object-fit: contain;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .pokedex-number {
   font-size: 14px;
   color: #777;
   display: block;
-  margin-bottom: 5px;
 }
 
 .pokemon-name {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   color: #111;
 }
@@ -102,49 +128,130 @@ body {
 
 <div class="container">
   <div class="title">Generation 7</div>
-  <div class="subtitle">Alola Region (#722 - #807)</div>
+  <div class="subtitle">Alola Region (#722 - #809)</div>
 
-  <div class="pokemon-grid">
-    <div class="pokemon-card" onclick="location.href='rowlet.html'"><span class="pokedex-number">#722</span><div class="pokemon-name">Rowlet</div></div>
-    <div class="pokemon-card" onclick="location.href='dartrix.html'"><span class="pokedex-number">#723</span><div class="pokemon-name">Dartrix</div></div>
-    <div class="pokemon-card" onclick="location.href='decidueye.html'"><span class="pokedex-number">#724</span><div class="pokemon-name">Decidueye</div></div>
-    <div class="pokemon-card" onclick="location.href='litten.html'"><span class="pokedex-number">#725</span><div class="pokemon-name">Litten</div></div>
-    <div class="pokemon-card" onclick="location.href='torracat.html'"><span class="pokedex-number">#726</span><div class="pokemon-name">Torracat</div></div>
-    <div class="pokemon-card" onclick="location.href='incineroar.html'"><span class="pokedex-number">#727</span><div class="pokemon-name">Incineroar</div></div>
-    <div class="pokemon-card" onclick="location.href='poplio.html'"><span class="pokedex-number">#728</span><div class="pokemon-name">Popplio</div></div>
-    <div class="pokemon-card" onclick="location.href='brionne.html'"><span class="pokedex-number">#729</span><div class="pokemon-name">Brionne</div></div>
-    <div class="pokemon-card" onclick="location.href='primarina.html'"><span class="pokedex-number">#730</span><div class="pokemon-name">Primarina</div></div>
-    <div class="pokemon-card" onclick="location.href='pikipek.html'"><span class="pokedex-number">#731</span><div class="pokemon-name">Pikipek</div></div>
-    <div class="pokemon-card" onclick="location.href='trumbeak.html'"><span class="pokedex-number">#732</span><div class="pokemon-name">Trumbeak</div></div>
-    <div class="pokemon-card" onclick="location.href='toucannon.html'"><span class="pokedex-number">#733</span><div class="pokemon-name">Toucannon</div></div>
-    <div class="pokemon-card" onclick="location.href='yungoos.html'"><span class="pokedex-number">#734</span><div class="pokemon-name">Yungoos</div></div>
-    <div class="pokemon-card" onclick="location.href='gumshoos.html'"><span class="pokedex-number">#735</span><div class="pokemon-name">Gumshoos</div></div>
-    <div class="pokemon-card" onclick="location.href='grubbin.html'"><span class="pokedex-number">#736</span><div class="pokemon-name">Grubbin</div></div>
-    <div class="pokemon-card" onclick="location.href='charjabug.html'"><span class="pokedex-number">#737</span><div class="pokemon-name">Charjabug</div></div>
-    <div class="pokemon-card" onclick="location.href='vikavolt.html'"><span class="pokedex-number">#738</span><div class="pokemon-name">Vikavolt</div></div>
-    <div class="pokemon-card" onclick="location.href='crabrawler.html'"><span class="pokedex-number">#739</span><div class="pokemon-name">Crabrawler</div></div>
-    <div class="pokemon-card" onclick="location.href='crabominable.html'"><span class="pokedex-number">#740</span><div class="pokemon-name">Crabominable</div></div>
-    <div class="pokemon-card" onclick="location.href='oricorio.html'"><span class="pokedex-number">#741</span><div class="pokemon-name">Oricorio</div></div>
-    <div class="pokemon-card" onclick="location.href='cutiefly.html'"><span class="pokedex-number">#742</span><div class="pokemon-name">Cutiefly</div></div>
-    <div class="pokemon-card" onclick="location.href='ribombee.html'"><span class="pokedex-number">#743</span><div class="pokemon-name">Ribombee</div></div>
-    <div class="pokemon-card" onclick="location.href='rockruff.html'"><span class="pokedex-number">#744</span><div class="pokemon-name">Rockruff</div></div>
-    <div class="pokemon-card" onclick="location.href='lycanroc.html'"><span class="pokedex-number">#745</span><div class="pokemon-name">Lycanroc</div></div>
-    <div class="pokemon-card" onclick="location.href='wishiwashi.html'"><span class="pokedex-number">#746</span><div class="pokemon-name">Wishiwashi</div></div>
-    <div class="pokemon-card" onclick="location.href='mareanie.html'"><span class="pokedex-number">#747</span><div class="pokemon-name">Mareanie</div></div>
-    <div class="pokemon-card" onclick="location.href='toxapex.html'"><span class="pokedex-number">#748</span><div class="pokemon-name">Toxapex</div></div>
-    <div class="pokemon-card" onclick="location.href='mudbray.html'"><span class="pokedex-number">#749</span><div class="pokemon-name">Mudbray</div></div>
-    <div class="pokemon-card" onclick="location.href='mudsdale.html'"><span class="pokedex-number">#750</span><div class="pokemon-name">Mudsdale</div></div>
-    <div class="pokemon-card" onclick="location.href='dewpider.html'"><span class="pokedex-number">#751</span><div class="pokemon-name">Dewpider</div></div>
-    <div class="pokemon-card" onclick="location.href='araquanid.html'"><span class="pokedex-number">#752</span><div class="pokemon-name">Araquanid</div></div>
-    <div class="pokemon-card" onclick="location.href='fomantis.html'"><span class="pokedex-number">#753</span><div class="pokemon-name">Fomantis</div></div>
-    <div class="pokemon-card" onclick="location.href='lurantis.html'"><span class="pokedex-number">#754</span><div class="pokemon-name">Lurantis</div></div>
-    <div class="pokemon-card" onclick="location.href='morelull.html'"><span class="pokedex-number">#755</span><div class="pokemon-name">Morelull</div></div>
-    <div class="pokemon-card" onclick="location.href='shiinotic.html'"><span class="pokedex-number">#756</span><div class="pokemon-name">Shiinotic</div></div>
-    <div class="pokemon-card" onclick="location.href='salandit.html'"><span class="pokedex-number">#757</span><div class="pokemon-name">Salandit</div></div>
-    <div class="pokemon-card" onclick="location.href='salazzle.html'"><span class="pokedex-number">#758</span><div class="pokemon-name">Salazzle</div></div>
-    <div class="pokemon-card" onclick="location.href='stufful.html'"><span class="pokedex-number">#759</span><div class="pokemon-name">Stufful</div></div>
-    <div class="pokemon-card" onclick="location.href='bewear.html'"><span class="pokedex-number">#760</span><div class="pokemon-name">Bewear</div></div>
-    <div class="pokemon-card" onclick="location.href='bounsweet.html'"><span class="pokedex-number">#761</span><div class="pokemon-name">Bounsweet</div></div>
-    <div class="pokemon-card" onclick="location.href='steenee.html'"><span class="pokedex-number">#762</span><div class="pokemon-name">Steenee</div></div>
-    <div class="pokemon-card" onclick="location.href='tsareena.html'"><span class="pokedex-number">#763</span><div class="pokemon-name">Tsareena</div></div>
-    <div
+  <div class="search-container">
+    <input type="text" id="pokedexSearch" placeholder="Search Alola Pokemon..." onkeyup="filterPokemon()">
+  </div>
+
+  <div class="pokemon-grid" id="pokemonGrid">
+    <div class="pokemon-card" onclick="location.href='rowlet.html'"><span class="pokedex-number">#722</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/722.png"><div class="pokemon-name">Rowlet</div></div>
+    <div class="pokemon-card" onclick="location.href='dartrix.html'"><span class="pokedex-number">#723</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/723.png"><div class="pokemon-name">Dartrix</div></div>
+    <div class="pokemon-card" onclick="location.href='decidueye.html'"><span class="pokedex-number">#724</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/724.png"><div class="pokemon-name">Decidueye</div></div>
+    <div class="pokemon-card" onclick="location.href='litten.html'"><span class="pokedex-number">#725</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/725.png"><div class="pokemon-name">Litten</div></div>
+    <div class="pokemon-card" onclick="location.href='torracat.html'"><span class="pokedex-number">#726</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/726.png"><div class="pokemon-name">Torracat</div></div>
+    <div class="pokemon-card" onclick="location.href='incineroar.html'"><span class="pokedex-number">#727</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/727.png"><div class="pokemon-name">Incineroar</div></div>
+    <div class="pokemon-card" onclick="location.href='popplio.html'"><span class="pokedex-number">#728</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/728.png"><div class="pokemon-name">Popplio</div></div>
+    <div class="pokemon-card" onclick="location.href='brionne.html'"><span class="pokedex-number">#729</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/729.png"><div class="pokemon-name">Brionne</div></div>
+    <div class="pokemon-card" onclick="location.href='primarina.html'"><span class="pokedex-number">#730</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/730.png"><div class="pokemon-name">Primarina</div></div>
+    <div class="pokemon-card" onclick="location.href='pikipek.html'"><span class="pokedex-number">#731</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/731.png"><div class="pokemon-name">Pikipek</div></div>
+    <div class="pokemon-card" onclick="location.href='trumbeak.html'"><span class="pokedex-number">#732</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/732.png"><div class="pokemon-name">Trumbeak</div></div>
+    <div class="pokemon-card" onclick="location.href='toucannon.html'"><span class="pokedex-number">#733</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/733.png"><div class="pokemon-name">Toucannon</div></div>
+    <div class="pokemon-card" onclick="location.href='yungoos.html'"><span class="pokedex-number">#734</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/734.png"><div class="pokemon-name">Yungoos</div></div>
+    <div class="pokemon-card" onclick="location.href='gumshoos.html'"><span class="pokedex-number">#735</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/735.png"><div class="pokemon-name">Gumshoos</div></div>
+    <div class="pokemon-card" onclick="location.href='grubbin.html'"><span class="pokedex-number">#736</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/736.png"><div class="pokemon-name">Grubbin</div></div>
+    <div class="pokemon-card" onclick="location.href='charjabug.html'"><span class="pokedex-number">#737</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/737.png"><div class="pokemon-name">Charjabug</div></div>
+    <div class="pokemon-card" onclick="location.href='vikavolt.html'"><span class="pokedex-number">#738</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/738.png"><div class="pokemon-name">Vikavolt</div></div>
+    <div class="pokemon-card" onclick="location.href='crabrawler.html'"><span class="pokedex-number">#739</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/739.png"><div class="pokemon-name">Crabrawler</div></div>
+    <div class="pokemon-card" onclick="location.href='crabominable.html'"><span class="pokedex-number">#740</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/740.png"><div class="pokemon-name">Crabominable</div></div>
+    <div class="pokemon-card" onclick="location.href='oricorio.html'"><span class="pokedex-number">#741</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/741.png"><div class="pokemon-name">Oricorio</div></div>
+    <div class="pokemon-card" onclick="location.href='cutiefly.html'"><span class="pokedex-number">#742</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/742.png"><div class="pokemon-name">Cutiefly</div></div>
+    <div class="pokemon-card" onclick="location.href='ribombee.html'"><span class="pokedex-number">#743</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/743.png"><div class="pokemon-name">Ribombee</div></div>
+    
+    <div class="pokemon-card" onclick="location.href='rockruff.html'"><span class="pokedex-number">#744</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/744.png"><div class="pokemon-name">Rockruff</div></div>
+    <div class="pokemon-card" onclick="location.href='lycanroc.html'"><span class="pokedex-number">#745</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/745.png"><div class="pokemon-name">Lycanroc (Midday)</div></div>
+    <div class="pokemon-card" onclick="location.href='lycanroc.html'"><span class="pokedex-number">#745</span><img src="lycanrocmidnight.png"><div class="pokemon-name">Lycanroc (Midnight)</div></div>
+    <div class="pokemon-card" onclick="location.href='lycanroc.html'"><span class="pokedex-number">#745</span><img src="lycanrocdusk.png"><div class="pokemon-name">Lycanroc (Dusk)</div></div>
+
+    <div class="pokemon-card" onclick="location.href='wishiwashi.html'"><span class="pokedex-number">#746</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/746.png"><div class="pokemon-name">Wishiwashi</div></div>
+    <div class="pokemon-card" onclick="location.href='mareanie.html'"><span class="pokedex-number">#747</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/747.png"><div class="pokemon-name">Mareanie</div></div>
+    <div class="pokemon-card" onclick="location.href='toxapex.html'"><span class="pokedex-number">#748</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/748.png"><div class="pokemon-name">Toxapex</div></div>
+    <div class="pokemon-card" onclick="location.href='mudbray.html'"><span class="pokedex-number">#749</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/749.png"><div class="pokemon-name">Mudbray</div></div>
+    <div class="pokemon-card" onclick="location.href='mudsdale.html'"><span class="pokedex-number">#750</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/750.png"><div class="pokemon-name">Mudsdale</div></div>
+    <div class="pokemon-card" onclick="location.href='dewpider.html'"><span class="pokedex-number">#751</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/751.png"><div class="pokemon-name">Dewpider</div></div>
+    <div class="pokemon-card" onclick="location.href='araquanid.html'"><span class="pokedex-number">#752</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/752.png"><div class="pokemon-name">Araquanid</div></div>
+    <div class="pokemon-card" onclick="location.href='fomantis.html'"><span class="pokedex-number">#753</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/753.png"><div class="pokemon-name">Fomantis</div></div>
+    <div class="pokemon-card" onclick="location.href='lurantis.html'"><span class="pokedex-number">#754</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/754.png"><div class="pokemon-name">Lurantis</div></div>
+    <div class="pokemon-card" onclick="location.href='morelull.html'"><span class="pokedex-number">#755</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/755.png"><div class="pokemon-name">Morelull</div></div>
+    <div class="pokemon-card" onclick="location.href='shiinotic.html'"><span class="pokedex-number">#756</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/756.png"><div class="pokemon-name">Shiinotic</div></div>
+    <div class="pokemon-card" onclick="location.href='salandit.html'"><span class="pokedex-number">#757</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/757.png"><div class="pokemon-name">Salandit</div></div>
+    <div class="pokemon-card" onclick="location.href='salazzle.html'"><span class="pokedex-number">#758</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/758.png"><div class="pokemon-name">Salazzle</div></div>
+    <div class="pokemon-card" onclick="location.href='stufful.html'"><span class="pokedex-number">#759</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/759.png"><div class="pokemon-name">Stufful</div></div>
+    <div class="pokemon-card" onclick="location.href='bewear.html'"><span class="pokedex-number">#760</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/760.png"><div class="pokemon-name">Bewear</div></div>
+    <div class="pokemon-card" onclick="location.href='bounsweet.html'"><span class="pokedex-number">#761</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/761.png"><div class="pokemon-name">Bounsweet</div></div>
+    <div class="pokemon-card" onclick="location.href='steenee.html'"><span class="pokedex-number">#762</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/762.png"><div class="pokemon-name">Steenee</div></div>
+    <div class="pokemon-card" onclick="location.href='tsareena.html'"><span class="pokedex-number">#763</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/763.png"><div class="pokemon-name">Tsareena</div></div>
+    <div class="pokemon-card" onclick="location.href='comfey.html'"><span class="pokedex-number">#764</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/764.png"><div class="pokemon-name">Comfey</div></div>
+    <div class="pokemon-card" onclick="location.href='oranguru.html'"><span class="pokedex-number">#765</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/765.png"><div class="pokemon-name">Oranguru</div></div>
+    <div class="pokemon-card" onclick="location.href='passimian.html'"><span class="pokedex-number">#766</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/766.png"><div class="pokemon-name">Passimian</div></div>
+    <div class="pokemon-card" onclick="location.href='wimpod.html'"><span class="pokedex-number">#767</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/767.png"><div class="pokemon-name">Wimpod</div></div>
+    <div class="pokemon-card" onclick="location.href='golisopod.html'"><span class="pokedex-number">#768</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/768.png"><div class="pokemon-name">Golisopod</div></div>
+    <div class="pokemon-card" onclick="location.href='sandygast.html'"><span class="pokedex-number">#769</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/769.png"><div class="pokemon-name">Sandygast</div></div>
+    <div class="pokemon-card" onclick="location.href='palossand.html'"><span class="pokedex-number">#770</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/770.png"><div class="pokemon-name">Palossand</div></div>
+    <div class="pokemon-card" onclick="location.href='pyukumuku.html'"><span class="pokedex-number">#771</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/771.png"><div class="pokemon-name">Pyukumuku</div></div>
+    <div class="pokemon-card" onclick="location.href='type-null.html'"><span class="pokedex-number">#772</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/772.png"><div class="pokemon-name">Type: Null</div></div>
+    <div class="pokemon-card" onclick="location.href='silvally.html'"><span class="pokedex-number">#773</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/773.png"><div class="pokemon-name">Silvally</div></div>
+    <div class="pokemon-card" onclick="location.href='minior.html'"><span class="pokedex-number">#774</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/774.png"><div class="pokemon-name">Minior</div></div>
+    <div class="pokemon-card" onclick="location.href='komala.html'"><span class="pokedex-number">#775</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/775.png"><div class="pokemon-name">Komala</div></div>
+    <div class="pokemon-card" onclick="location.href='turtonator.html'"><span class="pokedex-number">#776</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/776.png"><div class="pokemon-name">Turtonator</div></div>
+    <div class="pokemon-card" onclick="location.href='togedemaru.html'"><span class="pokedex-number">#777</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/777.png"><div class="pokemon-name">Togedemaru</div></div>
+    <div class="pokemon-card" onclick="location.href='mimikyu.html'"><span class="pokedex-number">#778</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/778.png"><div class="pokemon-name">Mimikyu</div></div>
+    <div class="pokemon-card" onclick="location.href='bruxish.html'"><span class="pokedex-number">#779</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/779.png"><div class="pokemon-name">Bruxish</div></div>
+    <div class="pokemon-card" onclick="location.href='drampa.html'"><span class="pokedex-number">#780</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/780.png"><div class="pokemon-name">Drampa</div></div>
+    <div class="pokemon-card" onclick="location.href='dhelmise.html'"><span class="pokedex-number">#781</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/781.png"><div class="pokemon-name">Dhelmise</div></div>
+    <div class="pokemon-card" onclick="location.href='jangmo-o.html'"><span class="pokedex-number">#782</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/782.png"><div class="pokemon-name">Jangmo-o</div></div>
+    <div class="pokemon-card" onclick="location.href='hakamo-o.html'"><span class="pokedex-number">#783</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/783.png"><div class="pokemon-name">Hakamo-o</div></div>
+    <div class="pokemon-card" onclick="location.href='kommo-o.html'"><span class="pokedex-number">#784</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/784.png"><div class="pokemon-name">Kommo-o</div></div>
+
+    <div class="pokemon-card" onclick="location.href='tapu-koko.html'"><span class="pokedex-number">#785</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/785.png"><div class="pokemon-name">Tapu Koko</div></div>
+    <div class="pokemon-card" onclick="location.href='tapu-lele.html'"><span class="pokedex-number">#786</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/786.png"><div class="pokemon-name">Tapu Lele</div></div>
+    <div class="pokemon-card" onclick="location.href='tapu-bulu.html'"><span class="pokedex-number">#787</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/787.png"><div class="pokemon-name">Tapu Bulu</div></div>
+    <div class="pokemon-card" onclick="location.href='tapu-fini.html'"><span class="pokedex-number">#788</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/788.png"><div class="pokemon-name">Tapu Fini</div></div>
+    <div class="pokemon-card" onclick="location.href='cosmog.html'"><span class="pokedex-number">#789</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/789.png"><div class="pokemon-name">Cosmog</div></div>
+    <div class="pokemon-card" onclick="location.href='cosmoem.html'"><span class="pokedex-number">#790</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/790.png"><div class="pokemon-name">Cosmoem</div></div>
+    <div class="pokemon-card" onclick="location.href='solgaleo.html'"><span class="pokedex-number">#791</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/791.png"><div class="pokemon-name">Solgaleo</div></div>
+    <div class="pokemon-card" onclick="location.href='lunala.html'"><span class="pokedex-number">#792</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/792.png"><div class="pokemon-name">Lunala</div></div>
+    <div class="pokemon-card" onclick="location.href='nihilego.html'"><span class="pokedex-number">#793</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/793.png"><div class="pokemon-name">Nihilego</div></div>
+    <div class="pokemon-card" onclick="location.href='buzzwole.html'"><span class="pokedex-number">#794</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/794.png"><div class="pokemon-name">Buzzwole</div></div>
+    <div class="pokemon-card" onclick="location.href='pheromosa.html'"><span class="pokedex-number">#795</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/795.png"><div class="pokemon-name">Pheromosa</div></div>
+    <div class="pokemon-card" onclick="location.href='xurkitree.html'"><span class="pokedex-number">#796</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/796.png"><div class="pokemon-name">Xurkitree</div></div>
+    <div class="pokemon-card" onclick="location.href='celesteela.html'"><span class="pokedex-number">#797</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/797.png"><div class="pokemon-name">Celesteela</div></div>
+    <div class="pokemon-card" onclick="location.href='kartana.html'"><span class="pokedex-number">#798</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/798.png"><div class="pokemon-name">Kartana</div></div>
+    <div class="pokemon-card" onclick="location.href='guzzlord.html'"><span class="pokedex-number">#799</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/799.png"><div class="pokemon-name">Guzzlord</div></div>
+    <div class="pokemon-card" onclick="location.href='necrozma.html'"><span class="pokedex-number">#800</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/800.png"><div class="pokemon-name">Necrozma</div></div>
+    <div class="pokemon-card" onclick="location.href='magearna.html'"><span class="pokedex-number">#801</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/801.png"><div class="pokemon-name">Magearna</div></div>
+    <div class="pokemon-card" onclick="location.href='marshadow.html'"><span class="pokedex-number">#802</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/802.png"><div class="pokemon-name">Marshadow</div></div>
+    <div class="pokemon-card" onclick="location.href='poipole.html'"><span class="pokedex-number">#803</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/803.png"><div class="pokemon-name">Poipole</div></div>
+    <div class="pokemon-card" onclick="location.href='naganadel.html'"><span class="pokedex-number">#804</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/804.png"><div class="pokemon-name">Naganadel</div></div>
+    <div class="pokemon-card" onclick="location.href='stakataka.html'"><span class="pokedex-number">#805</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/805.png"><div class="pokemon-name">Stakataka</div></div>
+    <div class="pokemon-card" onclick="location.href='blacephalon.html'"><span class="pokedex-number">#806</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/806.png"><div class="pokemon-name">Blacephalon</div></div>
+    <div class="pokemon-card" onclick="location.href='zeraora.html'"><span class="pokedex-number">#807</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/807.png"><div class="pokemon-name">Zeraora</div></div>
+
+    <div class="pokemon-card" onclick="location.href='meltan.html'"><span class="pokedex-number">#808</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/808.png"><div class="pokemon-name">Meltan</div></div>
+    <div class="pokemon-card" onclick="location.href='melmetal.html'"><span class="pokedex-number">#809</span><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/809.png"><div class="pokemon-name">Melmetal</div></div>
+  </div>
+</div>
+
+<script>
+function filterPokemon() {
+    let input = document.getElementById('pokedexSearch').value.toLowerCase();
+    input = input.replace('#', '');
+    
+    let grid = document.getElementById('pokemonGrid');
+    let cards = grid.getElementsByClassName('pokemon-card');
+
+    for (let i = 0; i < cards.length; i++) {
+        let name = cards[i].getElementsByClassName('pokemon-name')[0].innerText.toLowerCase();
+        let number = cards[i].getElementsByClassName('pokedex-number')[0].innerText.toLowerCase().replace('#', '');
+
+        if (name.includes(input) || number.includes(input)) {
+            cards[i].classList.remove('hidden');
+        } else {
+            cards[i].classList.add('hidden');
+        }
+    }
+}
+</script>
+
+</body>
+</html>

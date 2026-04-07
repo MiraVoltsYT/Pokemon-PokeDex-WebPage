@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ERROR_KORAIDON_VARIANTS_v0.0.1</title>
+<style>
+    :root {
+        --blood-red: #7f1d1d;
+        --void-black: #0c0a09;
+        --ancient-gold: #fbbf24;
+    }
+
+    body {
+        background: var(--void-black);
+        color: #d6d3d1;
+        font-family: 'Courier New', monospace;
+        margin: 0; padding: 0;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+    .header {
+        border: 4px double var(--blood-red);
+        padding: 30px;
+        background: rgba(127, 29, 29, 0.1);
+        margin-bottom: 60px;
+        text-align: center;
+    }
+
+    @keyframes rumble { 0%{transform:translate(0,0)} 50%{transform:translate(2px, 2px)} 100%{transform:translate(0,0)} }
+    .rumble { animation: rumble 0.3s infinite; color: #ef4444; }
+
+    .variant-entry {
+        background: #1c1917;
+        border: 1px solid #44403c;
+        margin-bottom: 80px;
+        padding: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 40px;
+        position: relative;
+    }
+
+    .angle-left { transform: rotate(-0.5deg); }
+    .angle-right { transform: rotate(0.5deg); }
+
+    .img-frame { background: #000; border: 2px solid var(--blood-red); padding: 20px; text-align: center; }
+
+    /* FIXED IMAGES USING FILTERS */
+    .variant-img { width: 100%; height: auto; }
+
+    h2 { font-size: 32px; margin-top: 0; color: #ef4444; letter-spacing: 2px; }
+    
+    .type-badge {
+        display: inline-block; padding: 4px 15px; font-weight: bold;
+        margin-bottom: 20px; color: white; background: var(--blood-red);
+    }
+
+    .data-block {
+        background: rgba(0,0,0,0.5);
+        padding: 20px;
+        border-left: 3px solid var(--blood-red);
+        margin-bottom: 20px;
+    }
+
+    .stats-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .stats-table td { padding: 8px; border-bottom: 1px solid #292524; }
+    .stat-val { color: var(--ancient-gold); font-weight: bold; text-align: right; }
+
+    .moves-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+    .move-item { background: #292524; padding: 8px; border: 1px solid #44403c; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1 class="rumble">CRITICAL TIMELINE ERROR: FORBIDDEN_APEX_GENES</h1>
+        <p style="color: #991b1b;">WARNING: UNAUTHORIZED ACCESS TO PREHISTORIC SIMULATIONS</p>
+    </div>
+
+    <div class="variant-entry angle-right">
+        <div class="img-frame">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1007.png" class="variant-img" style="filter: brightness(0) invert(1) drop-shadow(0 0 10px #6d28d9);">
+            <div style="color: #6d28d9; font-size: 11px; margin-top: 10px;">ID: ERR_001_VOID</div>
+        </div>
+        <div class="data-content">
+            <div class="type-badge" style="background: #4c1d95;">DARK / DRAGON</div>
+            <h2>ECLIPSE_WING</h2>
+            <div class="data-block">
+                <strong>Backstory:</strong> Found in a timeline where the sun never rose. This Koraidon doesn't summon sunlight; it swallows it. Its feathers are made of anti-matter that pulses with a cold, violet flame.
+            </div>
+            <table class="stats-table">
+                <tr><td>HP <span class="stat-val">110</span></td><td>ATK <span class="stat-val">160</span></td></tr>
+                <tr><td>DEF <span class="stat-val">100</span></td><td>SP. ATK <span class="stat-val">120</span></td></tr>
+                <tr><td>SP. DEF <span class="stat-val">100</span></td><td>SPEED <span class="stat-val">135</span></td></tr>
+                <tr><td colspan="2">ABILITY: <b>Void Pulse</b></td></tr>
+            </table>
+            <div class="moves-list">
+                <div class="move-item"><b>BLACKOUT BASH:</b> 120 Power Dark Move.</div>
+                <div class="move-item"><b>GRAVITY CRASH:</b> Lowers Foe Speed by 2.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="variant-entry angle-left">
+        <div class="img-frame">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1007.png" class="variant-img" style="filter: saturate(15) hue-rotate(-20deg);">
+            <div style="color: #ef4444; font-size: 11px; margin-top: 10px;">ID: ERR_002_MAGMA</div>
+        </div>
+        <div class="data-content">
+            <div class="type-badge" style="background: #b91c1c;">FIRE / FIGHTING</div>
+            <h2>CORE_TYRANT</h2>
+            <div class="data-block">
+                <strong>Backstory:</strong> This specimen was recovered from the center of an active super-volcano. Its blood is literal magma, and its roar can trigger tectonic shifts.
+            </div>
+            <table class="stats-table">
+                <tr><td>HP <span class="stat-val">130</span></td><td>ATK <span class="stat-val">150</span></td></tr>
+                <tr><td>DEF <span class="stat-val">140</span></td><td>SP. ATK <span class="stat-val">80</span></td></tr>
+                <tr><td>SP. DEF <span class="stat-val">110</span></td><td>SPEED <span class="stat-val">115</span></td></tr>
+                <tr><td colspan="2">ABILITY: <b>Molten Skin</b></td></tr>
+            </table>
+            <div class="moves-list">
+                <div class="move-item"><b>VOLCANIC COLLISION:</b> 100% Burn chance.</div>
+                <div class="move-item"><b>EARTHQUAKE+:</b> Hits all grounded foes.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="variant-entry angle-right">
+        <div class="img-frame">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1007.png" class="variant-img" style="filter: hue-rotate(100deg) saturate(5);">
+            <div style="color: #166534; font-size: 11px; margin-top: 10px;">ID: ERR_003_FERAL</div>
+        </div>
+        <div class="data-content">
+            <div class="type-badge" style="background: #166534;">GRASS / FIGHTING</div>
+            <h2>FOREST_KING</h2>
+            <div class="data-block">
+                <strong>Backstory:</strong> Fused with ancient, sentient vines. This Koraidon can camouflage perfectly in the jungle and uses photosynthesis to heal its wounds instantly.
+            </div>
+            <table class="stats-table">
+                <tr><td>HP <span class="stat-val">160</span></td><td>ATK <span class="stat-val">125</span></td></tr>
+                <tr><td>DEF <span class="stat-val">130</span></td><td>SP. ATK <span class="stat-val">80</span></td></tr>
+                <tr><td>SP. DEF <span class="stat-val">130</span></td><td>SPEED <span class="stat-val">100</span></td></tr>
+                <tr><td colspan="2">ABILITY: <b>Overgrowth Drive</b></td></tr>
+            </table>
+            <div class="moves-list">
+                <div class="move-item"><b>ROOTED SMASH:</b> Heals 50% damage dealt.</div>
+                <div class="move-item"><b>JUNGLE FURY:</b> 10-hit physical move.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="variant-entry angle-left">
+        <div class="img-frame">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1007.png" class="variant-img" style="filter: invert(1) hue-rotate(180deg) opacity(0.7);">
+            <div style="color: #6366f1; font-size: 11px; margin-top: 10px;">ID: ERR_004_SPIRIT</div>
+        </div>
+        <div class="data-content">
+            <div class="type-badge" style="background: #4338ca;">GHOST / DRAGON</div>
+            <h2>PHANTOM_KING</h2>
+            <div class="data-block">
+                <strong>Backstory:</strong> The spirit of a Koraidon that refused to go extinct. It flickers between the past and present, making it immune to physical touch.
+            </div>
+            <table class="stats-table">
+                <tr><td>HP <span class="stat-val">90</span></td><td>ATK <span class="stat-val">145</span></td></tr>
+                <tr><td>DEF <span class="stat-val">90</span></td><td>SP. ATK <span class="stat-val">145</span></td></tr>
+                <tr><td>SP. DEF <span class="stat-val">90</span></td><td>SPEED <span class="stat-val">165</span></td></tr>
+                <tr><td colspan="2">ABILITY: <b>Spectral Apex</b></td></tr>
+            </table>
+            <div class="moves-list">
+                <div class="move-item"><b>SOUL CRASH:</b> Lower Sp. Def by 2.</div>
+                <div class="move-item"><b>PHANTOM STEP:</b> Always goes first.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="variant-entry angle-right">
+        <div class="img-frame">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1007.png" class="variant-img" style="filter: sepia(1) saturate(10) brightness(1.2);">
+            <div style="color: #fbbf24; font-size: 11px; margin-top: 10px;">ID: ERR_005_LEGACY</div>
+        </div>
+        <div class="data-content">
+            <div class="type-badge" style="background: #b45309;">DIVINE / FIGHTING</div>
+            <h2>ORICHALCUM_GOD</h2>
+            <div class="data-block">
+                <strong>Backstory:</strong> A Koraidon whose scales turned into the legendary Orichalcum metal. It is indestructible and was worshipped as a god of the sun.
+            </div>
+            <table class="stats-table">
+                <tr><td>HP <span class="stat-val">200</span></td><td>ATK <span class="stat-val">200</span></td></tr>
+                <tr><td>DEF <span class="stat-val">200</span></td><td>SP. ATK <span class="stat-val">50</span></td></tr>
+                <tr><td>SP. DEF <span class="stat-val">150</span></td><td>SPEED <span class="stat-val">30</span></td></tr>
+                <tr><td colspan="2">ABILITY: <b>Divine Sun</b></td></tr>
+            </table>
+            <div class="moves-list">
+                <div class="move-item"><b>SUN_GOD_SLAM:</b> 200 Power Move.</div>
+                <div class="move-item"><b>ETERNAL_RECOVERY:</b> Heals to Full HP.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;">
+        <a href="koraidon.html" style="color: #666; text-decoration: none; border: 1px solid #333; padding: 10px 20px;">RE-ESTABLISH_ANCIENT_LINK</a>
+    </div>
+</div>
+</body>
+</html>

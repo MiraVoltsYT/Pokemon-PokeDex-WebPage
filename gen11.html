@@ -1,96 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Generation 10 - Wind & Wave</title>
+<title>Generation 11 - [REDACTED]</title>
 
 <style>
 body {
   margin:0;
-  font-family: Arial, sans-serif;
-  background: url('pokemon-wallpaper.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #222;
+  font-family: 'Courier New', monospace; /* More technical feel */
+  background: #0f172a; /* Dark void background */
+  color: #f8fafc;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 25px;
-  background: rgba(255, 255, 255, 0.9);
-  border-bottom: 2px solid #dcdcdc;
+  padding: 15px 25px;
+  background: rgba(30, 41, 59, 0.9);
+  border-bottom: 2px solid #334155;
 }
-
-.logo-left { height: 60px; cursor: pointer; }
 
 .container {
   padding: 30px;
-  backdrop-filter: blur(8px);
 }
 
+/* GLITCH EFFECT */
 .title {
-  font-size: 36px;
-  margin-bottom: 5px;
+  font-size: 42px;
   text-align: center;
-  color: #1e3a8a; /* Deep Wave Blue */
-  text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+  color: #22d3ee;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  position: relative;
+  animation: glitch 3s infinite;
 }
 
-.release-note {
+@keyframes glitch {
+  0% { text-shadow: 2px 0 #ff00c1, -2px 0 #00fff9; }
+  25% { text-shadow: -2px 0 #ff00c1, 2px 0 #00fff9; }
+  50% { text-shadow: 2px 0 #ff00c1, -2px 0 #00fff9; }
+  100% { text-shadow: -2px 0 #ff00c1, 2px 0 #00fff9; }
+}
+
+.status-bar {
   text-align: center;
-  font-weight: bold;
   color: #ef4444;
-  margin-bottom: 30px;
-  font-size: 18px;
-}
-
-.section-header {
-  width: 100%;
-  padding: 12px;
-  margin: 30px 0 15px 0;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  text-align: center;
   font-weight: bold;
-  font-size: 22px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  border-left: 10px solid #60a5fa;
+  margin-bottom: 40px;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 10px;
+  border: 1px solid #ef4444;
+  display: block;
 }
 
 .pokemon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 15px;
+  gap: 20px;
   justify-items: center;
 }
 
-.pokemon-card {
+/* HOLOGRAPHIC UNKNOWN CARDS */
+.unknown-card {
   padding: 20px 10px;
   width: 130px;
-  background: rgba(255, 255, 255, 0.95);
+  background: #1e293b;
+  border-radius: 10px;
+  border: 1px solid #334155;
   text-align: center;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  border-top: 5px solid #cbd5e1;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: not-allowed;
 }
 
-/* Known Starter Styling */
-.starter-grass { border-top: 6px solid #22c55e; background: #f0fdf4; }
-.starter-fire { border-top: 6px solid #ef4444; background: #fef2f2; }
-.starter-water { border-top: 6px solid #3b82f6; background: #eff6ff; }
+.unknown-card::before {
+  content: '';
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 400%;
+  height: 400%;
+  background: linear-gradient(45deg, transparent, rgba(34, 211, 238, 0.1), transparent);
+  transition: 0.5s;
+}
 
-.pokedex-number { font-size: 13px; color: #64748b; font-weight: bold; display: block; }
-.pokemon-name { font-size: 18px; font-weight: bold; color: #1e293b; margin-top: 5px; }
-.type-label { font-size: 11px; text-transform: uppercase; margin-top: 5px; font-weight: bold; }
+.unknown-card:hover {
+  border-color: #22d3ee;
+  transform: translateY(-5px);
+}
 
-.unknown-card { opacity: 0.7; border-top: 5px dashed #94a3b8; }
-.unknown-name { color: #94a3b8; font-style: italic; }
+.unknown-card:hover::before {
+  top: -100%;
+  left: -100%;
+}
+
+.pokedex-number { font-size: 12px; color: #64748b; }
+.unknown-name { 
+  font-size: 16px; 
+  color: #94a3b8; 
+  margin: 10px 0;
+  filter: blur(2px); /* Makes it look unreadable */
+}
 
 .back-btn {
-    background: #1e293b;
-    color: white;
+    background: #22d3ee;
+    color: #0f172a;
     padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
 }
@@ -99,124 +116,28 @@ body {
 <body>
 
 <div class="header">
-  <img src="pokedex.png" class="logo-left" onclick="location.href='index.html'">
-  <a href="index.html" class="back-btn">← Main Menu</a>
+  <div style="color:#22d3ee; font-weight:bold;">SYS.STATUS: NO_DATA</div>
+  <a href="index.html" class="back-btn">RETURN TO HUB</a>
 </div>
 
 <div class="container">
-  <div class="title">Generation 11: Unknown</div>
-  <div class="release-note">Coming 2027-2030</div>
+  <div class="title">Generation 11</div>
+  <span class="status-bar">CRITICAL ERROR: DATA NOT FOUND IN LOCAL CACHE</span>
 
-  <div class="section-header">Undiscovered Species</div>
-  <div class="pokemon-grid">
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-<div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-<div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
-    <div class="pokemon-card unknown-card"> <span class="pokedex-number">#???</span> <div class="pokemon-name unknown-name">Unknown</div> </div>
+  <div class="pokemon-grid" id="gen11Grid">
+    <script>
+      const grid = document.getElementById('gen11Grid');
+      // Estimating Gen 11 starts around #1130+
+      for(let i = 1130; i <= 1230; i++) {
+        grid.innerHTML += `
+          <div class="unknown-card">
+            <span class="pokedex-number">#${i}</span>
+            <div class="unknown-name">UNDEFINED</div>
+            <div style="font-size:10px; color:#ef4444;">[LOCKED]</div>
+          </div>
+        `;
+      }
+    </script>
   </div>
 </div>
 
