@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Sylveon #0700</title>
+
+<style>
+:root {
+  --sylveon-pink: #f472b6;
+  --ribbon-blue: #7dd3fc;
+  --cream-white: #fffdfa;
+  --deep-fairy: #7038f8;
+  --panel-bg: rgba(255, 253, 250, 0.92);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(rgba(244, 114, 182, 0.3), rgba(255, 255, 255, 0.8)), url('ribbon-forest.jpg');
+  background-size: cover;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.header {
+  background: white;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--sylveon-pink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(244, 114, 182, 0.2);
+}
+
+.nav-btn {
+  color: var(--sylveon-pink);
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid var(--sylveon-pink);
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover { background: var(--sylveon-pink); color: white; }
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--sylveon-pink);
+  box-shadow: 0 10px 30px rgba(244, 114, 182, 0.1);
+}
+
+.main-art { width: 100%; filter: drop-shadow(0 0 10px var(--ribbon-blue)); }
+
+.id-badge {
+  background: var(--ribbon-blue);
+  color: white;
+  padding: 4px 15px;
+  border-radius: 50px;
+  font-weight: bold;
+  width: fit-content;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 1px; color: var(--sylveon-pink); }
+
+.type-tag {
+  display: inline-block;
+  padding: 5px 25px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #ff65d5;
+  color: white;
+}
+
+.stats-container { margin-top: 30px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; color: #64748b; }
+.stat-bar-bg { background: #f1f5f9; height: 10px; border-radius: 10px; overflow: hidden; border: 1px solid #e2e8f0; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, var(--ribbon-blue), var(--sylveon-pink)); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: white; padding: 25px; border-radius: 20px; border: 1px solid #fee2e2; }
+
+h3 { color: var(--sylveon-pink); border-bottom: 2px solid #fff1f2; padding-bottom: 10px; margin-top: 0; }
+
+.shiny-preview {
+  text-align: center;
+  background: #f0f9ff;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px dashed var(--ribbon-blue);
+  margin-top: 20px;
+}
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: #fff1f2; 
+  margin-bottom: 8px; 
+  padding: 10px; 
+  border-radius: 10px;
+  border-left: 4px solid var(--sylveon-pink);
+  font-size: 14px;
+}
+
+.info-block strong { color: var(--sylveon-pink); display: block; margin-bottom: 5px; }
+
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th, td { padding: 12px; border-bottom: 1px solid #fff1f2; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: var(--sylveon-pink);">FAIRY_DATA_LOG_v7.0</div>
+  <a href="index.html" class="nav-btn">RETURN TO HUB</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/700.png" class="main-art" alt="Sylveon">
+      <div class="shiny-preview">
+        <p style="font-size: 11px; color: var(--ribbon-blue); font-weight: bold;">SHINY VARIANT: CERULEAN RIBBONS ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/700.png" style="width: 130px;" alt="Shiny Sylveon">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0700 - INTERTWINING</span>
+      <h1>SYLVEON</h1>
+      <div style="margin: 15px 0;">
+        <span class="type-tag">Fairy</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>COMBAT ANALYSIS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>95</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 38%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>65</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 26%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>65</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 26%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--sylveon-pink);"><span>SP. ATTACK</span> <span>110</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 44%; background: var(--sylveon-pink);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--ribbon-blue);"><span>SP. DEFENSE (ELITE)</span> <span>130</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 52%; background: var(--ribbon-blue);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SPEED</span> <span>60</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 24%;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>BIOLOGICAL OVERVIEW</h3>
+      <div class="info-block">
+        <strong>Sensory Ribbon Feelers</strong>
+        <p>Sylveon wraps its ribbon-like feelers around the arms of its beloved trainer to learn their feelings. These feelers emit a soothing aura that can stop a battle instantly by erasing all hostile intent from its opponent.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>The Bond Trigger</strong>
+        <p>Unlike other evolutions, Eevee only transforms into Sylveon when it possesses a Fairy-type move and shares a deep, soulful bond with its trainer. It is the physical manifestation of trust and affection.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Hunting Tactics</strong>
+        <p>Despite its gentle appearance, it is a formidable hunter. It distracts prey with its fluttering ribbons, lowering their guard before striking with surprising precision and mystical power.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Pixilate (Hidden Ability)</strong>
+        <p>This elite ability converts all Normal-type moves into Fairy-type moves and boosts their power by 20%. This makes Sylveon's **Hyper Voice** one of the most devastating sounds on the battlefield.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>The Special Tank</strong>
+        <p>With a massive Base 130 Special Defense, Sylveon can survive powerful mystical attacks that would knock out other Pokémon. It often uses **Wish** and **Protect** to keep itself and its teammates healthy during long engagements.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Recommended Gear</strong>
+        <ul class="item-list">
+          <li><strong>Choice Specs:</strong> Maximizes the damage of Pixilate Hyper Voice.</li>
+          <li><strong>Leftovers:</strong> Provides steady healing for a more defensive, support-based role.</li>
+          <li><strong>Pixie Plate:</strong> A middle-ground boost for players who need to switch between offensive and supportive moves.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>SIGNATURE ROLE</th>
+      </tr>
+      <tr>
+        <td>3' 03" (1.0 m)</td>
+        <td>51.8 lbs (23.5 kg)</td>
+        <td>Field</td>
+        <td>Special Wall / Pixilate Sweeper</td>
+      </tr>
+    </table>
+    <p style="margin-top: 15px; font-size: 12px; font-style: italic; color: var(--sylveon-pink);">*Note: Sylveon's ribbons are prehensile and can be used to hold hands or carry small objects.*</p>
+  </div>
+
+</div>
+
+</body>
+</html>

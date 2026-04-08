@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Kakuna #0014</title>
+
+<style>
+:root {
+  --kakuna-gold: #eab308;
+  --shell-grey: #64748b;
+  --venom-dark: #4c1d95;
+  --panel-bg: rgba(15, 23, 42, 0.97);
+  --shiny-green: #84cc16;
+  --armor-glow: #fbce07;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Warning-themed industrial forest aesthetic */
+  background: linear-gradient(rgba(66, 32, 6, 0.95), rgba(15, 23, 42, 0.98)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/14.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #f1f5f9;
+  line-height: 1.6;
+}
+
+.header {
+  background: #422006;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--kakuna-gold);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(234, 179, 8, 0.2);
+}
+
+.nav-btn {
+  color: var(--kakuna-gold);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--kakuna-gold);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--kakuna-gold);
+  color: #422006;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 25px var(--kakuna-gold));
+}
+
+.id-badge {
+  background: var(--shell-grey);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 2px; color: var(--kakuna-gold); text-transform: uppercase; }
+
+.type-box { display: flex; gap: 10px; margin: 15px 0; }
+.type-tag {
+  padding: 5px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.bug { background: #84cc16; border: 1px solid #d9f99d; color: #064e3b; }
+.poison { background: #9333ea; border: 1px solid #d8b4fe; color: #fff; }
+
+.stats-container { margin-top: 20px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; }
+.stat-bar-bg { background: rgba(255,255,255,0.05); height: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #854d0e, var(--kakuna-gold)); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: rgba(0,0,0,0.3); padding: 25px; border-radius: 15px; border: 1px solid rgba(234, 179, 8, 0.1); }
+
+h3 { color: var(--kakuna-gold); border-bottom: 1px solid #854d0e; padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: var(--shell-grey); display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(255,255,255,0.03); 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--kakuna-gold);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid var(--shiny-green);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th, td { padding: 12px; border-bottom: 1px solid #422006; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: #fff;">KANTO_HAZARD_LOG_v0.14</div>
+  <a href="Gen1.html" class="nav-btn">EXIT ARCHIVE</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/14.png" class="main-art" alt="Kakuna">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: var(--shiny-green); margin-bottom: 10px; font-weight: bold;">SHINY VARIANT: TOXIC LIME ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/14.png" style="width: 140px;" alt="Shiny Kakuna">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0014 - COCOON POKÉMON</span>
+      <h1>KAKUNA</h1>
+      <div class="type-box">
+        <span class="type-tag bug">Bug</span>
+        <span class="type-tag poison">Poison</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>REINFORCED PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>45</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 18%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>25</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 10%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--kakuna-gold);"><span>DEFENSE</span> <span>50</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 20%; background: var(--kakuna-gold);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>25</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 10%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>25</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 10%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>35</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 14%; background: #fff;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>BIOLOGICAL DATA: THE THERMAL CHRYSALIS</h3>
+      <div class="info-block">
+        <strong>Thermal Reorganization</strong>
+        <p>While almost incapable of movement, the internal temperature of a Kakuna is incredibly high. This heat fuels the transformation into a Beedrill. If touched, the shell will feel warm to the touch, and the Pokémon inside may extend its poison barbs slightly to discourage further interference.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Environmental Protection</strong>
+        <p>Kakuna often hang from tree branches using thin silk threads. They are frequently mistaken for parts of the tree, allowing them to remain safe while their body undergoes its final metamorphosis. Despite appearances, they are highly aware of their surroundings.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>BATTLE PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Shed Skin (Ability)</strong>
+        <p>Like Metapod, Kakuna can shed its outer layer of skin to cure itself of status conditions. This is its only way to deal with lingering toxins or burns while it waits out the evolution process.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Tactical Defensive</strong>
+        <ul>
+          <li><strong>Harden:</strong> Its primary method of defense. By stiffening its shell, it can minimize damage from Physical attacks significantly.</li>
+          <li><strong>Iron Defense:</strong> An advanced reinforcement technique that maximizes its shell's structural integrity.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Eviolite:</strong> Just like its counterpart, this item makes Kakuna surprisingly tanky in the early game.</li>
+          <li><strong>Rocky Helmet:</strong> Punishes Beedrill's natural enemies (like Pidgeotto) that attempt to make physical contact.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EVO STAGE</th>
+        <th>EVO TRIGGER</th>
+      </tr>
+      <tr>
+        <td>2' 00" (0.6 m)</td>
+        <td>22.0 lbs (10.0 kg)</td>
+        <td>2 of 3</td>
+        <td>Level 10</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

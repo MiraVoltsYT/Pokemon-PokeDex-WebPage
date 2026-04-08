@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Charizard #0006</title>
+
+<style>
+:root {
+  --dragon-orange: #f97316;
+  --sky-blue: #0ea5e9;
+  --void-black: #020617;
+  --panel-bg: rgba(15, 23, 42, 0.95);
+  --shiny-black: #475569;
+  --wing-teal: #1e40af;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Cinematic background using Charizard's official art as a central watermark */
+  background: linear-gradient(rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.92)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #f8fafc;
+  line-height: 1.6;
+}
+
+.header {
+  background: #0c4a6e; /* Sky Blue Dark */
+  padding: 20px 40px;
+  border-bottom: 5px solid var(--dragon-orange);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.4);
+}
+
+.nav-btn {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--dragon-orange);
+  border-color: var(--dragon-orange);
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 30px;
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--sky-blue);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 30px var(--dragon-orange));
+}
+
+.id-badge {
+  background: var(--sky-blue);
+  color: white;
+  padding: 4px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  width: fit-content;
+  letter-spacing: 2px;
+}
+
+h1 { font-size: 60px; margin: 10px 0; color: var(--dragon-orange); text-shadow: 3px 3px #000; letter-spacing: 4px; }
+
+.type-box { display: flex; gap: 12px; margin: 20px 0; }
+.type { padding: 8px 25px; border-radius: 50px; font-weight: bold; text-transform: uppercase; border: 1px solid #fff; font-size: 14px; }
+.fire { background: #ea580c; box-shadow: 0 0 10px #ea580c; }
+.flying { background: #7dd3fc; color: #0369a1; box-shadow: 0 0 10px #7dd3fc; }
+
+.stats-container { margin-top: 25px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; text-transform: uppercase; }
+.stat-bar-bg { background: #1e293b; height: 14px; border-radius: 10px; border: 1px solid #334155; overflow: hidden; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #ea580c, #fbbf24); border-radius: 10px; box-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: rgba(15, 23, 42, 0.85); padding: 30px; border-radius: 20px; border: 1px solid rgba(14, 165, 233, 0.3); }
+
+h3 { color: var(--sky-blue); border-bottom: 2px solid #0c4a6e; padding-bottom: 10px; margin-top: 0; text-transform: uppercase; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: var(--dragon-orange); display: block; margin-bottom: 5px; font-size: 16px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(255,255,255,0.05); 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 10px;
+  border-left: 4px solid var(--dragon-orange);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: #000;
+  padding: 25px;
+  border-radius: 20px;
+  border: 2px solid #475569;
+  margin-top: 25px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 15px; border-bottom: 1px solid #1e293b; }
+th { color: var(--sky-blue); letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 22px; color: #fff;">KANTO_RESEARCH_v0.06_FINAL</div>
+  <a href="Gen1.html" class="nav-btn">EXIT ARCHIVE</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png" class="main-art" alt="Charizard">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: #94a3b8; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px;">SHINY VARIANT: ONYX SHADOW ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/6.png" style="width: 150px;" alt="Shiny Charizard">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0006 - FLAME POKÉMON</span>
+      <h1>CHARIZARD</h1>
+      <div class="type-box">
+        <span class="type fire">Fire</span>
+        <span class="type flying">Flying</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>APEX PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>78</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 31%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>84</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 33%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>78</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 31%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--dragon-orange);"><span>SP. ATTACK</span> <span>109</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 43%; background: var(--dragon-orange);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>85</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 34%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--sky-blue);"><span>SPEED</span> <span>100</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 40%; background: var(--sky-blue);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE SOARING APEX</h3>
+      <div class="info-block">
+        <strong>Biological Overview</strong>
+        <p>Charizard possesses massive, powerful wings that allow it to reach altitudes of over 4,600 feet. Its fire breath is said to reach temperatures high enough to melt solid stone and glaciers. Despite its intimidating power, a well-trained Charizard will never vent its full heat on an opponent it deems weaker than itself.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>The Pride of the Flame</strong>
+        <p>It is a competitive creature by nature. Experienced Charizard are often seen flying across the horizon in search of powerful opponents to test their strength. The more battles it survives, the hotter its tail flame burns, turning from orange to a brilliant, searing white-hot intensity.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Territorial Dominance</strong>
+        <p>Charizard is an apex predator of the sky. It is highly protective of its nesting grounds and will scorch any intruder that it feels poses a threat to its young. It is the gold standard for many Kanto region trainers.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Solar Power (Hidden Ability)</strong>
+        <p>Under a bright sun, Charizard’s Special Attack is boosted by a massive 50%. However, this comes at the cost of its physical vitality, draining its HP slightly every turn. This makes it a devastating "Sun-Sweeper" in competitive play.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Elite Moveset</strong>
+        <ul>
+          <li><strong>Blast Burn:</strong> The ultimate Fire-type move. It incinerates everything in its path but leaves Charizard exhausted for the next turn.</li>
+          <li><strong>Roost:</strong> Charizard lands and recovers 50% of its max HP, shedding its Flying-type weaknesses for a brief moment.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Legendary Gear</strong>
+        <ul class="item-list">
+          <li><strong>Heavy-Duty Boots:</strong> Critical for survival. It prevents the 50% HP damage Charizard usually takes from switching into Stealth Rocks.</li>
+          <li><strong>Charizardite Y:</strong> If available, this stone triggers Mega Evolution, summoning instant Sunlight to boost its fire power.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>BATTLE ROLE</th>
+      </tr>
+      <tr>
+        <td>5' 07" (1.7 m)</td>
+        <td>199.5 lbs (90.5 kg)</td>
+        <td>Monster / Dragon</td>
+        <td>Special Sweeper</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

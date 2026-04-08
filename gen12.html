@@ -65,6 +65,12 @@ body::before {
   gap: 20px;
 }
 
+/* VOID LINKS */
+.void-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* CORRUPTED CARDS */
 .unknown-card {
   height: 120px;
@@ -116,15 +122,17 @@ body::before {
   <div class="pokemon-grid" id="voidGrid">
     <script>
       const grid = document.getElementById('voidGrid');
-      // Using JS to generate "broken" cards with random rotations
+      // Generating broken cards linking to Unknown.html
       for(let i = 1231; i <= 1330; i++) {
         const randomRot = Math.floor(Math.random() * 6) - 3;
         grid.innerHTML += `
-          <div class="unknown-card" style="--r: ${randomRot}">
-            <span class="pokedex-number">#${i}</span>
-            <div class="glitch-text">ERR_404</div>
-            <div style="font-size:8px;">NOT_FOUND</div>
-          </div>
+          <a href="Unknown.html" class="void-link">
+            <div class="unknown-card" style="--r: ${randomRot}">
+              <span class="pokedex-number">#${i}</span>
+              <div class="glitch-text">ERR_404</div>
+              <div style="font-size:8px;">NOT_FOUND</div>
+            </div>
+          </a>
         `;
       }
     </script>

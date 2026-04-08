@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Charmander #0004</title>
+
+<style>
+:root {
+  --fire-orange: #f97316;
+  --ember-yellow: #fbbf24;
+  --panel-bg: rgba(15, 23, 42, 0.9);
+  --shiny-gold: #fde047;
+  --blood-red: #991b1b;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Using a dark gradient + the official art as a subtle watermark */
+  background: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #f1f5f9;
+  line-height: 1.6;
+}
+
+.header {
+  background: #020617;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--fire-orange);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+}
+
+.nav-btn {
+  color: var(--fire-orange);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--fire-orange);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--fire-orange);
+  color: #020617;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(249, 115, 22, 0.1);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 25px var(--fire-orange));
+}
+
+.id-badge {
+  background: var(--blood-red);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 3px; color: var(--fire-orange); text-transform: uppercase; }
+
+.type-tag {
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #ef4444; /* Fire Red */
+  border: 1px solid #fca5a5;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+}
+
+.stats-container { margin-top: 20px; }
+.stat-row { margin-bottom: 15px; }
+.stat-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; font-weight: bold; }
+.stat-bar-bg { background: rgba(255,255,255,0.05); height: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+.stat-fill { height: 100%; background: linear-gradient(90deg, var(--blood-red), var(--fire-orange)); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: var(--panel-bg); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+.card:hover { border-color: var(--fire-orange); }
+
+h3 { color: var(--ember-yellow); border-bottom: 1px solid #334155; padding-bottom: 10px; margin-top: 0; text-transform: uppercase; letter-spacing: 1px; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: var(--fire-orange); display: block; margin-bottom: 5px; font-size: 15px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(255,255,255,0.03); 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--fire-orange);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid var(--shiny-gold);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th, td { padding: 12px; border-bottom: 1px solid #334155; }
+th { color: var(--ember-yellow); font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: var(--fire-orange); letter-spacing: 1px;">KANTO_RESEARCH_v0.04</div>
+  <a href="Gen1.html" class="nav-btn">RETURN TO GEN 1</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png" class="main-art" alt="Charmander">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: var(--shiny-gold); margin-bottom: 10px; font-weight: bold; letter-spacing: 1px;">SHINY VARIANT: AMBER GOLD ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/4.png" style="width: 140px;" alt="Shiny Charmander">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0004 - LIZARD POKÉMON</span>
+      <h1>CHARMANDER</h1>
+      <div style="margin: 15px 0;">
+        <span class="type-tag">Fire</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>VITAL PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>39</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 15%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>52</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 20%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>43</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 17%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--fire-orange);"><span>SP. ATTACK</span> <span>60</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 24%; background: var(--fire-orange);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--ember-yellow);"><span>SPEED</span> <span>65</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 26%; background: var(--ember-yellow);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>BIOLOGICAL DATA: THE PYRE-BORN</h3>
+      <div class="info-block">
+        <strong>The Life Flame</strong>
+        <p>Charmander is unique for its external thermal life-indicator. The flame at the tip of its tail has burned since birth. It is a common misconception that the flame going out causes death; rather, the flame is a reflection of its internal heat—if it flickers out, it means the Pokémon's internal systems have failed.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Environmental Adaptability</strong>
+        <p>It thrives in high-temperature environments like mountain caves and volcanic basins. In rainy conditions, the tail flame will steam, but as long as Charmander remains healthy, its internal core can maintain the combustion even in light drizzle.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Growth Markers</strong>
+        <p>Young Charmander are surprisingly docile but possess an intense curiosity. As they grow, their claws lengthen and their vocal cords develop the ability to produce low-frequency growls, signaling the approaching transition to their more aggressive Charmeleon stage.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>TACTICAL ANALYSIS</h3>
+      <div class="info-block">
+        <strong>Blaze Protocol (Ability)</strong>
+        <p>When HP falls below 33%, Charmander enters a "red-line" state. Its fire-type moves (like Ember or Fire Spin) increase in power by 50%. Trainers often use this "glass cannon" moment to turn the tide of a battle.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Moveset</strong>
+        <ul>
+          <li><strong>Ember:</strong> A small flick of fire that has a high chance of causing a burn on sensitive opponents.</li>
+          <li><strong>Dragon Dance (Egg Move):</strong> A rhythmic dance that focuses the mind, increasing both Physical Attack and Speed.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Eviolite:</strong> A singular necessity. It hardens the scales of non-evolved Pokémon, boosting both Defense and Sp. Defense by 50%.</li>
+          <li><strong>Focus Sash:</strong> Guarantees the Pokémon survives at least one high-power hit to activate its **Blaze** ability safely.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>EVOLUTION LEVEL</th>
+      </tr>
+      <tr>
+        <td>2' 00" (0.6 m)</td>
+        <td>18.7 lbs (8.5 kg)</td>
+        <td>Monster / Dragon</td>
+        <td>Level 16</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Charmeleon #0005</title>
+
+<style>
+:root {
+  --deep-crimson: #991b1b;
+  --flame-red: #dc2626;
+  --ash-gray: #334155;
+  --panel-bg: rgba(17, 24, 39, 0.95);
+  --shiny-maroon: #7f1d1d;
+  --claw-white: #f8fafc;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Deep dark background with the aggressive Charmeleon artwork */
+  background: linear-gradient(rgba(17, 24, 39, 0.96), rgba(17, 24, 39, 0.96)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #fecaca;
+  line-height: 1.6;
+}
+
+.header {
+  background: #450a0a;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--flame-red);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 25px rgba(153, 27, 27, 0.4);
+}
+
+.nav-btn {
+  color: var(--claw-white);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--flame-red);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--flame-red);
+  box-shadow: 0 0 10px var(--flame-red);
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--flame-red);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 25px var(--deep-crimson));
+}
+
+.id-badge {
+  background: var(--deep-crimson);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 2px; color: #fff; text-transform: uppercase; }
+
+.type-tag {
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: var(--deep-crimson);
+  border: 1px solid white;
+}
+
+.stats-container { margin-top: 20px; }
+.stat-row { margin-bottom: 15px; }
+.stat-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; font-weight: bold; }
+.stat-bar-bg { background: #111827; height: 12px; border-radius: 10px; overflow: hidden; border: 1px solid #450a0a; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, var(--deep-crimson), var(--flame-red)); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: rgba(0,0,0,0.3); padding: 25px; border-radius: 15px; border: 1px solid rgba(153, 27, 27, 0.2); }
+
+h3 { color: var(--flame-red); border-bottom: 1px solid var(--deep-crimson); padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: #f87171; display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(255,255,255,0.03); 
+  margin-bottom: 8px; 
+  padding: 10px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--flame-red);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: #000;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid var(--deep-crimson);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th, td { padding: 12px; border-bottom: 1px solid #450a0a; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: white;">KANTO_DEX_v0.05</div>
+  <a href="Gen1.html" class="nav-btn">EXIT LOG</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png" class="main-art" alt="Charmeleon">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: var(--flame-red); margin-bottom: 10px; font-weight: bold;">SHINY VARIANT: BURNT MAROON ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/5.png" style="width: 140px;" alt="Shiny Charmeleon">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0005 - FLAME POKÉMON</span>
+      <h1>CHARMELEON</h1>
+      <div style="margin: 15px 0;">
+        <span class="type-tag">Fire</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>COMBAT PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>58</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 23%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>64</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 25%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>58</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 23%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--flame-red);"><span>SP. ATTACK</span> <span>80</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 32%; background: var(--flame-red);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>80</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 32%; background: #fff;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE BURNING TEMPER</h3>
+      <div class="info-block">
+        <strong>Aggressive Biological Shift</strong>
+        <p>Upon evolution, Charmeleon undergoes a drastic personality shift. It becomes incredibly barbaric and aggressive. It has been observed seeking out battles purely for the thrill of the hunt, using its sharp claws to slash opponents without mercy.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>The Blue Flame Anomaly</strong>
+        <p>In moments of extreme rage or during combat with powerful foes, the flame at the tip of Charmeleon's tail will shift from orange to a brilliant bluish-white. This indicates that its internal temperature has reached critical levels, making its fire-type attacks significantly more dangerous.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Predatory Mechanics</strong>
+        <p>It prefers using its tail to trip or knock down opponents before finishing them with its razor-sharp claws. Unlike Charmander, it is very difficult to train and will often ignore commands if it feels it can finish a battle faster on its own.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Behavioral Warning</strong>
+        <p>Trainers are warned that Charmeleon may attack its own master if its combat instincts are high. It requires a firm hand and a display of dominance to remain loyal during this developmental stage.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Tactical Moveset</strong>
+        <ul>
+          <li><strong>Slash:</strong> A high-accuracy physical strike with its developed claws. Higher critical hit ratio.</li>
+          <li><strong>Dragon Rage:</strong> A fixed-damage move that ignores defensive stats, often overwhelming mid-tier opponents instantly.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Recommended Gear</strong>
+        <ul class="item-list">
+          <li><strong>Eviolite:</strong> Still essential. Since it is an unevolved middle stage, this item makes Charmeleon much tankier during the grind to level 36.</li>
+          <li><strong>Scope Lens:</strong> Boosts the critical hit ratio even further, pairing perfectly with the move **Slash**.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EVOLUTIONARY STEP</th>
+        <th>EVO TRIGGER</th>
+      </tr>
+      <tr>
+        <td>3' 07" (1.1 m)</td>
+        <td>41.9 lbs (19.0 kg)</td>
+        <td>2 of 3</td>
+        <td>Level 36</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

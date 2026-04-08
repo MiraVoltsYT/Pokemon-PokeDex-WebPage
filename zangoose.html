@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Zangoose #0335</title>
+
+<style>
+:root {
+  --scar-red: #dc2626;
+  --steel-white: #f8fafc;
+  --fur-gray: #475569;
+  --rival-purple: #581c87;
+  --panel-bg: rgba(15, 23, 42, 0.9);
+}
+
+body {
+  margin: 0;
+  font-family: 'Trebuchet MS', sans-serif;
+  background: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  color: #f1f5f9;
+  line-height: 1.6;
+}
+
+.header {
+  background: #0f172a;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--scar-red);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+}
+
+.nav-btn {
+  color: var(--scar-red);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--scar-red);
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border-left: 8px solid var(--scar-red);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 15px rgba(220, 38, 38, 0.4));
+}
+
+.id-badge {
+  background: var(--scar-red);
+  color: white;
+  padding: 4px 12px;
+  font-weight: bold;
+  width: fit-content;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 2px; color: var(--steel-white); }
+
+.type-tag {
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #a8a878;
+  color: white;
+  border: 1px solid #707048;
+}
+
+.stats-container { margin-top: 20px; }
+.stat-row { margin-bottom: 15px; }
+.stat-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; font-weight: bold; }
+.stat-bar-bg { background: rgba(255,255,255,0.05); height: 12px; border-radius: 2px; overflow: hidden; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #64748b, var(--scar-red)); }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: rgba(30, 41, 59, 0.8); padding: 25px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.1); }
+
+h3 { color: var(--scar-red); border-bottom: 1px solid #334155; padding-bottom: 10px; margin-top: 0; text-transform: uppercase; letter-spacing: 1px; }
+
+.shiny-preview {
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #38bdf8;
+  margin-top: 20px;
+}
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: var(--scar-red); display: block; margin-bottom: 5px; }
+
+.rival-box {
+  background: linear-gradient(45deg, #1e1b4b, #581c87);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th, td { padding: 10px; border-bottom: 1px solid #334155; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: var(--scar-red);">HOENN_RECON_v3.35</div>
+  <a href="index.html" class="nav-btn">TERMINATE LOG</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/335.png" class="main-art" alt="Zangoose">
+      <div class="shiny-preview">
+        <p style="font-size: 11px; color: #38bdf8; margin-bottom: 10px; font-weight: bold;">SHINY VARIANT: COBALT SCARS ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/335.png" style="width: 130px;" alt="Shiny Zangoose">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0335 - CAT FERRET</span>
+      <h1>ZANGOOSE</h1>
+      <div style="margin: 15px 0;">
+        <span class="type-tag">Normal</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>STRIKE PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>73</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 29%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--scar-red);"><span>ATTACK (ELITE)</span> <span>115</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 46%; background: var(--scar-red);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>60</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 24%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>60</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 24%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>60</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 24%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>90</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 36%; background: #fff;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>BIOLOGICAL DATA</h3>
+      <div class="info-block">
+        <strong>The Eternal Rivalry</strong>
+        <p>Zangoose has been in a blood feud with Seviper for generations. The memory of this rivalry is literally etched into its DNA; the moment it smells a Seviper, the fur on its back bristles and it enters a state of uncontrollable aggression.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Combat Stance</strong>
+        <p>While it usually walks on all fours, it stands on its hind legs when it becomes enraged. Its claws are its greatest pride, kept sharp enough to rend thick steel plates with a single "Crush Claw" strike.</p>
+      </div>
+
+      <div class="rival-box">
+        <strong>⚠️ RIVAL DETECTED: SEVIPER</strong>
+        <p>Zangoose is immune to Seviper's venom thanks to its **Toxic Boost** ability, which actually makes it stronger when poisoned.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Toxic Boost (Hidden Ability)</strong>
+        <p>When Zangoose is inflicted with Poison, its Physical Attack power increases by 50%. This makes it a terrifying "Glass Cannon" on the battlefield.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Moves</strong>
+        <ul style="list-style: none; padding: 0; font-size: 14px;">
+          <li style="margin-bottom: 10px; border-left: 3px solid var(--scar-red); padding-left: 10px;">
+            <strong>Crush Claw:</strong> A brutal slash that has a high chance of crushing the opponent's defensive posture.
+          </li>
+          <li style="margin-bottom: 10px; border-left: 3px solid var(--scar-red); padding-left: 10px;">
+            <strong>Close Combat:</strong> Zangoose abandons all defense to unleash a flurry of strikes, ending the fight quickly.
+          </li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Tactical Gear</strong>
+        <p>Trainers often give Zangoose a **Toxic Orb**. It poisons the Zangoose immediately, triggering its Toxic Boost for maximum damage from turn one.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>RIVALRY STATUS</th>
+      </tr>
+      <tr>
+        <td>4' 03" (1.3 m)</td>
+        <td>88.8 lbs (40.3 kg)</td>
+        <td>Field</td>
+        <td>ACTIVE / HOSTILE</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

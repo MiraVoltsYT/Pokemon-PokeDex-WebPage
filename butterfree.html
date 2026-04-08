@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Butterfree #0012</title>
+
+<style>
+:root {
+  --butterfly-purple: #a855f7;
+  --wing-blue: #7dd3fc;
+  --eye-red: #ef4444;
+  --panel-bg: rgba(15, 23, 42, 0.96);
+  --shiny-pink: #f472b6;
+  --powder-white: #f8fafc;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Ethereal twilight gradient with Butterfree watermark */
+  background: linear-gradient(rgba(88, 28, 135, 0.92), rgba(15, 23, 42, 0.98)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #f1f5f9;
+  line-height: 1.6;
+}
+
+.header {
+  background: #4c1d95;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--wing-blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+}
+
+.nav-btn {
+  color: var(--wing-blue);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--wing-blue);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--wing-blue);
+  color: #1e1b4b;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(125, 211, 252, 0.2);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 30px var(--butterfly-purple));
+}
+
+.id-badge {
+  background: var(--butterfly-purple);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 2px; color: var(--wing-blue); text-transform: uppercase; }
+
+.type-box { display: flex; gap: 10px; margin: 15px 0; }
+.type-tag {
+  padding: 5px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.bug { background: #84cc16; border: 1px solid #d9f99d; color: #064e3b; }
+.flying { background: #38bdf8; border: 1px solid #bae6fd; color: #0c4a6e; }
+
+.stats-container { margin-top: 20px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; }
+.stat-bar-bg { background: rgba(255,255,255,0.05); height: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #6d28d9, var(--butterfly-purple)); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: rgba(0,0,0,0.3); padding: 25px; border-radius: 15px; border: 1px solid rgba(168, 85, 247, 0.1); }
+
+h3 { color: var(--wing-blue); border-bottom: 1px solid #1e40af; padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: var(--butterfly-purple); display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(255,255,255,0.03); 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--wing-blue);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid var(--shiny-pink);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th, td { padding: 12px; border-bottom: 1px solid #4c1d95; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: #fff;">KANTO_RESEARCH_v0.12_FINAL</div>
+  <a href="Gen1.html" class="nav-btn">EXIT ARCHIVE</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png" class="main-art" alt="Butterfree">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: var(--shiny-pink); margin-bottom: 10px; font-weight: bold;">SHINY VARIANT: PINK BLOOM ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/12.png" style="width: 140px;" alt="Shiny Butterfree">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0012 - BUTTERFLY POKÉMON</span>
+      <h1>BUTTERFREE</h1>
+      <div class="type-box">
+        <span class="type-tag bug">Bug</span>
+        <span class="type-tag flying">Flying</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>APEX PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>60</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 24%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>45</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 18%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>50</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 20%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--wing-blue);"><span>SP. ATTACK</span> <span>90</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 36%; background: var(--wing-blue);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--butterfly-purple);"><span>SP. DEFENSE</span> <span>80</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 32%; background: var(--butterfly-purple);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>70</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 28%; background: #fff;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE WINGED TOXINOLOGIST</h3>
+      <div class="info-block">
+        <strong>The Toxic Scales</strong>
+        <p>Butterfree’s wings are coated with water-repellent scales. This allows it to fly in the rain without getting weighed down. However, these scales are also highly toxic powders. When it flaps its wings hard, it releases these powders into the air to paralyze or poison attackers.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Compound Vision</strong>
+        <p>Its large, red eyes are composed of thousands of tiny lenses. This allows Butterfree to see in extreme detail, helping it locate even the smallest flowers from a distance or track the movements of swift-moving enemies.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Gigantamax Potential</strong>
+        <p>When Gigantamaxed, its wings glow with a blinding light. Its signature move, **G-Max Befuddle**, scatters scales that cause Poison, Paralysis, or Sleep to every single opponent on the field simultaneously.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>BATTLE PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Compound Eyes (Ability)</strong>
+        <p>This is Butterfree’s secret weapon. It boosts its accuracy by 30%. This makes moves like **Sleep Powder** almost 100% accurate, allowing Butterfree to shut down dangerous threats immediately.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Moveset</strong>
+        <ul>
+          <li><strong>Quiver Dance:</strong> A legendary setup move that raises Sp. Atk, Sp. Def, and Speed all at once.</li>
+          <li><strong>Hurricane:</strong> A devastating Flying-type move. Under the accuracy boost of Compound Eyes, it becomes much more reliable.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Focus Sash:</strong> Since Butterfree has lower defenses, the Sash ensures it can survive one hit to set up a Quiver Dance or Sleep Powder.</li>
+          <li><strong>Wide Lens:</strong> If you really want to guarantee those status moves never miss, even against evasive foes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>BATTLE ROLE</th>
+      </tr>
+      <tr>
+        <td>3' 07" (1.1 m)</td>
+        <td>70.5 lbs (32.0 kg)</td>
+        <td>Bug</td>
+        <td>Status Support / Special Sweeper</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

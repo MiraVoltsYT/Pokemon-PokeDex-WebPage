@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Caterpie #0010</title>
+
+<style>
+:root {
+  --caterpie-green: #22c55e;
+  --antenna-red: #ef4444;
+  --silk-cream: #fefce8;
+  --panel-bg: rgba(15, 23, 42, 0.94);
+  --shiny-gold: #fbbf24;
+  --leaf-shadow: #064e3b;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Light forest gradient with Caterpie watermark */
+  background: linear-gradient(rgba(6, 78, 59, 0.92), rgba(2, 6, 23, 0.98)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #f1f5f9;
+  line-height: 1.6;
+}
+
+.header {
+  background: #14532d;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--caterpie-green);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.2);
+}
+
+.nav-btn {
+  color: var(--caterpie-green);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--caterpie-green);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--caterpie-green);
+  color: #14532d;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 20px var(--caterpie-green));
+}
+
+.id-badge {
+  background: var(--antenna-red);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 2px; color: var(--caterpie-green); text-transform: uppercase; }
+
+.type-tag {
+  display: inline-block;
+  padding: 5px 25px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #84cc16;
+  border: 1px solid #d9f99d;
+  color: #064e3b;
+}
+
+.stats-container { margin-top: 20px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; }
+.stat-bar-bg { background: rgba(255,255,255,0.05); height: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #166534, var(--caterpie-green)); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: rgba(0,0,0,0.2); padding: 25px; border-radius: 15px; border: 1px solid rgba(34, 197, 94, 0.1); }
+
+h3 { color: var(--caterpie-green); border-bottom: 1px solid #166534; padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: var(--antenna-red); display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(255,255,255,0.03); 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--caterpie-green);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid var(--shiny-gold);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th, td { padding: 12px; border-bottom: 1px solid #14532d; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: var(--caterpie-green);">KANTO_RESEARCH_v0.10</div>
+  <a href="Gen1.html" class="nav-btn">EXIT ARCHIVE</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png" class="main-art" alt="Caterpie">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: var(--shiny-gold); margin-bottom: 10px; font-weight: bold;">SHINY VARIANT: GOLDEN SILK ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/10.png" style="width: 140px;" alt="Shiny Caterpie">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0010 - WORM POKÉMON</span>
+      <h1>CATERPIE</h1>
+      <div style="margin: 15px 0;">
+        <span class="type-tag">Bug</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>VITAL PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>45</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 18%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>30</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 12%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>35</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 14%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>20</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 8%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>20</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 8%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>45</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 18%; background: #fff;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>BIOLOGICAL DATA: THE CANOPY CRAWLER</h3>
+      <div class="info-block">
+        <strong>The Osmeterium Antenna</strong>
+        <p>The bright red antenna on its head is actually an organ called an osmeterium. If Caterpie is frightened or attacked, it releases a horrible, pungent odor from this organ to repel predators like Pidgey.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Adhesive Suction</strong>
+        <p>Its feet are tipped with suction pads that allow it to climb any surface—including vertical walls and ceilings—without effort. This is essential for reaching the tender young leaves it prefers to eat at the top of trees.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Voracious Appetite</strong>
+        <p>Caterpie has a voracious appetite. It can eat leaves larger than its own body in a single sitting. This rapid consumption of nutrients is necessary to fuel its incredibly fast evolution cycle.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>TACTICAL ANALYSIS</h3>
+      <div class="info-block">
+        <strong>Shield Dust (Ability)</strong>
+        <p>This unique ability protects Caterpie from the secondary effects of moves. For example, if it is hit by a move that has a chance to burn or flinch, Shield Dust completely negates that side effect.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Moveset</strong>
+        <ul>
+          <li><strong>String Shot:</strong> It ejects silk from its mouth to entangle the opponent, drastically lowering their Speed stat.</li>
+          <li><strong>Bug Bite:</strong> A physical attack that also allows Caterpie to steal and eat the opponent's held Berry.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Eviolite:</strong> While Caterpie’s base stats are low, an Eviolite can help it survive long enough to land a crucial String Shot.</li>
+          <li><strong>Focus Sash:</strong> Ensures Caterpie can survive at least one hit from a stronger predator to get its silk moves off.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>EVOLUTION LEVEL</th>
+      </tr>
+      <tr>
+        <td>1' 00" (0.3 m)</td>
+        <td>6.4 lbs (2.9 kg)</td>
+        <td>Bug</td>
+        <td>Level 7</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

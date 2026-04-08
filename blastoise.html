@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Blastoise #0009</title>
+
+<style>
+:root {
+  --cannon-silver: #94a3b8;
+  --blastoise-blue: #2563eb;
+  --deep-navy: #0f172a;
+  --panel-bg: rgba(15, 23, 42, 0.98);
+  --shiny-purple: #9333ea;
+  --hydro-glow: #38bdf8;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Heavy armored aesthetic with Blastoise watermark */
+  background: linear-gradient(rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.94)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #f8fafc;
+  line-height: 1.6;
+}
+
+.header {
+  background: #1e293b;
+  padding: 20px 40px;
+  border-bottom: 5px solid var(--blastoise-blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.4);
+}
+
+.nav-btn {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--blastoise-blue);
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--blastoise-blue);
+  box-shadow: 0 0 15px var(--blastoise-blue);
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 30px;
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--blastoise-blue);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 40px var(--blastoise-blue));
+}
+
+.id-badge {
+  background: var(--blastoise-blue);
+  color: white;
+  padding: 4px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+h1 { font-size: 56px; margin: 10px 0; color: #fff; text-shadow: 3px 3px #000; letter-spacing: 4px; }
+
+.type-tag {
+  display: inline-block;
+  padding: 8px 30px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #1d4ed8;
+  border: 1px solid var(--hydro-glow);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+.stats-container { margin-top: 25px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; text-transform: uppercase; }
+.stat-bar-bg { background: #020617; height: 14px; border-radius: 10px; border: 1px solid #1e293b; overflow: hidden; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #1e3a8a, var(--blastoise-blue)); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: rgba(30, 41, 59, 0.5); padding: 30px; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.1); }
+
+h3 { color: var(--hydro-glow); border-bottom: 2px solid #0c4a6e; padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: var(--blastoise-blue); display: block; margin-bottom: 5px; font-size: 16px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(0,0,0,0.3); 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 10px;
+  border-left: 4px solid var(--hydro-glow);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: #000;
+  padding: 25px;
+  border-radius: 20px;
+  border: 2px solid var(--shiny-purple);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 15px; border-bottom: 1px solid #1e293b; }
+th { color: var(--hydro-glow); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 22px; color: #fff;">KANTO_RESEARCH_v0.09_FINAL</div>
+  <a href="Gen1.html" class="nav-btn">EXIT ARCHIVE</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png" class="main-art" alt="Blastoise">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: var(--shiny-purple); margin-bottom: 10px; font-weight: bold; letter-spacing: 2px;">SHINY VARIANT: ROYAL AMETHYST ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/9.png" style="width: 150px;" alt="Shiny Blastoise">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0009 - SHELLFISH POKÉMON</span>
+      <h1>BLASTOISE</h1>
+      <div style="margin: 20px 0;">
+        <span class="type-tag">Water</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>APEX PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>79</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 31%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>83</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 33%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--cannon-silver);"><span>DEFENSE</span> <span>100</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 40%; background: var(--cannon-silver);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>85</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 34%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--hydro-glow);"><span>SP. DEFENSE</span> <span>105</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 42%; background: var(--hydro-glow);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>78</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 31%; background: #fff;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE HYDRO-CANNON TITAN</h3>
+      <div class="info-block">
+        <strong>Pressurized Artillery</strong>
+        <p>The rocket cannons on its shell fire jets of water capable of punching holes through thick steel. Their aim is remarkably precise; they can hit a discarded tin can from a distance of over 160 feet. The recoil from firing is so immense that Blastoise must plant its heavy feet firmly into the ground to avoid being knocked back.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Structural Integrity</strong>
+        <p>Blastoise’s shell is incredibly thick and heavy, designed to withstand high-pressure impacts. It intentionally makes itself heavy to withstand the back-pressure of its own water jets. It is often used by firefighters and rescue teams for its ability to clear debris with water pressure.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Oceanic Sentinel</strong>
+        <p>In the wild, Blastoise are the undisputed leaders of Squirtle and Wartortle colonies. They are naturally protective and will use their massive bodies to shield smaller Pokémon from predators like Sharpedo.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Mega Launcher (Mega Ability)</strong>
+        <p>When Mega Evolved, Blastoise develops a third, massive cannon. This ability increases the power of "pulse" and "aura" moves (like Water Pulse or Dark Pulse) by 50%, turning it into a long-range tactical sniper.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Elite Moveset</strong>
+        <ul>
+          <li><strong>Hydro Pump:</strong> A high-volume blast of water that deals massive damage but has slightly lower accuracy.</li>
+          <li><strong>Shell Smash:</strong> A risky tactic where Blastoise breaks its own shell to drastically boost its Speed and Offensive stats at the cost of its Defense.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Legendary Gear</strong>
+        <ul class="item-list">
+          <li><strong>White Herb:</strong> Used alongside Shell Smash to immediately restore its lowered defensive stats.</li>
+          <li><strong>Blastoisinite:</strong> The core required for Mega Evolution and the activation of Mega Launcher.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>BATTLE ROLE</th>
+      </tr>
+      <tr>
+        <td>5' 03" (1.6 m)</td>
+        <td>188.5 lbs (85.5 kg)</td>
+        <td>Monster / Water 1</td>
+        <td>Bulky Attacker</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

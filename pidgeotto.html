@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Pidgeotto #0017</title>
+
+<style>
+:root {
+  --pidgeotto-red: #ef4444;
+  --sky-deep: #0369a1;
+  --feather-tan: #d6d3d1;
+  --panel-bg: rgba(255, 255, 255, 0.96);
+  --shiny-gold: #fbbf24;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  /* Mid-altitude patrol aesthetic */
+  background: linear-gradient(rgba(186, 230, 253, 0.8), rgba(12, 74, 110, 0.9)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/17.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #0f172a;
+  line-height: 1.6;
+}
+
+.header {
+  background: #0c4a6e;
+  padding: 20px 40px;
+  border-bottom: 5px solid var(--pidgeotto-red);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.nav-btn {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid var(--pidgeotto-red);
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.nav-btn:hover {
+  background: var(--pidgeotto-red);
+  color: white;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 30px;
+  border: 1px solid rgba(12, 74, 110, 0.2);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.2));
+}
+
+.id-badge {
+  background: var(--pidgeotto-red);
+  color: #fff;
+  padding: 4px 15px;
+  border-radius: 4px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+
+h1 { font-size: 56px; margin: 10px 0; color: #0c4a6e; letter-spacing: 3px; }
+
+.type-box { display: flex; gap: 10px; margin: 15px 0; }
+.type-tag {
+  padding: 8px 25px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.normal { background: #a8a878; color: #fff; }
+.flying { background: #a890f0; color: #fff; }
+
+.stats-container { margin-top: 25px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; color: #475569; }
+.stat-bar-bg { background: #e2e8f0; height: 14px; border-radius: 3px; overflow: hidden; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #0284c7, #38bdf8); }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+
+h3 { color: #0c4a6e; border-bottom: 3px solid var(--pidgeotto-red); padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: var(--sky-deep); display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: #f8fafc; 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 5px;
+  border-left: 5px solid var(--pidgeotto-red);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: #fffbeb;
+  padding: 25px;
+  border-radius: 20px;
+  border: 2px solid var(--shiny-gold);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 15px; border-bottom: 1px solid #e2e8f0; }
+th { color: #64748b; font-size: 11px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: #fff; letter-spacing: 2px;">AIR_SUPERIORITY_v0.17</div>
+  <a href="Gen1.html" class="nav-btn">EXIT TO INDEX</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/17.png" class="main-art" alt="Pidgeotto">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: #b45309; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px;">SHINY DATA: NOBLE GOLD ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/17.png" style="width: 150px;" alt="Shiny Pidgeotto">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0017 - BIRD POKÉMON</span>
+      <h1>PIDGEOTTO</h1>
+      <div class="type-box">
+        <span class="type-tag normal">Normal</span>
+        <span class="type-tag flying">Flying</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>FLIGHT PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>63</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 25%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>60</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 24%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>55</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 21%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>50</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 20%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>50</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 20%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--sky-deep);"><span>SPEED</span> <span>71</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 28%; background: var(--sky-deep);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE TERRITORIAL HUNTER</h3>
+      <div class="info-block">
+        <strong>Vast Territory</strong>
+        <p>Pidgeotto claims a huge area as its own territory. It flies in circles, keeping a sharp eye out for prey or intruders. If its territory is violated, it shows no mercy in clawing the intruder.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Visionary Predator</strong>
+        <p>Its visual acuity is phenomenal. No matter how high it flies, it can clearly distinguish the movements of its prey on the ground, such as Exeggcute or Magikarp.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Endurance Flight</strong>
+        <p>Unlike its previous form, Pidgeotto possesses the stamina to fly for days at a time. It uses its powerful talons to carry prey back to its nest, often over hundreds of miles.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Keen Eye / Big Pecks (Abilities)</strong>
+        <p><strong>Big Pecks</strong> prevents its Defense stat from being lowered by the opponent, ensuring it maintains its durability during long aerial dogfights.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Moveset</strong>
+        <ul>
+          <li><strong>Wing Attack:</strong> Strikes the target with large, spread wings. A reliable source of physical damage.</li>
+          <li><strong>Roost:</strong> Lands on the ground to rest, recovering up to half of its max HP.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Eviolite:</strong> Dramatically increases its survivability, making it a surprisingly tanky mid-stage Pokémon.</li>
+          <li><strong>Flyinium Z:</strong> (Specialized) Allows for the use of devastating aerial Z-Moves.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>BATTLE ROLE</th>
+      </tr>
+      <tr>
+        <td>3' 07" (1.1 m)</td>
+        <td>66.1 lbs (30.0 kg)</td>
+        <td>Flying</td>
+        <td>Mid-Stage Tank/Scout</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Bulbasaur #0001</title>
+
+<style>
+:root {
+  --forest-green: #22c55e;
+  --poison-purple: #a855f7;
+  --jade-leaf: #10b981;
+  --panel-bg: rgba(15, 23, 42, 0.92);
+  --shiny-lime: #bef264;
+  --petal-pink: #f472b6;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Deep forest gradient with the Bulbasaur artwork as a subtle watermark */
+  background: linear-gradient(rgba(6, 78, 59, 0.95), rgba(2, 6, 23, 0.98)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #f1f5f9;
+  line-height: 1.6;
+}
+
+.header {
+  background: #064e3b;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--forest-green);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+}
+
+.nav-btn {
+  color: var(--forest-green);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--forest-green);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--forest-green);
+  color: #064e3b;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 25px var(--forest-green));
+}
+
+.id-badge {
+  background: var(--jade-leaf);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 3px; color: var(--forest-green); text-transform: uppercase; }
+
+.type-box { display: flex; gap: 10px; margin: 15px 0; }
+.type-tag {
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.grass { background: #16a34a; color: white; }
+.poison { background: #9333ea; color: white; }
+
+.stats-container { margin-top: 20px; }
+.stat-row { margin-bottom: 15px; }
+.stat-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; font-weight: bold; }
+.stat-bar-bg { background: rgba(255,255,255,0.05); height: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #065f46, var(--forest-green)); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: var(--panel-bg); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
+
+h3 { color: var(--jade-leaf); border-bottom: 1px solid #065f46; padding-bottom: 10px; margin-top: 0; text-transform: uppercase; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: var(--forest-green); display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(255,255,255,0.03); 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--forest-green);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid var(--shiny-lime);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th, td { padding: 12px; border-bottom: 1px solid #134e4a; }
+th { color: var(--forest-green); font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: var(--forest-green); letter-spacing: 1px;">KANTO_RESEARCH_v0.01</div>
+  <a href="Gen1.html" class="nav-btn">EXIT ARCHIVE</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" class="main-art" alt="Bulbasaur">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: var(--shiny-lime); margin-bottom: 10px; font-weight: bold;">SHINY VARIANT: LIME JADE ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/1.png" style="width: 140px;" alt="Shiny Bulbasaur">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0001 - SEED POKÉMON</span>
+      <h1>BULBASAUR</h1>
+      <div class="type-box">
+        <span class="type-tag grass">Grass</span>
+        <span class="type-tag poison">Poison</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>VITAL PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>45</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 18%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>49</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 20%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>49</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 20%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--forest-green);"><span>SP. ATTACK</span> <span>65</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 26%; background: var(--forest-green);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--poison-purple);"><span>SP. DEFENSE</span> <span>65</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 26%; background: var(--poison-purple);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>45</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 18%; background: #fff;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>BIOLOGICAL DATA: THE PHOTOSYNTHETIC HYBRID</h3>
+      <div class="info-block">
+        <strong>The Symbiotic Seed</strong>
+        <p>Bulbasaur is a remarkable species born with a large seed firmly attached to its back. As the Pokémon grows, the seed grows with it. This bulb acts as a nutrient storage system and a secondary organ, allowing Bulbasaur to survive for days purely on sunlight through photosynthesis.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Sunlight Absorption</strong>
+        <p>It is often seen napping in bright sunlight. By soaking up rays, the bulb on its back stores energy for its signature attacks. The more sunlight it absorbs, the larger the bulb grows, eventually signaling its evolution into Ivysaur.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Prehensile Vines</strong>
+        <p>Hidden within the bulb are two strong, whip-like vines. These are Bulbasaur’s primary tools for both combat and interaction, capable of lifting objects several times its own body weight or delivering high-speed lashes.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>TACTICAL ANALYSIS</h3>
+      <div class="info-block">
+        <strong>Overgrow Protocol (Ability)</strong>
+        <p>When Bulbasaur's HP drops below 33%, its symbiotic connection to the bulb intensifies. All Grass-type moves, such as Vine Whip or Razor Leaf, receive a 50% increase in power, often catching opponents off-guard during long battles.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Tactics</strong>
+        <ul>
+          <li><strong>Sleep Powder:</strong> A scattering of spores that induces deep sleep, allowing Bulbasaur to control the pace of the fight.</li>
+          <li><strong>Leech Seed:</strong> A parasitic seed that drains the opponent's vitality every turn, restoring Bulbasaur's own health.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Eviolite:</strong> As a first-stage Pokémon, this is vital for survival, boosting its naturally balanced defenses by 50%.</li>
+          <li><strong>Miracle Seed:</strong> An held item that naturally resonates with Bulbasaur's core, boosting the power of Grass moves by 20%.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>EVOLUTION LEVEL</th>
+      </tr>
+      <tr>
+        <td>2' 04" (0.7 m)</td>
+        <td>15.2 lbs (6.9 kg)</td>
+        <td>Monster / Grass</td>
+        <td>Level 16</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Weedle #0013</title>
+
+<style>
+:root {
+  --weedle-yellow: #facc15;
+  --stinger-pink: #fb7185;
+  --venom-purple: #a855f7;
+  --panel-bg: rgba(15, 23, 42, 0.96);
+  --shiny-gold: #fbbf24;
+  --hazard-border: #f59e0b;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Warning-themed forest gradient with Weedle watermark */
+  background: linear-gradient(rgba(69, 10, 10, 0.94), rgba(15, 23, 42, 0.98)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #f1f5f9;
+  line-height: 1.6;
+}
+
+.header {
+  background: #450a0a;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--weedle-yellow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(250, 204, 21, 0.3);
+}
+
+.nav-btn {
+  color: var(--weedle-yellow);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--weedle-yellow);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--weedle-yellow);
+  color: #450a0a;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(250, 204, 21, 0.2);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 25px var(--weedle-yellow));
+}
+
+.id-badge {
+  background: var(--venom-purple);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 2px; color: var(--weedle-yellow); text-transform: uppercase; }
+
+.type-box { display: flex; gap: 10px; margin: 15px 0; }
+.type-tag {
+  padding: 5px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.bug { background: #84cc16; border: 1px solid #d9f99d; color: #064e3b; }
+.poison { background: #9333ea; border: 1px solid #d8b4fe; color: #fff; }
+
+.stats-container { margin-top: 20px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; }
+.stat-bar-bg { background: rgba(255,255,255,0.05); height: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #b45309, var(--weedle-yellow)); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: rgba(0,0,0,0.3); padding: 25px; border-radius: 15px; border: 1px solid rgba(250, 204, 21, 0.1); }
+
+h3 { color: var(--stinger-pink); border-bottom: 1px solid #881337; padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: var(--weedle-yellow); display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(255,255,255,0.03); 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--venom-purple);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid var(--shiny-gold);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th, td { padding: 12px; border-bottom: 1px solid #450a0a; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: #fff;">KANTO_HAZARD_LOG_v0.13</div>
+  <a href="Gen1.html" class="nav-btn">EXIT ARCHIVE</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png" class="main-art" alt="Weedle">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: var(--shiny-gold); margin-bottom: 10px; font-weight: bold;">SHINY VARIANT: AUTUMN GOLD ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/13.png" style="width: 140px;" alt="Shiny Weedle">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0013 - HAIRY BUG POKÉMON</span>
+      <h1>WEEDLE</h1>
+      <div class="type-box">
+        <span class="type-tag bug">Bug</span>
+        <span class="type-tag poison">Poison</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>VITAL PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>40</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 16%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>35</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 14%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>30</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 12%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>20</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 8%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>20</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 8%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>50</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 20%; background: #fff;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>BIOLOGICAL DATA: THE TOXIC CRAWLER</h3>
+      <div class="info-block">
+        <strong>The Cephalic Stinger</strong>
+        <p>The 2-inch barb on its head is sharp and filled with a potent toxin. Weedle uses this stinger to ward off attackers, specifically bird Pokémon that try to pluck it from the leaves. The bright color of its body serves as a warning to predators: "Do not touch."</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Olfactory Detection</strong>
+        <p>Weedle has an extremely acute sense of smell. It uses its large, round red nose to distinguish between its favorite types of leaves and those that are bitter or rotten. It can detect a predator’s scent from several yards away.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Daily Diet</strong>
+        <p>It eats its own weight in leaves every day. This high calorie intake is the only way it can sustain the energy required for its lightning-fast evolution into Kakuna.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>TACTICAL ANALYSIS</h3>
+      <div class="info-block">
+        <strong>Shield Dust (Ability)</strong>
+        <p>Like its counterpart Caterpie, Weedle possesses Shield Dust. This prevents enemies from flinching it or landing secondary status effects, ensuring Weedle can at least attempt to poison the target before fleeing.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Moveset</strong>
+        <ul>
+          <li><strong>Poison Sting:</strong> A physical jab with its head stinger. It has a high 30% chance of leaving the target poisoned.</li>
+          <li><strong>Bug Bite:</strong> Allows Weedle to consume the opponent's held berry, gaining its effects and denying the enemy a heal.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Focus Sash:</strong> Vital for surviving a hit from a faster opponent to guarantee a Poison Sting lands.</li>
+          <li><strong>Poison Barb:</strong> A small, sharp claw that increases the power of Weedle's Poison-type moves by 20%.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>EVOLUTION LEVEL</th>
+      </tr>
+      <tr>
+        <td>1' 00" (0.3 m)</td>
+        <td>7.1 lbs (3.2 kg)</td>
+        <td>Bug</td>
+        <td>Level 7</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

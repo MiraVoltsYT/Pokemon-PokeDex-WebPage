@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Metapod #0011</title>
+
+<style>
+:root {
+  --chrysalis-green: #4ade80;
+  --hardened-steel: #94a3b8;
+  --deep-forest: #064e3b;
+  --panel-bg: rgba(15, 23, 42, 0.97);
+  --shiny-orange: #fb923c;
+  --armor-glow: #22c55e;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Darker, reinforced forest aesthetic */
+  background: linear-gradient(rgba(2, 44, 34, 0.96), rgba(15, 23, 42, 0.98)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/11.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #f1f5f9;
+  line-height: 1.6;
+}
+
+.header {
+  background: #064e3b;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--hardened-steel);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(74, 222, 128, 0.2);
+}
+
+.nav-btn {
+  color: var(--chrysalis-green);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--chrysalis-green);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--chrysalis-green);
+  color: #064e3b;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 25px var(--chrysalis-green));
+}
+
+.id-badge {
+  background: var(--hardened-steel);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 2px; color: var(--chrysalis-green); text-transform: uppercase; }
+
+.type-tag {
+  display: inline-block;
+  padding: 5px 25px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #65a30d;
+  border: 1px solid #bef264;
+}
+
+.stats-container { margin-top: 20px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; }
+.stat-bar-bg { background: #1e293b; height: 12px; border-radius: 10px; overflow: hidden; border: 1px solid #334155; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #166534, var(--chrysalis-green)); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: rgba(0,0,0,0.3); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
+
+h3 { color: var(--chrysalis-green); border-bottom: 1px solid #166534; padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: var(--hardened-steel); display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(255,255,255,0.03); 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--hardened-steel);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid var(--shiny-orange);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th, td { padding: 12px; border-bottom: 1px solid #1e3a8a; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: var(--chrysalis-green);">KANTO_RESEARCH_v0.11</div>
+  <a href="Gen1.html" class="nav-btn">EXIT ARCHIVE</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/11.png" class="main-art" alt="Metapod">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: var(--shiny-orange); margin-bottom: 10px; font-weight: bold;">SHINY VARIANT: BURNT AMBER ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/11.png" style="width: 140px;" alt="Shiny Metapod">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0011 - COCOON POKÉMON</span>
+      <h1>METAPOD</h1>
+      <div style="margin: 15px 0;">
+        <span class="type-tag">Bug</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>REINFORCED PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>50</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 20%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>20</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 8%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--hardened-steel);"><span>DEFENSE</span> <span>55</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 22%; background: var(--hardened-steel);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>25</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 10%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>25</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 10%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>30</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 12%; background: #fff;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>BIOLOGICAL DATA: THE LIVING BUNKER</h3>
+      <div class="info-block">
+        <strong>Hardened Carapace</strong>
+        <p>A Metapod's shell is as hard as a sheet of iron. It prepares for evolution by keeping its body inside a tough shell, which protects the soft internal organs as they reorganize into a butterfly structure. While it appears motionless, the inside is in a state of high-speed liquid transition.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Vulnerability During Growth</strong>
+        <p>If the shell is cracked, its insides might leak out. Because the shell is so heavy and rigid, Metapod can only move by wiggling slightly. It relies entirely on its camouflage in the forest to avoid being spotted by predators while it is stationary.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>BATTLE PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Shed Skin (Ability)</strong>
+        <p>Every turn, Metapod has a 33% chance to cure itself of any status conditions (like Sleep, Burn, or Poison). This makes it surprisingly difficult to wear down with passive damage while it sits and hardens its shell.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Moveset</strong>
+        <ul>
+          <li><strong>Harden:</strong> The definitive move. Metapod stiffens every muscle in its body to boost Physical Defense. In the wild, two Metapod may engage in "Harden battles" until both are as solid as stone.</li>
+          <li><strong>Iron Defense:</strong> A more advanced version of Harden that raises Defense by two stages instead of one.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Eviolite:</strong> Turns Metapod into an immovable object. Boosting its 55 Defense by another 50% makes it incredibly difficult for early-game physical attackers to break.</li>
+          <li><strong>Rocky Helmet:</strong> Punishes anyone brave enough to make physical contact with its iron-hard shell.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EVO STAGE</th>
+        <th>EVO TRIGGER</th>
+      </tr>
+      <tr>
+        <td>2' 04" (0.7 m)</td>
+        <td>21.8 lbs (9.9 kg)</td>
+        <td>2 of 3</td>
+        <td>Level 10</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

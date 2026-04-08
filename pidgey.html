@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Pidgey #0016</title>
+
+<style>
+:root {
+  --pidgey-blue: #0ea5e9;
+  --sky-light: #f0f9ff;
+  --feather-brown: #78350f;
+  --panel-bg: rgba(255, 255, 255, 0.95);
+  --shiny-gold: #fbbf24;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Airy, high-altitude aesthetic unique to the Pidgey line */
+  background: linear-gradient(rgba(224, 242, 254, 0.9), rgba(248, 250, 252, 0.9)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/16.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #0f172a;
+  line-height: 1.6;
+}
+
+.header {
+  background: #0284c7;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--feather-brown);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.2);
+}
+
+.nav-btn {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid white;
+  padding: 8px 16px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-size: 12px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: white;
+  color: #0284c7;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 30px;
+  border: 1px solid rgba(2, 132, 199, 0.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+}
+
+.id-badge {
+  background: var(--feather-brown);
+  color: #fff;
+  padding: 4px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+h1 { font-size: 56px; margin: 10px 0; color: #0369a1; letter-spacing: 2px; }
+
+.type-box { display: flex; gap: 10px; margin: 15px 0; }
+.type-tag {
+  padding: 6px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.normal { background: #a8a878; color: #fff; }
+.flying { background: #a890f0; color: #fff; }
+
+.stats-container { margin-top: 25px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; color: #64748b; }
+.stat-bar-bg { background: #f1f5f9; height: 12px; border-radius: 10px; overflow: hidden; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #0ea5e9, #38bdf8); }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+
+h3 { color: #0369a1; border-bottom: 2px solid #e0f2fe; padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: #0284c7; display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: #f8fafc; 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--pidgey-blue);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: #fffbeb;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px dashed var(--shiny-gold);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 15px; border-bottom: 1px solid #f1f5f9; }
+th { color: #64748b; font-size: 12px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 18px; color: #fff; letter-spacing: 1px;">SKY_SENTINEL_ARCHIVE_v0.16</div>
+  <a href="Gen1.html" class="nav-btn">← BACK TO INDEX</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/16.png" class="main-art" alt="Pidgey">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: #b45309; margin-bottom: 10px; font-weight: bold;">RARE SHINY VARIANT: GOLDEN WINGS ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/16.png" style="width: 140px;" alt="Shiny Pidgey">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0016 - THE TINY BIRD</span>
+      <h1>PIDGEY</h1>
+      <div class="type-box">
+        <span class="type-tag normal">Normal</span>
+        <span class="type-tag flying">Flying</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>RECON PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>40</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 16%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>45</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 18%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>40</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 16%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>35</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 14%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>35</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 14%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--pidgey-blue);"><span>SPEED</span> <span>56</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 22%; background: var(--pidgey-blue);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE COMMON SKY SCOUT</h3>
+      <div class="info-block">
+        <strong>Docile Nature</strong>
+        <p>A common sight in forests and woods. It is very docile—it will often kick up sand to protect itself rather than fight back. It is the ideal companion for novice trainers due to its predictable behavior.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Internal Navigation</strong>
+        <p>It has an extremely sharp sense of direction and homing instincts. It can return to its nest from vast distances, even if it has never explored the route before.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Wing Maneuverability</strong>
+        <p>While small, its wing muscles are highly developed. By flapping them rapidly near the ground, it can create a localized dust storm to obscure vision.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Keen Eye / Tangled Feet (Abilities)</strong>
+        <p><strong>Keen Eye</strong> prevents its accuracy from being lowered. <strong>Tangled Feet</strong> raises its evasion if it becomes confused.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Moveset</strong>
+        <ul>
+          <li><strong>Gust:</strong> A basic wind-based attack that strikes from a distance.</li>
+          <li><strong>Sand Attack:</strong> Its primary defense mechanism; lowers the opponent's accuracy.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Sharp Beak:</strong> Boosts the power of Flying-type moves.</li>
+          <li><strong>Eviolite:</strong> Boosts Defense/Sp.Def for non-fully evolved Pokémon.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>HEIGHT</th>
+          <th>WEIGHT</th>
+          <th>EGG GROUP</th>
+          <th>BATTLE ROLE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1' 00" (0.3 m)</td>
+          <td>4.0 lbs (1.8 kg)</td>
+          <td>Flying</td>
+          <td>Early Game Scout</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

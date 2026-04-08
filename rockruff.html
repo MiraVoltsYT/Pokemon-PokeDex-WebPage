@@ -9,13 +9,13 @@
   --dusty-brown: #78350f;
   --loyal-blue: #3b82f6;
   --canyon-orange: #ea580c;
-  --panel-bg: rgba(43, 33, 24, 0.9);
+  --panel-bg: rgba(43, 33, 24, 0.95);
 }
 
 body {
   margin: 0;
   font-family: 'Verdana', sans-serif;
-  background: linear-gradient(rgba(120, 53, 15, 0.4), rgba(43, 33, 24, 0.95)), url('rocky-mountain.jpg');
+  background: linear-gradient(rgba(120, 53, 15, 0.6), rgba(43, 33, 24, 0.95)), url('rocky-mountain.jpg');
   background-size: cover;
   color: #fef3c7;
   line-height: 1.6;
@@ -38,10 +38,7 @@ body {
   border: 1px solid var(--rock-tan);
   padding: 8px 16px;
   border-radius: 4px;
-  transition: 0.3s;
 }
-
-.nav-btn:hover { background: var(--rock-tan); color: #1c1917; }
 
 .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
 
@@ -104,18 +101,20 @@ h3 { color: var(--rock-tan); border-bottom: 1px solid var(--dusty-brown); paddin
 .evo-chain {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.3);
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
-.evo-row { display: flex; align-items: center; justify-content: center; width: 100%; margin: 10px 0; }
-.evo-img { width: 60px; }
-.evo-arrow { margin: 0 15px; font-weight: bold; color: var(--canyon-orange); }
+.evo-row { display: flex; align-items: center; justify-content: space-between; width: 100%; margin: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
+.evo-img { width: 60px; filter: drop-shadow(0 0 5px var(--rock-tan)); }
+.evo-arrow { font-size: 11px; font-weight: bold; color: var(--canyon-orange); text-align: center; flex: 1; }
 
 .info-block { margin-bottom: 20px; }
 .info-block strong { color: var(--canyon-orange); display: block; margin-bottom: 5px; }
+
+table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 10px; }
+th, td { padding: 10px; border-bottom: 1px solid var(--dusty-brown); font-size: 14px; }
 </style>
 </head>
 <body>
@@ -131,7 +130,7 @@ h3 { color: var(--rock-tan); border-bottom: 1px solid var(--dusty-brown); paddin
     <div class="art-box">
       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/744.png" class="main-art" alt="Rockruff">
       <div class="shiny-preview">
-        <p style="font-size: 11px; color: var(--loyal-blue); margin-bottom: 5px;">SHINY VARIANT: SKY BLUE</p>
+        <p style="font-size: 11px; color: var(--loyal-blue); margin-bottom: 5px; font-weight: bold;">SHINY VARIANT: SKY BLUE ✨</p>
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/744.png" style="width: 120px;" alt="Shiny Rockruff">
       </div>
     </div>
@@ -144,7 +143,7 @@ h3 { color: var(--rock-tan); border-bottom: 1px solid var(--dusty-brown); paddin
       </div>
       
       <div class="stats-container">
-        <h3>PUPPY POTENTIAL</h3>
+        <h3>PUPPY POTENTIAL (BASE STATS)</h3>
         <div class="stat-row">
           <div class="stat-label"><span>HP</span> <span>45</span></div>
           <div class="stat-bar-bg"><div class="stat-fill" style="width: 18%;"></div></div>
@@ -175,65 +174,66 @@ h3 { color: var(--rock-tan); border-bottom: 1px solid var(--dusty-brown); paddin
 
   <div class="detail-grid">
     <div class="card">
-      <h3>EVOLUTIONARY TIMELINE</h3>
+      <h3>EVOLUTIONARY BRANCHES</h3>
       <div class="evo-chain">
         <div class="evo-row">
           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/744.png" class="evo-img">
-          <span class="evo-arrow">→ (Day) →</span>
+          <span class="evo-arrow">LV. 25<br>(DAY)</span>
           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/745.png" class="evo-img" title="Midday Form">
         </div>
         <div class="evo-row">
-           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/744.png" class="evo-img">
-          <span class="evo-arrow">→ (Night) →</span>
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/744.png" class="evo-img">
+          <span class="evo-arrow">LV. 25<br>(NIGHT)</span>
           <img src="lycanrocmidnight.png" class="evo-img" title="Midnight Form">
         </div>
-        <div class="evo-row">
-           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/744.png" class="evo-img">
-          <span class="evo-arrow">→ (Dusk) →</span>
+        <div class="evo-row" style="border: none;">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/744.png" class="evo-img">
+          <span class="evo-arrow">OWN TEMPO<br>(DUSK)</span>
           <img src="lycanrocdusk.png" class="evo-img" title="Dusk Form">
         </div>
       </div>
       <div class="info-block" style="margin-top: 15px;">
         <strong>Biological Overview</strong>
-        <p>Rockruff has a habit of pressing the rocks in its neck against those it's fond of. While a sign of affection, these rocks are incredibly sharp, making this a painful greeting for trainers. As it grows, it becomes more aggressive and starts to howl at the sun.</p>
+        <p>Rockruff is famous for its persistence; once it starts a hunt, it won't stop until it catches its target. It communicates affection by rubbing the sharp stones on its neck against people—a greeting that is notoriously painful for trainers but proves its loyalty. Its sense of smell is sharp enough to track a target for miles.</p>
       </div>
     </div>
 
     <div class="card">
-      <h3>TRAINING NOTES</h3>
+      <h3>TRAINING & STRATEGY</h3>
       <div class="info-block">
-        <strong>Stealth Rock (Specialty)</strong>
-        <p>Rockruff is excellent at setting traps. It can scatter pointed stones around the enemy field, damaging any Pokémon that switches into battle.</p>
+        <strong>The "Own Tempo" Speciality</strong>
+        <p>Only Rockruff born with the **Own Tempo** ability possess the mental fortitude required to reach the rare **Dusk Form Lycanroc**. This variant cannot be confused in battle, making it a reliable physical attacker when faced with complex status conditions.</p>
       </div>
 
       <div class="info-block">
-        <strong>Own Tempo (Ability)</strong>
-        <p>This Pokémon is so focused on its own rhythm that it cannot be confused by opponents. Only Rockruff with this specific ability can evolve into the rare **Dusk Form Lycanroc**.</p>
+        <strong>Aggression Warning</strong>
+        <p>When Rockruff's eyes begin to glow red at sundown, it is a biological indicator of peak energy. During this phase, it becomes increasingly wild and difficult to control, signaling that evolution into its more dangerous adult form is imminent.</p>
       </div>
 
       <div class="info-block">
-        <strong>Behavioral Warning</strong>
-        <p>When Rockruff is close to evolving, its temperament becomes wild. If it begins to disappear at night or act more temperamental, it is a sign that its evolution is imminent.</p>
+        <strong>Hazard Setter</strong>
+        <p>In competitive play, Rockruff excels as a utility lead. By using **Stealth Rock**, it creates a persistent threat on the opponent's side of the field, while moves like **Rock Tomb** help control the opponent's Speed.</p>
       </div>
     </div>
   </div>
 
-  <div class="card" style="margin-top: 30px;">
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
     <h3>TECHNICAL SPECIFICATIONS</h3>
-    <table style="width: 100%; text-align: left; border-collapse: collapse;">
-      <tr style="border-bottom: 1px solid var(--dusty-brown);">
-        <th style="padding: 10px;">HEIGHT</th>
-        <th style="padding: 10px;">WEIGHT</th>
-        <th style="padding: 10px;">EGG GROUP</th>
-        <th style="padding: 10px;">EVO TRIGGER</th>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>EVO TRIGGER</th>
       </tr>
       <tr>
-        <td style="padding: 10px;">1' 08" (0.5 m)</td>
-        <td style="padding: 10px;">20.3 lbs (9.2 kg)</td>
-        <td style="padding: 10px;">Field</td>
-        <td style="padding: 10px;">Level 25 + Time</td>
+        <td>1' 08" (0.5 m)</td>
+        <td>20.3 lbs (9.2 kg)</td>
+        <td>Field</td>
+        <td>Level 25 + Time Context</td>
       </tr>
     </table>
+    <p style="margin-top: 15px; font-size: 12px; font-style: italic; color: var(--rock-tan);">*Note: Its bite is surprisingly powerful, allowing it to shatter small stones easily.*</p>
   </div>
 
 </div>

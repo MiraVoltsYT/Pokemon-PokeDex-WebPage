@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Venusaur #0003</title>
+
+<style>
+:root {
+  --emerald-green: #065f46;
+  --hibiscus-pink: #db2777;
+  --petal-glow: #f472b6;
+  --panel-bg: rgba(2, 6, 23, 0.94);
+  --shiny-gold: #84cc16;
+  --thick-fat-blue: #38bdf8;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Cinematic jungle aesthetic with Venusaur watermark */
+  background: linear-gradient(rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.92)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #ecfdf5;
+  line-height: 1.6;
+}
+
+.header {
+  background: #064e3b;
+  padding: 20px 40px;
+  border-bottom: 5px solid var(--hibiscus-pink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 30px rgba(219, 39, 119, 0.3);
+}
+
+.nav-btn {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--hibiscus-pink);
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--hibiscus-pink);
+  box-shadow: 0 0 15px var(--hibiscus-pink);
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 30px;
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--emerald-green);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 35px var(--emerald-green));
+}
+
+.id-badge {
+  background: var(--emerald-green);
+  color: white;
+  padding: 4px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+h1 { font-size: 56px; margin: 10px 0; color: #fff; text-shadow: 2px 2px var(--emerald-green); letter-spacing: 4px; }
+
+.type-box { display: flex; gap: 12px; margin: 20px 0; }
+.type { padding: 8px 25px; border-radius: 50px; font-weight: bold; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); font-size: 14px; }
+.grass { background: #15803d; box-shadow: 0 0 10px #15803d; }
+.poison { background: #7e22ce; box-shadow: 0 0 10px #7e22ce; }
+
+.stats-container { margin-top: 25px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; text-transform: uppercase; }
+.stat-bar-bg { background: #111827; height: 14px; border-radius: 10px; border: 1px solid #1e293b; overflow: hidden; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #065f46, #10b981); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: rgba(6, 78, 59, 0.2); padding: 30px; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.2); }
+
+h3 { color: var(--petal-glow); border-bottom: 2px solid #831843; padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: #34d399; display: block; margin-bottom: 5px; font-size: 16px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(0,0,0,0.3); 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 10px;
+  border-left: 4px solid var(--hibiscus-pink);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: #000;
+  padding: 25px;
+  border-radius: 20px;
+  border: 2px solid var(--shiny-gold);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 15px; border-bottom: 1px solid #064e3b; }
+th { color: var(--petal-glow); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 22px; color: #fff;">KANTO_ARCHIVE_v0.03_FINAL</div>
+  <a href="Gen1.html" class="nav-btn">EXIT ARCHIVE</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png" class="main-art" alt="Venusaur">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: var(--shiny-gold); margin-bottom: 10px; font-weight: bold; letter-spacing: 2px;">SHINY VARIANT: GOLDEN BLOOM ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/3.png" style="width: 150px;" alt="Shiny Venusaur">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0003 - SEED POKÉMON</span>
+      <h1>VENUSAUR</h1>
+      <div class="type-box">
+        <span class="type grass">Grass</span>
+        <span class="type poison">Poison</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>APEX PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>80</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 32%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>82</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 33%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>83</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 33%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #34d399;"><span>SP. ATTACK</span> <span>100</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 40%; background: #34d399;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--petal-glow);"><span>SP. DEFENSE</span> <span>100</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 40%; background: var(--petal-glow);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>80</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 32%; background: #fff;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE APEX POLLINATOR</h3>
+      <div class="info-block">
+        <strong>The Full Bloom</strong>
+        <p>A Venusaur's flower is its most distinct feature. The flower takes on a vivid color if it gets plenty of nutrition and sunlight. The fragrance of its flower soothes the emotions of people and Pokémon alike, and it is often used in the wild to calm aggressive territory disputes.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Solar Accumulation</strong>
+        <p>By spreading its broad petals and bathing in the sun, it can transform solar light into pure energy. This process is so efficient that a Venusaur in peak condition can fire its signature Solar Beam with virtually no recharge time in intense heat.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Rain Forest Adaptation</strong>
+        <p>After a rainy day, the flower on its back smells stronger. This scent lures other Pokémon into its territory, where Venusaur maintains a peaceful balance as the guardian of its forest grove.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Thick Fat (Mega Ability)</strong>
+        <p>Upon Mega Evolution, Venusaur gains the **Thick Fat** ability, which reduces damage from Fire and Ice-type attacks by 50%. This effectively removes two of its primary weaknesses, making it nearly impossible to knock out in one hit.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Elite Moveset</strong>
+        <ul>
+          <li><strong>Giga Drain:</strong> A powerful grass attack that restores Venusaur's HP based on the damage dealt to the opponent.</li>
+          <li><strong>Sludge Bomb:</strong> A toxic projectile that has a high chance of poisoning the target, providing chip damage over time.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Legendary Gear</strong>
+        <ul class="item-list">
+          <li><strong>Black Sludge:</strong> Since Venusaur is a Poison-type, this item gradually restores its HP every turn. (If a non-poison type steals it, they take damage instead!)</li>
+          <li><strong>Venusaurite:</strong> The mega stone required to reach its true defensive peak.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>BATTLE ROLE</th>
+      </tr>
+      <tr>
+        <td>6' 07" (2.0 m)</td>
+        <td>220.5 lbs (100.0 kg)</td>
+        <td>Monster / Grass</td>
+        <td>Tank / Special Sweeper</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

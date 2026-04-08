@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Squirtle #0007</title>
+
+<style>
+:root {
+  --ocean-blue: #0ea5e9;
+  --shell-tan: #fde68a;
+  --deep-sea: #0c4a6e;
+  --panel-bg: rgba(15, 23, 42, 0.95);
+  --shiny-green: #4ade80;
+  --foam-white: #f8fafc;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Aquatic aesthetic with Squirtle official artwork watermark */
+  background: linear-gradient(rgba(12, 74, 110, 0.95), rgba(2, 6, 23, 0.98)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--foam-white);
+  line-height: 1.6;
+}
+
+.header {
+  background: #082f49;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--ocean-blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+}
+
+.nav-btn {
+  color: var(--ocean-blue);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--ocean-blue);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--ocean-blue);
+  color: #fff;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 25px var(--ocean-blue));
+}
+
+.id-badge {
+  background: var(--ocean-blue);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 3px; color: var(--ocean-blue); text-transform: uppercase; }
+
+.type-tag {
+  display: inline-block;
+  padding: 5px 25px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #3b82f6;
+  border: 1px solid #93c5fd;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
+
+.stats-container { margin-top: 20px; }
+.stat-row { margin-bottom: 15px; }
+.stat-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; font-weight: bold; }
+.stat-bar-bg { background: rgba(255,255,255,0.05); height: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+.stat-fill { height: 100%; background: linear-gradient(90deg, var(--deep-sea), var(--ocean-blue)); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: var(--panel-bg); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
+
+h3 { color: var(--shell-tan); border-bottom: 1px solid #1e3a8a; padding-bottom: 10px; margin-top: 0; text-transform: uppercase; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: var(--ocean-blue); display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(255,255,255,0.03); 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--ocean-blue);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid var(--shiny-green);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th, td { padding: 12px; border-bottom: 1px solid #075985; }
+th { color: var(--ocean-blue); font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: var(--ocean-blue); letter-spacing: 1px;">KANTO_RESEARCH_v0.07</div>
+  <a href="Gen1.html" class="nav-btn">EXIT ARCHIVE</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png" class="main-art" alt="Squirtle">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: var(--shiny-green); margin-bottom: 10px; font-weight: bold;">SHINY VARIANT: SEA GLASS GREEN ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/7.png" style="width: 140px;" alt="Shiny Squirtle">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0007 - TINY TURTLE POKÉMON</span>
+      <h1>SQUIRTLE</h1>
+      <div style="margin: 15px 0;">
+        <span class="type-tag">Water</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>VITAL PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>44</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 17%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>48</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 19%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--shell-tan);"><span>DEFENSE</span> <span>65</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 26%; background: var(--shell-tan);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>50</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 20%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--ocean-blue);"><span>SP. DEFENSE</span> <span>64</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 25%; background: var(--ocean-blue);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>43</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 17%; background: #fff;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>BIOLOGICAL DATA: THE CARAPACE GUARD</h3>
+      <div class="info-block">
+        <strong>The Protective Shell</strong>
+        <p>Squirtle's shell is not just for protection. Its rounded shape and the grooves on its surface help minimize resistance in water, enabling this Pokémon to swim at high speeds. When threatened, it withdraws its entire body into the shell.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Hydro-Pressure Mechanics</strong>
+        <p>After birth, its back swells and hardens into a shell. It can powerfully spray foam and water from its mouth. This high-pressure stream is a primary defense mechanism, capable of striking targets with surprising force for its size.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Social Behavior</strong>
+        <p>Squirtle are known to be quite social and often form groups in the wild. In urban areas, abandoned Squirtle have even been known to form "squads" (The Squirtle Squad), showing high levels of coordination and loyalty to their leader.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>TACTICAL ANALYSIS</h3>
+      <div class="info-block">
+        <strong>Torrent Protocol (Ability)</strong>
+        <p>When HP falls below 33%, Squirtle’s internal water pressure reaches a peak. All Water-type moves, such as Water Gun or Bubble Beam, deal 50% more damage, allowing it to blast through tougher opponents.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Moveset</strong>
+        <ul>
+          <li><strong>Withdraw:</strong> Squirtle pulls into its shell, raising its Physical Defense stat instantly.</li>
+          <li><strong>Rapid Spin:</strong> A spinning attack that removes binding moves (like Fire Spin or Wrap) and clears hazards like Stealth Rocks from the field.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Eviolite:</strong> Essential for a defensive Squirtle, pushing its Defense and Sp. Defense to competitive levels while it remains unevolved.</li>
+          <li><strong>Mystic Water:</strong> A teardrop-shaped gem that enhances the power of Water-type moves by 20%.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>EVOLUTION LEVEL</th>
+      </tr>
+      <tr>
+        <td>1' 08" (0.5 m)</td>
+        <td>19.8 lbs (9.0 kg)</td>
+        <td>Monster / Water 1</td>
+        <td>Level 16</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

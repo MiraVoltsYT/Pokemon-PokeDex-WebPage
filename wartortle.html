@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Wartortle #0008</title>
+
+<style>
+:root {
+  --indigo-deep: #1e1b4b;
+  --wave-blue: #3b82f6;
+  --foam-teal: #99f6e4;
+  --panel-bg: rgba(15, 23, 42, 0.96);
+  --shiny-purple: #a855f7;
+  --shell-brown: #78350f;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Deep ocean gradient with Wartortle's aggressive stance as a watermark */
+  background: linear-gradient(rgba(30, 27, 75, 0.96), rgba(15, 23, 42, 0.98)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #e2e8f0;
+  line-height: 1.6;
+}
+
+.header {
+  background: #1e3a8a;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--foam-teal);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+}
+
+.nav-btn {
+  color: var(--foam-teal);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--foam-teal);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--foam-teal);
+  color: #1e1b4b;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(153, 246, 228, 0.2);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 30px var(--wave-blue));
+}
+
+.id-badge {
+  background: var(--wave-blue);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 2px; color: var(--wave-blue); text-transform: uppercase; }
+
+.type-tag {
+  display: inline-block;
+  padding: 5px 25px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #2563eb;
+  border: 1px solid #60a5fa;
+}
+
+.stats-container { margin-top: 20px; }
+.stat-row { margin-bottom: 15px; }
+.stat-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; font-weight: bold; }
+.stat-bar-bg { background: rgba(255,255,255,0.05); height: 12px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #1d4ed8, var(--wave-blue)); border-radius: 10px; }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: rgba(0,0,0,0.3); padding: 25px; border-radius: 15px; border: 1px solid rgba(59, 130, 246, 0.2); }
+
+h3 { color: var(--foam-teal); border-bottom: 1px solid #1e40af; padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: var(--wave-blue); display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(255,255,255,0.03); 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--wave-blue);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid var(--shiny-purple);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; }
+th, td { padding: 12px; border-bottom: 1px solid #1e3a8a; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: var(--foam-teal);">KANTO_RESEARCH_v0.08</div>
+  <a href="Gen1.html" class="nav-btn">EXIT ARCHIVE</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png" class="main-art" alt="Wartortle">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: var(--shiny-purple); margin-bottom: 10px; font-weight: bold;">SHINY VARIANT: DEEP AMETHYST ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/8.png" style="width: 140px;" alt="Shiny Wartortle">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0008 - TURTLE POKÉMON</span>
+      <h1>WARTORTLE</h1>
+      <div style="margin: 15px 0;">
+        <span class="type-tag">Water</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>COMBAT PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>59</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 23%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>63</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 25%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--foam-teal);"><span>DEFENSE</span> <span>80</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 32%; background: var(--foam-teal);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>65</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 26%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--wave-blue);"><span>SP. DEFENSE</span> <span>80</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 32%; background: var(--wave-blue);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>58</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 23%; background: #fff;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE AGING WARRIOR</h3>
+      <div class="info-block">
+        <strong>The Long-Life Symbol</strong>
+        <p>Wartortle is a symbol of longevity. Its large, furry tail and ears are covered in soft fur that deepens in color as it ages. Legend says these Pokémon can live for 10,000 years, and the scratches on its shell are considered badges of honor from centuries of survival.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Hydro-Balance Mechanics</strong>
+        <p>It uses its furry tail as a rudder to maintain balance while swimming at high speeds. This tail also stores air, allowing Wartortle to stay submerged for significantly longer periods than its previous form, Squirtle.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Aggressive Growth</strong>
+        <p>It is far more aggressive than Squirtle. It will often hide in water to stalk prey, then lunge out and strike with its tough, scratch-resistant shell. It is a popular Pokémon for sailors and coast guards.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>BATTLE PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Defensive Mastery</strong>
+        <p>Wartortle specializes in "stall" tactics. By combining high natural defenses with recovery moves, it can outlast opponents twice its size. It is often used as a mid-stage wall in competitive training.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Tactical Moveset</strong>
+        <ul>
+          <li><strong>Aqua Jet:</strong> A high-speed lunge that allows Wartortle to strike first, regardless of its natural speed stat.</li>
+          <li><strong>Rain Dance:</strong> It summons a localized rainstorm, boosting its Water moves and activating various aquatic abilities.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Eviolite:</strong> The definitive choice. Because Wartortle’s base Defense and Sp. Defense are already a solid 80, the Eviolite turns it into a fortress that is harder to crack than many fully evolved Pokémon.</li>
+          <li><strong>Leftovers:</strong> Provides a slow, steady stream of HP recovery, rewarding long-term defensive play.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EVO STAGE</th>
+        <th>EVO TRIGGER</th>
+      </tr>
+      <tr>
+        <td>3' 03" (1.0 m)</td>
+        <td>49.6 lbs (22.5 kg)</td>
+        <td>2 of 3</td>
+        <td>Level 36</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

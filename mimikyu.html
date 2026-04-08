@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Mimikyu #0778</title>
+
+<style>
+:root {
+  --mimikyu-yellow: #eab308;
+  --scribble-black: #1a1a1a;
+  --shadow-purple: #4c1d95;
+  --tattered-tan: #d4d4d8;
+  --panel-bg: rgba(24, 24, 27, 0.95);
+}
+
+body {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('https://www.transparenttextures.com/patterns/dark-matter.png');
+  background-color: #09090b;
+  color: #e4e4e7;
+  line-height: 1.6;
+}
+
+.header {
+  background: #18181b;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--mimikyu-yellow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(234, 179, 8, 0.2);
+}
+
+.nav-btn {
+  color: var(--mimikyu-yellow);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--mimikyu-yellow);
+  padding: 8px 16px;
+  border-radius: 0px;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 10px;
+  border: 2px dashed #3f3f46;
+  position: relative;
+}
+
+/* SCRIBBLE EFFECT */
+.pokemon-hero::before {
+  content: "";
+  position: absolute;
+  top: -5px; left: -5px; right: -5px; bottom: -5px;
+  border: 1px solid rgba(234, 179, 8, 0.1);
+  pointer-events: none;
+}
+
+.main-art { 
+  width: 100%; 
+  filter: grayscale(20%) drop-shadow(0 0 15px var(--shadow-purple)); 
+}
+
+.id-badge {
+  background: var(--shadow-purple);
+  color: white;
+  padding: 4px 12px;
+  font-weight: bold;
+  width: fit-content;
+}
+
+h1 { font-size: 48px; margin: 10px 0; letter-spacing: 3px; color: var(--mimikyu-yellow); text-shadow: 2px 2px #000; }
+
+.type-tag {
+  display: inline-block;
+  padding: 5px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 10px;
+  border: 1px solid;
+}
+.ghost { background: #705898; color: white; }
+.fairy { background: #ee99ac; color: white; }
+
+.stats-container { margin-top: 30px; }
+.stat-row { margin-bottom: 15px; }
+.stat-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; font-family: monospace; }
+.stat-bar-bg { background: #27272a; height: 12px; overflow: hidden; border: 1px solid #3f3f46; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #581c87, var(--mimikyu-yellow)); }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: #18181b; padding: 25px; border: 1px solid #3f3f46; position: relative; }
+
+h3 { color: var(--mimikyu-yellow); border-bottom: 1px solid #3f3f46; padding-bottom: 10px; margin-top: 0; text-transform: uppercase; }
+
+.shiny-preview {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border: 1px solid #52525b;
+  margin-top: 20px;
+}
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: #a855f7; display: block; margin-bottom: 5px; }
+
+table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 10px; }
+th, td { padding: 10px; border-bottom: 1px solid #27272a; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: var(--mimikyu-yellow);">OBSCURA_LOG_v7.78</div>
+  <a href="index.html" class="nav-btn">LEAVE SHADOWS</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/778.png" class="main-art" alt="Mimikyu">
+      <div class="shiny-preview">
+        <p style="font-size: 11px; color: #a1a1aa; margin-bottom: 10px;">SHINY VARIANT: GREYSCALE / VINTAGE</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/778.png" style="width: 120px;" alt="Shiny Mimikyu">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0778 - DISGUISE</span>
+      <h1>MIMIKYU</h1>
+      <div style="margin: 15px 0;">
+        <span class="type-tag ghost">Ghost</span>
+        <span class="type-tag fairy">Fairy</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>SHADOW ANALYTICS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP (FRAGILE)</span> <span>55</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 22%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>90</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 36%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>80</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 32%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>50</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 20%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #a855f7;"><span>SP. DEFENSE</span> <span>105</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 42%; background: #a855f7;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--mimikyu-yellow);"><span>SPEED</span> <span>96</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 38%; background: var(--mimikyu-yellow);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>BIOLOGICAL ANOMALY</h3>
+      <div class="info-block">
+        <strong>The Disguise</strong>
+        <p>A lonely Pokémon, it conceals its terrifying appearance beneath an old rag so it can get closer to people and other Pokémon. Its disguise is modeled after Pikachu, the most popular Pokémon from 20 years ago.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Lethal Curiosity</strong>
+        <p>Legend says that a scholar who once looked underneath Mimikyu's rag died from a mysterious, painful shock. To this day, the true form of Mimikyu remains the greatest mystery in Alolan biology.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Vengeful Spirit</strong>
+        <p>If its neck is broken during a fight, or its rag is torn, it will stay up all night frantically patching it back together. If someone is responsible for the tear, it will hunt them down with relentless spite.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Disguise (Ability)</strong>
+        <p>Mimikyu's signature trait. The cloth acts as a decoy, taking the impact of the first attack aimed at it. This "free turn" allows Mimikyu to set up power-boosting moves like **Swords Dance** safely.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>The "Let's Snuggle Forever" Z-Move</strong>
+        <p>Using its Fairy-type energy, Mimikyu traps its opponent inside its rag. What happens inside is unknown, but the psychological and physical damage is catastrophic.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Technical Tools</strong>
+        <ul style="list-style: none; padding: 0; font-size: 14px;">
+          <li style="margin-bottom: 10px; border-left: 3px solid var(--mimikyu-yellow); padding-left: 10px;">
+            <strong>Life Orb:</strong> Sacrifices some HP for a massive 30% boost to its Shadow Claw and Play Rough attacks.
+          </li>
+          <li style="margin-bottom: 10px; border-left: 3px solid var(--mimikyu-yellow); padding-left: 10px;">
+            <strong>Mental Herb:</strong> Prevents opponents from using "Taunt" to stop Mimikyu's setup moves.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>SIGNATURE MOVE</th>
+      </tr>
+      <tr>
+        <td>0' 08" (0.2 m)</td>
+        <td>1.5 lbs (0.7 kg)</td>
+        <td>Amorphous</td>
+        <td>Play Rough / Shadow Claw</td>
+      </tr>
+    </table>
+    <p style="margin-top: 15px; font-size: 12px; font-style: italic; color: #71717a;">*Warning: Do not attempt to lift the hem of the cloth under any circumstances.*</p>
+  </div>
+
+</div>
+
+</body>
+</html>
