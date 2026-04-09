@@ -182,23 +182,70 @@ th { color: var(--forest-green); font-size: 12px; }
           <div class="stat-bar-bg"><div class="stat-fill" style="width: 18%; background: #fff;"></div></div>
         </div>
 
-<div class="cry-section" style="margin-top: 20px; text-align: center;">
-  <audio id="pkmn-cry"></audio>
-  <button onclick="playCry('latest')" style="background: #444; color: #fff; border: 1px solid #666; padding: 5px 10px; cursor: pointer; font-family: inherit; font-size: 10px;">
-    🔊 PLAY CRY
-  </button>
+<div class="cry-player" style="background: #202c33; padding: 10px; border-radius: 10px; margin-top: 15px; display: flex; align-items: center; gap: 12px; width: 280px; margin-left: auto; margin-right: auto;">
   
-  <script>
-    async function playCry(version) {
-      // Bulbasaur is ID 1. For Miraidon, change '1' to '1008'
-      const res = await fetch('https://pokeapi.co/api/v2/pokemon/1');
-      const data = await res.json();
-      const player = document.getElementById('pkmn-cry');
-      player.src = data.cries[version];
+  <div id="play-btn" onclick="toggleCry()" style="cursor: pointer; color: #8696a0; font-size: 24px;">▶</div>
+  
+  <div style="flex-grow: 1;">
+    <div style="height: 3px; background: #8696a0; width: 100%; position: relative; border-radius: 2px;">
+      <div id="cry-progress" style="position: absolute; left: 0; top: 0; height: 100%; background: #00a884; width: 0%;"></div>
+    </div>
+    
+    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+      <span id="cry-time" style="color: #8696a0; font-size: 11px;">0:00</span>
+      <div>
+        <select id="cry-version" onchange="loadCryDuration()" style="background: none; border: none; color: #00a884; font-size: 10px; cursor: pointer; font-weight: bold;">
+          <option value="latest" style="background: #232d36;">MODERN</option>
+          <option value="legacy" style="background: #232d36;">8-BIT</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<audio id="audio-engine" ontimeupdate="updateUi()" onended="resetUi()"></audio>
+
+<script>
+  const player = document.getElementById('audio-engine');
+  
+  async function loadCryDuration() {
+    // Replace '1' with your Pokemon ID variable if needed
+    const res = await fetch('https://pokeapi.co/api/v2/pokemon/1');
+    const data = await res.json();
+    const version = document.getElementById('cry-version').value;
+    
+    player.src = data.cries[version];
+    player.load(); // Load to get duration
+    
+    player.onloadedmetadata = () => {
+      let duration = player.duration.toFixed(1);
+      document.getElementById('cry-time').innerText = `0:${duration < 10 ? '0' : ''}${duration}`;
+    };
+  }
+
+  function toggleCry() {
+    if (player.paused) {
       player.play();
+      document.getElementById('play-btn').innerText = '⏸';
+    } else {
+      player.pause();
+      document.getElementById('play-btn').innerText = '▶';
     }
-  </script>
-        </div>
+  }
+
+  function updateUi() {
+    const per = (player.currentTime / player.duration) * 100;
+    document.getElementById('cry-progress').style.width = per + '%';
+  }
+
+  function resetUi() {
+    document.getElementById('play-btn').innerText = '▶';
+    document.getElementById('cry-progress').style.width = '0%';
+  }
+
+  // Initial load
+  loadCryDuration();
+</script>
       </div>
     </div>
   </div>
