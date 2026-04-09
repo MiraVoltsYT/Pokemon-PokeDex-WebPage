@@ -181,6 +181,24 @@ th { color: var(--forest-green); font-size: 12px; }
           <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>45</span></div>
           <div class="stat-bar-bg"><div class="stat-fill" style="width: 18%; background: #fff;"></div></div>
         </div>
+
+<div class="cry-section" style="margin-top: 20px; text-align: center;">
+  <audio id="pkmn-cry"></audio>
+  <button onclick="playCry('latest')" style="background: #444; color: #fff; border: 1px solid #666; padding: 5px 10px; cursor: pointer; font-family: inherit; font-size: 10px;">
+    🔊 PLAY CRY
+  </button>
+  
+  <script>
+    async function playCry(version) {
+      // Bulbasaur is ID 1. For Miraidon, change '1' to '1008'
+      const res = await fetch('https://pokeapi.co/api/v2/pokemon/1');
+      const data = await res.json();
+      const player = document.getElementById('pkmn-cry');
+      player.src = data.cries[version];
+      player.play();
+    }
+  </script>
+        </div>
       </div>
     </div>
   </div>
