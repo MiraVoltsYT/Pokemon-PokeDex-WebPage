@@ -223,6 +223,78 @@ h3 { color: var(--neon-blue); border-bottom: 1px solid #334155; padding-bottom: 
           <div class="stat-label" style="color: #f472b6;"><span>SPEED</span> <span>135</span></div>
           <div class="stat-bar-bg"><div class="stat-fill" style="width: 65%; background: #f472b6;"></div></div>
         </div>
+<div class="cry-player" style="background: #202c33; padding: 12px; border-radius: 12px; margin-top: 15px; display: flex; align-items: center; gap: 12px; width: 300px; border: 1px solid #3b3b3b;">
+  
+  <div id="miraidon-play-btn" onclick="toggleMiraidonCry()" style="cursor: pointer; color: #8696a0; font-size: 24px; width: 30px; text-align: center;">▶</div>
+  
+  <div style="flex-grow: 1;">
+    <div style="height: 4px; background: #3b4a54; width: 100%; position: relative; border-radius: 2px;">
+      <div id="miraidon-progress" style="position: absolute; left: 0; top: 0; height: 100%; background: #00a884; width: 0%; transition: width 0.1s;"></div>
+    </div>
+    
+    <div style="display: flex; justify-content: space-between; margin-top: 6px; align-items: center;">
+      <span id="miraidon-time" style="color: #8696a0; font-size: 12px; font-weight: 500;">0:00</span>
+      
+      <select id="miraidon-version" onchange="loadMiraidonCry()" style="background: transparent; border: none; color: #00a884; font-size: 11px; cursor: pointer; font-weight: bold; outline: none;">
+        <option value="latest" style="background: #232d36;">MODERN CRY</option>
+        <option value="legacy" style="background: #232d36;">LEGACY CRY</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<audio id="miraidon-audio" ontimeupdate="updateMiraidonUi()" onended="resetMiraidonUi()"></audio>
+
+<script>
+  const miraPlayer = document.getElementById('miraidon-audio');
+  
+  async function loadMiraidonCry() {
+    // Miraidon's Pokedex ID is 1008
+    const res = await fetch('https://pokeapi.co/api/v2/pokemon/1008');
+    const data = await res.json();
+    const version = document.getElementById('miraidon-version').value;
+    
+    miraPlayer.src = data.cries[version];
+    miraPlayer.load();
+    
+    miraPlayer.onloadedmetadata = () => {
+      let duration = miraPlayer.duration.toFixed(1);
+      document.getElementById('miraidon-time').innerText = `0:${duration < 10 ? '0' : ''}${duration}`;
+    };
+  }
+
+  function toggleMiraidonCry() {
+    if (miraPlayer.paused) {
+      miraPlayer.play();
+      document.getElementById('miraidon-play-btn').innerText = '⏸';
+    } else {
+      miraPlayer.pause();
+      document.getElementById('miraidon-play-btn').innerText = '▶';
+    }
+  }
+
+  function updateMiraidonUi() {
+    if (miraPlayer.duration) {
+      const per = (miraPlayer.currentTime / miraPlayer.duration) * 100;
+      document.getElementById('miraidon-progress').style.width = per + '%';
+      
+      // Update timer while playing
+      let current = miraPlayer.currentTime.toFixed(1);
+      document.getElementById('miraidon-time').innerText = `0:${current < 10 ? '0' : ''}${current}`;
+    }
+  }
+
+  function resetMiraidonUi() {
+    document.getElementById('miraidon-play-btn').innerText = '▶';
+    document.getElementById('miraidon-progress').style.width = '0%';
+    // Reset to full duration text
+    let duration = miraPlayer.duration.toFixed(1);
+    document.getElementById('miraidon-time').innerText = `0:${duration < 10 ? '0' : ''}${duration}`;
+  }
+
+  // Auto-load on page start
+  loadMiraidonCry();
+</script>
       </div>
     </div>
   </div>
