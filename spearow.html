@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Spearow #0021</title>
+
+<style>
+:root {
+  --spearow-crimson: #991b1b;
+  --beak-yellow: #eab308;
+  --wing-brown: #78350f;
+  --panel-bg: rgba(255, 255, 255, 0.97);
+  --shiny-gold: #fbbf24;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Aggressive, high-contrast desert/scrubland aesthetic */
+  background: linear-gradient(rgba(153, 27, 27, 0.85), rgba(69, 26, 3, 0.95)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/21.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #0f172a;
+  line-height: 1.6;
+}
+
+.header {
+  background: #7f1d1d;
+  padding: 20px 40px;
+  border-bottom: 5px solid var(--beak-yellow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.nav-btn {
+  color: var(--beak-yellow);
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid var(--beak-yellow);
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.nav-btn:hover {
+  background: var(--beak-yellow);
+  color: #7f1d1d;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 30px;
+  border: 1px solid rgba(153, 27, 27, 0.2);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
+}
+
+.id-badge {
+  background: var(--spearow-crimson);
+  color: #fff;
+  padding: 4px 15px;
+  border-radius: 4px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+
+h1 { font-size: 56px; margin: 10px 0; color: #7f1d1d; letter-spacing: 3px; }
+
+.type-box { display: flex; gap: 10px; margin: 15px 0; }
+.type-tag {
+  padding: 8px 25px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.normal { background: #a8a878; color: #fff; }
+.flying { background: #a890f0; color: #fff; }
+
+.stats-container { margin-top: 25px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; color: #475569; }
+.stat-bar-bg { background: #e2e8f0; height: 14px; border-radius: 4px; overflow: hidden; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #991b1b, #ef4444); }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+
+h3 { color: #7f1d1d; border-bottom: 3px solid var(--beak-yellow); padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: #b91c1c; display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: #fff7ed; 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 5px;
+  border-left: 5px solid var(--spearow-crimson);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: #fefce8;
+  padding: 25px;
+  border-radius: 20px;
+  border: 2px solid var(--shiny-gold);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 15px; border-bottom: 1px solid #f1f5f9; }
+th { color: #64748b; font-size: 11px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: #fff; letter-spacing: 2px;">RAIDER_RECON_v0.21</div>
+  <a href="Gen1.html" class="nav-btn">EXIT ARCHIVE</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/21.png" class="main-art" alt="Spearow">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: #854d0e; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px;">SHINY DATA: LIME GOLD ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/21.png" style="width: 150px;" alt="Shiny Spearow">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0021 - TINY BIRD POKÉMON</span>
+      <h1>SPEAROW</h1>
+      <div class="type-box">
+        <span class="type-tag normal">Normal</span>
+        <span class="type-tag flying">Flying</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>STRIKE PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>40</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 16%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>60</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 23%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>30</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 12%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>31</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 12%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>31</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 12%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--spearow-crimson);"><span>SPEED</span> <span>70</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 27%; background: var(--spearow-crimson);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE SHORT-TEMPERED RAIDER</h3>
+      <div class="info-block">
+        <strong>Incessant Shrieking</strong>
+        <p>It flaps its short wings to flush out insects from the tall grass. It then plucks them with its short, sturdy beak. It is known for its loud, high-pitched cry that can be heard from half a mile away.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Aerial Aggression</strong>
+        <p>Unlike Pidgey, Spearow has a very violent disposition. It is highly territorial and will attack anything—human or Pokémon—that enters its space. It uses its sharp beak to deliver rapid-fire pecks.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Low-Altitude Flight</strong>
+        <p>Because its wings are short, Spearow cannot fly at high altitudes or for long distances. Instead, it excels at low-altitude, high-speed maneuvers used to ambush prey.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Keen Eye / Sniper (Abilities)</strong>
+        <p><strong>Keen Eye</strong> ensures it never misses due to accuracy drops. <strong>Sniper</strong> increases the damage of critical hits, making its aggressive playstyle even more lethal.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Moveset</strong>
+        <ul>
+          <li><strong>Peck:</strong> A basic but fast jabbing attack using its sharp beak.</li>
+          <li><strong>Fury Attack:</strong> A rapid-fire succession of 2 to 5 stabs in a single turn.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Sharp Beak:</strong> Maximizes the damage output of its Peck and Drill Peck attacks.</li>
+          <li><strong>Focus Sash:</strong> Necessary due to its extremely low defensive stats; allows it to land at least one strike.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>BATTLE ROLE</th>
+      </tr>
+      <tr>
+        <td>1' 00" (0.3 m)</td>
+        <td>4.4 lbs (2.0 kg)</td>
+        <td>Flying</td>
+        <td>Early Aggressor</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

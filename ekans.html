@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Ekans #0023</title>
+
+<style>
+:root {
+  --ekans-purple: #a855f7;
+  --venom-green: #22c55e;
+  --belly-yellow: #fde047;
+  --panel-bg: rgba(255, 255, 255, 0.95);
+  --shiny-gold: #fbbf24;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Shadowy tall-grass aesthetic */
+  background: linear-gradient(rgba(88, 28, 135, 0.9), rgba(20, 83, 45, 0.8)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/23.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+.header {
+  background: #581c87;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--venom-green);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.nav-btn {
+  color: var(--belly-yellow);
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid var(--belly-yellow);
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.nav-btn:hover {
+  background: var(--belly-yellow);
+  color: #581c87;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 30px;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 10px 20px rgba(168, 85, 247, 0.4));
+}
+
+.id-badge {
+  background: #1e293b;
+  color: var(--venom-green);
+  padding: 4px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+h1 { font-size: 56px; margin: 10px 0; color: #581c87; letter-spacing: 4px; }
+
+.type-box { display: flex; gap: 10px; margin: 15px 0; }
+.type-tag {
+  padding: 6px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  background: #a040a0;
+  color: #fff;
+}
+
+.stats-container { margin-top: 25px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; color: #64748b; }
+.stat-bar-bg { background: #e2e8f0; height: 12px; border-radius: 10px; overflow: hidden; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #a855f7, #22c55e); }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+
+h3 { color: #581c87; border-bottom: 2px solid #f3e8ff; padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: #7e22ce; display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: #f0fdf4; 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--venom-green);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: #fafafa;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px dashed var(--venom-green);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 15px; border-bottom: 1px solid #f1f5f9; }
+th { color: #64748b; font-size: 11px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 18px; color: #fff; letter-spacing: 1px;">SERPENT_LOG_v0.23</div>
+  <a href="Gen1.html" class="nav-btn">← BACK TO INDEX</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/23.png" class="main-art" alt="Ekans">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: #166534; margin-bottom: 10px; font-weight: bold;">SHINY VARIANT: EMERALD COIL ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/23.png" style="width: 140px;" alt="Shiny Ekans">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0023 - SNAKE POKÉMON</span>
+      <h1>EKANS</h1>
+      <div class="type-box">
+        <span class="type-tag">Poison</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>RECON PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>35</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 14%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>60</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 23%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>44</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 17%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>40</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 16%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>54</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 21%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--venom-green);"><span>SPEED</span> <span>55</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 21%; background: var(--venom-green);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE SILENT CREEPER</h3>
+      <div class="info-block">
+        <strong>Vibrational Detection</strong>
+        <p>Ekans curls up in a spiral while at rest. This position allows it to quickly respond to threats from any direction. It flickers its tongue to "taste" the air and detect the presence of prey.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Swallow Reflex</strong>
+        <p>It can detach its jaws to swallow large prey whole. However, after a meal, it becomes heavy and sluggish, requiring time to digest the food in a safe hiding spot.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Egg Predation</strong>
+        <p>It is a notorious egg thief, often slipping into the nests of Pidgey or Spearow when the parents are away. It is mostly silent when moving through tall grass.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Intimidate / Shed Skin (Abilities)</strong>
+        <p><strong>Intimidate</strong> lowers the opponent's Attack stat upon entering battle. <strong>Shed Skin</strong> gives it a chance to heal status conditions like paralysis or sleep naturally.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Moveset</strong>
+        <ul>
+          <li><strong>Wrap:</strong> Constricts the target for several turns, preventing escape and dealing steady damage.</li>
+          <li><strong>Poison Sting:</strong> A quick strike that has a high chance of leaving the target poisoned.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Black Sludge:</strong> Gradually restores HP for Poison-types, but damages any other type that tries to hold it.</li>
+          <li><strong>Eviolite:</strong> Boosts defenses significantly since Ekans is not fully evolved.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>HEIGHT</th>
+          <th>WEIGHT</th>
+          <th>EGG GROUP</th>
+          <th>BATTLE ROLE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>6' 07" (2.0 m)</td>
+          <td>15.2 lbs (6.9 kg)</td>
+          <td>Field / Dragon</td>
+          <td>Status Inducer</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

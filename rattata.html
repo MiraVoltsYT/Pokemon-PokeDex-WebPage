@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Rattata #0019</title>
+
+<style>
+:root {
+  --rat-purple: #8b5cf6;
+  --urban-grey: #475569;
+  --fang-white: #f8fafc;
+  --panel-bg: rgba(255, 255, 255, 0.95);
+  --shiny-green: #84cc16;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Gritty urban alleyway aesthetic */
+  background: linear-gradient(rgba(71, 85, 105, 0.9), rgba(139, 92, 246, 0.1)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+.header {
+  background: #5b21b6;
+  padding: 20px 40px;
+  border-bottom: 4px solid var(--urban-grey);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.nav-btn {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.nav-btn:hover {
+  background: white;
+  color: #5b21b6;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 10px 20px rgba(139, 92, 246, 0.3));
+}
+
+.id-badge {
+  background: var(--urban-grey);
+  color: #fff;
+  padding: 4px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+h1 { font-size: 56px; margin: 10px 0; color: #4c1d95; letter-spacing: 2px; }
+
+.type-box { display: flex; gap: 10px; margin: 15px 0; }
+.type-tag {
+  padding: 6px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  background: #a8a878;
+  color: #fff;
+}
+
+.stats-container { margin-top: 25px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; color: #64748b; }
+.stat-bar-bg { background: #e2e8f0; height: 12px; border-radius: 10px; overflow: hidden; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border-top: 5px solid var(--rat-purple); }
+
+h3 { color: #5b21b6; border-bottom: 2px solid #f3e8ff; padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: #7c3aed; display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: #f8fafc; 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 8px;
+  border-left: 4px solid var(--urban-grey);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: #f0fdf4;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px dashed var(--shiny-green);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 15px; border-bottom: 1px solid #f1f5f9; }
+th { color: #64748b; font-size: 11px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 18px; color: #fff; letter-spacing: 1px;">URBAN_VERMIN_DATA_v0.19</div>
+  <a href="Gen1.html" class="nav-btn">← BACK TO INDEX</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png" class="main-art" alt="Rattata">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: #166534; margin-bottom: 10px; font-weight: bold;">SHINY VARIANT: JUNGLE GREEN ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/19.png" style="width: 140px;" alt="Shiny Rattata">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0019 - MOUSE POKÉMON</span>
+      <h1>RATTATA</h1>
+      <div class="type-box">
+        <span class="type-tag">Normal</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>STREET SPECS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>30</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 12%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>ATTACK</span> <span>56</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 22%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>35</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 14%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>25</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 10%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>35</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 14%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--rat-purple);"><span>SPEED</span> <span>72</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 28%; background: var(--rat-purple);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE HARDY SCAVENGER</h3>
+      <div class="info-block">
+        <strong>Hardy Vitality</strong>
+        <p>This Pokémon is cautious in the extreme. Even while asleep, it constantly moves its ears to listen for danger. Its impressive vitality allows it to survive in any environment, from fields to city sewers.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Incisor Growth</strong>
+        <p>Its fangs grow continuously throughout its life. To keep them worn down to a manageable size, Rattata must gnaw on hard objects like logs, rocks, or even the walls of houses.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Alolan Adaptation</strong>
+        <p>In Alola, Rattata became nocturnal to avoid Yungoos. This led to a Dark/Normal-type variant with black fur and a highly developed sense of smell for finding fresh food.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Run Away / Guts (Abilities)</strong>
+        <p><strong>Guts</strong> is its most dangerous trait; its Attack power increases by 50% if it is suffering from a status condition like Burn or Poison.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Moveset</strong>
+        <ul>
+          <li><strong>Hyper Fang:</strong> A powerful bite with sharp front fangs that may cause the opponent to flinch.</li>
+          <li><strong>Super Fang:</strong> A tactical strike that always cuts the target's current HP exactly in half.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Flame Orb:</strong> Used to self-inflict a burn, instantly activating the <strong>Guts</strong> ability for maximum damage.</li>
+          <li><strong>Focus Sash:</strong> Ensures Rattata survives at least one hit to land a crucial Endeavor or Super Fang.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>HEIGHT</th>
+          <th>WEIGHT</th>
+          <th>EGG GROUP</th>
+          <th>BATTLE ROLE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1' 00" (0.3 m)</td>
+          <td>7.7 lbs (3.5 kg)</td>
+          <td>Field</td>
+          <td>Guts Sweeper / Scrapper</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Research Log: Fearow #0022</title>
+
+<style>
+:root {
+  --fear-red: #7f1d1d;
+  --beak-flesh: #fca5a5;
+  --vulture-brown: #451a03;
+  --panel-bg: rgba(15, 23, 42, 0.98);
+  --shiny-gold: #fbbf24;
+  --hazard-orange: #f97316;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  /* Desolate, high-altitude hunting grounds aesthetic */
+  background: linear-gradient(rgba(69, 26, 3, 0.92), rgba(127, 29, 29, 0.95)), 
+              url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/22.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #f8fafc;
+  line-height: 1.6;
+}
+
+.header {
+  background: #451a03;
+  padding: 20px 40px;
+  border-bottom: 5px solid var(--hazard-orange);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.nav-btn {
+  color: var(--hazard-orange);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--hazard-orange);
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.nav-btn:hover {
+  background: var(--hazard-orange);
+  color: #fff;
+}
+
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+.pokemon-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--panel-bg);
+  padding: 40px;
+  border-radius: 30px;
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+.main-art {
+  width: 100%;
+  filter: drop-shadow(0 0 40px rgba(127, 29, 29, 0.6));
+}
+
+.id-badge {
+  background: var(--hazard-orange);
+  color: #000;
+  padding: 4px 15px;
+  border-radius: 4px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+
+h1 { font-size: 56px; margin: 10px 0; color: #fff; text-shadow: 3px 3px #000; letter-spacing: 5px; }
+
+.type-box { display: flex; gap: 10px; margin: 15px 0; }
+.type-tag {
+  padding: 8px 25px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.normal { background: #a8a878; color: #000; }
+.flying { background: #a890f0; color: #fff; }
+
+.stats-container { margin-top: 25px; }
+.stat-row { margin-bottom: 12px; }
+.stat-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; }
+.stat-bar-bg { background: #020617; height: 14px; border-radius: 2px; overflow: hidden; border: 1px solid #334155; }
+.stat-fill { height: 100%; background: linear-gradient(90deg, #7f1d1d, var(--hazard-orange)); }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card { background: rgba(30, 41, 59, 0.5); padding: 30px; border-radius: 20px; border: 1px solid rgba(249, 115, 22, 0.1); }
+
+h3 { color: var(--hazard-orange); border-bottom: 2px solid var(--fear-red); padding-bottom: 10px; margin-top: 0; }
+
+.info-block { margin-bottom: 20px; }
+.info-block strong { color: #fca5a5; display: block; margin-bottom: 5px; }
+
+.item-list { list-style: none; padding: 0; }
+.item-list li { 
+  background: rgba(0,0,0,0.4); 
+  margin-bottom: 8px; 
+  padding: 12px; 
+  border-radius: 5px;
+  border-left: 4px solid var(--hazard-orange);
+}
+
+.shiny-preview {
+  text-align: center;
+  background: #000;
+  padding: 25px;
+  border-radius: 20px;
+  border: 2px solid var(--shiny-gold);
+  margin-top: 25px;
+}
+
+table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 15px; border-bottom: 1px solid #1e293b; }
+th { color: var(--hazard-orange); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="font-weight: bold; font-size: 20px; color: #fff; letter-spacing: 2px;">APEX_STRIKE_DATA_v0.22</div>
+  <a href="Gen1.html" class="nav-btn">EXIT ARCHIVE</a>
+</div>
+
+<div class="container">
+  
+  <div class="pokemon-hero">
+    <div class="art-box">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/22.png" class="main-art" alt="Fearow">
+      <div class="shiny-preview">
+        <p style="font-size: 12px; color: var(--shiny-gold); margin-bottom: 10px; font-weight: bold; letter-spacing: 2px;">SHINY VARIANT: DESERT GOLD ✨</p>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/22.png" style="width: 150px;" alt="Shiny Fearow">
+      </div>
+    </div>
+    
+    <div class="quick-specs">
+      <span class="id-badge">#0022 - BEAK POKÉMON</span>
+      <h1>FEAROW</h1>
+      <div class="type-box">
+        <span class="type-tag normal">Normal</span>
+        <span class="type-tag flying">Flying</span>
+      </div>
+      
+      <div class="stats-container">
+        <h3>STRIKE PARAMETERS</h3>
+        <div class="stat-row">
+          <div class="stat-label"><span>HP</span> <span>65</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 25%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: var(--hazard-orange);"><span>ATTACK</span> <span>90</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 35%; background: var(--hazard-orange);"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>DEFENSE</span> <span>65</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 25%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. ATTACK</span> <span>61</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 23%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><span>SP. DEFENSE</span> <span>61</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 23%;"></div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>100</span></div>
+          <div class="stat-bar-bg"><div class="stat-fill" style="width: 39%; background: #fff;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="card">
+      <h3>ARCHIVE: THE ANCIENT SKY STALKER</h3>
+      <div class="info-block">
+        <strong>Stamina-Based Flight</strong>
+        <p>With its huge and magnificent wings, it can keep aloft without ever having to land for rest. It uses thermals to glide for days, searching its territory for the slightest movement.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Long-Reach Hunting</strong>
+        <p>Its trademark long neck and beak are highly efficient for catching prey in soil or water. It can strike with the speed of a spear, giving its target zero time to escape.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Territorial Menace</strong>
+        <p>Fearow is notoriously difficult to train because of its wild, aggressive temper. It rarely tolerates others in its airspace and will dive-bomb intruders at high velocities.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>COMBAT PROTOCOLS</h3>
+      <div class="info-block">
+        <strong>Keen Eye / Sniper (Abilities)</strong>
+        <p>Fearow leverages <strong>Sniper</strong> to turn critical hits into match-ending blows. This pairs perfectly with moves that have a high critical-hit ratio.</p>
+      </div>
+
+      <div class="info-block">
+        <strong>Signature Moveset</strong>
+        <ul>
+          <li><strong>Drill Peck:</strong> A spinning, spear-like attack. One of the most reliable Flying-type moves in the Kanto region.</li>
+          <li><strong>Drill Run:</strong> A Ground-type move that allows Fearow to counter Electric and Steel types that usually resist its wings.</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <strong>Field Gear Recommendation</strong>
+        <ul class="item-list">
+          <li><strong>Scope Lens:</strong> Increases the chance of critical hits, maximizing the <strong>Sniper</strong> ability potential.</li>
+          <li><strong>Choice Band:</strong> Sacrifices move flexibility for a 50% boost in Attack, turning Fearow into a true "one-shot" threat.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
+    <h3>TECHNICAL SPECIFICATIONS</h3>
+    <table>
+      <tr>
+        <th>HEIGHT</th>
+        <th>WEIGHT</th>
+        <th>EGG GROUP</th>
+        <th>BATTLE ROLE</th>
+      </tr>
+      <tr>
+        <td>3' 11" (1.2 m)</td>
+        <td>83.8 lbs (38.0 kg)</td>
+        <td>Flying</td>
+        <td>Physical Wall-Breaker</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

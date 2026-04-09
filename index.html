@@ -34,6 +34,7 @@ body {
   margin-bottom:30px;
   text-align:center;
   color:#111;
+  text-shadow: 1px 1px 2px white;
 }
 
 .gen-list {
@@ -66,22 +67,24 @@ body {
   font-size:12px;
   color:#555;
   margin-top:6px;
+  font-weight: normal;
 }
 
 /* Generation colors */
-.gen1 { border-left-color:#3B82F6; } /* Blue */
-.gen2 { border-left-color:#34D399; } /* Green */
-.gen3 { border-left-color:#FBBF24; } /* Yellow */
-.gen4 { border-left-color:#F472B6; } /* Pink */
-.gen5 { border-left-color:#F87171; } /* Red */
-.gen6 { border-left-color:#A78BFA; } /* Purple-light */
-.gen7 { border-left-color:#10B981; } /* Teal */
-.gen8 { border-left-color:#F59E0B; } /* Orange */
-.gen9 { border-left-color:#7C3AED; } /* Purple for Scarlet/Violet */
-.gen10, .gen11, .gen12 { border-left-color:#9CA3AF; } /* Gray placeholders */
+.gen1 { border-left-color:#3B82F6; } 
+.gen2 { border-left-color:#34D399; } 
+.gen3 { border-left-color:#FBBF24; } 
+.gen4 { border-left-color:#F472B6; } 
+.gen5 { border-left-color:#F87171; } 
+.gen6 { border-left-color:#A78BFA; } 
+.gen7 { border-left-color:#10B981; } 
+.gen8 { border-left-color:#F59E0B; } 
+.gen9 { border-left-color:#7C3AED; } 
+.gen10, .gen11, .gen12 { border-left-color:#9CA3AF; } 
 
-/* Type Chart Special Color */
+/* Special Feature Buttons */
 .type-chart { border-left-color:#EF4444; background: rgba(255, 241, 242, 0.95); } 
+.battle-sim { border-left-color:#000000; background: rgba(155, 188, 15, 0.95); color: #0f380f; } 
 </style>
 </head>
 
@@ -93,7 +96,7 @@ body {
 </div>
 
 <div class="container">
-  <div class="title">Pokémon Generations</div>
+  <div class="title">Pokémon Generations Hub</div>
 
   <div class="gen-list">
     <div class="generation gen1" onclick="location.href='gen1.html'">Generation 1</div>
@@ -125,6 +128,12 @@ body {
         Type Chart
         <div class="note">Effectiveness Matrix</div>
     </div>
+
+    <div class="generation battle-sim" onclick="location.href='pokemon-battle-sim.html'">
+        Battle Engine
+        <div class="note">Pokemon Battles with AI!</div>
+    </div>
+  </div>
 </div>
 
 </body>
