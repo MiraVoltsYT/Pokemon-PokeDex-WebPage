@@ -1,219 +1,223 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Research Log: Koraidon #1007</title>
-<style>
-:root {
-  --primal-red: #b91c1c;
-  --ancient-gold: #b45309;
-  --stone-black: #1c1917;
-  --parchment-bg: rgba(245, 245, 244, 0.9);
-}
+    <meta charset="UTF-8">
+    <title>National Dex - Research Terminal #1007 // Koraidon Biometric Hub</title>
+    <style>
+        :root {
+            /* Primal Paradox Aesthetic */
+            --bg-deep: #0f0505;
+            --panel-glass: rgba(30, 10, 10, 0.9);
+            --accent-glow: #E64141; /* Primal Crimson */
+            --paradox-gold: #FFD700;
+            --shiny-silver: #e0e0e0; /* Shiny Koraidon Highlight */
+            --border-subtle: rgba(230, 65, 65, 0.2);
+            --text-main: #fff5f5;
+            --text-dim: #b8a0a0;
+            --fighting: #C22E28;
+            --dragon: #6F35FC;
+            --status-found: #E64141;
+            --status-missing: #444444;
+        }
 
-body {
-  margin: 0;
-  font-family: 'Palatino', 'Georgia', serif;
-  background: linear-gradient(rgba(28, 25, 23, 0.9), rgba(28, 25, 23, 0.9)), url('ancient-cave-wall.jpg');
-  background-size: cover;
-  color: #f5f5f4;
-  line-height: 1.6;
-}
+        body {
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(230, 65, 65, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 40%),
+                linear-gradient(135deg, #0f0505 0%, #1a0a0a 100%);
+            color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            margin: 0; padding: 20px;
+            display: flex; justify-content: center;
+            min-height: 100vh;
+        }
 
-.header {
-  background: var(--stone-black);
-  padding: 20px 40px;
-  border-bottom: 4px solid var(--primal-red);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 20px rgba(185, 28, 28, 0.3);
-}
+        .terminal-container {
+            width: 1400px;
+            background: var(--panel-glass);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            box-shadow: 0 0 100px rgba(40, 0, 0, 0.8), inset 0 0 20px rgba(230, 65, 65, 0.05);
+            overflow: hidden;
+            display: flex; flex-direction: column;
+        }
 
-.nav-btn {
-  color: var(--ancient-gold);
-  text-decoration: none;
-  font-weight: bold;
-  border: 1px solid var(--ancient-gold);
-  padding: 8px 16px;
-  transition: 0.3s;
-}
+        .terminal-header {
+            padding: 40px;
+            background: linear-gradient(to right, rgba(230, 65, 65, 0.08), transparent);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex; justify-content: space-between; align-items: flex-end;
+        }
 
-.nav-btn:hover { background: var(--ancient-gold); color: white; }
+        .main-grid { display: grid; grid-template-columns: 340px 1fr 1fr 340px; }
+        .col { padding: 30px; border-right: 1px solid var(--border-subtle); }
+        .col:last-child { border-right: none; }
 
-.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .section-tag {
+            font-size: 10px; font-weight: 800; color: var(--accent-glow);
+            text-transform: uppercase; letter-spacing: 2.5px;
+            margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+        }
+        .section-tag::after { content: ''; height: 1px; flex-grow: 1; background: var(--border-subtle); }
 
-.pokemon-hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  background: var(--parchment-bg);
-  padding: 40px;
-  border-radius: 2px;
-  border: 8px double #44403c;
-  color: #1c1917;
-}
+        .btn {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle);
+            color: var(--text-main); font-size: 10px; padding: 10px 14px;
+            border-radius: 6px; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn:hover { background: rgba(230, 65, 65, 0.15); border-color: var(--accent-glow); box-shadow: 0 0 15px rgba(230, 65, 65, 0.2); }
+        .btn-home { border-color: var(--text-dim); color: var(--text-dim); margin-bottom: 15px; }
+        .shiny-active { border-color: var(--shiny-silver) !important; color: var(--shiny-silver); text-shadow: 0 0 5px var(--shiny-silver); }
 
-.main-art { width: 100%; filter: drop-shadow(0 0 15px rgba(185, 28, 28, 0.5)); }
+        .archive-box {
+            background: rgba(0,0,0,0.4); border-radius: 10px; padding: 18px;
+            font-size: 13.5px; line-height: 1.7; border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 25px; color: #ced4da;
+        }
 
-.id-badge {
-  background: var(--primal-red);
-  color: white;
-  padding: 4px 12px;
-  font-weight: bold;
-  width: fit-content;
-}
+        .move-card {
+            background: rgba(230, 65, 65, 0.05); border-radius: 8px; padding: 12px;
+            margin-bottom: 10px; border: 1px solid rgba(230, 65, 65, 0.1);
+        }
+        .move-name { font-weight: bold; font-size: 11px; color: var(--paradox-gold); text-transform: uppercase; }
 
-h1 { font-size: 48px; margin: 10px 0; letter-spacing: -1px; }
+        .game-cell {
+            background: rgba(0,0,0,0.3); padding: 8px 10px; border-radius: 4px;
+            display: flex; justify-content: space-between; align-items: center;
+            border: 1px solid rgba(255,255,255,0.03); font-size: 10px;
+        }
+        .dot { width: 6px; height: 6px; border-radius: 50%; }
+        .dot-inc { background: var(--status-found); box-shadow: 0 0 8px var(--status-found); }
+        .dot-exc { background: var(--status-missing); opacity: 0.2; }
 
-.type-tag {
-  display: inline-block;
-  padding: 5px 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-right: 10px;
-  border: 1px solid #000;
-}
-.fighting { background: #991b1b; color: white; }
-.dragon { background: #3730a3; color: white; }
-
-.stats-container { margin-top: 30px; }
-.stat-row { margin-bottom: 15px; }
-.stat-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; font-weight: bold; }
-.stat-bar-bg { background: rgba(0,0,0,0.1); height: 12px; overflow: hidden; }
-.stat-fill { height: 100%; background: linear-gradient(90deg, var(--primal-red), var(--ancient-gold)); }
-
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
-.card { background: var(--parchment-bg); padding: 25px; border: 1px solid #d6d3d1; color: #1c1917; }
-h3 { color: var(--primal-red); border-bottom: 1px solid #a8a29e; padding-bottom: 10px; margin-top: 0; }
-
-.item-list { list-style: none; padding: 0; }
-.item-list li { 
-  background: rgba(0,0,0,0.05); 
-  margin-bottom: 8px; 
-  padding: 10px; 
-  border-left: 4px solid var(--primal-red);
-}
-
-.shiny-preview {
-  text-align: center;
-  background: rgba(0,0,0,0.8);
-  padding: 20px;
-  margin-top: 20px;
-  border: 1px solid var(--ancient-gold);
-}
-
-.info-block { margin-bottom: 20px; }
-.info-block strong { color: var(--primal-red); display: block; margin-bottom: 5px; }
-</style>
+        .sprite-display { 
+            text-align: center; padding: 20px; min-height: 220px; 
+            background: radial-gradient(circle, rgba(230, 65, 65, 0.1) 0%, transparent 70%);
+        }
+        .type-pill { padding: 5px 18px; border-radius: 4px; font-size: 11px; font-weight: 800; border: 1.5px solid; letter-spacing: 1px; }
+    </style>
 </head>
 <body>
 
-<div class="header">
-  <div style="font-weight: bold; font-size: 20px; color: var(--ancient-gold);">PRIMITIVE_DATA_v1.0</div>
-  <a href="index.html" class="nav-btn">RETURN TO HUB</a>
+<div class="terminal-container">
+    <div class="terminal-header">
+        <div>
+            <a href="gen9.html" class="btn btn-home">⮌ RETURN TO TERMINAL INDEX</a>
+            <div style="font-family: monospace; font-size: 12px; color: var(--accent-glow); letter-spacing: 5px; margin-bottom: 8px;">NATIONAL_DEX_RESEARCH_NODE_#1007</div>
+            <h1 style="margin:0; font-size: 48px; letter-spacing: -1px; background: linear-gradient(to bottom, #fff, var(--accent-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">KORAIDON</h1>
+            <div style="display: flex; gap: 12px; margin-top: 15px;">
+                <span class="type-pill" style="color: var(--fighting); border-color: var(--fighting);">FIGHTING</span>
+                <span class="type-pill" style="color: var(--dragon); border-color: var(--dragon);">DRAGON</span>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-size: 10px; color: var(--accent-glow); letter-spacing: 2px; margin-bottom: 8px; font-weight: 800;">PRIMAL_RESONANCE</div>
+            <button class="btn" onclick="playCry()" style="padding: 12px 20px;">⏵ EMIT APEX_CRY.WAV</button>
+        </div>
+    </div>
+
+    <div class="main-grid">
+        <div class="col">
+            <span class="section-tag">Visual Identity</span>
+            <div class="utility-bar">
+                <button id="shiny-btn" class="btn" onclick="toggleShiny()">Toggle Shiny Variant</button>
+            </div>
+            <div class="sprite-display">
+                <img id="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1007.png" width="240">
+            </div>
+            
+            <span class="section-tag">Paradox Metrics</span>
+            <div style="font-size: 12px; display: flex; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Genus</span><strong style="color:var(--accent-glow)">Paradox Pokémon</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Height</span><strong>2.5 m</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Weight</span><strong>303.0 kg</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Ability</span><strong>Orichalcum Pulse</strong></div>
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Ancient Log</span>
+            <div class="archive-box">
+                Known as the "Winged King" in ancient texts. It is said to have split the land with its bare fists. It possesses immense physical power and a primal, territorial instinct.
+            </div>
+
+            <span class="section-tag">Apex Anatomy</span>
+            <ul style="font-size: 12.5px; color: var(--text-dim); padding-left: 20px;">
+                <li><strong>Plumage:</strong> Large, decorative feathers used to intimidate rivals.</li>
+                <li><strong>Thoracic:</strong> Powerful chest structures capable of generating massive force.</li>
+                <li><strong>Dermal:</strong> Scales as hard as ancient stone, resistant to extreme heat.</li>
+                <li><strong>Apex Mode:</strong> Its fighting form, optimized for ground-based combat.</li>
+            </ul>
+
+            <span class="section-tag">Paradox Behavior</span>
+            <div class="archive-box" style="border-left: 4px solid var(--paradox-gold); background: rgba(255, 215, 0, 0.05);">
+                This Pokémon is believed to be an ancestor (or ancient relative) of Cyclizar. It radiates energy that intensifies sunlight, boosting its own combat capabilities.
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Apex Moveset</span>
+            <div class="move-card"><div class="move-name">Collision Course</div><div style="font-size:10px; color:var(--text-dim);">Signature Fighting move. Power increases if super effective.</div></div>
+            <div class="move-card"><div class="move-name">Flare Blitz</div><div style="font-size:10px; color:var(--text-dim);">Devastating fire strike boosted by intense sunlight.</div></div>
+            <div class="move-card"><div class="move-name">Dragon Claw</div><div style="font-size:10px; color:var(--text-dim);">Slashes the foe with sharp, ancient claws.</div></div>
+
+            <span class="section-tag" style="margin-top: 25px;">Stat Analysis</span>
+            <div id="stats-target"></div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Timeline Presence</span>
+            <div id="game-grid" style="display: grid; grid-template-columns: 1fr; gap: 5px;"></div>
+
+            <span class="section-tag" style="margin-top: 30px;">Paradox Protocol</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="font-size:9px; padding:10px; border:1px solid var(--accent-glow); text-align:center; border-radius:4px;">TERA: FIRE<br><small>Optimized</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid var(--paradox-gold); text-align:center; border-radius:4px;">SUNLIGHT<br><small>Triggered</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #6F35FC; text-align:center; border-radius:4px;">DRAGON GUM<br><small>Favorite</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #444; text-align:center; border-radius:4px; opacity: 0.5;">EVOLUTION<br><small>N/A</small></div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="container">
-  <div class="pokemon-hero">
-    <div class="art-box">
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1007.png" class="main-art">
-      <div class="shiny-preview">
-        <p style="font-size: 11px; color: var(--ancient-gold); margin-bottom: 10px;">SHINY VARIANT DETECTED (Black Scarlatina)</p>
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/1007.png" style="width: 140px;">
-      </div>
-    </div>
-    
-    <div class="quick-specs">
-      <span class="id-badge">#1007 - WINGED KING</span>
-      <h1>KORAIDON</h1>
-      <div style="margin: 15px 0;">
-        <span class="type-tag fighting">Fighting</span>
-        <span class="type-tag dragon">Dragon</span>
-      </div>
-      
-      <div class="stats-container">
-        <h3>PRIMAL POWER ANALYSIS</h3>
-        <div class="stat-row">
-          <div class="stat-label"><span>HP</span> <span>100</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 40%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>ATTACK</span> <span>135</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 65%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>DEFENSE</span> <span>115</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 55%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>SP. ATTACK</span> <span>85</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 35%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>SP. DEFENSE</span> <span>100</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 40%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>SPEED</span> <span>135</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 65%;"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<script>
+    let isShiny = false;
+    const sprite = document.getElementById('poke-sprite');
+    function toggleShiny() {
+        isShiny = !isShiny;
+        sprite.src = isShiny 
+            ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/1007.png"
+            : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1007.png";
+        document.getElementById('shiny-btn').classList.toggle('shiny-active');
+    }
 
-  <div class="detail-grid">
-    <div class="card">
-      <h3>ARCHIVE: THE WINGED KING</h3>
-      <div class="info-block">
-        <strong>Prehistoric Overview</strong>
-        <p>Koraidon is a Paradox Pokémon hailing from a period millions of years in the past. Its biology is purely organic, featuring massive throat sacs and feathers that behave like adaptive solar panels. Its muscular structure is far denser than any modern Dragon-type.</p>
-      </div>
-      <div class="info-block">
-        <strong>Behavioral Patterns</strong>
-        <p>While Miraidon is analytical, Koraidon is instinctive. It is highly protective of its territory and forms deep emotional bonds. It consumes massive amounts of nutrients to maintain its "Apex Mode," with a recorded obsession for sandwiches containing high-protein fillings.</p>
-      </div>
-    </div>
+    function playCry() {
+        new Audio('https://play.pokemonshowdown.com/audio/cries/koraidon.mp3').play();
+    }
 
-    <div class="card">
-      <h3>COMBAT PROTOCOLS</h3>
-      <div class="info-block">
-        <strong>Orichalcum Pulse (Ability)</strong>
-        <p>When Koraidon enters battle, it releases a primal roar that summons **Harsh Sunlight**. This ancient weather pattern activates its internal metabolism, increasing its Attack stat by 33.3%.</p>
-      </div>
-      <div class="info-block">
-        <strong>Evolutionary Path</strong>
-        <ul class="item-list">
-          <li><strong>Apex Mode:</strong> Its battle-ready form with throat-sac fully inflated.</li>
-          <li><strong>Sprint/Swimming Mode:</strong> Uses its powerful legs and tail for rapid movement across land and water.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    const stats = { HP: 100, ATK: 135, DEF: 115, SPA: 85, SPD: 100, SPE: 135 };
+    document.getElementById('stats-target').innerHTML = Object.entries(stats).map(([k, v]) => `
+        <div style="margin-bottom: 12px;">
+            <div style="display:flex; justify-content:space-between; font-size: 10px; font-weight: bold; margin-bottom: 4px;">
+                <span style="color:var(--text-dim)">${k}</span><span>${v}</span>
+            </div>
+            <div style="height: 3px; background: rgba(255,255,255,0.05);"><div style="height:100%; width:${(v/160)*100}%; background:var(--accent-glow); box-shadow: 0 0 8px var(--accent-glow);"></div></div>
+        </div>
+    `).join('');
 
-  <div class="card" style="margin-top: 30px;">
-    <h3>PHYSICAL SPECIFICATIONS</h3>
-    <table style="width: 100%; text-align: left; border-collapse: collapse;">
-      <tr style="border-bottom: 1px solid #334155;">
-        <th style="padding: 10px;">HEIGHT</th>
-        <th style="padding: 10px;">WEIGHT</th>
-        <th style="padding: 10px;">ORIGIN</th>
-        <th style="padding: 10px;">SIGNATURE MOVE</th>
-      </tr>
-      <tr>
-        <td style="padding: 10px;">8' 02" (2.5 m)</td>
-        <td style="padding: 10px;">668.0 lbs (303.0 kg)</td>
-        <td style="padding: 10px;">Great Crater (Past)</td>
-        <td style="padding: 10px;">Collision Course</td>
-      </tr>
-    </table>
-  </div>
+    const games = [
+        { name: "Scarlet", found: true },
+        { name: "Violet", found: true },
+        { name: "Gen 8 & Below", found: false }
+    ];
 
-  <div style="text-align: center; margin: 60px 0; border-top: 1px dashed #b91c1c; padding-top: 40px;">
-    <p style="color: #666; font-family: monospace; font-size: 12px;">FORBIDDEN CAVE PAINTINGS RECOVERED: ACCESSING...</p>
-    <a href="errorkoraidon.html" style="color: #ef4444; text-decoration: none; font-family: 'Courier New'; font-weight: bold; font-size: 20px; border: 2px solid #7f1d1d; background: #1a0505; padding: 15px 30px; box-shadow: 0 0 15px #b91c1c; display: inline-block;">
-      [DECRYPT_PRIMAL_VARIANTS.bin]
-    </a>
-  </div>
-</div>
+    document.getElementById('game-grid').innerHTML = games.map(g => `
+        <div class="game-cell">${g.name} <div class="dot ${g.found ? 'dot-inc' : 'dot-exc'}"></div></div>
+    `).join('');
+</script>
+
 </body>
 </html>

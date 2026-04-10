@@ -1,238 +1,230 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Research Log: Sylveon #0700</title>
+    <meta charset="UTF-8">
+    <title>National Dex - Research Terminal #0700 // Sylveon Biometric Hub</title>
+    <style>
+        :root {
+            /* Friendly Candy-Pink Aesthetic */
+            --bg-deep: #0a0508; /* Deep pink-tinted black */
+            --panel-glass: rgba(22, 13, 18, 0.9);
+            --accent-glow: #F8A0C0; /* Soft Candy Pink */
+            --ribbon-blue: #8EDFF9; /* Heavenly Blue */
+            --shiny-gold: #ffcc00;
+            --border-subtle: rgba(248, 160, 192, 0.2);
+            --text-main: #fff0f5;
+            --text-dim: #c8b0b8;
+            --fairy: #F0A3F0;
+            --love: #ffb6c1;
+            --status-found: #F8A0C0;
+            --status-missing: #444444;
+        }
 
-<style>
-:root {
-  --sylveon-pink: #f472b6;
-  --ribbon-blue: #7dd3fc;
-  --cream-white: #fffdfa;
-  --deep-fairy: #7038f8;
-  --panel-bg: rgba(255, 253, 250, 0.92);
-}
+        body {
+            /* Friendly, Luminous Background Vibe */
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(248, 160, 192, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(142, 223, 249, 0.1) 0%, transparent 40%),
+                linear-gradient(135deg, #0a0508 0%, #170d14 100%);
+            color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            margin: 0; padding: 20px;
+            display: flex; justify-content: center;
+            min-height: 100vh;
+        }
 
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(rgba(244, 114, 182, 0.3), rgba(255, 255, 255, 0.8)), url('ribbon-forest.jpg');
-  background-size: cover;
-  color: #334155;
-  line-height: 1.6;
-}
+        .terminal-container {
+            width: 1400px;
+            background: var(--panel-glass);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            box-shadow: 0 0 100px rgba(30, 0, 15, 0.8), inset 0 0 20px rgba(248, 160, 192, 0.05);
+            overflow: hidden;
+            display: flex; flex-direction: column;
+        }
 
-.header {
-  background: white;
-  padding: 20px 40px;
-  border-bottom: 4px solid var(--sylveon-pink);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 15px rgba(244, 114, 182, 0.2);
-}
+        .terminal-header {
+            padding: 40px;
+            background: linear-gradient(to right, rgba(248, 160, 192, 0.08), transparent);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex; justify-content: space-between; align-items: flex-end;
+        }
 
-.nav-btn {
-  color: var(--sylveon-pink);
-  text-decoration: none;
-  font-weight: bold;
-  border: 2px solid var(--sylveon-pink);
-  padding: 8px 16px;
-  border-radius: 20px;
-  transition: 0.3s;
-}
+        .main-grid { display: grid; grid-template-columns: 340px 1fr 1fr 340px; }
+        .col { padding: 30px; border-right: 1px solid var(--border-subtle); }
+        .col:last-child { border-right: none; }
 
-.nav-btn:hover { background: var(--sylveon-pink); color: white; }
+        .section-tag {
+            font-size: 10px; font-weight: 800; color: var(--accent-glow);
+            text-transform: uppercase; letter-spacing: 2.5px;
+            margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+        }
+        .section-tag::after { content: ''; height: 1px; flex-grow: 1; background: var(--border-subtle); }
 
-.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .btn {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle);
+            color: var(--text-main); font-size: 10px; padding: 10px 14px;
+            border-radius: 6px; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn:hover { background: rgba(248, 160, 192, 0.15); border-color: var(--accent-glow); box-shadow: 0 0 15px rgba(248, 160, 192, 0.2); }
+        .btn-home { border-color: var(--text-dim); color: var(--text-dim); margin-bottom: 15px; }
+        .btn-home:hover { color: var(--accent-glow); }
+        .shiny-active { border-color: var(--shiny-gold) !important; color: var(--shiny-gold); text-shadow: 0 0 5px var(--shiny-gold); }
 
-.pokemon-hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  background: var(--panel-bg);
-  padding: 40px;
-  border-radius: 30px;
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--sylveon-pink);
-  box-shadow: 0 10px 30px rgba(244, 114, 182, 0.1);
-}
+        .archive-box {
+            background: rgba(0,0,0,0.4); border-radius: 10px; padding: 18px;
+            font-size: 13.5px; line-height: 1.7; border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 25px; color: #ced4da;
+        }
+        
+        .detail-list { font-size: 12.5px; color: var(--text-dim); padding-left: 20px; margin: 15px 0; }
+        .detail-list li { margin-bottom: 10px; }
 
-.main-art { width: 100%; filter: drop-shadow(0 0 10px var(--ribbon-blue)); }
+        .move-card {
+            background: rgba(248, 160, 192, 0.05); border-radius: 8px; padding: 12px;
+            margin-bottom: 10px; border: 1px solid rgba(248, 160, 192, 0.1);
+        }
+        .move-name { font-weight: bold; font-size: 11px; color: var(--ribbon-blue); text-transform: uppercase; }
 
-.id-badge {
-  background: var(--ribbon-blue);
-  color: white;
-  padding: 4px 15px;
-  border-radius: 50px;
-  font-weight: bold;
-  width: fit-content;
-}
+        .game-cell {
+            background: rgba(0,0,0,0.3); padding: 8px 10px; border-radius: 4px;
+            display: flex; justify-content: space-between; align-items: center;
+            border: 1px solid rgba(255,255,255,0.03); font-size: 10px;
+        }
+        .dot { width: 6px; height: 6px; border-radius: 50%; }
+        .dot-inc { background: var(--status-found); box-shadow: 0 0 8px var(--status-found); }
+        .dot-exc { background: var(--status-missing); opacity: 0.2; }
 
-h1 { font-size: 48px; margin: 10px 0; letter-spacing: 1px; color: var(--sylveon-pink); }
-
-.type-tag {
-  display: inline-block;
-  padding: 5px 25px;
-  border-radius: 50px;
-  font-weight: bold;
-  text-transform: uppercase;
-  background: #ff65d5;
-  color: white;
-}
-
-.stats-container { margin-top: 30px; }
-.stat-row { margin-bottom: 12px; }
-.stat-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; color: #64748b; }
-.stat-bar-bg { background: #f1f5f9; height: 10px; border-radius: 10px; overflow: hidden; border: 1px solid #e2e8f0; }
-.stat-fill { height: 100%; background: linear-gradient(90deg, var(--ribbon-blue), var(--sylveon-pink)); border-radius: 10px; }
-
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
-.card { background: white; padding: 25px; border-radius: 20px; border: 1px solid #fee2e2; }
-
-h3 { color: var(--sylveon-pink); border-bottom: 2px solid #fff1f2; padding-bottom: 10px; margin-top: 0; }
-
-.shiny-preview {
-  text-align: center;
-  background: #f0f9ff;
-  padding: 20px;
-  border-radius: 20px;
-  border: 2px dashed var(--ribbon-blue);
-  margin-top: 20px;
-}
-
-.item-list { list-style: none; padding: 0; }
-.item-list li { 
-  background: #fff1f2; 
-  margin-bottom: 8px; 
-  padding: 10px; 
-  border-radius: 10px;
-  border-left: 4px solid var(--sylveon-pink);
-  font-size: 14px;
-}
-
-.info-block strong { color: var(--sylveon-pink); display: block; margin-bottom: 5px; }
-
-table { width: 100%; text-align: left; border-collapse: collapse; }
-th, td { padding: 12px; border-bottom: 1px solid #fff1f2; font-size: 14px; }
-</style>
+        .sprite-display { 
+            text-align: center; padding: 20px; min-height: 220px; 
+            background: radial-gradient(circle, rgba(248, 160, 192, 0.1) 0%, transparent 70%);
+        }
+        .type-pill { padding: 5px 18px; border-radius: 4px; font-size: 11px; font-weight: 800; border: 1.5px solid; letter-spacing: 1px; }
+    </style>
 </head>
 <body>
 
-<div class="header">
-  <div style="font-weight: bold; font-size: 20px; color: var(--sylveon-pink);">FAIRY_DATA_LOG_v7.0</div>
-  <a href="index.html" class="nav-btn">RETURN TO HUB</a>
+<div class="terminal-container">
+    <div class="terminal-header">
+        <div>
+            <a href="gen6.html" class="btn btn-home">⮌ RETURN TO TERMINAL INDEX</a>
+            <div style="font-family: monospace; font-size: 12px; color: var(--accent-glow); letter-spacing: 5px; margin-bottom: 8px;">NATIONAL_DEX_RESEARCH_NODE_#0700</div>
+            <h1 style="margin:0; font-size: 48px; letter-spacing: -1px; background: linear-gradient(to bottom, #fff, var(--accent-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">SYLVEON</h1>
+            <div style="display: flex; gap: 12px; margin-top: 15px;">
+                <span class="type-pill" style="color: var(--fairy); border-color: var(--fairy);">FAIRY TYPE</span>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-size: 10px; color: var(--accent-glow); letter-spacing: 2px; margin-bottom: 8px; font-weight: 800;">ACOUSTIC_SIGNATURE</div>
+            <button class="btn" onclick="playCry()" style="padding: 12px 20px;">⏵ INITIATE VOCAL_CRY.WAV</button>
+        </div>
+    </div>
+
+    <div class="main-grid">
+        <div class="col">
+            <span class="section-tag">Visual Identity</span>
+            <div class="utility-bar">
+                <button id="shiny-btn" class="btn" onclick="toggleShiny()">Toggle Shiny Variant</button>
+            </div>
+            <div class="sprite-display">
+                <img id="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/700.png" width="240">
+            </div>
+            
+            <span class="section-tag">Biometric Stats</span>
+            <div style="font-size: 12px; display: flex; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Genus</span><strong style="color:var(--accent-glow)">Intertwining Pokémon</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Height</span><strong>1.0 m</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Weight</span><strong>23.5 kg</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Ability</span><strong>Cute Charm / Pixilate</strong></div>
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Historical Archive</span>
+            <div class="archive-box">
+                Sylveon is one of the distinct evolutionary forms of Eevee. It is a kind and gentle Pokémon that uses its ribbon-like feelers to soothe fighting and dissipate hostile emotions.
+            </div>
+
+            <span class="section-tag">Physical Anatomy</span>
+            <ul style="font-size: 12.5px; color: var(--text-dim); padding-left: 20px;">
+                <li><strong>Feelers:</strong> Highly sensitive ribbons that emit a calming aura.</li>
+                <li><strong>Ocular:</strong> Large blue eyes that communicate deep affection.</li>
+                <li><strong>Dermal:</strong> Soft white and pink fur often kept meticulously clean.</li>
+                <li><strong>Paws:</strong> Small paws often highlighted by blue or pink tips.</li>
+            </ul>
+
+            <span class="section-tag">Behavorial Pattern</span>
+            <div class="archive-box" style="border-left: 4px solid var(--love); background: rgba(255, 182, 193, 0.05);">
+                Commonly found near urban areas due to its close connection to trainers. It wraps its feelers around its trainer's arm to show affection and trust. It thrives on deep bonds.
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Affectionate Moveset</span>
+            <div class="move-card"><div class="move-name">Moonblast</div><div style="font-size:10px; color:var(--text-dim);">Draws power from the moon. May lower Special Attack.</div></div>
+            <div class="move-card"><div class="move-name">Hyper Voice</div><div style="font-size:10px; color:var(--text-dim);">Tactical Pixilate STAB. Damages both opposing targets.</div></div>
+            <div class="move-card"><div class="move-name">Wish</div><div style="font-size:10px; color:var(--text-dim);">A warm wish that restores HP to itself or an ally next turn.</div></div>
+
+            <span class="section-tag" style="margin-top: 25px;">Affection Metrics</span>
+            <div id="stats-target"></div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Era Compatibility</span>
+            <div id="game-grid" style="display: grid; grid-template-columns: 1fr; gap: 5px;"></div>
+
+            <span class="section-tag" style="margin-top: 30px;">Cross-Gen Protocol</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="font-size:9px; padding:10px; border:1px solid var(--accent-glow); text-align:center; border-radius:4px;">TERA: FAIRY<br><small>Compatible</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #aa00ff; text-align:center; border-radius:4px;">Z-MOVE: TWINKLE<br><small>Compatible</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #F0A3F0; text-align:center; border-radius:4px;">PIXILATE<br><small>Optimized</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #ff4444; text-align:center; border-radius:4px; opacity: 0.5;">MEGA-EVO<br><small>N/A</small></div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="container">
-  
-  <div class="pokemon-hero">
-    <div class="art-box">
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/700.png" class="main-art" alt="Sylveon">
-      <div class="shiny-preview">
-        <p style="font-size: 11px; color: var(--ribbon-blue); font-weight: bold;">SHINY VARIANT: CERULEAN RIBBONS ✨</p>
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/700.png" style="width: 130px;" alt="Shiny Sylveon">
-      </div>
-    </div>
-    
-    <div class="quick-specs">
-      <span class="id-badge">#0700 - INTERTWINING</span>
-      <h1>SYLVEON</h1>
-      <div style="margin: 15px 0;">
-        <span class="type-tag">Fairy</span>
-      </div>
-      
-      <div class="stats-container">
-        <h3>COMBAT ANALYSIS</h3>
-        <div class="stat-row">
-          <div class="stat-label"><span>HP</span> <span>95</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 38%;"></div></div>
+<script>
+    let isShiny = false;
+    const sprite = document.getElementById('poke-sprite');
+    function toggleShiny() {
+        isShiny = !isShiny;
+        sprite.src = isShiny 
+            ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/700.png"
+            : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/700.png";
+        document.getElementById('shiny-btn').classList.toggle('shiny-active');
+    }
+
+    function playCry() {
+        new Audio('https://play.pokemonshowdown.com/audio/cries/sylveon.mp3').play();
+    }
+
+    const stats = { HP: 95, ATK: 65, DEF: 65, SPA: 110, SPD: 130, SPE: 60 };
+    document.getElementById('stats-target').innerHTML = Object.entries(stats).map(([k, v]) => `
+        <div style="margin-bottom: 12px;">
+            <div style="display:flex; justify-content:space-between; font-size: 10px; font-weight: bold; margin-bottom: 4px;">
+                <span style="color:var(--text-dim)">${k}</span><span>${v}</span>
+            </div>
+            <div style="height: 3px; background: rgba(255,255,255,0.05);"><div style="height:100%; width:${(v/150)*100}%; background:var(--accent-glow); box-shadow: 0 0 8px var(--accent-glow);"></div></div>
         </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>ATTACK</span> <span>65</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 26%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>DEFENSE</span> <span>65</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 26%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label" style="color: var(--sylveon-pink);"><span>SP. ATTACK</span> <span>110</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 44%; background: var(--sylveon-pink);"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label" style="color: var(--ribbon-blue);"><span>SP. DEFENSE (ELITE)</span> <span>130</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 52%; background: var(--ribbon-blue);"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>SPEED</span> <span>60</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 24%;"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+    `).join('');
 
-  <div class="detail-grid">
-    <div class="card">
-      <h3>BIOLOGICAL OVERVIEW</h3>
-      <div class="info-block">
-        <strong>Sensory Ribbon Feelers</strong>
-        <p>Sylveon wraps its ribbon-like feelers around the arms of its beloved trainer to learn their feelings. These feelers emit a soothing aura that can stop a battle instantly by erasing all hostile intent from its opponent.</p>
-      </div>
+    const games = [
+        { name: "Scarlet / Violet", found: true },
+        { name: "Legends: Arceus", found: true },
+        { name: "Sword / Shield", found: true },
+        { name: "Let's Go Pikachu / Eevee", found: true },
+        { name: "Sun / Moon", found: true },
+        { name: "X / Y", found: true }
+    ];
 
-      <div class="info-block">
-        <strong>The Bond Trigger</strong>
-        <p>Unlike other evolutions, Eevee only transforms into Sylveon when it possesses a Fairy-type move and shares a deep, soulful bond with its trainer. It is the physical manifestation of trust and affection.</p>
-      </div>
-
-      <div class="info-block">
-        <strong>Hunting Tactics</strong>
-        <p>Despite its gentle appearance, it is a formidable hunter. It distracts prey with its fluttering ribbons, lowering their guard before striking with surprising precision and mystical power.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>COMBAT PROTOCOLS</h3>
-      <div class="info-block">
-        <strong>Pixilate (Hidden Ability)</strong>
-        <p>This elite ability converts all Normal-type moves into Fairy-type moves and boosts their power by 20%. This makes Sylveon's **Hyper Voice** one of the most devastating sounds on the battlefield.</p>
-      </div>
-
-      <div class="info-block">
-        <strong>The Special Tank</strong>
-        <p>With a massive Base 130 Special Defense, Sylveon can survive powerful mystical attacks that would knock out other Pokémon. It often uses **Wish** and **Protect** to keep itself and its teammates healthy during long engagements.</p>
-      </div>
-
-      <div class="info-block">
-        <strong>Recommended Gear</strong>
-        <ul class="item-list">
-          <li><strong>Choice Specs:</strong> Maximizes the damage of Pixilate Hyper Voice.</li>
-          <li><strong>Leftovers:</strong> Provides steady healing for a more defensive, support-based role.</li>
-          <li><strong>Pixie Plate:</strong> A middle-ground boost for players who need to switch between offensive and supportive moves.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
-    <h3>TECHNICAL SPECIFICATIONS</h3>
-    <table>
-      <tr>
-        <th>HEIGHT</th>
-        <th>WEIGHT</th>
-        <th>EGG GROUP</th>
-        <th>SIGNATURE ROLE</th>
-      </tr>
-      <tr>
-        <td>3' 03" (1.0 m)</td>
-        <td>51.8 lbs (23.5 kg)</td>
-        <td>Field</td>
-        <td>Special Wall / Pixilate Sweeper</td>
-      </tr>
-    </table>
-    <p style="margin-top: 15px; font-size: 12px; font-style: italic; color: var(--sylveon-pink);">*Note: Sylveon's ribbons are prehensile and can be used to hold hands or carry small objects.*</p>
-  </div>
-
-</div>
+    document.getElementById('game-grid').innerHTML = games.map(g => `
+        <div class="game-cell">${g.name} <div class="dot ${g.found ? 'dot-inc' : 'dot-exc'}"></div></div>
+    `).join('');
+</script>
 
 </body>
 </html>

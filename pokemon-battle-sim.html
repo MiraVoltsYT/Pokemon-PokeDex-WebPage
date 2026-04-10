@@ -2,38 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pokémon Pro Engine - Final Edition</title>
+    <title>Pokémon Pro Engine - Status & Stats Edition</title>
     <style>
         body { background: #1a1a1a; color: #fff; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; padding-bottom: 50px; }
         #game-box { width: 650px; background: #9bbc0f; border: 8px solid #0f380f; padding: 10px; color: #000; box-shadow: 0 0 20px #000; position: relative; }
-        
-        /* Stats & HP */
         .stats { background: #cadc9f; border: 2px solid #0f380f; padding: 5px; width: 200px; font-size: 10px; font-weight: bold; margin-bottom: 5px; }
         .hp-bg { background: #0f380f; height: 8px; width: 100%; margin: 2px 0; }
         .hp-fill { background: #8bac0f; height: 100%; width: 100%; transition: width 0.4s; }
-
-        /* Arena */
         .arena { height: 320px; position: relative; background: #8bac0f; border-bottom: 4px double #0f380f; display: flex; justify-content: space-around; align-items: flex-end; padding-bottom: 20px; overflow: hidden; }
         .side { display: flex; flex-direction: column; align-items: center; gap: 10px; }
         .sprite { width: 120px; image-rendering: pixelated; }
-        
-        /* Dead Pulse Animation */
         @keyframes pulseDead { 0% { opacity: 1; color: #700000; } 50% { opacity: 0.3; color: #ff0000; } 100% { opacity: 1; color: #700000; } }
         .dead-text { font-weight: bold; animation: pulseDead 1.5s infinite; }
-
-        /* Menus */
         #menu { background: #cadc9f; border: 4px double #0f380f; padding: 10px; height: 180px; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .menu-pane { max-height: 140px; overflow-y: auto; padding: 5px; }
         button { border: 2px solid #0f380f; background: #8bac0f; padding: 10px; font-weight: bold; cursor: pointer; font-family: inherit; font-size: 11px; }
-        button:disabled { background: #666; cursor: not-allowed; opacity: 0.7; }
-        
+        button:disabled { background: #555 !important; cursor: not-allowed; opacity: 0.5; color: #222; }
         #log { font-size: 13px; height: 50px; border-bottom: 1px solid #0f380f; margin-bottom: 8px; overflow-y: auto; white-space: pre-line; }
-        
-        /* Setup Screen */
         .setup-pane { text-align: center; padding: 20px; background: #cadc9f; border: 4px double #0f380f; color: #000; }
         select, input { padding: 5px; border: 2px solid #0f380f; background: #cadc9f; font-family: inherit; margin: 5px; }
-        
         .db-link { margin-top: 20px; color: #8bac0f; text-decoration: none; font-weight: bold; border: 2px solid #8bac0f; padding: 10px; transition: 0.3s; }
         .db-link:hover { background: #8bac0f; color: #1a1a1a; }
         .hidden { display: none !important; }
@@ -45,11 +33,6 @@
     <div id="setup-screen" class="setup-pane">
         <h1>POKÉMON PRO ENGINE</h1>
         <div style="margin: 15px 0;">
-            <label>Mode:</label>
-            <select id="battle-mode">
-                <option value="1">1 vs 1 (Singles)</option>
-                <option value="2">2 vs 2 (Doubles)</option>
-            </select>
             <label>Team Size:</label>
             <select id="team-size">
                 <option value="1">1 Pokémon</option>
@@ -58,7 +41,7 @@
             </select>
         </div>
         <p>Enter Pokémon Names (comma separated):</p>
-        <input type="text" id="p-names" style="width:90%" placeholder="Miraidon, Koraidon, Snorlax, Gengar...">
+        <input type="text" id="p-names" style="width:90%" placeholder="Miraidon, Koraidon, Pikachu...">
         <br><br>
         <button onclick="startEngine()" style="font-size:16px; padding: 15px;">INITIALIZE BATTLE</button>
     </div>
@@ -68,9 +51,7 @@
             <div id="enemy-side" class="side"></div>
             <div id="player-side" class="side"></div>
         </div>
-
         <div id="log">Awaiting command...</div>
-        
         <div id="menu">
             <div id="main-btns" class="grid">
                 <button onclick="showMoves()">FIGHT</button>
@@ -82,7 +63,7 @@
             <div id="party-sub" class="menu-pane grid hidden"></div>
             <div id="bag-sub" class="menu-pane grid hidden"></div>
             <div id="game-over-sub" class="grid hidden">
-                <button onclick="location.reload()" style="grid-column: span 2;">MAIN MENU (NEW BATTLE)</button>
+                <button onclick="location.reload()" style="grid-column: span 2;">NEW BATTLE</button>
             </div>
         </div>
     </div>
@@ -91,41 +72,40 @@
 <a href="index.html" class="db-link">BACK TO DATABASE</a>
 
 <script>
-    let pTeam = [], eTeam = [], mode = 1, pActive = [], eActive = [], battleActive = false, pendingItem = null;
+    let pTeam = [], eTeam = [], pActive = null, eActive = null, battleActive = false, pendingItem = null;
 
     async function getPkmn(name) {
         try {
-            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase().trim() || Math.floor(Math.random()*1010)+1}`);
+            const id = name.toLowerCase().trim() || Math.floor(Math.random() * 1010) + 1;
+            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
             const data = await res.json();
             const hp = Math.floor(data.stats[0].base_stat * 2.5) + 60;
+            
+            const shuffledMoves = data.moves.sort(() => 0.5 - Math.random());
+            const selectedMoves = shuffledMoves.slice(0, 4).map(m => ({
+                name: m.move.name.toUpperCase().replace('-', ' '),
+                pwr: Math.floor(Math.random() * 70) + 45 
+            }));
+
             return { 
                 name: data.name.toUpperCase(), hp: hp, max: hp, 
-                sprite: data.sprites.front_default, 
-                moves: [
-                    {name: "EXPLOSION", pwr: 250}, 
-                    {name: "SUBSTITUTE", pwr: 0}, 
-                    {name: "DRAINING KISS", pwr: 60}, 
-                    {name: "HYPER BEAM", pwr: 150}
-                ]
+                sprite: data.sprites.front_default, moves: selectedMoves,
+                atkBuff: 1, defBuff: 1, status: null
             };
         } catch(e) { return getPkmn("pikachu"); }
     }
 
     async function startEngine() {
-        mode = parseInt(document.getElementById('battle-mode').value);
         const size = parseInt(document.getElementById('team-size').value);
         const namesArr = document.getElementById('p-names').value.split(',').filter(n => n.trim() !== "");
-        
-        document.getElementById('setup-screen').innerHTML = "<h2>LOADING ASSETS...</h2>";
+        document.getElementById('setup-screen').innerHTML = "<h2>GENERATING ASSETS...</h2>";
 
         for(let i=0; i<size; i++) {
             pTeam.push(await getPkmn(namesArr[i] || ""));
-            eTeam.push(await getPkmn(""));
+            eTeam.push(await getPkmn("")); 
         }
 
-        pActive = pTeam.slice(0, mode);
-        eActive = eTeam.slice(0, mode);
-        
+        pActive = pTeam[0]; eActive = eTeam[0];
         document.getElementById('setup-screen').classList.add('hidden');
         document.getElementById('battle-screen').classList.remove('hidden');
         battleActive = true;
@@ -133,28 +113,17 @@
     }
 
     function renderArena() {
-        const pSide = document.getElementById('player-side');
-        const eSide = document.getElementById('enemy-side');
+        const pStatus = pActive.status ? ` [${pActive.status}]` : "";
+        const eStatus = eActive.status ? ` [${eActive.status}]` : "";
         
-        pSide.innerHTML = pActive.map(p => `
-            <div class="side-unit">
-                <div class="stats">${p.name}<br><div class="hp-bg"><div class="hp-fill" style="width:${(p.hp/p.max*100)}%"></div></div>${p.hp}/${p.max}</div>
-                <img src="${p.sprite}" class="sprite" style="transform: scaleX(-1);">
-            </div>
-        `).join('');
-
-        eSide.innerHTML = eActive.map(e => `
-            <div class="side-unit">
-                <div class="stats">${e.name}<br><div class="hp-bg"><div class="hp-fill" style="width:${(e.hp/e.max*100)}%"></div></div>${e.hp}/${e.max}</div>
-                <img src="${e.sprite}" class="sprite">
-            </div>
-        `).join('');
+        document.getElementById('player-side').innerHTML = `<div class="side-unit"><div class="stats">${pActive.name}${pStatus}<br><div class="hp-bg"><div class="hp-fill" style="width:${(pActive.hp/pActive.max*100)}%"></div></div>${pActive.hp}/${pActive.max}</div><img src="${pActive.sprite}" class="sprite" style="transform: scaleX(-1);"></div>`;
+        document.getElementById('enemy-side').innerHTML = `<div class="side-unit"><div class="stats">${eActive.name}${eStatus}<br><div class="hp-bg"><div class="hp-fill" style="width:${(eActive.hp/eActive.max*100)}%"></div></div>${eActive.hp}/${eActive.max}</div><img src="${eActive.sprite}" class="sprite"></div>`;
     }
 
     function showMoves() {
         hideMenus();
         const sub = document.getElementById('move-sub');
-        sub.innerHTML = pActive[0].moves.map(m => `<button onclick="runTurn('move', '${m.name}')">${m.name}</button>`).join('') + `<button onclick="resetMenu()">BACK</button>`;
+        sub.innerHTML = pActive.moves.map(m => `<button onclick="runTurn('move', '${m.name}')">${m.name}</button>`).join('') + `<button onclick="resetMenu()">BACK</button>`;
         sub.classList.remove('hidden');
     }
 
@@ -163,9 +132,8 @@
         const sub = document.getElementById('party-sub');
         sub.innerHTML = pTeam.map((p, i) => {
             const isDead = p.hp <= 0;
-            const inBattle = pActive.includes(p);
-            const label = isDead ? `<span class="dead-text">[DEAD]</span>` : `${p.hp}/${p.max} HP`;
-            return `<button onclick="selectPartyMember(${i}, '${ctx}')" ${(isDead && ctx==='switch') || inBattle ? 'disabled' : ''}>${p.name}<br>${label}</button>`;
+            const disabled = (isDead && ctx !== 'item') || p === pActive ? 'disabled' : '';
+            return `<button onclick="selectPartyMember(${i}, '${ctx}')" ${disabled}>${p.name}<br>${isDead ? '[DEAD]' : p.hp+'/'+p.max}</button>`;
         }).join('') + (ctx !== 'forced' ? `<button onclick="resetMenu()">BACK</button>` : '');
         sub.classList.remove('hidden');
     }
@@ -173,104 +141,83 @@
     function showBag() {
         hideMenus();
         const sub = document.getElementById('bag-sub');
-        sub.innerHTML = `
-            <button onclick="pendingItem='heal'; showParty('item')">MAX POTION</button>
-            <button onclick="pendingItem='revive'; showParty('item')">MAX REVIVE</button>
-            <button onclick="resetMenu()">BACK</button>`;
+        sub.innerHTML = `<button onclick="pendingItem='heal'; showParty('item')">MAX POTION</button><button onclick="pendingItem='revive'; showParty('item')">MAX REVIVE</button><button onclick="resetMenu()">BACK</button>`;
         sub.classList.remove('hidden');
     }
 
     function selectPartyMember(idx, ctx) {
-        if(ctx === 'switch') {
-            document.getElementById('log').innerText = `${pActive[0].name}, come back!\nGo! ${pTeam[idx].name}!`;
-            pActive[0] = pTeam[idx];
-            runTurn('switch');
-        } else if(ctx === 'forced') {
-            pActive[0] = pTeam[idx];
-            document.getElementById('log').innerText = `Go! ${pActive[0].name}!`;
-            renderArena();
-            resetMenu();
-        } else if(ctx === 'item') {
+        if (ctx === 'switch' || ctx === 'forced') {
+            pActive.atkBuff = 1; pActive.defBuff = 1; // Reset stats on switch
+            pActive = pTeam[idx];
+            document.getElementById('log').innerText = `Go! ${pActive.name}!`;
+            if (ctx === 'switch') runTurn('switch'); else { renderArena(); resetMenu(); }
+        } else if (ctx === 'item') {
             const target = pTeam[idx];
-            if(pendingItem === 'heal' && target.hp > 0) {
-                target.hp = target.max;
-                document.getElementById('log').innerText = `Max Potion fully healed ${target.name}!`;
-                runTurn('item');
-            } else if(pendingItem === 'revive' && target.hp <= 0) {
-                target.hp = target.max;
-                document.getElementById('log').innerText = `${target.name} was revived!`;
-                runTurn('item');
-            } else { alert("It won't have any effect!"); }
+            if (pendingItem === 'heal' && target.hp > 0) { target.hp = target.max; target.status = null; runTurn('item'); }
+            else if (pendingItem === 'revive' && target.hp <= 0) { target.hp = target.max; runTurn('item'); }
+            else { alert("No effect!"); resetMenu(); }
         }
     }
+
+    function hideMenus() { ["main-btns", "move-sub", "party-sub", "bag-sub", "game-over-sub"].forEach(id => document.getElementById(id).classList.add('hidden')); }
+    function resetMenu() { hideMenus(); if(battleActive) document.getElementById('main-btns').classList.remove('hidden'); }
+    function endGame() { battleActive = false; hideMenus(); document.getElementById('game-over-sub').classList.remove('hidden'); }
 
     function runTurn(type, detail) {
-        const p = pActive[0], e = eActive[0];
-
+        let log = document.getElementById('log');
+        
         if(type === 'move') {
-            const move = p.moves.find(m => m.name === detail);
-            if(detail === "EXPLOSION") { 
-                e.hp = Math.max(0, e.hp - 250); 
-                p.hp = 0; 
-                document.getElementById('log').innerText = `${p.name} exploded!`;
-            } else if(detail === "DRAINING KISS") { 
-                let dmg = 60; 
-                e.hp = Math.max(0, e.hp - dmg);
-                let heal = Math.floor(dmg / 2);
-                p.hp = Math.min(p.max, p.hp + heal);
-                document.getElementById('log').innerText = `${p.name} used DRAINING KISS!\nIt recovered health!`;
-            } else { 
-                e.hp = Math.max(0, e.hp - 100); 
-                document.getElementById('log').innerText = `${p.name} used ${detail}!`;
+            if(pActive.status === "SLEEP") {
+                if(Math.random() < 0.3) { pActive.status = null; log.innerText = `${pActive.name} woke up!\n`; }
+                else { log.innerText = `${pActive.name} is fast asleep...`; return finishTurn(); }
+            }
+
+            const move = pActive.moves.find(m => m.name === detail);
+            let dmg = Math.floor(move.pwr * 0.7);
+            
+            // KEYWORD LOGIC
+            if (detail.includes("DANCE") || detail.includes("MIND") || detail.includes("GROWTH") || detail.includes("SWORDS")) {
+                pActive.atkBuff += 0.5; log.innerText = `${pActive.name}'s Attack rose! `; dmg = 0;
+            } else if (detail.includes("SLEEP") || detail.includes("SPORE") || detail.includes("YAWN")) {
+                eActive.status = "SLEEP"; log.innerText = `${eActive.name} fell asleep! `; dmg = 0;
+            } else if (detail.includes("WHIP") || detail.includes("LEER") || detail.includes("SCREECH")) {
+                eActive.defBuff -= 0.2; log.innerText = `${eActive.name}'s Defense fell! `; dmg = 0;
+            }
+
+            if(dmg > 0) {
+                dmg = Math.floor(dmg * pActive.atkBuff / eActive.defBuff);
+                if (Math.random() < 0.1) { dmg *= 2; log.innerText = "CRITICAL HIT! "; }
+                eActive.hp = Math.max(0, eActive.hp - dmg);
+                log.innerText += `${pActive.name} used ${detail}!`;
+                if (detail.includes("DRAIN") || detail.includes("LEECH")) pActive.hp = Math.min(pActive.max, pActive.hp + Math.floor(dmg/2));
             }
         }
 
-        setTimeout(() => {
-            // Enemy Turn
-            if(e.hp > 0) {
-                p.hp = Math.max(0, p.hp - 45);
-                document.getElementById('log').innerText += `\nEnemy attacked ${p.name}!`;
-            } else {
-                const nextE = eTeam.find(pk => pk.hp > 0 && !eActive.includes(pk));
-                if(nextE) {
-                    eActive[0] = nextE;
-                    document.getElementById('log').innerText += `\nEnemy sent out ${nextE.name}!`;
+        function finishTurn() {
+            setTimeout(() => {
+                if(eActive.hp > 0) {
+                    if(eActive.status === "SLEEP") {
+                        if(Math.random() < 0.3) { eActive.status = null; log.innerText += `\nEnemy woke up!`; }
+                        else { log.innerText += `\nEnemy is asleep...`; renderArena(); return resetMenu(); }
+                    }
+                    const eMove = eActive.moves[Math.floor(Math.random()*4)];
+                    let eDmg = Math.floor(eMove.pwr * 0.6 * eActive.atkBuff / pActive.defBuff);
+                    pActive.hp = Math.max(0, pActive.hp - eDmg);
+                    log.innerText += `\nEnemy ${eActive.name} used ${eMove.name}!`;
                 } else {
-                    document.getElementById('log').innerText = "WORLD CHAMPION DEFEATED!\nYOU ARE THE VICTOR!";
-                    endGame();
+                    const nextE = eTeam.find(pk => pk.hp > 0);
+                    if(nextE) { eActive = nextE; log.innerText += `\nEnemy sent out ${nextE.name}!`; }
+                    else { log.innerText = "VICTORY! YOU DEFEATED THE RIVAL!"; return endGame(); }
                 }
-            }
 
-            renderArena();
-            if(p.hp <= 0 && battleActive) {
-                if(!pTeam.some(pk => pk.hp > 0)) {
-                    document.getElementById('log').innerText = "YOUR TEAM HAS FAINTED...\nGAME OVER.";
-                    endGame();
-                } else {
-                    document.getElementById('log').innerText += `\n${p.name} fainted! Choose a replacement!`;
-                    showParty('forced');
-                }
-            } else if (battleActive) { resetMenu(); }
-        }, 800);
-    }
-
-    function endGame() {
-        battleActive = false;
-        hideMenus();
-        document.getElementById('game-over-sub').classList.remove('hidden');
-    }
-
-    function hideMenus() {
-        document.getElementById('main-btns').classList.add('hidden');
-        document.getElementById('move-sub').classList.add('hidden');
-        document.getElementById('party-sub').classList.add('hidden');
-        document.getElementById('bag-sub').classList.add('hidden');
-        document.getElementById('game-over-sub').classList.add('hidden');
-    }
-
-    function resetMenu() {
-        hideMenus();
-        if(battleActive) document.getElementById('main-btns').classList.remove('hidden');
+                renderArena();
+                if(pActive.hp <= 0) {
+                    if(!pTeam.some(pk => pk.hp > 0)) { log.innerText = "GAME OVER. YOUR TEAM FAINTED."; endGame(); }
+                    else { log.innerText += `\n${pActive.name} fainted!`; showParty('forced'); }
+                } else { resetMenu(); }
+            }, 800);
+        }
+        finishTurn();
     }
 </script>
 </body>

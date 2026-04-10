@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>National Dex - Research Terminal #0907 // Floragato Biometric Hub</title>
+    <style>
+        :root {
+            /* Lush Bloom Aesthetic */
+            --bg-deep: #050d08;
+            --panel-glass: rgba(10, 25, 15, 0.9);
+            --accent-glow: #00A86B; /* Jade Green */
+            --flower-purple: #D8BFD8;
+            --border-subtle: rgba(0, 168, 107, 0.2);
+            --text-main: #f5fff8;
+            --text-dim: #a0b8a8;
+            --grass: #78C850;
+            --status-found: #00A86B;
+            --status-missing: #444444;
+        }
+
+        body {
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 168, 107, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(216, 191, 216, 0.05) 0%, transparent 40%),
+                linear-gradient(135deg, #050d08 0%, #0a1f0f 100%);
+            color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            margin: 0; padding: 20px;
+            display: flex; justify-content: center;
+            min-height: 100vh;
+        }
+
+        .terminal-container {
+            width: 1400px;
+            background: var(--panel-glass);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            box-shadow: 0 0 100px rgba(0, 30, 10, 0.8), inset 0 0 20px rgba(0, 168, 107, 0.05);
+            overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+
+        .terminal-header {
+            padding: 40px;
+            background: linear-gradient(to right, rgba(0, 168, 107, 0.08), transparent);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex; justify-content: space-between; align-items: flex-end;
+        }
+
+        .main-grid { display: grid; grid-template-columns: 340px 1fr 1fr 340px; }
+        .col { padding: 30px; border-right: 1px solid var(--border-subtle); }
+        .col:last-child { border-right: none; }
+
+        .section-tag {
+            font-size: 10px; font-weight: 800; color: var(--accent-glow);
+            text-transform: uppercase; letter-spacing: 2.5px;
+            margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+        }
+        .section-tag::after { content: ''; height: 1px; flex-grow: 1; background: var(--border-subtle); }
+
+        .btn {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle);
+            color: var(--text-main); font-size: 10px; padding: 10px 14px;
+            border-radius: 6px; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn:hover { background: rgba(0, 168, 107, 0.15); border-color: var(--accent-glow); box-shadow: 0 0 15px rgba(0, 168, 107, 0.2); }
+        .btn-home { border-color: var(--text-dim); color: var(--text-dim); margin-bottom: 15px; }
+        .shiny-active { border-color: #df98ff !important; color: #df98ff; text-shadow: 0 0 5px #df98ff; }
+
+        .archive-box {
+            background: rgba(0,0,0,0.4); border-radius: 10px; padding: 18px;
+            font-size: 13.5px; line-height: 1.7; border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 25px; color: #ced4da;
+        }
+
+        .move-card {
+            background: rgba(0, 168, 107, 0.05); border-radius: 8px; padding: 12px;
+            margin-bottom: 10px; border: 1px solid rgba(0, 168, 107, 0.1);
+        }
+        .move-name { font-weight: bold; font-size: 11px; color: var(--flower-purple); text-transform: uppercase; }
+
+        .sprite-display { 
+            text-align: center; padding: 20px; min-height: 200px; 
+            background: radial-gradient(circle, rgba(0, 168, 107, 0.1) 0%, transparent 70%);
+        }
+
+        .evo-container {
+            background: rgba(0,0,0,0.3); border-radius: 8px; padding: 15px;
+            margin-top: 10px; border: 1px solid var(--border-subtle);
+        }
+        .evo-row {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .evo-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .evo-info { font-size: 11px; color: var(--text-dim); }
+        .evo-name { color: var(--accent-glow); font-weight: 800; font-size: 12px; display: block; }
+    </style>
+</head>
+<body>
+
+<div class="terminal-container">
+    <div class="terminal-header">
+        <div>
+            <a href="gen9.html" class="btn btn-home">⮌ RETURN TO TERMINAL INDEX</a>
+            <div style="font-family: monospace; font-size: 12px; color: var(--accent-glow); letter-spacing: 5px; margin-bottom: 8px;">NATIONAL_DEX_RESEARCH_NODE_#0907</div>
+            <h1 style="margin:0; font-size: 48px; letter-spacing: -1px; background: linear-gradient(to bottom, #fff, var(--accent-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">FLORAGATO</h1>
+            <div style="display: flex; gap: 12px; margin-top: 15px;">
+                <span style="padding: 5px 18px; border-radius: 4px; font-size: 11px; font-weight: 800; border: 1.5px solid var(--grass); color: var(--grass);">GRASS TYPE</span>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-size: 10px; color: var(--accent-glow); letter-spacing: 2px; margin-bottom: 8px; font-weight: 800;">YO-YO_DYNAMICS</div>
+            <button class="btn" onclick="playCry()" style="padding: 12px 20px;">⏵ EMIT FLOWER_WHIP.WAV</button>
+        </div>
+    </div>
+
+    <div class="main-grid">
+        <div class="col">
+            <span class="section-tag">Visual Identity</span>
+            <div class="utility-bar">
+                <button id="shiny-btn" class="btn" onclick="toggleShiny()">Toggle Shiny Variant</button>
+            </div>
+            <div class="sprite-display">
+                <img id="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/907.png" width="220">
+            </div>
+            
+            <span class="section-tag">Biometric Specs</span>
+            <div style="font-size: 12px; display: flex; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Genus</span><strong style="color:var(--accent-glow)">Grass Cat Pokémon</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Height</span><strong>0.9 m</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Weight</span><strong>12.2 kg</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Ability</span><strong>Overgrow / Protean</strong></div>
+            </div>
+
+            <span class="section-tag" style="margin-top: 25px;">Evolutionary Chain</span>
+            <div class="evo-container">
+                <div class="evo-row" style="opacity: 0.6;">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/906.png" width="55">
+                    <div class="evo-info">
+                        <span class="evo-name">SPRIGATITO</span>
+                        Ht: 0.4 m | Wt: 4.1 kg
+                    </div>
+                </div>
+                <div class="evo-row">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/908.png" width="55">
+                    <div class="evo-info">
+                        <span class="evo-name">MEOWSCARADA</span>
+                        Ht: 1.5 m | Wt: 31.2 kg
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Combat Log</span>
+            <div class="archive-box">
+                It deftly wields the vine hidden beneath its long fur. It can strike with its hard flower bud, using it like a yo-yo to pummel opponents from a distance.
+            </div>
+
+            <span class="section-tag">Physical Anatomy</span>
+            <ul style="font-size: 12.5px; color: var(--text-dim); padding-left: 20px;">
+                <li><strong>Vine Control:</strong> Highly dexterous limbs allow for complex weaponized plant manipulation.</li>
+                <li><strong>Flower Bud:</strong> A dense, heavy organ used for kinetic blunt-force strikes.</li>
+                <li><strong>Feline Agility:</strong> Balanced for bipedal movement, increasing strike range.</li>
+            </ul>
+
+            <span class="section-tag">Tactical Note</span>
+            <div class="archive-box" style="border-left: 4px solid var(--flower-purple); background: rgba(216, 191, 216, 0.05);">
+                Floragato shows increased intelligence and mischief. It often tricks foes with distracting yo-yo movements before delivering a decisive blow.
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Combat Moveset</span>
+            <div class="move-card"><div class="move-name">Seed Bomb</div><div style="font-size:10px; color:var(--text-dim);">Slams a barrage of hard-shelled seeds at the foe.</div></div>
+            <div class="move-card"><div class="move-name">Low Sweep</div><div style="font-size:10px; color:var(--text-dim);">A fast kick that lowers the target's Speed.</div></div>
+            <div class="move-card"><div class="move-name">Bite</div><div style="font-size:10px; color:var(--text-dim);">Bites with sharp fangs. May cause flinching.</div></div>
+
+            <span class="section-tag" style="margin-top: 25px;">Stat Analysis</span>
+            <div id="stats-target"></div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Regional Data</span>
+            <div id="game-grid" style="display: grid; grid-template-columns: 1fr; gap: 5px;"></div>
+
+            <span class="section-tag" style="margin-top: 30px;">Paldea Protocol</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="font-size:9px; padding:10px; border:1px solid var(--accent-glow); text-align:center; border-radius:4px;">TERA: GRASS<br><small>Advanced</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid var(--flower-purple); text-align:center; border-radius:4px;">TRICKSTER<br><small>Active</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #78C850; text-align:center; border-radius:4px;">EVOLVED<br><small>Lvl 16</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #444; text-align:center; border-radius:4px; opacity: 0.5;">HIDDEN<br><small>Protean</small></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let isShiny = false;
+    const sprite = document.getElementById('poke-sprite');
+    function toggleShiny() {
+        isShiny = !isShiny;
+        sprite.src = isShiny 
+            ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/907.png"
+            : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/907.png";
+        document.getElementById('shiny-btn').classList.toggle('shiny-active');
+    }
+
+    function playCry() {
+        new Audio('https://play.pokemonshowdown.com/audio/cries/floragato.mp3').play();
+    }
+
+    const stats = { HP: 61, ATK: 80, DEF: 63, SPA: 60, SPD: 63, SPE: 83 };
+    document.getElementById('stats-target').innerHTML = Object.entries(stats).map(([k, v]) => `
+        <div style="margin-bottom: 12px;">
+            <div style="display:flex; justify-content:space-between; font-size: 10px; font-weight: bold; margin-bottom: 4px;">
+                <span style="color:var(--text-dim)">${k}</span><span>${v}</span>
+            </div>
+            <div style="height: 3px; background: rgba(255,255,255,0.05);"><div style="height:100%; width:${(v/140)*100}%; background:var(--accent-glow); box-shadow: 0 0 8px var(--accent-glow);"></div></div>
+        </div>
+    `).join('');
+
+    const games = [
+        { name: "Scarlet", found: true },
+        { name: "Violet", found: true }
+    ];
+
+    document.getElementById('game-grid').innerHTML = games.map(g => `
+        <div class="game-cell" style="background: rgba(0,0,0,0.3); padding: 8px 10px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.03); font-size: 10px;">
+            ${g.name} <div class="dot dot-inc" style="width: 6px; height: 6px; border-radius: 50%; background: var(--status-found); box-shadow: 0 0 8px var(--status-found);"></div>
+        </div>
+    `).join('');
+</script>
+
+</body>
+</html>

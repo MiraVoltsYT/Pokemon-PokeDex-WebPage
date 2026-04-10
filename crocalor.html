@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>National Dex - Research Terminal #0910 // Crocalor Biometric Hub</title>
+    <style>
+        :root {
+            /* Neon Flame Aesthetic */
+            --bg-deep: #0f0505;
+            --panel-glass: rgba(30, 10, 10, 0.9);
+            --accent-glow: #D21404; /* Lava Burst */
+            --saffron: #F4C430;
+            --border-subtle: rgba(210, 20, 4, 0.2);
+            --text-main: #fffaf5;
+            --text-dim: #b8a5a0;
+            --fire: #F08030;
+            --status-found: #D21404;
+            --status-missing: #444444;
+        }
+
+        body {
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(210, 20, 4, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(244, 196, 48, 0.05) 0%, transparent 40%),
+                linear-gradient(135deg, #0f0505 0%, #2b0a0a 100%);
+            color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            margin: 0; padding: 20px;
+            display: flex; justify-content: center;
+            min-height: 100vh;
+        }
+
+        .terminal-container {
+            width: 1400px;
+            background: var(--panel-glass);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            box-shadow: 0 0 100px rgba(60, 0, 0, 0.8), inset 0 0 20px rgba(210, 20, 4, 0.05);
+            overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+
+        .terminal-header {
+            padding: 40px;
+            background: linear-gradient(to right, rgba(210, 20, 4, 0.08), transparent);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex; justify-content: space-between; align-items: flex-end;
+        }
+
+        .main-grid { display: grid; grid-template-columns: 340px 1fr 1fr 340px; }
+        .col { padding: 30px; border-right: 1px solid var(--border-subtle); }
+        .col:last-child { border-right: none; }
+
+        .section-tag {
+            font-size: 10px; font-weight: 800; color: var(--accent-glow);
+            text-transform: uppercase; letter-spacing: 2.5px;
+            margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+        }
+        .section-tag::after { content: ''; height: 1px; flex-grow: 1; background: var(--border-subtle); }
+
+        .btn {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle);
+            color: var(--text-main); font-size: 10px; padding: 10px 14px;
+            border-radius: 6px; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn:hover { background: rgba(210, 20, 4, 0.15); border-color: var(--accent-glow); box-shadow: 0 0 15px rgba(210, 20, 4, 0.2); }
+        .btn-home { border-color: var(--text-dim); color: var(--text-dim); margin-bottom: 15px; }
+        .shiny-active { border-color: #ff9dcc !important; color: #ff9dcc; text-shadow: 0 0 5px #ff9dcc; }
+
+        .archive-box {
+            background: rgba(0,0,0,0.4); border-radius: 10px; padding: 18px;
+            font-size: 13.5px; line-height: 1.7; border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 25px; color: #ced4da;
+        }
+
+        .move-card {
+            background: rgba(210, 20, 4, 0.05); border-radius: 8px; padding: 12px;
+            margin-bottom: 10px; border: 1px solid rgba(210, 20, 4, 0.1);
+        }
+        .move-name { font-weight: bold; font-size: 11px; color: var(--saffron); text-transform: uppercase; }
+
+        .sprite-display { 
+            text-align: center; padding: 20px; min-height: 200px; 
+            background: radial-gradient(circle, rgba(210, 20, 4, 0.1) 0%, transparent 70%);
+        }
+
+        .evo-container {
+            background: rgba(0,0,0,0.3); border-radius: 8px; padding: 15px;
+            margin-top: 10px; border: 1px solid var(--border-subtle);
+        }
+        .evo-row {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .evo-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .evo-info { font-size: 11px; color: var(--text-dim); }
+        .evo-name { color: var(--accent-glow); font-weight: 800; font-size: 12px; display: block; }
+    </style>
+</head>
+<body>
+
+<div class="terminal-container">
+    <div class="terminal-header">
+        <div>
+            <a href="gen9.html" class="btn btn-home">⮌ RETURN TO TERMINAL INDEX</a>
+            <div style="font-family: monospace; font-size: 12px; color: var(--accent-glow); letter-spacing: 5px; margin-bottom: 8px;">NATIONAL_DEX_RESEARCH_NODE_#0910</div>
+            <h1 style="margin:0; font-size: 48px; letter-spacing: -1px; background: linear-gradient(to bottom, #fff, var(--accent-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">CROCALOR</h1>
+            <div style="display: flex; gap: 12px; margin-top: 15px;">
+                <span style="padding: 5px 18px; border-radius: 4px; font-size: 11px; font-weight: 800; border: 1.5px solid var(--fire); color: var(--fire);">FIRE TYPE</span>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-size: 10px; color: var(--accent-glow); letter-spacing: 2px; margin-bottom: 8px; font-weight: 800;">VOCAL_IGNITION</div>
+            <button class="btn" onclick="playCry()" style="padding: 12px 20px;">⏵ EMIT EGG_SING.WAV</button>
+        </div>
+    </div>
+
+    <div class="main-grid">
+        <div class="col">
+            <span class="section-tag">Visual Identity</span>
+            <div class="utility-bar">
+                <button id="shiny-btn" class="btn" onclick="toggleShiny()">Toggle Shiny Variant</button>
+            </div>
+            <div class="sprite-display">
+                <img id="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/910.png" width="220">
+            </div>
+            
+            <span class="section-tag">Biometric Specs</span>
+            <div style="font-size: 12px; display: flex; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Genus</span><strong style="color:var(--accent-glow)">Fire Croc Pokémon</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Height</span><strong>1.0 m</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Weight</span><strong>30.7 kg</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Ability</span><strong>Blaze / Unaware</strong></div>
+            </div>
+
+            <span class="section-tag" style="margin-top: 25px;">Evolutionary Chain</span>
+            <div class="evo-container">
+                <div class="evo-row" style="opacity: 0.6;">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/909.png" width="55">
+                    <div class="evo-info">
+                        <span class="evo-name">FUECOCO</span>
+                        Ht: 0.4 m | Wt: 9.8 kg
+                    </div>
+                </div>
+                <div class="evo-row">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/911.png" width="55">
+                    <div class="evo-info">
+                        <span class="evo-name">SKELEDIRGE</span>
+                        Ht: 1.6 m | Wt: 326.5 kg
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Species Log</span>
+            <div class="archive-box">
+                The valve in this Pokémon's fire sac is closely connected to its vocal cords. It utters guttural cries as it spews flames.
+            </div>
+
+            <span class="section-tag">Fire-Vocal Anatomy</span>
+            <ul style="font-size: 12.5px; color: var(--text-dim); padding-left: 20px;">
+                <li><strong>Fire Egg:</strong> The egg-shaped fireball on its head is packed with fire energy.</li>
+                <li><strong>Vocal Cords:</strong> Integrated with its fire sac to produce superheated sonic waves.</li>
+                <li><strong>Skull Plate:</strong> Hardened bone structure protected by heat-resistant scales.</li>
+            </ul>
+
+            <span class="section-tag">Tactical Note</span>
+            <div class="archive-box" style="border-left: 4px solid var(--saffron); background: rgba(244, 196, 48, 0.05);">
+                Crocalor is incredibly sturdy. While its movements are slow, its <strong>Unaware</strong> ability allows it to outlast opponents who rely on Power-up moves like Swords Dance.
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Sonic Moveset</span>
+            <div class="move-card"><div class="move-name">Flamethrower</div><div style="font-size:10px; color:var(--text-dim);">A powerful blast of fire. May cause a burn.</div></div>
+            <div class="move-card"><div class="move-name">Round</div><div style="font-size:10px; color:var(--text-dim);">Attacks with a song. Increases power if others join in.</div></div>
+            <div class="move-card"><div class="move-name">Yawn</div><div style="font-size:10px; color:var(--text-dim);">Lulls the target into sleep on the next turn.</div></div>
+
+            <span class="section-tag" style="margin-top: 25px;">Stat Analysis</span>
+            <div id="stats-target"></div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Regional Data</span>
+            <div id="game-grid" style="display: grid; grid-template-columns: 1fr; gap: 5px;"></div>
+
+            <span class="section-tag" style="margin-top: 30px;">Paldea Protocol</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="font-size:9px; padding:10px; border:1px solid var(--accent-glow); text-align:center; border-radius:4px;">TERA: FIRE<br><small>Advanced</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid var(--saffron); text-align:center; border-radius:4px;">VIBRATO<br><small>Active</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #F08030; text-align:center; border-radius:4px;">EVOLVED<br><small>Lvl 16</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #444; text-align:center; border-radius:4px; opacity: 0.5;">SINGING<br><small>Developing</small></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let isShiny = false;
+    const sprite = document.getElementById('poke-sprite');
+    function toggleShiny() {
+        isShiny = !isShiny;
+        sprite.src = isShiny 
+            ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/910.png"
+            : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/910.png";
+        document.getElementById('shiny-btn').classList.toggle('shiny-active');
+    }
+
+    function playCry() {
+        new Audio('https://play.pokemonshowdown.com/audio/cries/crocalor.mp3').play();
+    }
+
+    const stats = { HP: 81, ATK: 55, DEF: 78, SPA: 90, SPD: 58, SPE: 49 };
+    document.getElementById('stats-target').innerHTML = Object.entries(stats).map(([k, v]) => `
+        <div style="margin-bottom: 12px;">
+            <div style="display:flex; justify-content:space-between; font-size: 10px; font-weight: bold; margin-bottom: 4px;">
+                <span style="color:var(--text-dim)">${k}</span><span>${v}</span>
+            </div>
+            <div style="height: 3px; background: rgba(255,255,255,0.05);"><div style="height:100%; width:${(v/140)*100}%; background:var(--accent-glow); box-shadow: 0 0 8px var(--accent-glow);"></div></div>
+        </div>
+    `).join('');
+
+    const games = [
+        { name: "Scarlet", found: true },
+        { name: "Violet", found: true }
+    ];
+
+    document.getElementById('game-grid').innerHTML = games.map(g => `
+        <div class="game-cell" style="background: rgba(0,0,0,0.3); padding: 8px 10px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.03); font-size: 10px;">
+            ${g.name} <div class="dot dot-inc" style="width: 6px; height: 6px; border-radius: 50%; background: var(--status-found); box-shadow: 0 0 8px var(--status-found);"></div>
+        </div>
+    `).join('');
+</script>
+
+</body>
+</html>

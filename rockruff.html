@@ -1,242 +1,308 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Research Log: Rockruff #0744</title>
+    <meta charset="UTF-8">
+    <title>National Dex - Research Terminal #0744 // Rockruff Biometric Hub</title>
+    <style>
+        :root {
+            /* Rugged Canyon Aesthetic */
+            --bg-deep: #0f0d0a;
+            --panel-glass: rgba(26, 22, 18, 0.9);
+            --accent-glow: #E2BF65; /* Rock Gold */
+            --rock-orange: #FF4500;
+            --shiny-gold: #ffcc00;
+            --border-subtle: rgba(226, 191, 101, 0.2);
+            --text-main: #f5f0e6;
+            --text-dim: #b8b0a0;
+            --rock: #B6A136;
+            --status-found: #E2BF65;
+            --status-missing: #444444;
+        }
 
-<style>
-:root {
-  --rock-tan: #d6b794;
-  --dusty-brown: #78350f;
-  --loyal-blue: #3b82f6;
-  --canyon-orange: #ea580c;
-  --panel-bg: rgba(43, 33, 24, 0.95);
-}
+        body {
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(226, 191, 101, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(255, 69, 0, 0.05) 0%, transparent 40%),
+                linear-gradient(135deg, #0f0d0a 0%, #1a1712 100%);
+            color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            margin: 0; padding: 20px;
+            display: flex; justify-content: center;
+            min-height: 100vh;
+        }
 
-body {
-  margin: 0;
-  font-family: 'Verdana', sans-serif;
-  background: linear-gradient(rgba(120, 53, 15, 0.6), rgba(43, 33, 24, 0.95)), url('rocky-mountain.jpg');
-  background-size: cover;
-  color: #fef3c7;
-  line-height: 1.6;
-}
+        .terminal-container {
+            width: 1400px;
+            background: var(--panel-glass);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            box-shadow: 0 0 100px rgba(20, 15, 10, 0.8), inset 0 0 20px rgba(226, 191, 101, 0.05);
+            overflow: hidden;
+            display: flex; flex-direction: column;
+        }
 
-.header {
-  background: #1c1917;
-  padding: 20px 40px;
-  border-bottom: 4px solid var(--rock-tan);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 20px rgba(214, 183, 148, 0.3);
-}
+        .terminal-header {
+            padding: 40px;
+            background: linear-gradient(to right, rgba(226, 191, 101, 0.08), transparent);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex; justify-content: space-between; align-items: flex-end;
+        }
 
-.nav-btn {
-  color: var(--rock-tan);
-  text-decoration: none;
-  font-weight: bold;
-  border: 1px solid var(--rock-tan);
-  padding: 8px 16px;
-  border-radius: 4px;
-}
+        .main-grid { display: grid; grid-template-columns: 340px 1fr 1fr 340px; }
+        .col { padding: 30px; border-right: 1px solid var(--border-subtle); }
+        .col:last-child { border-right: none; }
 
-.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .section-tag {
+            font-size: 10px; font-weight: 800; color: var(--accent-glow);
+            text-transform: uppercase; letter-spacing: 2.5px;
+            margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+        }
+        .section-tag::after { content: ''; height: 1px; flex-grow: 1; background: var(--border-subtle); }
 
-.pokemon-hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  background: var(--panel-bg);
-  padding: 40px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  border: 2px solid var(--dusty-brown);
-}
+        .btn {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle);
+            color: var(--text-main); font-size: 10px; padding: 10px 14px;
+            border-radius: 6px; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn:hover, .btn.active { background: rgba(226, 191, 101, 0.15); border-color: var(--accent-glow); box-shadow: 0 0 15px rgba(226, 191, 101, 0.2); }
+        .btn-home { border-color: var(--text-dim); color: var(--text-dim); margin-bottom: 15px; }
+        .shiny-active { border-color: var(--shiny-gold) !important; color: var(--shiny-gold); box-shadow: 0 0 15px rgba(255, 204, 0, 0.3); }
 
-.main-art { width: 100%; filter: drop-shadow(0 0 15px var(--rock-tan)); }
+        .archive-box {
+            background: rgba(0,0,0,0.4); border-radius: 10px; padding: 18px;
+            font-size: 13.5px; line-height: 1.7; border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 25px; color: #ced4da;
+        }
 
-.id-badge {
-  background: var(--dusty-brown);
-  color: white;
-  padding: 4px 12px;
-  border-radius: 4px;
-  font-weight: bold;
-  width: fit-content;
-}
+        .move-card {
+            background: rgba(226, 191, 101, 0.05); border-radius: 8px; padding: 12px;
+            margin-bottom: 10px; border: 1px solid rgba(226, 191, 101, 0.1);
+        }
+        .move-name { font-weight: bold; font-size: 11px; color: var(--accent-glow); text-transform: uppercase; }
 
-h1 { font-size: 48px; margin: 10px 0; letter-spacing: 1px; color: var(--rock-tan); }
+        .game-cell {
+            background: rgba(0,0,0,0.3); padding: 8px 10px; border-radius: 4px;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 10px; border: 1px solid rgba(255,255,255,0.03);
+        }
+        .dot { width: 6px; height: 6px; border-radius: 50%; }
+        .dot-inc { background: var(--status-found); box-shadow: 0 0 8px var(--status-found); }
+        .dot-exc { background: var(--status-missing); opacity: 0.2; }
 
-.type-tag {
-  display: inline-block;
-  padding: 5px 20px;
-  border-radius: 50px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-right: 10px;
-  background: #a16207;
-  color: white;
-  border: 1px solid #fef3c7;
-}
-
-.stats-container { margin-top: 30px; }
-.stat-row { margin-bottom: 15px; }
-.stat-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; font-weight: bold; }
-.stat-bar-bg { background: rgba(255,255,255,0.1); height: 12px; border-radius: 10px; overflow: hidden; }
-.stat-fill { height: 100%; background: linear-gradient(90deg, var(--rock-tan), var(--canyon-orange)); border-radius: 10px; }
-
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
-.card { background: var(--panel-bg); padding: 25px; border-radius: 15px; border: 1px solid rgba(214, 183, 148, 0.2); }
-
-h3 { color: var(--rock-tan); border-bottom: 1px solid var(--dusty-brown); padding-bottom: 10px; margin-top: 0; }
-
-.shiny-preview {
-  text-align: center;
-  background: rgba(0,0,0,0.4);
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid var(--loyal-blue);
-  margin-top: 20px;
-}
-
-.evo-chain {
-  display: flex;
-  flex-direction: column;
-  background: rgba(0,0,0,0.3);
-  padding: 20px;
-  border-radius: 15px;
-}
-
-.evo-row { display: flex; align-items: center; justify-content: space-between; width: 100%; margin: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
-.evo-img { width: 60px; filter: drop-shadow(0 0 5px var(--rock-tan)); }
-.evo-arrow { font-size: 11px; font-weight: bold; color: var(--canyon-orange); text-align: center; flex: 1; }
-
-.info-block { margin-bottom: 20px; }
-.info-block strong { color: var(--canyon-orange); display: block; margin-bottom: 5px; }
-
-table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 10px; }
-th, td { padding: 10px; border-bottom: 1px solid var(--dusty-brown); font-size: 14px; }
-</style>
+        .sprite-display { 
+            text-align: center; padding: 20px; min-height: 240px; 
+            background: radial-gradient(circle, rgba(226, 191, 101, 0.1) 0%, transparent 70%);
+        }
+        .type-pill { padding: 5px 18px; border-radius: 4px; font-size: 11px; font-weight: 800; border: 1.5px solid; letter-spacing: 1px; }
+        
+        .form-selector { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
+    </style>
 </head>
 <body>
 
-<div class="header">
-  <div style="font-weight: bold; font-size: 20px; color: var(--rock-tan);">ALOLA_FIELD_LOG_v7.4</div>
-  <a href="index.html" class="nav-btn">RETURN TO HUB</a>
+<div class="terminal-container">
+    <div class="terminal-header">
+        <div>
+            <a href="gen7.html" class="btn btn-home">⮌ RETURN TO TERMINAL INDEX</a>
+            <div style="font-family: monospace; font-size: 12px; color: var(--accent-glow); letter-spacing: 5px; margin-bottom: 8px;">NATIONAL_DEX_RESEARCH_NODE_#0744</div>
+            <h1 id="poke-name" style="margin:0; font-size: 48px; letter-spacing: -1px; background: linear-gradient(to bottom, #fff, var(--accent-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ROCKRUFF</h1>
+            <div style="display: flex; gap: 12px; margin-top: 15px;">
+                <span class="type-pill" style="color: var(--rock); border-color: var(--rock);">ROCK TYPE</span>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-size: 10px; color: var(--accent-glow); letter-spacing: 2px; margin-bottom: 8px; font-weight: 800;">CANINE_VOCAL_SCAN</div>
+            <button class="btn" onclick="playCry()" style="padding: 12px 20px;">⏵ RUN CRY_EMULATION.WAV</button>
+        </div>
+    </div>
+
+    <div class="main-grid">
+        <div class="col">
+            <span class="section-tag">Form Reconstruction</span>
+            <div class="form-selector">
+                <button class="btn active" onclick="setForm('rockruff', this)">Base</button>
+                <button class="btn" onclick="setForm('lycanroc', this)">Midday</button>
+                <button class="btn" onclick="setForm('lycanroc-midnight', this)">Midnight</button>
+                <button class="btn" onclick="setForm('lycanroc-dusk', this)">Dusk</button>
+            </div>
+            
+            <div class="utility-bar" style="margin-bottom: 10px;">
+                <button id="shiny-btn" class="btn" onclick="toggleShiny()">✨ TOGGLE SHINY DATA</button>
+            </div>
+
+            <div class="sprite-display">
+                <img id="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/744.png" width="240">
+            </div>
+            
+            <span class="section-tag">Core Specifications</span>
+            <div id="specs-target" style="font-size: 12px; display: flex; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Species Log</span>
+            <div id="log-target" class="archive-box">
+                Rockruff is a loyal Pokémon that will never forget a kindness. However, as it nears evolution, it becomes more aggressive and will howl at the moon.
+            </div>
+
+            <span class="section-tag">Biometric Observations</span>
+            <ul id="anatomy-target" style="font-size: 12.5px; color: var(--text-dim); padding-left: 20px;">
+                <li><strong>Collar:</strong> Composed of sharp rocks that it rubs against others to show affection.</li>
+                <li><strong>Olfactory:</strong> An incredible sense of smell used to track targets across canyons.</li>
+                <li><strong>Temperament:</strong> Excellent for beginners, though difficult to manage during its "wild phase."</li>
+            </ul>
+
+            <span class="section-tag">Evolutionary Trigger</span>
+            <div id="evo-target" class="archive-box" style="border-left: 4px solid var(--rock-orange); background: rgba(255, 69, 0, 0.05);">
+                Evolution path is determined strictly by temporal conditions (Time of Day) and internal aptitude (Own Tempo ability).
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Combat Loadout</span>
+            <div id="moves-target">
+            </div>
+
+            <span class="section-tag" style="margin-top: 25px;">Stat Analysis</span>
+            <div id="stats-target"></div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Regional Mapping</span>
+            <div id="game-grid" style="display: grid; grid-template-columns: 1fr; gap: 5px;"></div>
+
+            <span class="section-tag" style="margin-top: 30px;">System Features</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="font-size:9px; padding:10px; border:1px solid var(--accent-glow); text-align:center; border-radius:4px;">OWN TEMPO<br><small>Verified</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid var(--rock-orange); text-align:center; border-radius:4px;">Z-MOVE: SPLINTER<br><small>Compatible</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #8b949e; text-align:center; border-radius:4px;">TERA: ROCK<br><small>Optimized</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #444; text-align:center; border-radius:4px; opacity:0.5;">MEGA-EVO<br><small>N/A</small></div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="container">
-  
-  <div class="pokemon-hero">
-    <div class="art-box">
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/744.png" class="main-art" alt="Rockruff">
-      <div class="shiny-preview">
-        <p style="font-size: 11px; color: var(--loyal-blue); margin-bottom: 5px; font-weight: bold;">SHINY VARIANT: SKY BLUE ✨</p>
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/744.png" style="width: 120px;" alt="Shiny Rockruff">
-      </div>
-    </div>
-    
-    <div class="quick-specs">
-      <span class="id-badge">#0744 - PUPPY</span>
-      <h1>ROCKRUFF</h1>
-      <div style="margin: 15px 0;">
-        <span class="type-tag">Rock</span>
-      </div>
-      
-      <div class="stats-container">
-        <h3>PUPPY POTENTIAL (BASE STATS)</h3>
-        <div class="stat-row">
-          <div class="stat-label"><span>HP</span> <span>45</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 18%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>ATTACK</span> <span>65</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 26%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>DEFENSE</span> <span>40</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 16%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>SP. ATTACK</span> <span>30</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 12%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>SP. DEFENSE</span> <span>40</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 16%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label" style="color: var(--loyal-blue);"><span>SPEED</span> <span>60</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 24%; background: var(--loyal-blue);"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<script>
+    const formData = {
+        'rockruff': {
+            name: 'ROCKRUFF',
+            id: 744,
+            genus: 'Puppy Pokémon',
+            weight: '9.2 kg',
+            ability: 'Own Tempo',
+            log: 'Rockruff is a loyal Pokémon that will never forget a kindness. However, as it nears evolution, it becomes more aggressive.',
+            moves: [['Stone Edge', 'High-speed rock projectiles.'], ['Crunch', 'Dark-type bite that may lower defense.'], ['Rock Tomb', 'Traps foe in rocks to lower speed.']],
+            stats: { HP: 45, ATK: 65, DEF: 40, SPA: 30, SPD: 40, SPE: 60 }
+        },
+        'lycanroc': {
+            name: 'LYCANROC (MIDDAY)',
+            id: 745,
+            genus: 'Wolf Pokémon',
+            weight: '25.0 kg',
+            ability: 'Sand Rush',
+            log: 'The Midday form is known for its incredible speed. It dodges attacks and strikes with the sharp rocks in its mane.',
+            moves: [['Accelerock', 'Signature priority rock strike.'], ['Stone Edge', 'Critical rock damage.'], ['Drill Run', 'Ground-type coverage.']],
+            stats: { HP: 75, ATK: 115, DEF: 65, SPA: 55, SPD: 65, SPE: 112 }
+        },
+        'lycanroc-midnight': {
+            name: 'LYCANROC (MIDNIGHT)',
+            id: '745-midnight',
+            api_id: 10126,
+            genus: 'Wolf Pokémon',
+            weight: '25.0 kg',
+            ability: 'No Guard',
+            log: 'The Midnight form goads its enemies into attacking, then strikes back with a devastating counter-blow.',
+            moves: [['Counter', 'Reflects physical damage 2x.'], ['Stone Edge', 'Never-miss via No Guard.'], ['Play Rough', 'Fairy coverage.']],
+            stats: { HP: 85, ATK: 115, DEF: 75, SPA: 55, SPD: 75, SPE: 82 }
+        },
+        'lycanroc-dusk': {
+            name: 'LYCANROC (DUSK)',
+            id: '745-dusk',
+            api_id: 10152,
+            genus: 'Wolf Pokémon',
+            weight: '25.0 kg',
+            ability: 'Tough Claws',
+            log: 'An extremely rare form. It possesses qualities of both Midday and Midnight forms, bathed in the green flash of dusk.',
+            moves: [['Accelerock', 'Signature priority strike.'], ['Stone Edge', 'High critical ratio.'], ['Close Combat', 'High-risk fighting strike.']],
+            stats: { HP: 75, ATK: 117, DEF: 65, SPA: 55, SPD: 65, SPE: 110 }
+        }
+    };
 
-  <div class="detail-grid">
-    <div class="card">
-      <h3>EVOLUTIONARY BRANCHES</h3>
-      <div class="evo-chain">
-        <div class="evo-row">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/744.png" class="evo-img">
-          <span class="evo-arrow">LV. 25<br>(DAY)</span>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/745.png" class="evo-img" title="Midday Form">
-        </div>
-        <div class="evo-row">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/744.png" class="evo-img">
-          <span class="evo-arrow">LV. 25<br>(NIGHT)</span>
-          <img src="lycanrocmidnight.png" class="evo-img" title="Midnight Form">
-        </div>
-        <div class="evo-row" style="border: none;">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/744.png" class="evo-img">
-          <span class="evo-arrow">OWN TEMPO<br>(DUSK)</span>
-          <img src="lycanrocdusk.png" class="evo-img" title="Dusk Form">
-        </div>
-      </div>
-      <div class="info-block" style="margin-top: 15px;">
-        <strong>Biological Overview</strong>
-        <p>Rockruff is famous for its persistence; once it starts a hunt, it won't stop until it catches its target. It communicates affection by rubbing the sharp stones on its neck against people—a greeting that is notoriously painful for trainers but proves its loyalty. Its sense of smell is sharp enough to track a target for miles.</p>
-      </div>
-    </div>
+    let currentForm = 'rockruff';
+    let isShiny = false;
 
-    <div class="card">
-      <h3>TRAINING & STRATEGY</h3>
-      <div class="info-block">
-        <strong>The "Own Tempo" Speciality</strong>
-        <p>Only Rockruff born with the **Own Tempo** ability possess the mental fortitude required to reach the rare **Dusk Form Lycanroc**. This variant cannot be confused in battle, making it a reliable physical attacker when faced with complex status conditions.</p>
-      </div>
+    function updateSprite() {
+        const data = formData[currentForm];
+        const id = data.api_id || data.id;
+        const path = isShiny ? `shiny/${id}` : id;
+        document.getElementById('poke-sprite').src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${path}.png`;
+    }
 
-      <div class="info-block">
-        <strong>Aggression Warning</strong>
-        <p>When Rockruff's eyes begin to glow red at sundown, it is a biological indicator of peak energy. During this phase, it becomes increasingly wild and difficult to control, signaling that evolution into its more dangerous adult form is imminent.</p>
-      </div>
+    function toggleShiny() {
+        isShiny = !isShiny;
+        document.getElementById('shiny-btn').classList.toggle('shiny-active');
+        updateSprite();
+    }
 
-      <div class="info-block">
-        <strong>Hazard Setter</strong>
-        <p>In competitive play, Rockruff excels as a utility lead. By using **Stealth Rock**, it creates a persistent threat on the opponent's side of the field, while moves like **Rock Tomb** help control the opponent's Speed.</p>
-      </div>
-    </div>
-  </div>
+    function setForm(key, btn) {
+        currentForm = key;
+        const data = formData[key];
+        
+        document.querySelectorAll('.form-selector .btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        document.getElementById('poke-name').innerText = data.name;
+        updateSprite();
+        document.getElementById('log-target').innerText = data.log;
+        
+        document.getElementById('specs-target').innerHTML = `
+            <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Genus</span><strong style="color:var(--accent-glow)">${data.genus}</strong></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Height</span><strong>0.5 m / 0.8 m</strong></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Weight</span><strong>${data.weight}</strong></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Ability</span><strong>${data.ability}</strong></div>
+        `;
 
-  <div class="card" style="margin-top: 30px; margin-bottom: 50px;">
-    <h3>TECHNICAL SPECIFICATIONS</h3>
-    <table>
-      <tr>
-        <th>HEIGHT</th>
-        <th>WEIGHT</th>
-        <th>EGG GROUP</th>
-        <th>EVO TRIGGER</th>
-      </tr>
-      <tr>
-        <td>1' 08" (0.5 m)</td>
-        <td>20.3 lbs (9.2 kg)</td>
-        <td>Field</td>
-        <td>Level 25 + Time Context</td>
-      </tr>
-    </table>
-    <p style="margin-top: 15px; font-size: 12px; font-style: italic; color: var(--rock-tan);">*Note: Its bite is surprisingly powerful, allowing it to shatter small stones easily.*</p>
-  </div>
+        document.getElementById('moves-target').innerHTML = data.moves.map(m => `
+            <div class="move-card">
+                <div class="move-name">${m[0]}</div>
+                <div style="font-size:10px; color:var(--text-dim);">${m[1]}</div>
+            </div>
+        `).join('');
 
-</div>
+        document.getElementById('stats-target').innerHTML = Object.entries(data.stats).map(([k, v]) => `
+            <div style="margin-bottom: 12px;">
+                <div style="display:flex; justify-content:space-between; font-size: 10px; font-weight: bold; margin-bottom: 4px;">
+                    <span style="color:var(--text-dim)">${k}</span><span>${v}</span>
+                </div>
+                <div style="height: 3px; background: rgba(255,255,255,0.05);">
+                    <div style="height:100%; width:${(v/150)*100}%; background:var(--accent-glow); box-shadow: 0 0 8px var(--accent-glow);"></div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function playCry() {
+        const cryId = currentForm.includes('midnight') ? 'lycanroc-midnight' : 
+                      currentForm.includes('dusk') ? 'lycanroc-dusk' : 
+                      currentForm.includes('lycanroc') ? 'lycanroc' : 'rockruff';
+        new Audio(`https://play.pokemonshowdown.com/audio/cries/${cryId}.mp3`).play();
+    }
+
+    const games = [
+        { name: "Scarlet / Violet", found: true },
+        { name: "Sword / Shield", found: true },
+        { name: "Sun / Moon", found: true }
+    ];
+
+    document.getElementById('game-grid').innerHTML = games.map(g => `
+        <div class="game-cell">${g.name} <div class="dot ${g.found ? 'dot-inc' : 'dot-exc'}"></div></div>
+    `).join('');
+
+    setForm('rockruff', document.querySelector('.form-selector .btn'));
+</script>
 
 </body>
 </html>

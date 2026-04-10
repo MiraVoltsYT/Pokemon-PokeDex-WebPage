@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>National Dex - Research Terminal #0911 // Skeledirge Biometric Hub</title>
+    <style>
+        :root {
+            /* Infernal Opera Aesthetic */
+            --bg-deep: #0a050d;
+            --panel-glass: rgba(20, 10, 25, 0.9);
+            --accent-glow: #6A0DAD; /* Ghostly Purple */
+            --flame-red: #FF0000;
+            --border-subtle: rgba(106, 13, 173, 0.3);
+            --text-main: #f9f5ff;
+            --text-dim: #b0a0b8;
+            --ghost: #705898;
+            --fire: #F08030;
+            --status-found: #FF0000;
+        }
+
+        body {
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(106, 13, 173, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 0, 0.1) 0%, transparent 40%),
+                linear-gradient(135deg, #0a050d 0%, #1a0a1f 100%);
+            color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            margin: 0; padding: 20px;
+            display: flex; justify-content: center;
+            min-height: 100vh;
+        }
+
+        .terminal-container {
+            width: 1400px;
+            background: var(--panel-glass);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            box-shadow: 0 0 100px rgba(30, 0, 50, 0.8), inset 0 0 20px rgba(106, 13, 173, 0.05);
+            overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+
+        .terminal-header {
+            padding: 40px;
+            background: linear-gradient(to right, rgba(106, 13, 173, 0.1), transparent);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex; justify-content: space-between; align-items: flex-end;
+        }
+
+        .main-grid { display: grid; grid-template-columns: 340px 1fr 1fr 340px; }
+        .col { padding: 30px; border-right: 1px solid var(--border-subtle); }
+        .col:last-child { border-right: none; }
+
+        .section-tag {
+            font-size: 10px; font-weight: 800; color: var(--flame-red);
+            text-transform: uppercase; letter-spacing: 2.5px;
+            margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+        }
+        .section-tag::after { content: ''; height: 1px; flex-grow: 1; background: var(--border-subtle); }
+
+        .btn {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle);
+            color: var(--text-main); font-size: 10px; padding: 10px 14px;
+            border-radius: 6px; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn:hover { background: rgba(106, 13, 173, 0.2); border-color: var(--flame-red); box-shadow: 0 0 15px rgba(255, 0, 0, 0.2); }
+        .btn-home { border-color: var(--text-dim); color: var(--text-dim); margin-bottom: 15px; }
+        .shiny-active { border-color: #ff9dcc !important; color: #ff9dcc; text-shadow: 0 0 5px #ff9dcc; }
+
+        .archive-box {
+            background: rgba(0,0,0,0.4); border-radius: 10px; padding: 18px;
+            font-size: 13.5px; line-height: 1.7; border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 25px; color: #ced4da;
+        }
+
+        .move-card {
+            background: rgba(106, 13, 173, 0.1); border-radius: 8px; padding: 12px;
+            margin-bottom: 10px; border: 1px solid rgba(106, 13, 173, 0.2);
+        }
+        .move-name { font-weight: bold; font-size: 11px; color: var(--flame-red); text-transform: uppercase; }
+
+        .sprite-display { 
+            text-align: center; padding: 20px; min-height: 200px; 
+            background: radial-gradient(circle, rgba(106, 13, 173, 0.15) 0%, transparent 70%);
+        }
+
+        .evo-container {
+            background: rgba(0,0,0,0.3); border-radius: 8px; padding: 15px;
+            margin-top: 10px; border: 1px solid var(--border-subtle);
+        }
+        .evo-row {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .evo-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .evo-info { font-size: 11px; color: var(--text-dim); }
+        .evo-name { color: var(--flame-red); font-weight: 800; font-size: 12px; display: block; }
+    </style>
+</head>
+<body>
+
+<div class="terminal-container">
+    <div class="terminal-header">
+        <div>
+            <a href="gen9.html" class="btn btn-home">⮌ RETURN TO TERMINAL INDEX</a>
+            <div style="font-family: monospace; font-size: 12px; color: var(--flame-red); letter-spacing: 5px; margin-bottom: 8px;">NATIONAL_DEX_RESEARCH_NODE_#0911</div>
+            <h1 style="margin:0; font-size: 48px; letter-spacing: -1px; background: linear-gradient(to bottom, #fff, var(--flame-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">SKELEDIRGE</h1>
+            <div style="display: flex; gap: 12px; margin-top: 15px;">
+                <span style="padding: 5px 18px; border-radius: 4px; font-size: 11px; font-weight: 800; border: 1.5px solid var(--fire); color: var(--fire);">FIRE</span>
+                <span style="padding: 5px 18px; border-radius: 4px; font-size: 11px; font-weight: 800; border: 1.5px solid var(--ghost); color: var(--ghost);">GHOST</span>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-size: 10px; color: var(--flame-red); letter-spacing: 2px; margin-bottom: 8px; font-weight: 800;">TORCH_SONG_PROTOCOL</div>
+            <button class="btn" onclick="playCry()" style="padding: 12px 20px;">⏵ EMIT OPERA_ROAR.WAV</button>
+        </div>
+    </div>
+
+    <div class="main-grid">
+        <div class="col">
+            <span class="section-tag">Visual Identity</span>
+            <div class="utility-bar">
+                <button id="shiny-btn" class="btn" onclick="toggleShiny()">Toggle Shiny Variant</button>
+            </div>
+            <div class="sprite-display">
+                <img id="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/911.png" width="220">
+            </div>
+            
+            <span class="section-tag">Biometric Specs</span>
+            <div style="font-size: 12px; display: flex; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Genus</span><strong style="color:var(--flame-red)">Singer Pokémon</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Height</span><strong>1.6 m</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Weight</span><strong>326.5 kg</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Ability</span><strong>Blaze / Unaware</strong></div>
+            </div>
+
+            <span class="section-tag" style="margin-top: 25px;">Evolutionary Chain</span>
+            <div class="evo-container">
+                <div class="evo-row" style="opacity: 0.5;">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/909.png" width="50">
+                    <div class="evo-info">
+                        <span class="evo-name">FUECOCO</span>
+                        0.4 m | 9.8 kg
+                    </div>
+                </div>
+                <div class="evo-row" style="opacity: 0.7;">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/910.png" width="50">
+                    <div class="evo-info">
+                        <span class="evo-name">CROCALOR</span>
+                        1.0 m | 30.7 kg
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Species Log</span>
+            <div class="archive-box">
+                Skeledirge's gentle singing soothes the souls of all who hear it. It burns its enemies to a crisp with more than 5,400-degree-Fahrenheit flames.
+            </div>
+
+            <span class="section-tag">Spectral Anatomy</span>
+            <ul style="font-size: 12.5px; color: var(--text-dim); padding-left: 20px;">
+                <li><strong>Fire Bird:</strong> The flame on its snout has taken the form of a bird, powered by its soul.</li>
+                <li><strong>Gorgon Breath:</strong> Flames emitted from its mouth can reach temperatures that incinerate steel instantly.</li>
+                <li><strong>Ghostly Resonance:</strong> Its songs bypass physical barriers to strike the target directly.</li>
+            </ul>
+
+            <span class="section-tag">Tactical Note</span>
+            <div class="archive-box" style="border-left: 4px solid var(--accent-glow); background: rgba(106, 13, 173, 0.05);">
+                <strong>Torch Song</strong> is its signature move. Not only does it inflict massive damage, but it also boosts Skeledirge's Special Attack every time it is used.
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Signature Moveset</span>
+            <div class="move-card"><div class="move-name">Torch Song</div><div style="font-size:10px; color:var(--text-dim);">The user blows flames in the form of a bird. Boosts Sp. Atk.</div></div>
+            <div class="move-card"><div class="move-name">Shadow Ball</div><div style="font-size:10px; color:var(--text-dim);">Hurls a shadowy blob at the target. May lower Sp. Def.</div></div>
+            <div class="move-card"><div class="move-name">Overheat</div><div style="font-size:10px; color:var(--text-dim);">Full-power attack that harshly lowers user's Sp. Atk.</div></div>
+
+            <span class="section-tag" style="margin-top: 25px;">Stat Analysis</span>
+            <div id="stats-target"></div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Regional Data</span>
+            <div id="game-grid" style="display: grid; grid-template-columns: 1fr; gap: 5px;"></div>
+
+            <span class="section-tag" style="margin-top: 30px;">Paldea Protocol</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="font-size:9px; padding:10px; border:1px solid var(--flame-red); text-align:center; border-radius:4px;">TERA: FIRE<br><small>Elite</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid var(--accent-glow); text-align:center; border-radius:4px;">SPIRIT_BIRD<br><small>Active</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #F08030; text-align:center; border-radius:4px;">FINAL_EVO<br><small>Lvl 36</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #444; text-align:center; border-radius:4px; opacity: 0.5;">UNAWARE<br><small>Anti-Setup</small></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let isShiny = false;
+    const sprite = document.getElementById('poke-sprite');
+    function toggleShiny() {
+        isShiny = !isShiny;
+        sprite.src = isShiny 
+            ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/911.png"
+            : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/911.png";
+        document.getElementById('shiny-btn').classList.toggle('shiny-active');
+    }
+
+    function playCry() {
+        new Audio('https://play.pokemonshowdown.com/audio/cries/skeledirge.mp3').play();
+    }
+
+    const stats = { HP: 104, ATK: 75, DEF: 100, SPA: 110, SPD: 75, SPE: 66 };
+    document.getElementById('stats-target').innerHTML = Object.entries(stats).map(([k, v]) => `
+        <div style="margin-bottom: 12px;">
+            <div style="display:flex; justify-content:space-between; font-size: 10px; font-weight: bold; margin-bottom: 4px;">
+                <span style="color:var(--text-dim)">${k}</span><span>${v}</span>
+            </div>
+            <div style="height: 3px; background: rgba(255,255,255,0.05);"><div style="height:100%; width:${(v/160)*100}%; background:var(--flame-red); box-shadow: 0 0 8px var(--flame-red);"></div></div>
+        </div>
+    `).join('');
+
+    const games = [
+        { name: "Scarlet", found: true },
+        { name: "Violet", found: true }
+    ];
+
+    document.getElementById('game-grid').innerHTML = games.map(g => `
+        <div class="game-cell" style="background: rgba(0,0,0,0.3); padding: 8px 10px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.03); font-size: 10px;">
+            ${g.name} <div class="dot dot-inc" style="width: 6px; height: 6px; border-radius: 50%; background: var(--status-found); box-shadow: 0 0 8px var(--status-found);"></div>
+        </div>
+    `).join('');
+</script>
+
+</body>
+</html>

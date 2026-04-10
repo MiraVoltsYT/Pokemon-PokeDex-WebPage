@@ -10,6 +10,7 @@ body {
   background: url('pokemon-wallpaper.jpg') no-repeat center center fixed;
   background-size: cover;
   color:#222;
+  overflow-x: hidden;
 }
 
 .header {
@@ -85,6 +86,83 @@ body {
 /* Special Feature Buttons */
 .type-chart { border-left-color:#EF4444; background: rgba(255, 241, 242, 0.95); } 
 .battle-sim { border-left-color:#000000; background: rgba(155, 188, 15, 0.95); color: #0f380f; } 
+
+/* --- GENERATION -1 GLITCH BUTTON SECTION --- */
+
+.glitch-container {
+  grid-column: 1 / -1; /* Makes it span the full width of the grid */
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  padding-bottom: 50px;
+}
+
+.gen-negative {
+  position: relative;
+  background: #000;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  padding: 20px 40px;
+  font-size: 22px;
+  border: 2px solid #00ff00;
+  cursor: pointer;
+  text-transform: uppercase;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+/* The glitching text effect */
+.gen-negative::before, .gen-negative::after {
+  content: "GENERATION -1";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.gen-negative::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff00c1;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.gen-negative::after {
+  left: -2px;
+  text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+  animation: glitch-anim2 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(31px, 9999px, 94px, 0); transform: skew(0.85deg); }
+  5% { clip: rect(70px, 9999px, 71px, 0); transform: skew(0.15deg); }
+  10% { clip: rect(10px, 9999px, 33px, 0); transform: skew(0.55deg); }
+  15% { clip: rect(80px, 9999px, 100px, 0); transform: skew(0.35deg); }
+  20% { clip: rect(50px, 9999px, 20px, 0); transform: skew(0.95deg); }
+  100% { clip: rect(31px, 9999px, 94px, 0); transform: skew(0.85deg); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(60px, 9999px, 52px, 0); transform: skew(0.1deg); }
+  20% { clip: rect(20px, 9999px, 30px, 0); transform: skew(0.5deg); }
+  40% { clip: rect(10px, 9999px, 90px, 0); transform: skew(0.2deg); }
+  60% { clip: rect(80px, 9999px, 10px, 0); transform: skew(0.8deg); }
+  80% { clip: rect(40px, 9999px, 60px, 0); transform: skew(0.4deg); }
+  100% { clip: rect(90px, 9999px, 20px, 0); transform: skew(0.3deg); }
+}
+
+.gen-negative:hover {
+  background: #00ff00;
+  color: #000;
+  transition: 0.1s;
+}
+
+.gen-negative:hover::before, .gen-negative:hover::after {
+  display: none; /* Stops the text glitch so the text is readable on hover */
+}
+
 </style>
 </head>
 
@@ -133,6 +211,13 @@ body {
         Battle Engine
         <div class="note">Pokemon Battles with AI!</div>
     </div>
+
+    <div class="glitch-container">
+      <div class="gen-negative" onclick="location.href='gen-1.html'">
+        Generation -1
+      </div>
+    </div>
+
   </div>
 </div>
 

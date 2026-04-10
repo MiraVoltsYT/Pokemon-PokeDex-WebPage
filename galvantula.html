@@ -1,240 +1,224 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Research Log: Galvantula #0596</title>
+    <meta charset="UTF-8">
+    <title>National Dex - Research Terminal #0596 // Galvantula Biometric Hub</title>
+    <style>
+        :root {
+            /* Bio-Electric Arachnid Aesthetic */
+            --bg-deep: #0a0a0d;
+            --panel-glass: rgba(15, 15, 20, 0.9);
+            --accent-glow: #F6DE3E; /* Electric Yellow */
+            --static-purple: #7A5283; /* Arachnid Accent */
+            --bug-green: #A8B820;
+            --border-subtle: rgba(246, 222, 62, 0.2);
+            --text-main: #faffff;
+            --text-dim: #a7a7bd;
+            --electric: #F8D030;
+            --bug: #A8B820;
+            --status-found: #F6DE3E;
+            --status-missing: #444444;
+        }
 
-<style>
-:root {
-  --static-yellow: #facc15;
-  --web-silk: #94a3b8;
-  --cavern-purple: #3b0764;
-  --panel-bg: rgba(15, 23, 42, 0.9);
-  --shiny-blue: #38bdf8;
-}
+        body {
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(246, 222, 62, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(122, 82, 131, 0.08) 0%, transparent 40%),
+                linear-gradient(135deg, #0a0a0d 0%, #12121a 100%);
+            color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            margin: 0; padding: 20px;
+            display: flex; justify-content: center;
+            min-height: 100vh;
+        }
 
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)), url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/596.png') no-repeat center center fixed;
-  background-size: cover;
-  color: #f1f5f9;
-  line-height: 1.6;
-}
+        .terminal-container {
+            width: 1400px;
+            background: var(--panel-glass);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            box-shadow: 0 0 100px rgba(0, 0, 10, 0.8), inset 0 0 20px rgba(246, 222, 62, 0.05);
+            overflow: hidden;
+            display: flex; flex-direction: column;
+        }
 
-.header {
-  background: #020617;
-  padding: 20px 40px;
-  border-bottom: 4px solid var(--static-yellow);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 20px rgba(250, 204, 21, 0.2);
-}
+        .terminal-header {
+            padding: 40px;
+            background: linear-gradient(to right, rgba(246, 222, 62, 0.08), transparent);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex; justify-content: space-between; align-items: flex-end;
+        }
 
-.nav-btn {
-  color: var(--static-yellow);
-  text-decoration: none;
-  font-weight: bold;
-  border: 1px solid var(--static-yellow);
-  padding: 8px 16px;
-  border-radius: 4px;
-}
+        .main-grid { display: grid; grid-template-columns: 340px 1fr 1fr 340px; }
+        .col { padding: 30px; border-right: 1px solid var(--border-subtle); }
+        .col:last-child { border-right: none; }
 
-.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .section-tag {
+            font-size: 10px; font-weight: 800; color: var(--accent-glow);
+            text-transform: uppercase; letter-spacing: 2.5px;
+            margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+        }
+        .section-tag::after { content: ''; height: 1px; flex-grow: 1; background: var(--border-subtle); }
 
-.pokemon-hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  background: var(--panel-bg);
-  padding: 40px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(250, 204, 21, 0.1);
-}
+        .btn {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle);
+            color: var(--text-main); font-size: 10px; padding: 10px 14px;
+            border-radius: 6px; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn:hover { background: rgba(246, 222, 62, 0.15); border-color: var(--accent-glow); box-shadow: 0 0 15px rgba(246, 222, 62, 0.2); }
+        .btn-home { border-color: var(--text-dim); color: var(--text-dim); margin-bottom: 15px; }
+        .shiny-active { border-color: #6da3ff !important; color: #6da3ff; text-shadow: 0 0 5px #6da3ff; }
 
-.main-art {
-  width: 100%;
-  filter: drop-shadow(0 0 20px var(--static-yellow));
-}
+        .archive-box {
+            background: rgba(0,0,0,0.4); border-radius: 10px; padding: 18px;
+            font-size: 13.5px; line-height: 1.7; border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 25px; color: #ced4da;
+        }
 
-.id-badge {
-  background: var(--cavern-purple);
-  color: white;
-  padding: 4px 12px;
-  border-radius: 4px;
-  font-weight: bold;
-  width: fit-content;
-}
+        .move-card {
+            background: rgba(246, 222, 62, 0.05); border-radius: 8px; padding: 12px;
+            margin-bottom: 10px; border: 1px solid rgba(246, 222, 62, 0.1);
+        }
+        .move-name { font-weight: bold; font-size: 11px; color: var(--accent-glow); text-transform: uppercase; }
 
-h1 { font-size: 48px; margin: 10px 0; letter-spacing: 2px; color: var(--static-yellow); }
+        .game-cell {
+            background: rgba(0,0,0,0.3); padding: 8px 10px; border-radius: 4px;
+            display: flex; justify-content: space-between; align-items: center;
+            border: 1px solid rgba(255,255,255,0.03); font-size: 10px;
+        }
+        .dot { width: 6px; height: 6px; border-radius: 50%; }
+        .dot-inc { background: var(--status-found); box-shadow: 0 0 8px var(--status-found); }
+        .dot-exc { background: var(--status-missing); opacity: 0.2; }
 
-.type-tag {
-  display: inline-block;
-  padding: 5px 20px;
-  border-radius: 50px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-right: 10px;
-}
-.bug { background: #a8b820; color: white; }
-.electric { background: #facc15; color: #422006; }
-
-.stat-row { margin-bottom: 15px; }
-.stat-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px; font-weight: bold; }
-.stat-bar-bg { background: rgba(255,255,255,0.1); height: 12px; border-radius: 10px; overflow: hidden; }
-.stat-fill { height: 100%; background: linear-gradient(90deg, var(--cavern-purple), var(--static-yellow)); border-radius: 10px; }
-
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
-.card { background: var(--panel-bg); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
-
-h3 { color: var(--static-yellow); border-bottom: 1px solid #334155; padding-bottom: 10px; margin-top: 0; }
-
-.item-list { list-style: none; padding: 0; }
-.item-list li { 
-  background: rgba(255,255,255,0.05); 
-  margin-bottom: 8px; 
-  padding: 10px; 
-  border-radius: 8px;
-  border-left: 4px solid var(--static-yellow);
-}
-
-.shiny-preview {
-  text-align: center;
-  background: rgba(0,0,0,0.4);
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid var(--shiny-blue);
-  margin-top: 20px;
-}
-
-.info-block { margin-bottom: 20px; }
-.info-block strong { color: var(--static-yellow); display: block; margin-bottom: 5px; }
-
-table { width: 100%; text-align: left; border-collapse: collapse; }
-th, td { padding: 10px; border-bottom: 1px solid #334155; }
-</style>
+        .sprite-display { 
+            text-align: center; padding: 20px; min-height: 220px; 
+            background: radial-gradient(circle, rgba(246, 222, 62, 0.1) 0%, transparent 70%);
+        }
+        .type-pill { padding: 5px 18px; border-radius: 4px; font-size: 11px; font-weight: 800; border: 1.5px solid; letter-spacing: 1px; }
+    </style>
 </head>
 <body>
 
-<div class="header">
-  <div style="font-weight: bold; font-size: 20px; color: var(--static-yellow);">CAVERN_NET_v5.96</div>
-  <a href="index.html" class="nav-btn">EXIT NEST</a>
+<div class="terminal-container">
+    <div class="terminal-header">
+        <div>
+            <a href="gen5.html" class="btn btn-home">⮌ RETURN TO TERMINAL INDEX</a>
+            <div style="font-family: monospace; font-size: 12px; color: var(--accent-glow); letter-spacing: 5px; margin-bottom: 8px;">NATIONAL_DEX_RESEARCH_NODE_#0596</div>
+            <h1 style="margin:0; font-size: 48px; letter-spacing: -1px; background: linear-gradient(to bottom, #fff, var(--accent-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">GALVANTULA</h1>
+            <div style="display: flex; gap: 12px; margin-top: 15px;">
+                <span class="type-pill" style="color: var(--bug); border-color: var(--bug);">BUG TYPE</span>
+                <span class="type-pill" style="color: var(--electric); border-color: var(--electric);">ELECTRIC</span>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-size: 10px; color: var(--accent-glow); letter-spacing: 2px; margin-bottom: 8px; font-weight: 800;">NEURAL_THUMP</div>
+            <button class="btn" onclick="playCry()" style="padding: 12px 20px;">⏵ RUN ELECTROWEEB_CRY.WAV</button>
+        </div>
+    </div>
+
+    <div class="main-grid">
+        <div class="col">
+            <span class="section-tag">Visual Identity</span>
+            <div class="utility-bar">
+                <button id="shiny-btn" class="btn" onclick="toggleShiny()">Toggle Shiny Variant</button>
+            </div>
+            <div class="sprite-display">
+                <img id="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/596.png" width="240">
+            </div>
+            
+            <span class="section-tag">Bio-Electric Specs</span>
+            <div style="font-size: 12px; display: flex; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Genus</span><strong style="color:var(--accent-glow)">EleSpider Pokémon</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Height</span><strong>0.8 m</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Weight</span><strong>14.3 kg</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Ability</span><strong>Compound Eyes / Unnerve</strong></div>
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Species Log</span>
+            <div class="archive-box">
+                When attacked, they create an electric barrier by spitting many electrified threads. They attach their webs to prey and shock them into paralysis.
+            </div>
+
+            <span class="section-tag">Optical Enhancement</span>
+            <ul style="font-size: 12.5px; color: var(--text-dim); padding-left: 20px;">
+                <li><strong>Ocular:</strong> Compound eyes grant a massive boost to move accuracy.</li>
+                <li><strong>Electro-fur:</strong> Yellow fur stores static electricity for rapid discharge.</li>
+                <li><strong>Spinnerets:</strong> Capable of weaving Sticky Web traps on the battlefield.</li>
+                <li><strong>Mandibles:</strong> Infuse bites with potent electrical charges.</li>
+            </ul>
+
+            <span class="section-tag">Predatory Tactics</span>
+            <div class="archive-box" style="border-left: 4px solid var(--static-purple); background: rgba(122, 82, 131, 0.05);">
+                Galvantula excels at setting the pace of combat. Using <strong>Sticky Web</strong>, it slows down all incoming opponents, ensuring its teammates strike first.
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Tactical Moveset</span>
+            <div class="move-card"><div class="move-name">Thunder</div><div style="font-size:10px; color:var(--text-dim);">High damage, accuracy boosted by Compound Eyes.</div></div>
+            <div class="move-card"><div class="move-name">Sticky Web</div><div style="font-size:10px; color:var(--text-dim);">Slows down opponents who switch into the field.</div></div>
+            <div class="move-card"><div class="move-name">Bug Buzz</div><div style="font-size:10px; color:var(--text-dim);">Vibrates air to deal Bug damage. May lower Sp. Def.</div></div>
+
+            <span class="section-tag" style="margin-top: 25px;">Stat Analysis</span>
+            <div id="stats-target"></div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Habitat Availability</span>
+            <div id="game-grid" style="display: grid; grid-template-columns: 1fr; gap: 5px;"></div>
+
+            <span class="section-tag" style="margin-top: 30px;">Unova Protocol</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="font-size:9px; padding:10px; border:1px solid var(--accent-glow); text-align:center; border-radius:4px;">WEB-TRAP<br><small>Active</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid var(--static-purple); text-align:center; border-radius:4px;">PARALYSIS<br><small>Probability: High</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #A8B820; text-align:center; border-radius:4px;">SIGNAL BEAM<br><small>Compatible</small></div>
+                <div style="font-size:9px; padding:10px; border:1px solid #444; text-align:center; border-radius:4px; opacity: 0.5;">MEGA-EVO<br><small>N/A</small></div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="container">
-  
-  <div class="pokemon-hero">
-    <div class="art-box">
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/596.png" class="main-art" alt="Galvantula">
-      <div class="shiny-preview">
-        <p style="font-size: 12px; color: var(--shiny-blue); margin-bottom: 10px;">SHINY VARIANT DETECTED (Deep Blue/Chrome)</p>
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/596.png" style="width: 140px;" alt="Shiny Galvantula">
-      </div>
-    </div>
-    
-    <div class="quick-specs">
-      <span class="id-badge">#0596 - ELESPIDER</span>
-      <h1>GALVANTULA</h1>
-      <div style="margin: 15px 0;">
-        <span class="type-tag bug">Bug</span>
-        <span class="type-tag electric">Electric</span>
-      </div>
-      
-      <div class="stats-container">
-        <h3>COMBAT PARAMETERS</h3>
-        <div class="stat-row">
-          <div class="stat-label"><span>HP</span> <span>70</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 28%;"></div></div>
+<script>
+    let isShiny = false;
+    const sprite = document.getElementById('poke-sprite');
+    function toggleShiny() {
+        isShiny = !isShiny;
+        sprite.src = isShiny 
+            ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/596.png"
+            : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/596.png";
+        document.getElementById('shiny-btn').classList.toggle('shiny-active');
+    }
+
+    function playCry() {
+        new Audio('https://play.pokemonshowdown.com/audio/cries/galvantula.mp3').play();
+    }
+
+    const stats = { HP: 70, ATK: 77, DEF: 60, SPA: 97, SPD: 60, SPE: 108 };
+    document.getElementById('stats-target').innerHTML = Object.entries(stats).map(([k, v]) => `
+        <div style="margin-bottom: 12px;">
+            <div style="display:flex; justify-content:space-between; font-size: 10px; font-weight: bold; margin-bottom: 4px;">
+                <span style="color:var(--text-dim)">${k}</span><span>${v}</span>
+            </div>
+            <div style="height: 3px; background: rgba(255,255,255,0.05);"><div style="height:100%; width:${(v/150)*100}%; background:var(--accent-glow); box-shadow: 0 0 8px var(--accent-glow);"></div></div>
         </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>ATTACK</span> <span>77</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 30%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>DEFENSE</span> <span>60</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 24%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label" style="color: var(--static-yellow);"><span>SP. ATTACK</span> <span>97</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 38%; background: var(--static-yellow);"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label"><span>SP. DEFENSE</span> <span>60</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 24%;"></div></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-label" style="color: #fff;"><span>SPEED</span> <span>108</span></div>
-          <div class="stat-bar-bg"><div class="stat-fill" style="width: 43%; background: #fff; box-shadow: 0 0 10px #fff;"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+    `).join('');
 
-  <div class="detail-grid">
-    <div class="card">
-      <h3>ARCHIVE: THE SILK WEAVER</h3>
-      <div class="info-block">
-        <strong>Biological Overview</strong>
-        <p>Galvantula is a predatory arachnid that populates magnetic caves. It is covered in thick, static-charged fur that can discharge high-voltage shocks. Unlike standard spiders, its "silk" is a hyper-conductive fiber that acts as an extension of its nervous system.</p>
-      </div>
+    const games = [
+        { name: "S/V (Indigo Disk)", found: true },
+        { name: "Sword / Shield", found: true },
+        { name: "Ultra Sun / Moon", found: false },
+        { name: "Black / White", found: true }
+    ];
 
-      <div class="info-block">
-        <strong>Hunting Behavior</strong>
-        <p>It creates massive, nearly invisible webs of electrified silk. When prey becomes entangled, Galvantula doesn't just wrap them; it sends a surge of electricity through the web to paralyze them instantly. It is highly territorial and will defend its nesting grounds with aggressive lunges.</p>
-      </div>
-
-      <div class="info-block">
-        <strong>Joltik Symbiosis</strong>
-        <p>Galvantula protects swarms of its pre-evolution, Joltik. While Joltik are often seen clinging to larger Pokémon to drain energy, they return to Galvantula nests to share the harvested electricity, fueling the hive's defensive webs.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>COMBAT PROTOCOLS</h3>
-      <div class="info-block">
-        <strong>Compound Eyes (Ability)</strong>
-        <p>Galvantula possesses multiple optical sensors that calculate wind speed and target movement. This increases accuracy by 30%, allowing it to use high-power moves like **Thunder** with almost perfect reliability.</p>
-      </div>
-
-      <div class="info-block">
-        <strong>Signature Tactics</strong>
-        <ul>
-          <li><strong>Sticky Web:</strong> Its most feared move. It coats the opponent's field in silk that lowers the Speed of any Pokémon that switches in.</li>
-          <li><strong>Volt Switch:</strong> Galvantula strikes with electricity and immediately retreats back into its Pokéball, maintaining momentum.</li>
-        </ul>
-      </div>
-
-      <div class="info-block">
-        <strong>Recommended Gear</strong>
-        <ul class="item-list">
-          <li><strong>Focus Sash:</strong> Ensures Galvantula survives at least one hit to set up its Sticky Web.</li>
-          <li><strong>Life Orb:</strong> Boosts its Special Attack damage by 30% for a "Glass Cannon" build.</li>
-          <li><strong>Wide Lens:</strong> For players who want 100% guaranteed hits on almost every move in its arsenal.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top: 30px;">
-    <h3>TECHNICAL SPECIFICATIONS</h3>
-    <table>
-      <tr>
-        <th>HEIGHT</th>
-        <th>WEIGHT</th>
-        <th>ORIGIN</th>
-        <th>SIGNATURE ROLE</th>
-      </tr>
-      <tr>
-        <td>2' 07" (0.8 m)</td>
-        <td>31.5 lbs (14.3 kg)</td>
-        <td>Unova (Chargestone Cave)</td>
-        <td>Hazard Lead / Speed Control</td>
-      </tr>
-    </table>
-  </div>
-
-</div>
+    document.getElementById('game-grid').innerHTML = games.map(g => `
+        <div class="game-cell">${g.name} <div class="dot ${g.found ? 'dot-inc' : 'dot-exc'}"></div></div>
+    `).join('');
+</script>
 
 </body>
 </html>

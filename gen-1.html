@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VOID_DIRECTORY_[-1]</title>
+    <style>
+        :root {
+            --glitch-red: #ff0000;
+            --dark-red: #350000; /* Darker, more ominous red */
+            --void-bg: #000000;
+        }
+
+        body {
+            background-color: var(--void-bg);
+            color: #8b0000; /* Darker blood red */
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(139, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* THE CREEPY OVERLAY - CONSTANT FAST SHAKE */
+        #creepy-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            pointer-events: none;
+            font-size: 5vw;
+            color: rgba(255, 0, 0, 0); 
+            text-align: center;
+            white-space: pre-wrap;
+            animation: twitch 0.05s infinite;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        @keyframes twitch {
+            0% { transform: translate(-52%, -48%); }
+            25% { transform: translate(-49%, -51%); }
+            50% { transform: translate(-51%, -49%); }
+            75% { transform: translate(-48%, -52%); }
+            100% { transform: translate(-50%, -50%); }
+        }
+
+        .header {
+            position: sticky; top: 0; z-index: 50;
+            background: #000; border-bottom: 2px solid #5a0000;
+            padding: 15px; text-align: center;
+        }
+
+        .pokedex-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px; padding: 25px;
+        }
+
+        .glitch-card {
+            background: #050000;
+            border: 1px solid var(--dark-red);
+            padding: 12px;
+            text-decoration: none;
+            color: #8b0000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 0.1s;
+        }
+
+        .glitch-card:hover {
+            border-color: #ff0000;
+            background: #1a0000;
+            color: #ff0000;
+        }
+
+        .sprite-box {
+            width: 60px; height: 60px;
+            background: #000; border: 1px solid #4a0000;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px; margin-bottom: 8px;
+        }
+
+        .nav-back {
+            color: #5a0000; text-decoration: none; font-size: 11px;
+            border: 1px solid #5a0000; padding: 5px 12px;
+        }
+
+        .terminate-container {
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(transparent, #1a0000);
+        }
+
+        .terminate-btn {
+            display: inline-block;
+            color: #ff0000;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 15px 40px;
+            border: 3px solid #ff0000;
+            background: transparent;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            transition: all 0.1s;
+            cursor: pointer;
+            box-shadow: 0 0 15px #8b0000;
+        }
+
+        .terminate-btn:hover {
+            background: #ff0000;
+            color: #000;
+            box-shadow: 0 0 30px #ff0000;
+            text-shadow: none;
+        }
+
+        .terminate-btn:active {
+            transform: scale(0.95);
+            filter: invert(1);
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="creepy-overlay">RUN</div>
+
+<div class="header">
+    <h2 style="margin:0; font-size: 18px; color: #4a0000;">[ SECTOR_-1_ILLEGAL_ACCESS ]</h2>
+    <a href="javascript:void(0)" onclick="this.innerHTML='SYSTEM_LOCKED'; this.style.color='red';" class="nav-back">TRY_TO_LEAVE</a>
+</div>
+
+<div class="pokedex-grid" id="voidGrid"></div>
+
+<div class="terminate-container">
+    <p style="color: #4a0000; font-size: 10px; margin-bottom: 10px;">SYSTEM_RECOVERY_PROTOCOL_v.09</p>
+    <a href="index.html" class="terminate-btn">тєямιηαтє ƒιℓє</a>
+</div>
+
+<script>
+    const grid = document.getElementById('voidGrid');
+    const overlay = document.getElementById('creepy-overlay');
+    
+    const horrorPhrases = [
+        "ᖇย几", "R̶̖͕̀͒...", "Ư̵̖...", "_N̢͉...", "ͶUЯ", "𝚁⃥𝚄⃥𝙽⃥", "𝕽 𝖀 𝕹", "𝐑⃥𝐔⃥𝐍⃥", "𝗥⃥𝘜̸𝗡⃥",
+        "H̢̻̰...", "Ĥί𝓭𝒆", "ĦĪĐɆ", "𝙷⃥𝙸⃥𝙳⃥𝙴⃥", "ꞪƗƉƐ", "𐋅ጎ𐌃ቹ",
+        "𐌍ዐ ቹ𐌔ር𐌀የ𐌄", "𝐍⃥𝐎⃥ 𝐄⃥𝐒⃥𝐂⃥𝐀⃥𝐏⃥𝐄⃥", "₦Ø Ɇ₴₵₳₱Ɇ", "ñÖ È§ÇÄþÈ",
+        "ﻮσσ𝓭 ˡย🅲𝓚", "G̶̡...", "⋊ƆU⅃ ᗡOOᎮ", "ᴳᴼₒᴰ ᴸᵤᶜₖ", "𝐺⃫𝑂⃫𝑂⃫𝐷⃫ 𝐿⃫𝑈⃫𝐶⃫𝐾⃫",
+        "ՌՕ ȶƱƦՌƗՌɢ ɮǞƇӃ", "ñÖ †ÚRñÌñG ßÄÇK", "几σ ｔยᖇ几ί几ﻮ Ⓑ𝕒🅲𝓚"
+    ];
+
+    let cycleSpeed = 300; 
+    setInterval(() => {
+        let scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        let scrollPercent = window.scrollY / scrollHeight;
+        
+        if (scrollPercent > 0.05) {
+            const randomPhrase = horrorPhrases[Math.floor(Math.random() * horrorPhrases.length)];
+            overlay.innerHTML = randomPhrase;
+        }
+    }, cycleSpeed);
+
+    window.onscroll = function() {
+        let scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        let scrollPercent = window.scrollY / scrollHeight;
+
+        overlay.style.color = `rgba(255, 0, 0, ${scrollPercent * 0.95})`; 
+        overlay.style.animationDuration = `${0.05 / (scrollPercent + 0.1)}s`;
+    };
+
+    const symbols = ["?", "Ø", "†", "Σ", "X", "░", "▓", "NaN", "塊", "∑", "∆", "𒀱", "𒅒", "𒄆"];
+    for (let i = 1; i <= 200; i++) {
+        const id = i.toString().padStart(4, '0');
+        const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+        const card = document.createElement('a');
+        card.href = `-${id}.html`;
+        card.className = 'glitch-card';
+        card.innerHTML = `
+            <div class="sprite-box">${randomSymbol}</div>
+            <div class="id-num"># -${id}</div>
+            <div class="name-err">VOID_ENTRY</div>
+        `;
+        grid.appendChild(card);
+    }
+</script>
+
+</body>
+</html>
