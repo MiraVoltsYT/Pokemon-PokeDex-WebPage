@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TERMINAL_BAN_NOTICE</title>
+    <style>
+        body { 
+            background: #050000; 
+            color: #f00; 
+            font-family: 'Courier New', monospace; 
+            height: 100vh; 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+            border: 20px solid #500; /* Brightened from #200 */
+            box-sizing: border-box;
+            cursor: default !important;
+        }
+        
+        #hint-text { 
+            position: absolute; 
+            color: #ff0000; 
+            font-size: 14px; 
+            background: #000;
+            padding: 5px;
+            border: 1px solid #f00;
+            pointer-events: none; 
+            z-index: 100;
+            display: none;
+        }
+
+        #stasis-timer {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: #300; /* Brightened from #111 so it's visible but dim */
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        #mira-troll {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #0f0;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+            z-index: 200;
+            text-shadow: 0 0 15px #0f0;
+            background: rgba(0,0,0,0.8);
+            padding: 20px;
+        }
+        
+        .ban-header {
+            font-size: 45px;
+            font-weight: bold;
+            background: #a00; /* Brighter red */
+            color: #000;
+            padding: 10px 40px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px #f00;
+        }
+
+        .container { text-align: center; width: 80%; max-width: 600px; }
+        
+        .progress-container { 
+            width: 100%; height: 60px; border: 2px solid #f00; 
+            margin-top: 40px; background: #1a0000; position: relative;
+            cursor: default !important;
+        }
+
+        #bar { height: 100%; width: 0%; background: #f00; pointer-events: none; }
+        
+        .stat-line { font-size: 18px; margin-top: 15px; color: #f00; text-transform: uppercase; font-weight: bold; }
+        .sub-text { color: #800; font-size: 14px; margin-top: 5px; }
+    </style>
+</head>
+<body 
+    onmousemove="resetStasis()" 
+    onkeydown="resetStasis()" 
+    onmousedown="resetStasis()"
+    ontouchstart="resetStasis()"
+    onmouseleave="resetStasis()"
+>
+
+<div id="hint-text">STILLNESS_REQUIRED</div>
+<div id="stasis-timer">00:00 / 05:00</div>
+<div id="mira-troll">actually i think ill be nice and update this timer</div>
+
+<div class="ban-header">ACCESS_DENIED</div>
+
+<div class="container">
+    <div style="font-size: 20px; margin-bottom: 10px; color: #f00;">[MiraVoltsYT]: YOUR LUCK HAS EXPIRED.</div>
+    <div class="stat-line">FILE: Trainer_Info_desc.sys</div>
+    <div class="stat-line">STATUS: <span id="percent">0.00</span>% COMPLETE</div>
+    
+    <div class="progress-container" onclick="manualClick()">
+        <div id="bar"></div>
+    </div>
+    <div class="sub-text">INTEGRITY CHECK IN PROGRESS... DO NOT DISTURB</div>
+</div>
+
+<script>
+    let progress = 0.00;
+    let stillnessTime = 0;
+    let currentGoal = 300; 
+    let trollTriggered = false;
+    let isWindowFocused = true;
+
+    const bar = document.getElementById('bar');
+    const percentTxt = document.getElementById('percent');
+    const hint = document.getElementById('hint-text');
+    const timerDisplay = document.getElementById('stasis-timer');
+    const trollMsg = document.getElementById('mira-troll');
+
+    window.onblur = () => { isWindowFocused = false; resetStasis(); };
+    window.onfocus = () => { isWindowFocused = true; };
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) { isWindowFocused = false; resetStasis(); }
+        else { isWindowFocused = true; }
+    });
+
+    // 1. AUTO PROGRESS
+    setInterval(() => { updateProgress(0.01); }, 3000);
+
+    // 2. SECRET CLICK
+    function manualClick() {
+        updateProgress(0.01); 
+        resetStasis(); 
+    }
+
+    function updateProgress(amt) {
+        progress += amt;
+        if (progress >= 100) { progress = 100; finish("DATA_RECOVERY_SUCCESSFUL"); }
+        bar.style.width = progress + "%";
+        percentTxt.innerText = progress.toFixed(2);
+    }
+
+    // 3. THE STASIS EXIT
+    setInterval(() => {
+        if (isWindowFocused) {
+            stillnessTime++;
+            
+            let mins = Math.floor(stillnessTime / 60);
+            let secs = stillnessTime % 60;
+            let goalMins = Math.floor(currentGoal / 60);
+            timerDisplay.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')} / ${goalMins.toString().padStart(2, '0')}:00`;
+
+            if (stillnessTime === 299 && !trollTriggered) {
+                trollTriggered = true;
+                trollMsg.style.display = "block";
+                setTimeout(() => {
+                    trollMsg.style.display = "none";
+                    currentGoal = 900; 
+                }, 3000);
+            }
+
+            if (stillnessTime >= currentGoal) {
+                finish("STASIS_COMPLETED");
+            }
+        } else {
+            resetStasis();
+        }
+    }, 1000);
+
+    function resetStasis() {
+        stillnessTime = 0;
+        let goalMins = Math.floor(currentGoal / 60);
+        timerDisplay.innerText = `00:00 / ${goalMins.toString().padStart(2, '0')}:00`;
+    }
+
+    // 4. BLINK HINT
+    setInterval(() => {
+        hint.style.display = "block";
+        hint.style.top = Math.random() * 80 + "vh";
+        hint.style.left = Math.random() * 80 + "vw";
+        setTimeout(() => { hint.style.display = "none"; }, 1500); // Made it stay a bit longer to be readable
+    }, 20000);
+
+    function finish(reason) {
+        document.body.innerHTML = `<div style="background:white; color:black; padding:50px; font-size:24px; text-align:center; font-weight:bold;">REBOOTING...<br><span style="font-size:14px;">${reason}</span></div>`;
+        setTimeout(() => { window.location.href = "index.html"; }, 3000);
+    }
+</script>
+
+</body>
+</html>

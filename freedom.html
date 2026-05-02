@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>✧ OMNI-DRIVE: ASCENSION // [TRAINER] ✧</title>
+    <style>
+        :root {
+            --sky: #f0f9ff;
+            --heaven: #0ea5e9;
+            --mira-purple: #8b5cf6;
+            --glass: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            margin: 0; padding: 20px; font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ffffff, #bae6fd, #c7d2fe);
+            color: #0c4a6e; display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+        }
+
+        /* NEW NAVIGATION & WELCOME */
+        .nav-bar { width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .exit-btn { text-decoration: none; color: #ef4444; font-weight: 800; border: 2px solid #ef4444; padding: 8px 15px; border-radius: 10px; transition: 0.3s; }
+        .exit-btn:hover { background: #ef4444; color: white; }
+        
+        .welcome-msg { text-align: center; margin-bottom: 25px; animation: fadeIn 2s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .header-box { text-align: center; margin-bottom: 20px; }
+        .goal-selector { margin: 10px 0; font-size: 16px; font-weight: bold; }
+        .fun-link { color: #8b5cf6; text-decoration: underline; cursor: pointer; margin-left: 10px; }
+
+        .mega-grid {
+            display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px;
+            max-width: 1400px; width: 100%;
+        }
+
+        .game-card {
+            background: var(--glass); backdrop-filter: blur(25px);
+            border-radius: 30px; border: 4px solid white; padding: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1); text-align: center;
+        }
+
+        #upgrade-list { height: 600px; overflow-y: auto; padding-right: 10px; border-radius: 15px; }
+
+        .u-btn {
+            width: 100%; padding: 15px; margin-bottom: 10px; border-radius: 15px;
+            border: 1px solid #bae6fd; background: white; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .u-btn:disabled { opacity: 0.5; filter: grayscale(1); }
+
+        .stat { font-weight: 900; color: var(--heaven); font-family: 'Courier New', monospace; font-size: 20px; }
+        
+        .big-button {
+            padding: 40px; width: 100%; font-size: 32px; border-radius: 30px;
+            background: var(--mira-purple); color: white; border: none;
+            box-shadow: 0 10px 0 #6d28d9; cursor: pointer; margin-bottom: 15px;
+        }
+        .big-button:active { transform: translateY(4px); box-shadow: none; }
+        
+        .reb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .reb-btn { 
+            padding: 12px; border-radius: 10px; border: none; font-weight: bold; 
+            cursor: pointer; display: none; transition: 0.3s;
+        }
+        .reb-btn:hover { filter: brightness(1.1); transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+<div class="nav-bar">
+    <div style="font-weight: 900; font-size: 1.2em;">✧ OMNI-DRIVE // V.2.0 ✧</div>
+    <a href="index.html" class="exit-btn">← EXIT TO HUB</a>
+</div>
+
+<div class="welcome-msg">
+    <h1 style="margin:0; font-size: 3em;">Welcome to your freedom.</h1>
+    <p style="font-size: 1.2em; color: #6366f1;">Enjoy this clicker game! The chains are gone. Now, only the grid remains.</p>
+</div>
+
+<div class="header-box">
+    <div class="goal-selector">
+        GOAL: <span id="target-display" class="stat">10^500</span> 
+        <span class="fun-link" onclick="toggleFun()">Try 10^1000?</span>
+    </div>
+</div>
+
+<div class="mega-grid">
+    <div class="game-card">
+        <h2 id="rank">RANK: [TRAINER]</h2>
+        <div id="v-count" style="font-size: 38px; font-weight: 900; color: var(--mira-purple);">0</div>
+        <hr>
+        <p>Multiplier: <span id="v-mult" class="stat">x1</span></p>
+        <p>Current Power: <span id="v-pc" class="stat">1</span> /click</p>
+        
+        <button class="big-button" onclick="doClick()">⚡ GENERATE ⚡</button>
+
+        <div class="reb-grid">
+            <button class="reb-btn" id="reb1" onclick="reb(2n, 10n**6n)" style="background:#bae6fd">Spark Rebirth (2x)</button>
+            <button class="reb-btn" id="reb2" onclick="reb(4n, 10n**12n)" style="background:#7dd3fc">Volt Surge (4x)</button>
+            <button class="reb-btn" id="reb3" onclick="reb(8n, 10n**20n)" style="background:#38bdf8">Flux Ascension (8x)</button>
+            <button class="reb-btn" id="reb4" onclick="reb(16n, 10n**35n)" style="background:#0ea5e9; color:white">Circuit Breaker (16x)</button>
+            <button class="reb-btn" id="reb5" onclick="reb(32n, 10n**65n)" style="background:#fbbf24">Aura Horizon (32x)</button>
+            <button class="reb-btn" id="reb6" onclick="reb(64n, 10n**120n)" style="background:#f97316; color:white">Paradox Shift (64x)</button>
+            <button class="reb-btn" id="reb7" onclick="reb(128n, 10n**250n)" style="background:#ef4444; color:white">Omni-Nova (128x)</button>
+            <button class="reb-btn" id="reb8" onclick="reb(256n, 10n**500n)" style="background:#be185d; color:white">Zenith Core (256x)</button>
+            <button class="reb-btn" id="reb9" onclick="reb(512n, 10n**850n)" style="background:#8b5cf6; color:white">MIRA-OVERDRIVE (512x)</button>
+        </div>
+    </div>
+
+    <div class="game-card">
+        <h3>750 GRADUAL UPGRADES</h3>
+        <div id="upgrade-list"></div>
+    </div>
+</div>
+
+<script>
+    let volts = 0n;
+    let basePower = 1n;
+    let autoPower = 0n;
+    let totalMult = 1n;
+    let currentGoalExp = 500n;
+
+    function toggleFun() {
+        currentGoalExp = 1000n;
+        document.getElementById('target-display').innerText = "10^1000";
+    }
+
+    function format(n) {
+        if (n === 0n) return "0";
+        let s = n.toString();
+        let len = s.length;
+        if (n < 1000000n) return n.toLocaleString();
+        
+        const suffixes = ["M", "B", "T", "Qd", "Qn", "Sx", "Sp", "Oc", "No", "De", "UDe", "DDe", "TDe", "QdDe", "QnDe", "SxDe", "SpDe", "OcDe", "NoDe", "Vt"];
+        if (len <= 63) {
+            let tier = Math.floor((len - 1) / 3);
+            let suffixIdx = tier - 2;
+            if (suffixIdx >= 0 && suffixIdx < suffixes.length) {
+                let divisor = 10n ** BigInt(tier * 3);
+                let val = Number(n * 100n / divisor) / 100;
+                return val.toFixed(2) + suffixes[suffixIdx];
+            }
+        }
+        return "10^" + (len - 1);
+    }
+
+    const upData = [];
+    for(let i=1; i<=750; i++) {
+        upData.push({
+            name: `Elysium Gear #${i}`,
+            cost: BigInt(Math.floor(10 * Math.pow(1.5, i))), 
+            power: BigInt(Math.floor(2 * Math.pow(1.42, i))),
+            type: i % 2 === 0 ? 'auto' : 'click',
+            owned: 0
+        });
+    }
+
+    function doClick() {
+        volts += (basePower * totalMult);
+        if (volts >= 10n ** currentGoalExp) window.location.href = "....html";
+        updateUI();
+    }
+
+    function reb(m, c) {
+        if (volts >= c) {
+            volts = 0n; basePower = 1n; autoPower = 0n;
+            totalMult *= m;
+            upData.forEach(u => u.owned = 0);
+            updateUI();
+        }
+    }
+
+    function buy(i) {
+        let u = upData[i];
+        if (volts >= u.cost) {
+            volts -= u.cost;
+            u.owned++;
+            if(u.type === 'click') basePower += u.power;
+            else autoPower += u.power;
+            u.cost = (u.cost * 135n) / 100n;
+            updateUI();
+        }
+    }
+
+    function updateUI() {
+        document.getElementById('v-count').innerText = format(volts);
+        document.getElementById('v-mult').innerText = "x" + format(totalMult);
+        document.getElementById('v-pc').innerText = format((basePower + autoPower) * totalMult);
+
+        const costs = [0n, 10n**6n, 10n**12n, 10n**20n, 10n**35n, 10n**65n, 10n**120n, 10n**250n, 10n**500n, 10n**850n];
+        for(let i=1; i<=9; i++) {
+            let btn = document.getElementById('reb' + i);
+            btn.style.display = (volts >= (costs[i] / 4n)) ? 'block' : 'none';
+        }
+
+        const list = document.getElementById('upgrade-list');
+        let html = "";
+        for(let i=0; i<750; i++) {
+            let u = upData[i];
+            if (volts >= u.cost / 80n || u.owned > 0) {
+                html += `<button class="u-btn" onclick="buy(${i})" ${volts < u.cost ? 'disabled' : ''}>
+                    <div style="text-align:left">
+                        <b>${u.name}</b> <small>(x${u.owned})</small><br>
+                        <span style="color:green; font-size:11px">+${format(u.power)} ${u.type}</span>
+                    </div>
+                    <b>${format(u.cost)}</b>
+                </button>`;
+            }
+            if (volts < u.cost / 500n && i > 20) break; 
+        }
+        list.innerHTML = html;
+    }
+
+    setInterval(() => {
+        volts += (autoPower * totalMult);
+        updateUI();
+    }, 1000);
+
+    updateUI();
+</script>
+</body>
+</html>

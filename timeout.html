@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DIRECTORY_RESTRICTION: TIMEOUT</title>
+    <style>
+        body { background-color: #e0e0e0; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: 'Courier New', monospace; overflow: hidden; }
+        #top-bar { position: absolute; top: 0; width: 100%; background: #333; padding: 10px; display: flex; justify-content: center; gap: 20px; }
+        .hardcore-btn { background: #ff0000; color: #fff; border: none; padding: 5px 15px; cursor: pointer; font-weight: bold; font-family: 'Courier New'; }
+        
+        #ui-wrapper { display: flex; gap: 15px; align-items: flex-start; margin-top: 40px; }
+        #profile-box { width: 280px; background: #000; color: #888; padding: 15px; border: 2px solid #555; font-size: 11px; height: 450px; overflow-y: auto; }
+        #timeout-box { width: 550px; background-color: #000; color: #0f0; padding: 20px; border: 5px solid #888; }
+        
+        .header { background-color: #888; color: #000; margin: -20px -20px 20px -20px; padding: 5px 10px; font-weight: bold; font-size: 11px; }
+        #timer { font-size: 45px; text-align: center; color: #ff0000; }
+        #goal-display { text-align: center; font-size: 14px; color: #ff0000; margin-bottom: 10px; }
+        
+        #game-area { border: 1px solid #333; padding: 10px; background: #050505; min-height: 280px; }
+        .game-nav button { background: #222; color: #0f0; border: 1px solid #0f0; cursor: pointer; font-size: 10px; padding: 5px; }
+        
+        .upgrade-btn { display: block; width: 100%; text-align: left; background: #111; color: #0f0; border: 1px solid #444; margin: 5px 0; padding: 5px; font-size: 10px; cursor: pointer; }
+        .upgrade-btn:disabled { color: #333; border-color: #222; opacity: 0.5; }
+        
+        #glitch-helper { position: fixed; bottom: -100px; right: 50px; cursor: pointer; transition: bottom 1s; }
+        #owner-whisper { margin-top: 10px; color: #666; font-style: italic; font-size: 12px; }
+        input { background: #000; border: 1px solid #0f0; color: #0f0; padding: 3px; width: 80px; }
+    </style>
+</head>
+<body>
+
+<div id="top-bar">
+    <button class="hardcore-btn" id="hardcore-trigger" onclick="goHardcore()">[ REQUEST 10-MIN TIMEOUT / 1B GOAL ]</button>
+</div>
+
+<div id="ui-wrapper">
+    <div id="profile-box">
+        <div style="color:#0f0; border-bottom: 1px solid #333; margin-bottom: 10px;">SESSION_LOGS</div>
+        ID: <span id="trainer-id">T-XXXX</span><br>
+        CLICKS: <span id="stat-clicks" style="color:white">0</span><br>
+        POWER: +<span id="stat-power">1</span>/click<br>
+        AUTO: +<span id="stat-auto">0</span>/sec<br>
+        <div id="upgrades-list" style="margin-top:15px;"></div>
+    </div>
+
+    <div id="timeout-box">
+        <div class="header">C:\SYSTEM\RESTRICTION\TIMEOUT_CORNER</div>
+        <div id="timer">05:00</div>
+        <div id="goal-display">GOAL: 1,000,000</div>
+        
+        <div id="game-area">
+            <div class="game-nav">
+                <button onclick="loadGame('math')">MATH.exe</button>
+                <button onclick="loadGame('guess')">GUESS.exe</button>
+                <button onclick="loadGame('click')">CLICKER.exe</button>
+            </div>
+            <div id="game-content"></div>
+        </div>
+    </div>
+</div>
+
+<div id="owner-whisper">[MiraVoltsYT]: You're actually asking for more time? You're insane.</div>
+
+<div id="glitch-helper" onclick="window.location.href='escape.html'">
+    <div style="background:white; border:2px solid black; padding:3px; font-size:9px; color:black; margin-bottom:5px;">psst! escape!</div>
+    <div style="font-size:30px;">👾</div>
+</div>
+
+<script>
+    let timeLeft = 300;
+    let clickGoal = 1000000;
+    let clicks = 0;
+    let clickPower = 1;
+    let autoPower = 0;
+    let isHardcore = false;
+
+    // Massive Upgrade List
+    let upgs = [
+        { name: "Sticky Keys", cost: 50, power: 5, type: "click" },
+        { name: "Double Clicker", cost: 250, power: 15, type: "click" },
+        { name: "Task Manager", cost: 1000, power: 50, type: "auto" },
+        { name: "CPU Overclock", cost: 5000, power: 250, type: "click" },
+        { name: "Bot Net", cost: 20000, power: 1000, type: "auto" },
+        { name: "Mira's Backdoor", cost: 100000, power: 10000, type: "click" },
+        { name: "Logic Bomb", cost: 500000, power: 50000, type: "auto" }
+    ];
+
+    function goHardcore() {
+        if(isHardcore) return;
+        isHardcore = true;
+        timeLeft = 600;
+        clickGoal = 1000000000;
+        document.getElementById('goal-display').innerText = "GOAL: 1,000,000,000 (HARDCORE)";
+        document.getElementById('hardcore-trigger').style.display = "none";
+        document.body.style.backgroundColor = "#d0c0c0";
+        // Add Hardcore Upgrades
+        upgs.push(
+            { name: "NULL_POINTER", cost: 2000000, power: 500000, type: "click" },
+            { name: "KERNEL_ACCESS", cost: 50000000, power: 10000000, type: "auto" }
+        );
+        alert("MiraVoltsYT: You want to play for real? Fine. One Billion. Don't fail.");
+    }
+
+    const countdown = setInterval(() => {
+        timeLeft--;
+        clicks += autoPower;
+        updateUI();
+        
+        let mins = Math.floor(timeLeft / 60);
+        let secs = timeLeft % 60;
+        document.getElementById('timer').innerHTML = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+        if (timeLeft === 150) document.getElementById('glitch-helper').style.bottom = "20px";
+        if (clicks >= clickGoal) { clearInterval(countdown); window.location.href = "freedom.html"; }
+        if (timeLeft <= 0) { clearInterval(countdown); window.location.href = "freedomorhell.html"; }
+    }, 1000);
+
+    function updateUI() {
+        document.getElementById('stat-clicks').innerText = Math.floor(clicks).toLocaleString();
+        document.getElementById('stat-power').innerText = clickPower.toLocaleString();
+        document.getElementById('stat-auto').innerText = autoPower.toLocaleString();
+        if (document.getElementById('c-count')) document.getElementById('c-count').innerText = Math.floor(clicks).toLocaleString();
+        
+        let upgHTML = "";
+        upgs.forEach((u, i) => {
+            upgHTML += `<button class="upgrade-btn" onclick="buyUpg(${i})" ${clicks < u.cost ? 'disabled' : ''}>
+                        ${u.name} (Cost: ${u.cost.toLocaleString()})<br>[+${u.power.toLocaleString()} ${u.type}]</button>`;
+        });
+        document.getElementById('upgrades-list').innerHTML = upgHTML;
+    }
+
+    function buyUpg(i) {
+        if (clicks >= upgs[i].cost) {
+            clicks -= upgs[i].cost;
+            if (upgs[i].type === "click") clickPower += upgs[i].power;
+            else autoPower += upgs[i].power;
+            upgs[i].cost = Math.floor(upgs[i].cost * 2.2);
+            updateUI();
+        }
+    }
+
+    function loadGame(type) {
+        const container = document.getElementById('game-content');
+        if (type === 'math') {
+            container.innerHTML = `<button onclick="setM('easy')">E</button><button onclick="setM('hard')">H</button><button onclick="setM('ex')">X</button><div id="mt" style="margin-top:15px;"></div>`;
+        } else if (type === 'guess') {
+            container.innerHTML = `<button onclick="setG(10)">10</button><button onclick="setG(100)">100</button><button onclick="setG(100000)">MIRA</button><div id="gt" style="margin-top:15px;"></div>`;
+        } else {
+            container.innerHTML = `<button onclick="clicks+=clickPower;updateUI()" style="padding:40px; background:#111; color:#0f0; border:2px solid #0f0; cursor:pointer; width:100%;">TAP THE VOID</button><br><br>TOTAL: <span id="c-count">0</span>`;
+        }
+    }
+
+    function setM(d) {
+        let a = Math.floor(Math.random()*100), b = Math.floor(Math.random()*100), ans = a+b;
+        if(d==='hard'){ a=Math.floor(Math.random()*50); b=Math.floor(Math.random()*50); ans=a*b; }
+        if(d==='ex'){ a=a*b; ans=a/b; }
+        document.getElementById('mt').innerHTML = `${a} ${d==='hard'?'*':d==='ex'?'/':'+'} ${b} = <input type="number" id="ma"> <button onclick="ckM(${ans})">OK</button>`;
+    }
+    function ckM(a){ if(parseInt(document.getElementById('ma').value)===a){ clicks += (clickPower*10); alert("CORRECT: BONUS CLICKS"); setM(); } }
+
+    function setG(max){ let t=Math.floor(Math.random()*max)+1; document.getElementById('gt').innerHTML = `Guess 1-${max}: <input type="number" id="ga"> <button onclick="ckG(${t})">GO</button>`; }
+    function ckG(t){ if(parseInt(document.getElementById('ga').value)===t){ clicks += (clickPower*50); alert("LUCKY"); } else { alert("WRONG"); } }
+
+    document.getElementById('trainer-id').innerText = "T-" + Math.floor(Math.random()*8999+1000);
+    loadGame('click');
+</script>
+</body>
+</html>

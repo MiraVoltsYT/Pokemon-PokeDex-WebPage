@@ -69,7 +69,7 @@ th, td {
   font-weight: bold; 
   text-transform: uppercase;
   color: #fff;
-  writing-mode: vertical-lr; /* Vertically align headings to save space */
+  writing-mode: vertical-lr;
   padding: 15px 5px;
 }
 
@@ -80,13 +80,13 @@ th, td {
   margin-right: 6px;
   vertical-align: middle;
 }
-.type-icon-v { /* Specific adjustment for vertical columns */
+.type-icon-v {
   margin-bottom: 6px;
   width: 20px;
   height: 20px;
 }
 
-/* Effectiveness Indicators - High Contrast & Glowing */
+/* Effectiveness Indicators */
 .x2 { 
   background: rgba(34, 197, 94, 0.35); 
   color: #a7f3d0; 
@@ -102,10 +102,8 @@ th, td {
 }
 .x0 { background: #000; color: #fff; font-weight: bold; font-size: 16px; }
 
-/* The "-" for Normal Damage */
 .neutral-dmg { color: rgba(255,255,255,0.2); font-size: 16px; }
 
-/* Tactical Legend Style */
 .legend {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -166,85 +164,44 @@ th, td {
     <table>
       <thead>
         <tr>
-          <th style="background:transparent; border:none; text-align:right; font-weight:bold; color: var(--neutral); font-size:12px; letter-spacing:1px; padding-right:15px; text-transform:uppercase;"></th>
-          
-          <th class="defender-head" style="background:#a8a878;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/normal.svg" class="type-icon-v"> NOR
-          </th>
-          <th class="defender-head" style="background:#f08030;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/fire.svg" class="type-icon-v"> FIR
-          </th>
-          <th class="defender-head" style="background:#6890f0;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/water.svg" class="type-icon-v"> WAT
-          </th>
-          <th class="defender-head" style="background:#f8d030;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/electric.svg" class="type-icon-v"> ELE
-          </th>
-          <th class="defender-head" style="background:#78c850;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/grass.svg" class="type-icon-v"> GRA
-          </th>
-          <th class="defender-head" style="background:#98d8d8;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/ice.svg" class="type-icon-v"> ICE
-          </th>
-          <th class="defender-head" style="background:#c03028;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/fighting.svg" class="type-icon-v"> FIG
-          </th>
-          <th class="defender-head" style="background:#a040a0;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/poison.svg" class="type-icon-v"> POI
-          </th>
-          <th class="defender-head" style="background:#e0c068;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/ground.svg" class="type-icon-v"> GRO
-          </th>
-          <th class="defender-head" style="background:#a890f0;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/flying.svg" class="type-icon-v"> FLY
-          </th>
-          <th class="defender-head" style="background:#f85888;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/psychic.svg" class="type-icon-v"> PSY
-          </th>
-          <th class="defender-head" style="background:#a8b820;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/bug.svg" class="type-icon-v"> BUG
-          </th>
-          <th class="defender-head" style="background:#b8a038;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/rock.svg" class="type-icon-v"> ROC
-          </th>
-          <th class="defender-head" style="background:#705898;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/ghost.svg" class="type-icon-v"> GHO
-          </th>
-          <th class="defender-head" style="background:#7038f8;">
-            <img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/dragon.svg" class="type-icon-v"> DRA
-          </th>
+          <th style="background:transparent; border:none;"></th>
+          <th class="defender-head" style="background:#a8a878;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/normal.svg" class="type-icon-v"> NOR</th>
+          <th class="defender-head" style="background:#f08030;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/fire.svg" class="type-icon-v"> FIR</th>
+          <th class="defender-head" style="background:#6890f0;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/water.svg" class="type-icon-v"> WAT</th>
+          <th class="defender-head" style="background:#f8d030;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/electric.svg" class="type-icon-v"> ELE</th>
+          <th class="defender-head" style="background:#78c850;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/grass.svg" class="type-icon-v"> GRA</th>
+          <th class="defender-head" style="background:#98d8d8;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/ice.svg" class="type-icon-v"> ICE</th>
+          <th class="defender-head" style="background:#c03028;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/fighting.svg" class="type-icon-v"> FIG</th>
+          <th class="defender-head" style="background:#a040a0;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/poison.svg" class="type-icon-v"> POI</th>
+          <th class="defender-head" style="background:#e0c068;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/ground.svg" class="type-icon-v"> GRO</th>
+          <th class="defender-head" style="background:#a890f0;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/flying.svg" class="type-icon-v"> FLY</th>
+          <th class="defender-head" style="background:#f85888;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/psychic.svg" class="type-icon-v"> PSY</th>
+          <th class="defender-head" style="background:#a8b820;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/bug.svg" class="type-icon-v"> BUG</th>
+          <th class="defender-head" style="background:#b8a038;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/rock.svg" class="type-icon-v"> ROC</th>
+          <th class="defender-head" style="background:#705898;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/ghost.svg" class="type-icon-v"> GHO</th>
+          <th class="defender-head" style="background:#7038f8;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/dragon.svg" class="type-icon-v"> DRA</th>
+          <th class="defender-head" style="background:#705848;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/dark.svg" class="type-icon-v"> DAR</th>
+          <th class="defender-head" style="background:#ee99ac;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/fairy.svg" class="type-icon-v"> FAI</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td class="attacker-label" style="background:#a8a878;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/normal.svg" class="type-icon">Normal</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x0">0</td><td class="neutral-dmg">-</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#f08030;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/fire.svg" class="type-icon">Fire</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x05">½</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#6890f0;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/water.svg" class="type-icon">Water</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x05">½</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#f8d030;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/electric.svg" class="type-icon">Electric</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x0">0</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#78c850;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/grass.svg" class="type-icon">Grass</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x05">½</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#98d8d8;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/ice.svg" class="type-icon">Ice</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#c03028;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/fighting.svg" class="type-icon">Fighting</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x05">½</td><td class="x05">½</td><td class="x2">2</td><td class="x0">0</td><td class="neutral-dmg">-</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#a040a0;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/poison.svg" class="type-icon">Poison</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x05">½</td><td class="neutral-dmg">-</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#e0c068;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/ground.svg" class="type-icon">Ground</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x0">0</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#a890f0;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/flying.svg" class="type-icon">Flying</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#f85888;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/psychic.svg" class="type-icon">Psychic</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#a8b820;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/bug.svg" class="type-icon">Bug</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#b8a038;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/rock.svg" class="type-icon">Rock</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#705898;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/ghost.svg" class="type-icon">Ghost</td><td class="x0">0</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td></tr>
-        
-        <tr><td class="attacker-label" style="background:#7038f8;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/dragon.svg" class="type-icon">Dragon</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td></tr>
+        <tr><td class="attacker-label" style="background:#a8a878;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/normal.svg" class="type-icon">Normal</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x0">0</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td></tr>
+        <tr><td class="attacker-label" style="background:#f08030;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/fire.svg" class="type-icon">Fire</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td></tr>
+        <tr><td class="attacker-label" style="background:#6890f0;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/water.svg" class="type-icon">Water</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td></tr>
+        <tr><td class="attacker-label" style="background:#f8d030;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/electric.svg" class="type-icon">Electric</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x0">0</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td></tr>
+        <tr><td class="attacker-label" style="background:#78c850;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/grass.svg" class="type-icon">Grass</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td></tr>
+        <tr><td class="attacker-label" style="background:#98d8d8;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/ice.svg" class="type-icon">Ice</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td></tr>
+        <tr><td class="attacker-label" style="background:#c03028;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/fighting.svg" class="type-icon">Fighting</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x05">½</td><td class="x05">½</td><td class="x2">2</td><td class="x0">0</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td></tr>
+        <tr><td class="attacker-label" style="background:#a040a0;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/poison.svg" class="type-icon">Poison</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td></tr>
+        <tr><td class="attacker-label" style="background:#e0c068;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/ground.svg" class="type-icon">Ground</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x0">0</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td></tr>
+        <tr><td class="attacker-label" style="background:#a890f0;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/flying.svg" class="type-icon">Flying</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td></tr>
+        <tr><td class="attacker-label" style="background:#f85888;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/psychic.svg" class="type-icon">Psychic</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x0">0</td><td class="neutral-dmg">-</td></tr>
+        <tr><td class="attacker-label" style="background:#a8b820;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/bug.svg" class="type-icon">Bug</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td></tr>
+        <tr><td class="attacker-label" style="background:#b8a038;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/rock.svg" class="type-icon">Rock</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td></tr>
+        <tr><td class="attacker-label" style="background:#705898;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/ghost.svg" class="type-icon">Ghost</td><td class="x0">0</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td></tr>
+        <tr><td class="attacker-label" style="background:#7038f8;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/dragon.svg" class="type-icon">Dragon</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x0">0</td></tr>
+        <tr><td class="attacker-label" style="background:#705848;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/dark.svg" class="type-icon">Dark</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="x05">½</td></tr>
+        <tr><td class="attacker-label" style="background:#ee99ac;"><img src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/fairy.svg" class="type-icon">Fairy</td><td class="neutral-dmg">-</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x05">½</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="neutral-dmg">-</td><td class="x2">2</td><td class="x2">2</td><td class="neutral-dmg">-</td></tr>
       </tbody>
     </table>
   </div>

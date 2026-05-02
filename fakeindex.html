@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pokémon Generations Hub</title>
+
+<style>
+body {
+  margin:0;
+  font-family:Arial, sans-serif;
+  /* Black and Green Glitching Background */
+  background: #000;
+  background-image: 
+    linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  color:#00ff00;
+  overflow-x: hidden;
+  animation: bg-glitch 0.2s infinite;
+}
+
+@keyframes bg-glitch {
+  0% { background-position: 0 0; }
+  50% { background-position: 2px 2px; filter: hue-rotate(10deg); }
+  100% { background-position: -1px -1px; }
+}
+
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 25px;
+  background:rgba(0, 20, 0, 0.9);
+  border-bottom:2px solid #004400;
+  filter: grayscale(1) contrast(2);
+}
+
+.logo-left, .logo-right { height:50px; opacity: 0.5; }
+
+.container {
+  padding:30px;
+  backdrop-filter: blur(10px);
+}
+
+.title {
+  font-size:32px;
+  margin-bottom:30px;
+  text-align:center;
+  color:#00ff00;
+  text-shadow: 2px 2px #004400;
+  font-family: 'Courier New', monospace;
+}
+
+.gen-list {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:30px;
+  justify-items:center;
+}
+
+.generation {
+  padding:25px 15px;
+  width:180px;
+  background:rgba(0, 10, 0, 0.95);
+  border: 1px solid #00ff00;
+  border-left:6px solid #00ff00;
+  cursor:pointer;
+  text-align:center;
+  font-weight:bold;
+  font-size:18px;
+  border-radius:5px;
+  color: #00ff00;
+  box-shadow:0 0 10px rgba(0,255,0,0.2);
+  transition: transform 0.1s;
+}
+
+.generation:hover {
+  transform: scale(1.05);
+  background: #002200;
+  text-shadow: 0 0 8px #00ff00;
+}
+
+.note {
+  font-size:10px;
+  color:#008800;
+  margin-top:6px;
+  font-weight: normal;
+}
+
+/* --- PULSING MULTICOLOR GEN -1 --- */
+.glitch-container {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  padding-bottom: 50px;
+}
+
+.gen-negative {
+  background: #000;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  padding: 25px 50px;
+  font-size: 26px;
+  border: 4px double #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  animation: pulse-colors 0.3s infinite;
+  box-shadow: 0 0 20px #fff;
+}
+
+@keyframes pulse-colors {
+  0% { border-color: #ff0000; color: #ff0000; box-shadow: 0 0 20px #ff0000; }
+  25% { border-color: #00ff00; color: #00ff00; box-shadow: 0 0 20px #00ff00; }
+  50% { border-color: #0000ff; color: #0000ff; box-shadow: 0 0 20px #0000ff; }
+  75% { border-color: #ffff00; color: #ffff00; box-shadow: 0 0 20px #ffff00; }
+  100% { border-color: #ff00ff; color: #ff00ff; box-shadow: 0 0 20px #ff00ff; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <img src="pokedex.png" class="logo-left">
+  <img src="pokemon.png" class="logo-right">
+</div>
+
+<div class="container">
+  <div class="title">P̸O̸K̸E̸M̸O̸N̸_̸H̸U̸B̸_̸V̸O̸I̸D̸</div>
+
+  <div class="gen-list">
+    <div class="generation gen1" onclick="glitchAlert()">Generation 1</div>
+    <div class="generation gen2" onclick="glitchAlert()">Generation 2</div>
+    <div class="generation gen3" onclick="glitchAlert()">Generation 3</div>
+    <div class="generation gen4" onclick="glitchAlert()">Generation 4</div>
+    <div class="generation gen5" onclick="glitchAlert()">Generation 5</div>
+    <div class="generation gen6" onclick="glitchAlert()">Generation 6</div>
+    <div class="generation gen7" onclick="glitchAlert()">Generation 7</div>
+    <div class="generation gen8" onclick="glitchAlert()">Generation 8</div>
+    <div class="generation gen9" onclick="glitchAlert()">Generation 9</div>
+
+    <div class="generation gen10" onclick="glitchAlert()">
+        Generation 10
+        <div class="note">E̵R̵R̵O̵R̵:̵ ̵N̸U̶L̷L̷</div>
+    </div>
+
+    <div class="generation type-chart" onclick="glitchAlert()">
+        Type Chart
+        <div class="note">M̴A̴T̸R̸I̸X̸_̶B̸R̸O̸K̷E̵N̶</div>
+    </div>
+
+    <div class="generation battle-sim" onclick="glitchAlert()">
+        Battle Engine
+        <div class="note">N̴O̵_̵O̸N̸E̸_̴L̶E̶F̴T̶_̸T̷O̸_̷F̵I̴G̶H̷T̵</div>
+    </div>
+
+    <div class="glitch-container">
+      <div class="gen-negative" onclick="location.href='crash.html'">
+        Generation -1
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function glitchAlert() {
+    const texts = [
+        "h̸e̸l̸p̸_̶m̷e̶", 
+        "0̸x̸F̸F̸F̸F̸F̸", 
+        "N̴O̸_̵E̵S̸C̸A̸P̸E̵", 
+        "T̶H̸E̸Y̶_̸A̸R̸E̶_̶W̶A̷T̶C̶H̸I̸N̴G̷", 
+        "S̷T̶O̶P̸_̴C̶L̵I̶C̷K̸I̴N̶G̶",
+        "VOID_ERROR_666"
+    ];
+    alert(texts[Math.floor(Math.random() * texts.length)]);
+}
+
+// Randomly flicker the title
+setInterval(() => {
+    const title = document.querySelector('.title');
+    title.style.visibility = (Math.random() > 0.1) ? 'visible' : 'hidden';
+}, 100);
+</script>
+
+</body>
+</html>

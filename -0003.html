@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TERMINAL_ERROR // INDEX #-0003 // . ゥ ( .I' .</title>
+    <style>
+        :root {
+            --bg-deep: #050505;
+            --panel-glass: rgba(10, 10, 10, 0.98);
+            --accent-glow: #ffff00; /* Electric Yellow */
+            --glitch-red: #ff003c;
+            --border-subtle: rgba(255, 255, 255, 0.05);
+            --text-main: #ffffff;
+            --text-dim: #444444;
+            --err-color: #f7ff00; /* Sickly Yellow */
+        }
+
+        body {
+            background: #000;
+            color: var(--text-main);
+            font-family: 'Courier New', monospace;
+            margin: 0; padding: 20px;
+            display: flex; justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://media.giphy.com/media/oEI9uWUqWMrBK/giphy.gif');
+            opacity: 0.08; /* Slightly more static for Yellow glitches */
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(255, 255, 0, 0.05) 50%);
+            background-size: 100% 2px;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .btn-home {
+            background: rgba(255, 255, 0, 0.05); 
+            border: 1px solid var(--err-color);
+            color: var(--err-color); 
+            font-size: 10px; padding: 10px 14px;
+            border-radius: 6px; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+            margin-bottom: 20px;
+        }
+        .btn-home:hover {
+            background: rgba(247, 255, 0, 0.2);
+            text-shadow: 2px 0 #fff, -2px 0 #ff003c;
+            letter-spacing: 4px;
+        }
+
+        .terminal-container {
+            width: 1400px;
+            background: var(--panel-glass);
+            border: 2px solid var(--err-color);
+            position: relative;
+            box-shadow: 0 0 80px rgba(247, 255, 0, 0.1);
+        }
+
+        .main-grid { display: grid; grid-template-columns: 340px 1fr 1fr 340px; }
+        .col { padding: 30px; border-right: 1px solid var(--border-subtle); }
+
+        .glitch-bar {
+            position: absolute;
+            left: 0; width: 100%; height: 1px;
+            background: rgba(255, 255, 0, 0.3);
+            animation: moveBar 2s infinite linear;
+        }
+
+        @keyframes moveBar {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+
+        @keyframes statVibrate {
+            0% { transform: translate(0); opacity: 1; }
+            20% { transform: translate(-10px, 5px); opacity: 0.5; }
+            40% { transform: translate(10px, -5px); opacity: 1; }
+            60% { transform: translate(-5px, -10px); opacity: 0.7; }
+            100% { transform: translate(0); opacity: 1; }
+        }
+
+        .sprite-display { 
+            text-align: center; padding: 20px;
+            background: #000;
+            border: 1px dashed var(--err-color);
+        }
+
+        .section-tag {
+            font-size: 10px; font-weight: 800; color: var(--err-color);
+            text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+        }
+
+        .archive-box {
+            background: rgba(20, 20, 0, 0.8); border: 1px solid rgba(247, 255, 0, 0.2);
+            padding: 15px; font-size: 13px; color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .move-card {
+            background: rgba(247, 255, 0, 0.05);
+            border-left: 3px solid var(--err-color);
+            padding: 10px; margin-bottom: 8px;
+        }
+
+        .glitch-char { display: inline-block; min-width: 0.6em; }
+    </style>
+</head>
+<body onclick="startStatic()">
+
+<div class="scanlines"></div>
+
+<div class="terminal-container">
+    <div class="glitch-bar" style="animation-delay: 0.5s;"></div>
+    
+    <div class="terminal-header" style="padding: 40px; border-bottom: 2px solid var(--err-color); background: rgba(247,255,0,0.02);">
+        <a href="gen-1.html" class="btn-home glitch-text">[!] RETURN_TO_NULL</a>
+        <h1 id="main-title" style="font-size: 60px; margin: 0; color: var(--err-color); letter-spacing: -2px;">. ゥ ( .I' .</h1>
+        <div style="color: var(--err-color); font-size: 11px; font-weight: bold; letter-spacing: 5px;">YELLOW_VERSION_DATA_EXPULSION // INDEX #-0003</div>
+    </div>
+
+    <div class="main-grid">
+        <div class="col">
+            <span class="section-tag">Visual Identity</span>
+            <div class="sprite-display">
+                <img src="DOT_I_NULL.webp" width="220" style="image-rendering: pixelated; filter: brightness(1.2) sepia(1);">
+            </div>
+            
+            <span class="section-tag" style="margin-top:20px;">Biometric Specs</span>
+            <div id="specs" style="font-size: 12px; display: flex; flex-direction: column; gap: 10px;">
+                <p>GENUS: <span class="glitch-text">UNKNOWN/999</span></p>
+                <p>HEIGHT: <span class="glitch-text">23.0 ft</span></p>
+                <p>WEIGHT: <span class="glitch-text">880.0 lb</span></p>
+                <p>INDEX: <span class="glitch-text"># -0003</span></p>
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Anomalous Behavior</span>
+            <div class="archive-box glitch-text">
+                Found exclusively in the Yellow Version. This entity occupies the same memory space as the Pikachu friendship variable. Its presence often causes the player's companion to walk through walls or vanish entirely.
+            </div>
+            
+            <span class="section-tag">Internal Memory</span>
+            <div class="archive-box glitch-text" style="font-size: 11px; color: #888;">
+                Unlike MissingNo, . ゥ contains high concentrations of "junk code" that can trigger the 'Glitch City' effect without the player ever leaving the map.
+            </div>
+
+            <span class="section-tag">Warning Traits</span>
+            <ul style="font-size: 11px; color: var(--err-color); line-height: 2;">
+                <li class="glitch-text">PIKACHU_PARTNER_ERASURE</li>
+                <li class="glitch-text">WALK_THROUGH_WALLS_ENABLER</li>
+                <li class="glitch-text">SOUND_BANK_CORRUPTION</li>
+            </ul>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Corrupted Attacks</span>
+            <div class="move-card"><b class="glitch-text">Thunder (NULL)</b><br><small>Accuracy: 0%</small></div>
+            <div class="move-card"><b class="glitch-text">Pay Day</b><br><small>Source: 0xFD21</small></div>
+            <div class="move-card"><b class="glitch-text">Pound</b><br><small>Usage: REPEAT</small></div>
+
+            <span class="section-tag" style="margin-top: 25px;">Stat Corruption</span>
+            <div id="stats-target"></div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Kernel Data</span>
+            <div class="archive-box" style="font-size: 10px; font-family: monospace; color: #ffff00; border-color: #ffff00;">
+                0000: 2E A5 28 2E<br>
+                0004: 49 27 2E 00<br>
+                0008: [PIKA_MISSING]<br>
+                000C: [ADDR_VOID]
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const glitchMap = {
+        'A': 'ÀÁÂÃÄÅĄ', 'B': 'ßß฿', 'C': 'ÇĆĈĊČ', 'D': 'ÐĎĐ', 'E': 'ÈÉÊËĘĚ', 
+        'F': 'Ƒ', 'G': 'ĜĞĠĢ', 'H': 'ĤĦ', 'I': 'ÌÍÎÏĨĪ', 'L': 'ĹĻĽĿŁ', 
+        'M': '₼', 'N': 'ÑŃŅŇ', 'O': 'ÒÓÔÕÖØ', 'P': '₱', 'R': 'ŔŖŘ', 
+        'S': 'ŠŞŚśşʂŝŜŞ̴̨̖', 'T': 'ŢŤŦ', 'U': 'ÙÚÛÜŨŪ', 'W': 'Ŵ', 'Y': 'ÝŶŸ', 
+        'Z': 'ŹŻŽ', 'a': 'àáâãäå', 'e': 'èéêë', 'i': 'ìíîï', 'o': 'òóôõö', 
+        'u': 'ùúûü', 's': 'śşŝš'
+    };
+
+    function startStatic() {
+        const audio = new Audio('https://www.soundjay.com/communication/tv-static-01.mp3');
+        audio.volume = 0.03;
+        audio.loop = true;
+        audio.play();
+    }
+
+    function prepareGlitchText() {
+        const elements = document.querySelectorAll('.glitch-text, #main-title');
+        elements.forEach(el => {
+            const text = el.innerText;
+            el.innerHTML = '';
+            [...text].forEach(char => {
+                const span = document.createElement('span');
+                span.className = 'glitch-char';
+                span.innerText = char;
+                span.dataset.orig = char;
+                el.appendChild(span);
+                
+                if (glitchMap[char] || char === ' ' || Math.random() > 0.8) {
+                    const randomTime = Math.random() * 6000 + 4000;
+                    setInterval(() => {
+                        const pool = glitchMap[char] || "⚡Ø█▓";
+                        span.innerText = pool[Math.floor(Math.random() * pool.length)];
+                        setTimeout(() => { span.innerText = span.dataset.orig; }, 500); 
+                    }, randomTime);
+                }
+            });
+        });
+    }
+
+    const stats = { 
+        HP: "Ø99", 
+        ATK: -1, 
+        DEF: 420, 
+        SPA: 11, 
+        SPD: 11, 
+        SPE: 255 
+    };
+
+    function renderStats() {
+        document.getElementById('stats-target').innerHTML = Object.entries(stats).map(([k, v]) => {
+            const isGlitched = (k === 'HP' || k === 'DEF');
+            const glitchStyle = isGlitched 
+                ? 'animation: statVibrate 0.1s infinite; width: 140%; filter: invert(1);' 
+                : `width: ${Math.max(0, (v/200)*100)}%`;
+            
+            return `
+                <div style="margin-bottom: 12px; position: relative;">
+                    <div style="display:flex; justify-content:space-between; font-size: 10px; font-weight: bold; margin-bottom: 4px;">
+                        <span class="glitch-text">${k}</span>
+                        <span class="glitch-text" style="${isGlitched ? 'color: #fff; text-shadow: 0 0 5px yellow;' : ''}">${v}</span>
+                    </div>
+                    <div style="height: 4px; background: rgba(255,255,0,0.1); overflow: visible;">
+                        <div style="height:100%; background:var(--err-color); box-shadow: 0 0 10px var(--err-color); transition: none; ${glitchStyle}"></div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    window.onload = () => {
+        renderStats();
+        prepareGlitchText();
+    };
+</script>
+
+</body>
+</html>

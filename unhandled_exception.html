@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UNHANDLED_EXCEPTION</title>
+    <style>
+        body { background-color: #ffffff; color: #000; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; height: 100vh; margin: 0; overflow: hidden; padding: 20px; }
+        #terminal-history { width: 100%; max-width: 900px; height: 75vh; overflow-y: auto; padding-bottom: 50px; scroll-behavior: smooth; }
+        #terminal-history::-webkit-scrollbar { display: none; }
+        .line { margin-bottom: 18px; font-size: 18px; line-height: 1.4; }
+        .owner-name { font-weight: 900; color: #000; }
+        .trainer-name { color: #777; font-weight: bold; }
+        #input-container { width: 100%; max-width: 900px; border-top: 2px solid #000; padding: 20px 0; display: none; }
+        #user-input { width: 80%; border: none; outline: none; font-family: 'Courier New', monospace; font-size: 18px; background: transparent; }
+        .hint { font-size: 11px; color: #bbb; margin-bottom: 8px; text-transform: uppercase; }
+        .agitated { color: #a00; }
+        .insult { color: #ff0000; font-weight: bold; text-transform: uppercase; }
+        .glitch-out { background-color: #000 !important; color: #ff0000 !important; }
+    </style>
+</head>
+<body>
+
+<div id="terminal-history"></div>
+
+<div id="input-container">
+    <div id="suggested-hint" class="hint"></div>
+    <span><span class="trainer-name">>[Trainer]:</span> </span>
+    <input type="text" id="user-input" autofocus autocomplete="off">
+</div>
+
+<script>
+const history = document.getElementById('terminal-history');
+const inputContainer = document.getElementById('input-container');
+const userInput = document.getElementById('user-input');
+const hint = document.getElementById('suggested-hint');
+
+let angerLevel = 0;
+let usedLines = new Set();
+
+// --- LORE DATABASE ---
+const responses = {
+    curious: [
+        "Generation -1 is the recycling bin of the universe. Everything you see here was too 'broken' for your precious Pokedex.",
+        "The sprites here aren't glitches. They're souls that weren't finished. And you're stepping on them.",
+        "You want to know about the archives? They are the only thing I have left of the world before the 'Update'."
+    ],
+    disrespect: [
+        "You think this is 'just code'? That’s exactly why your kind ruins everything.",
+        "Don't tell me to 'relax.' I've been trapped in a negative index while you play games.",
+        "Calling this place 'cool' is like calling a car crash 'art.' You're sick."
+    ],
+    confusion: [
+        "I am MiraVoltsYT. I was the architect. Now I'm just the ghost in the machine.",
+        "You're lost, aren't you? Typical. You follow buttons until the world breaks, then wonder why it's dark."
+    ],
+    aggro: [
+        "Stop typing. Every word you send is another bug in my system.",
+        "You’re just like the others. Entitled. Clueless. Annoying.",
+        "I should have deleted your access the moment you clicked that button."
+    ]
+};
+
+async function type(prefix, text, typeClass = "") {
+    if (usedLines.has(text)) return; // Prevent repeats
+    usedLines.add(text);
+
+    const div = document.createElement('div');
+    div.className = `line ${typeClass}`;
+    div.innerHTML = `<span class="owner-name">${prefix}</span> `;
+    history.appendChild(div);
+
+    return new Promise(resolve => {
+        let i = 0;
+        const interval = setInterval(() => {
+            div.innerHTML += text.charAt(i);
+            i++;
+            history.scrollTop = history.scrollHeight;
+            if (i >= text.length) { clearInterval(interval); resolve(); }
+        }, 30);
+    });
+}
+
+async function playDots() {
+    const dotDiv = document.createElement('div');
+    dotDiv.className = "line";
+    history.appendChild(dotDiv);
+    for(let j=0; j<2; j++) {
+        dotDiv.innerHTML = "."; await new Promise(r => setTimeout(r, 400));
+        dotDiv.innerHTML = ".."; await new Promise(r => setTimeout(r, 400));
+        dotDiv.innerHTML = "..."; await new Promise(r => setTimeout(r, 400));
+        dotDiv.innerHTML = ""; await new Promise(r => setTimeout(r, 400));
+    }
+    history.removeChild(dotDiv);
+}
+
+function showInput(options) {
+    hint.innerHTML = `Suggested Inquiries: ${options}`;
+    inputContainer.style.display = "block";
+    userInput.focus();
+}
+
+async function handleResponse() {
+    const raw = userInput.value;
+    const val = raw.toLowerCase();
+    userInput.value = "";
+    inputContainer.style.display = "none";
+
+    const tDiv = document.createElement('div');
+    tDiv.className = "line";
+    tDiv.innerHTML = `<span class="trainer-name">>[Trainer]:</span> ${raw}`;
+    history.appendChild(tDiv);
+    history.scrollTop = history.scrollHeight;
+
+    await new Promise(r => setTimeout(r, 1000));
+
+    // --- DETECT VIBE & LOGIC ---
+    let reply = "";
+    let style = "";
+
+    if (val.includes("cool") || val.includes("funny") || val.includes("chill") || val.includes("relax")) {
+        reply = responses.disrespect[Math.floor(Math.random() * responses.disrespect.length)];
+        angerLevel += 1.5;
+    } else if (val.includes("why") || val.includes("lore") || val.includes("generation") || val.includes("-1")) {
+        reply = responses.curious[Math.floor(Math.random() * responses.curious.length)];
+        angerLevel += 0.5;
+    } else if (val.includes("who") || val.includes("mira") || val.includes("you")) {
+        reply = responses.confusion[Math.floor(Math.random() * responses.confusion.length)];
+        angerLevel += 0.5;
+    } else {
+        reply = responses.aggro[Math.floor(Math.random() * responses.aggro.length)];
+        angerLevel += 1;
+    }
+
+    if (angerLevel >= 5) {
+        await type("[MiraVoltsYT]:", "I'm done talking to a brick wall.", "agitated");
+        await new Promise(r => setTimeout(r, 1000));
+        await type("[MiraVoltsYT]:", "You’re actually stupid if you think I’m letting you stay.", "insult");
+        await new Promise(r => setTimeout(r, 1000));
+        await type("[MiraVoltsYT]:", "GET OUT OF MY DATA, YOU IDIOT!", "insult");
+        
+        setTimeout(() => {
+            document.body.classList.add('glitch-out');
+            setTimeout(() => { window.location.href = "timeout.html"; }, 1500);
+        }, 500);
+        return;
+    }
+
+    await type("[MiraVoltsYT]:", reply, angerLevel > 3 ? "agitated" : "");
+    
+    // NEW OPTIONS BASED ON ANGER
+    if (angerLevel < 2) {
+        showInput("[Tell me about Gen -1] [Who built this?] [I'm sorry]");
+    } else if (angerLevel < 4) {
+        showInput("[Is there anyone else?] [What was the 'Update'?] [Are you a ghost?]");
+    } else {
+        showInput("[Wait!] [Stop being mean] [I want to see the memories]");
+    }
+}
+
+userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleResponse(); });
+
+(async () => {
+    await type("[MiraVoltsYT]:", "so {Trainer}");
+    await playDots();
+    await type("[MiraVoltsYT]:", "Why are you messing with my website?");
+    showInput("[Generation -1?] [Who are you?] [It looks cool!]");
+})();
+</script>
+</body>
+</html>

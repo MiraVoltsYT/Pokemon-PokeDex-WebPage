@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>P̷o̷k̷e̷m̷o̷n̷ ̷H̷e̷l̷l̷</title>
+
+<style>
+/* --- DARK THEME & ANIMATIONS --- */
+body {
+  margin:0;
+  font-family: 'Courier New', monospace;
+  background: linear-gradient(rgba(30, 0, 0, 0.95), rgba(0, 0, 0, 1));
+  background-color: black;
+  color:#ff0000;
+  overflow-x: hidden;
+  transition: background 6s ease;
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0) rotate(var(--rot)); }
+  50% { transform: translate(8px, -8px) rotate(var(--rot)); }
+  100% { transform: translate(-8px, 8px) rotate(var(--rot)); }
+}
+
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 25px;
+  background:rgba(10,0,0,0.95);
+  border-bottom:3px solid #ff0000;
+  filter: grayscale(1) invert(1);
+}
+
+.container { padding:30px; }
+
+.title {
+  font-size:35px;
+  margin-bottom:30px;
+  text-align:center;
+  color:#ff0000;
+  text-shadow: 0 0 15px #ff0000;
+}
+
+.gen-list {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:40px;
+  justify-items:center;
+}
+
+.generation {
+  padding:25px 15px;
+  width:180px;
+  background:rgba(15, 0, 0, 0.95);
+  border-left:8px solid #600;
+  cursor:pointer;
+  text-align:center;
+  font-weight:bold;
+  font-size:18px;
+  color: #900;
+  animation: drift 5s infinite ease-in-out alternate;
+  transition: 0.2s;
+}
+
+.generation:hover {
+  background: #ff0000 !important;
+  color: #000 !important;
+  box-shadow: 0 0 40px #ff0000;
+  animation-play-state: paused;
+}
+
+/* Individual Rotations for the Floating Effect */
+.gen1 { --rot: -3deg; } .gen2 { --rot: 2deg; } .gen3 { --rot: -6deg; } .gen4 { --rot: 4deg; }
+.gen5 { --rot: -2deg; } .gen6 { --rot: 5deg; } .gen7 { --rot: -8deg; } .gen8 { --rot: 3deg; }
+.gen9 { --rot: -5deg; } .gen10 { --rot: 10deg; } .gen11 { --rot: -9deg; } .gen12 { --rot: 4deg; }
+
+.restore-box {
+    margin: 60px auto;
+    width: 220px;
+    padding: 15px;
+    border: 2px solid #ff0000;
+    text-align: center;
+    cursor: pointer;
+    background: black;
+    color: #ff0000;
+    font-weight: bold;
+    transition: 0.4s;
+}
+
+/* --- ACHIEVEMENT POPUP (MINECRAFT STYLE) --- */
+#achievement-popup {
+    position: fixed;
+    top: 20px;
+    right: -450px; 
+    width: 320px;
+    height: 70px;
+    background: #222;
+    border: 4px solid #000;
+    outline: 2px solid #555;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    z-index: 10000;
+    transition: right 0.6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+
+#achievement-popup.show { right: 20px; }
+
+.ach-icon {
+    width: 50px; height: 50px;
+    border: 2px solid #444; background: #000;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.ach-icon img {
+    width: 100%;
+    filter: sepia(100%) saturate(500%) hue-rotate(-50deg);
+}
+
+.ach-text { margin-left: 15px; }
+.ach-title { color: #ffff00; font-size: 14px; font-weight: bold; margin: 0; }
+.ach-desc { color: #ffffff; font-size: 11px; margin: 3px 0 0 0; line-height: 1.2; }
+
+/* --- REBOOT OVERLAY --- */
+#reboot-overlay {
+    position: fixed;
+    top:0; left:0; width: 100%; height: 100%;
+    display: none;
+    z-index: 10001;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #1a0000;
+}
+
+#progress-container { width: 400px; height: 25px; background: #000; border: 2px solid #555; position: relative; }
+#progress-bar { width: 0%; height: 100%; background: #a855f7; box-shadow: 0 0 15px #a855f7; }
+#percentage-text { color: white; margin-bottom: 5px; font-weight: bold; }
+#status-text { color: #fff; font-size: 16px; font-style: italic; opacity: 0.7; margin-top: 10px; }
+
+#final-screen {
+    position: fixed;
+    top:0; left:0; width: 100%; height: 100%;
+    background: white;
+    display: none;
+    z-index: 10002;
+    justify-content: center; align-items: center;
+    opacity: 0; transition: opacity 2s ease;
+}
+</style>
+</head>
+
+<body>
+
+<div id="achievement-popup">
+    <div class="ach-icon">
+        <img src="https://www.reddit.com/r/pokemon/comments/11adu2r/digital_painting_i_did_of_an_abandoned_pok%C3%A9_ball/">
+    </div>
+    <div class="ach-text">
+        <p class="ach-title">Bad Ending 3/10!</p>
+        <p class="achieve-desc">They're all dead thanks to you.</p>
+    </div>
+</div>
+
+<div class="header">
+  <img src="pokedex.png" style="height:55px; opacity:0.2;">
+  <img src="pokemon.png" style="height:55px; opacity:0.2;">
+</div>
+
+<div class="container">
+  <div class="title">FATAL_SYSTEM_ERROR</div>
+
+  <div class="gen-list">
+    <div class="generation gen1" onclick="location.href='gen1HELL.html'">Generation 1</div>
+    <div class="generation gen2" onclick="location.href='gen2HELL.html'">Generation 2</div>
+    <div class="generation gen3" onclick="location.href='gen3HELL.html'">Generation 3</div>
+    <div class="generation gen4" onclick="location.href='gen4HELL.html'">Generation 4</div>
+    <div class="generation gen5" onclick="location.href='gen5HELL.html'">Generation 5</div>
+    <div class="generation gen6" onclick="location.href='gen6HELL.html'">Generation 6</div>
+    <div class="generation gen7" onclick="location.href='gen7HELL.html'">Generation 7</div>
+    <div class="generation gen8" onclick="location.href='gen8HELL.html'">Generation 8</div>
+    <div class="generation gen9" onclick="location.href='gen9HELL.html'">Generation 9</div>
+    <div class="generation gen10" onclick="location.href='gen10HELL.html'">Generation 10</div>
+    <div class="generation gen11" onclick="location.href='gen11HELL.html'">Generation 11</div>
+    <div class="generation gen12" onclick="location.href='gen12HELL.html'">Generation 12</div>
+  </div>
+
+  <div class="restore-box" onclick="startRestore()">Restore?</div>
+</div>
+
+<div id="reboot-overlay">
+    <div id="percentage-text">0%</div>
+    <div id="progress-container"><div id="progress-bar"></div></div>
+    <div id="status-text">Scanning for errors...</div>
+</div>
+
+<div id="final-screen">
+    <h1 style="color:#7C3AED; font-family:Arial;">Welcome Back [Trainer]! :D</h1>
+</div>
+
+<script>
+// --- ACHIEVEMENT TRACKER LOGIC ---
+function checkAchievement() {
+    const unlocked = localStorage.getItem('ach_ending_3');
+    
+    if (!unlocked) {
+        // Save to memory immediately
+        localStorage.setItem('ach_ending_3', 'true');
+        
+        // Show the popup once
+        setTimeout(() => {
+            const popup = document.getElementById('achievement-popup');
+            popup.classList.add('show');
+            setTimeout(() => popup.classList.remove('show'), 6000);
+        }, 1200);
+    }
+}
+
+// Run achievement check on load
+window.onload = checkAchievement;
+
+// --- RESTORE SEQUENCE LOGIC ---
+async function wait(ms) { return new Promise(res => setTimeout(res, ms)); }
+
+async function startRestore() {
+    const overlay = document.getElementById('reboot-overlay');
+    const bar = document.getElementById('progress-bar');
+    const status = document.getElementById('status-text');
+    const percent = document.getElementById('percentage-text');
+    const final = document.getElementById('final-screen');
+
+    overlay.style.display = 'flex';
+
+    async function update(val, msg, speed = 500) {
+        bar.style.width = val + "%";
+        percent.innerText = val + "%";
+        if(msg) status.innerText = msg;
+        await wait(speed);
+    }
+
+    await update(15, "Wiping corrupted sectors...");
+    await update(40, "Solving problems...", 3000);
+    await update(70, "Finding glitches...");
+    
+    // THE GLITCH
+    status.innerText = "CRITICAL FAILURE: SYSTEM_REJECTS_RESTORE";
+    bar.style.width = "-80px"; 
+    percent.innerText = "-1%";
+    overlay.style.background = "#400";
+    await wait(2000);
+
+    await update(99, "Reconstructing system...", 5000);
+    
+    // Finish
+    bar.style.width = "100%";
+    percent.innerText = "100%";
+    status.innerText = "Done!";
+    await wait(1000);
+
+    final.style.display = 'flex';
+    setTimeout(() => { final.style.opacity = "1"; }, 50);
+    setTimeout(() => { location.href = 'index.html'; }, 4000);
+}
+</script>
+
+</body>
+</html>

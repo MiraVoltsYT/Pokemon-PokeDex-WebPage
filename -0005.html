@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TERMINAL_ERROR // INDEX #0000 // ??????????</title>
+    <style>
+        :root {
+            --bg-deep: #000000;
+            --panel-glass: rgba(5, 5, 5, 0.98);
+            --accent-glow: #ffffff;
+            --glitch-white: #f0f0f0;
+            --border-subtle: rgba(255, 255, 255, 0.15);
+            --text-main: #ffffff;
+            --err-color: #ffffff; /* Decamark is pure white/black void */
+        }
+
+        body {
+            background: #000;
+            color: var(--text-main);
+            font-family: 'Courier New', monospace;
+            margin: 0; padding: 20px;
+            display: flex; justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden; /* Scroll fix active */
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://media.giphy.com/media/oEI9uWUqWMrBK/giphy.gif');
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .glitch-layer {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1001;
+        }
+
+        .static-strip {
+            position: absolute;
+            left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 2px 0 10px rgba(255, 255, 255, 0.2);
+            display: none;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.5) 50%);
+            background-size: 100% 2px;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.2;
+        }
+
+        .btn-home {
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid #444;
+            color: #888; 
+            font-size: 10px; padding: 10px 14px;
+            border-radius: 4px; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .btn-home:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 20px #fff;
+        }
+
+        .terminal-container {
+            width: 1400px;
+            background: var(--panel-glass);
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            z-index: 10;
+        }
+
+        .main-grid { display: grid; grid-template-columns: 340px 1fr 1fr 340px; }
+        .col { padding: 30px; border-right: 1px solid var(--border-subtle); }
+
+        .sprite-display { 
+            text-align: center; padding: 20px;
+            background: #050505;
+            border: 1px solid #222;
+        }
+
+        .section-tag {
+            font-size: 10px; font-weight: 800; color: #666;
+            text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+        }
+
+        .archive-box {
+            background: rgba(15, 15, 15, 0.8); border: 1px solid #333;
+            padding: 15px; font-size: 13px; color: #888;
+            margin-bottom: 20px;
+        }
+
+        .move-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 2px solid #fff;
+            padding: 10px; margin-bottom: 8px;
+        }
+
+        .glitch-char { display: inline-block; min-width: 0.6em; }
+    </style>
+</head>
+<body onclick="startStatic()">
+
+<div class="glitch-layer" id="glitch-host"></div>
+<div class="scanlines"></div>
+
+<div class="terminal-container">
+    <div class="terminal-header" style="padding: 40px; border-bottom: 1px solid var(--border-subtle);">
+        <a href="gen-1.html" class="btn-home glitch-text">[!] EXIT_TO_REALITY</a>
+        <h1 id="main-title" style="font-size: 60px; margin: 0; color: #fff; letter-spacing: 4px;">? ? ? ? ? ? ? ? ? ?</h1>
+        <div style="color: #444; font-size: 11px; font-weight: bold; letter-spacing: 10px;">DECAMARK_DETECTION // ADDR_0x0000</div>
+    </div>
+
+    <div class="main-grid">
+        <div class="col">
+            <span class="section-tag">Null Identity</span>
+            <div class="sprite-display">
+                <img src="DECAMARK_VOID_5.jpg" width="220" style="image-rendering: pixelated; filter: brightness(1.2);">
+            </div>
+            
+            <span class="section-tag" style="margin-top:20px;">System Specs</span>
+            <div id="specs" style="font-size: 12px; display: flex; flex-direction: column; gap: 10px;">
+                <p>GENUS: <span class="glitch-text">UNKNOWN</span></p>
+                <p>TYPE: <span class="glitch-text">POKéMON / NULL</span></p>
+                <p>INDEX: <span class="glitch-text"># 0000</span></p>
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Core Anomaly</span>
+            <div class="archive-box glitch-text">
+                Decamark is the definitive placeholder of Generation III. It is the "nothingness" that exists between the cracks of the Pokédex. Encountering it is often a sign of total hardware despair or memory corruption.
+            </div>
+            
+            <span class="section-tag">Behavioral Logs</span>
+            <div class="archive-box glitch-text" style="font-size: 11px; color: #555;">
+                Unlike other glitches, Decamark often lacks a physical cry. It exists as a silence that crashes the game's audio processor. It is the ghost in the machine that cannot be exorcised without a hard reset.
+            </div>
+
+            <span class="section-tag">Warning Signs</span>
+            <ul style="font-size: 11px; color: #888; line-height: 2;">
+                <li class="glitch-text">POKEDEX_OVERFLOW</li>
+                <li class="glitch-text">CIRCULAR_SPRITE_LOOP</li>
+                <li class="glitch-text">SAVE_DESTRUCTION_RISK</li>
+            </ul>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Void Attacks</span>
+            <div class="move-card"><b class="glitch-text">-- (0x00)</b></div>
+            <div class="move-card"><b class="glitch-text">-- (0x00)</b></div>
+            <div class="move-card"><b class="glitch-text">-- (0x00)</b></div>
+
+            <span class="section-tag" style="margin-top: 25px;">Data Structure</span>
+            <div id="stats-target"></div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Memory Dump</span>
+            <div class="archive-box" style="font-size: 10px; font-family: monospace; color: #fff;">
+                0000: 3F 3F 3F 3F<br>
+                0004: 3F 3F 3F 3F<br>
+                0008: 3F 3F 00 00<br>
+                000C: 00 00 00 00<br>
+                [NULL_VOID_REACHED]
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function triggerHardwareGlitch() {
+        const host = document.getElementById('glitch-host');
+        const strip = document.createElement('div');
+        strip.className = 'static-strip';
+        strip.style.height = (Math.random() * 8 + 1) + 'px';
+        strip.style.top = (Math.random() * window.innerHeight) + 'px';
+        strip.style.display = 'block';
+        strip.style.transform = `translateX(${(Math.random() - 0.5) * 40}px)`;
+        host.appendChild(strip);
+        setTimeout(() => strip.remove(), 60);
+    }
+    setInterval(triggerHardwareGlitch, 250);
+
+    function startStatic() {
+        const audio = new Audio('https://www.soundjay.com/communication/tv-static-01.mp3');
+        audio.volume = 0.01;
+        audio.loop = true;
+        audio.play();
+    }
+
+    function prepareGlitchText() {
+        const elements = document.querySelectorAll('.glitch-text, #main-title');
+        elements.forEach(el => {
+            const text = el.innerText;
+            el.innerHTML = '';
+            [...text].forEach(char => {
+                const span = document.createElement('span');
+                span.className = 'glitch-char';
+                span.innerText = char;
+                span.dataset.orig = char;
+                el.appendChild(span);
+                setInterval(() => {
+                    if(Math.random() > 0.9) {
+                        span.innerText = "?█░"[Math.floor(Math.random() * 3)];
+                        setTimeout(() => { span.innerText = span.dataset.orig; }, 300); 
+                    }
+                }, 3000);
+            });
+        });
+    }
+
+    const stats = { HP: 0, ATK: 0, DEF: 0, SPA: 0, SPD: 0, SPE: 0 };
+
+    function renderStats() {
+        document.getElementById('stats-target').innerHTML = Object.entries(stats).map(([k, v]) => {
+            return `
+                <div style="margin-bottom: 12px;">
+                    <div style="display:flex; justify-content:space-between; font-size: 10px; color: #444;">
+                        <span>${k}</span>
+                        <span>${v}</span>
+                    </div>
+                    <div style="height: 2px; background: #111;">
+                        <div style="height:100%; background:#333; width: 0%;"></div>
+                    </div>
+                </div>`;
+        }).join('');
+    }
+
+    window.onload = () => { renderStats(); prepareGlitchText(); };
+</script>
+
+</body>
+</html>

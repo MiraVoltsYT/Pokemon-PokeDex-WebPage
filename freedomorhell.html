@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>THE_FINAL_JUDGMENT</title>
+    <style>
+        body { background-color: #000; color: #fff; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
+        
+        #terminal { width: 500px; border: 2px solid #444; padding: 25px; background: #0a0a0a; text-align: center; box-shadow: 0 0 30px rgba(0, 255, 0, 0.1); }
+        .mira-text { color: #f00; font-size: 14px; margin-bottom: 20px; min-height: 40px; }
+        
+        #coin-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin: 25px 0; }
+        .coin { width: 50px; height: 50px; border-radius: 50%; background: #222; border: 3px solid #555; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px; transition: transform 0.3s; }
+        .heads { color: #0f0; border-color: #0f0; box-shadow: 0 0 10px #0f0; }
+        .tails { color: #f00; border-color: #f00; box-shadow: 0 0 10px #f00; }
+
+        button { background: #111; color: #0f0; border: 2px solid #0f0; padding: 12px 24px; cursor: pointer; font-family: 'Courier New'; font-weight: bold; font-size: 16px; }
+        button:hover:not(:disabled) { background: #0f0; color: #000; }
+        button:disabled { border-color: #333; color: #333; }
+
+        /* MINECRAFT ACHIEVEMENT STYLE */
+        #achievement {
+            position: fixed; top: 20px; right: -300px; width: 260px; height: 60px;
+            background: #222; border: 4px solid #000; display: flex; align-items: center;
+            padding: 5px; transition: right 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28); z-index: 2000;
+        }
+        #achievement.show { right: 20px; }
+        #ach-icon { width: 40px; height: 40px; background: #555; border: 2px solid #000; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-right: 10px; }
+        #ach-text { color: #fff; font-family: sans-serif; line-height: 1.2; }
+        #ach-title { color: #ffff55; font-weight: bold; font-size: 14px; }
+        #ach-desc { font-size: 13px; }
+
+        #game-over-overlay {
+            display: none; position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(100, 0, 0, 0.8); backdrop-filter: blur(10px);
+            flex-direction: column; align-items: center; justify-content: center; z-index: 3000;
+        }
+    </style>
+</head>
+<body>
+
+<div id="achievement">
+    <div id="ach-icon">🏆</div>
+    <div id="ach-text">
+        <div id="ach-title">Achievement Made!</div>
+        <div id="ach-desc">Patience</div>
+    </div>
+</div>
+
+<div id="terminal">
+    <div class="mira-text" id="mira-msg">[MiraVoltsYT]: The timer reached zero. Now, let gravity decide your fate.</div>
+    
+    <div id="coin-grid">
+        <div class="coin" id="c0">?</div><div class="coin" id="c1">?</div><div class="coin" id="c2">?</div><div class="coin" id="c3">?</div><div class="coin" id="c4">?</div>
+        <div class="coin" id="c5">?</div><div class="coin" id="c6">?</div><div class="coin" id="c7">?</div><div class="coin" id="c8">?</div><div class="coin" id="c9">?</div>
+    </div>
+
+    <div id="stat-readout" style="margin-bottom: 20px; font-size: 18px; color: #888;">
+        HEADS: <span id="h-count" style="color:#0f0">0</span> | TAILS: <span id="t-count" style="color:#f00">0</span>
+    </div>
+
+    <button id="flip-btn" onclick="startFlip()">FLIP ALL COINS</button>
+</div>
+
+<div id="game-over-overlay">
+    <h1 style="font-size: 60px; color: #fff; text-shadow: 2px 2px #000;">GAME OVER</h1>
+    <p style="font-size: 20px;">Your luck ran out.</p>
+</div>
+
+<script>
+    let heads = 0;
+    let tails = 0;
+
+    function startFlip() {
+        // Disable button so they can't double-click
+        document.getElementById('flip-btn').disabled = true;
+        heads = 0;
+        tails = 0;
+        
+        // 10% chance to be forced into the Fail/Void path
+        const forceFail = Math.random() < 0.10; 
+
+        for(let i=0; i<10; i++) {
+            setTimeout(() => {
+                let result;
+                if (forceFail) {
+                    // Force Fail Path: High chance for Tails
+                    result = Math.random() < 0.8 ? 'T' : 'H';
+                } else {
+                    // Normal Win Path: High chance for Heads
+                    result = Math.random() < 0.8 ? 'H' : 'T';
+                }
+
+                const el = document.getElementById('c' + i);
+                el.innerText = result;
+                el.className = `coin ${result === 'H' ? 'heads' : 'tails'}`;
+                el.style.transform = "rotateY(360deg)";
+
+                if(result === 'H') heads++; else tails++;
+                
+                document.getElementById('h-count').innerText = heads;
+                document.getElementById('t-count').innerText = tails;
+
+                // When we hit the LAST coin
+                if(i === 9) {
+                    // Tie-breaker: If it's 5-5, the "Fate" decides the winner
+                    if (heads === tails) {
+                        if (forceFail) tails++; else heads++;
+                    }
+                    // Trigger the final move
+                    handleEnding();
+                }
+            }, i * 250);
+        }
+    }
+
+    function handleEnding() {
+        setTimeout(() => {
+            if (heads > tails) {
+                // SUCCESS PATH
+                localStorage.setItem('patience_award', 'true');
+                showAchievement("Patience", "👑", "#ffff55");
+                document.getElementById('mira-msg').innerText = "[MiraVoltsYT]: ...Fine. You win. Returning to Hub.";
+                
+                setTimeout(() => { 
+                    window.location.href = "index.html"; 
+                }, 3000);
+
+            } else {
+                // VOID / FAIL PATH
+                localStorage.setItem('badluck_award', 'true');
+                showAchievement("Uh Oh.", "💀", "#ff5555");
+                document.getElementById('mira-msg').innerText = "[MiraVoltsYT]: 10% chance. You found it. Womp womp, hope you die 👋.";
+                
+                setTimeout(() => {
+    // 50-50 chance to pick which "Hell" file to load
+    const failPath = Math.random() < 0.5 ? "uh_oh.html" : "record.html";
+    
+    console.log("Redirecting to: " + failPath); // Useful for testing!
+    window.location.href = failPath; 
+}, 3000);
+            }
+        }, 1000);
+    }
+
+    function showAchievement(name, icon, color) {
+        const ach = document.getElementById('achievement');
+        if (!ach) return; // Safety check
+        document.getElementById('ach-desc').innerText = name;
+        document.getElementById('ach-icon').innerText = icon;
+        document.getElementById('ach-title').style.color = color;
+        ach.classList.add('show');
+    }
+</script>
+
+</body>
+</html>

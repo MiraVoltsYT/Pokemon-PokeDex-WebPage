@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GEN_1_EXTINCTION_LOG</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #600;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle, #1a0000 0%, #000 80%);
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px;
+            border-bottom: 4px double #400;
+            text-shadow: 0 0 10px red;
+            background: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* Glitchy Back Button */
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 5px 20px;
+            border: 1px solid #400;
+            color: #400;
+            text-decoration: none;
+            font-size: 12px;
+            transition: 0.2s;
+            text-transform: uppercase;
+            animation: buttonTwitch 3s infinite;
+        }
+
+        .back-btn:hover {
+            color: #f00;
+            border-color: #f00;
+            background: rgba(255, 0, 0, 0.1);
+            box-shadow: 0 0 10px #f00;
+        }
+
+        @keyframes buttonTwitch {
+            0%, 90%, 100% { transform: translateX(0); }
+            92% { transform: translateX(-3px) skewX(5deg); }
+            94% { transform: translateX(3px) skewX(-5deg); }
+            96% { transform: translateX(-2px); }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .card {
+            background: #050505;
+            border: 1px solid #300;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "X";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 120px;
+            color: rgba(255, 0, 0, 0.4);
+            font-family: 'Arial', sans-serif;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .sprite {
+            width: 80px;
+            height: 80px;
+            filter: grayscale(100%) brightness(40%) blur(1px);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-weight: bold;
+            text-decoration: line-through;
+            font-size: 12px;
+            color: #888;
+            display: block;
+        }
+
+        .status {
+            font-size: 9px;
+            color: #f00;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+
+        .id-badge {
+            font-size: 10px;
+            color: #400;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <a href="javascript:history.back()" class="back-btn">[ RETURN_TO_SAFETY ]</a>
+    <h1>V1_POKEDEX: MEMORIAL_CORE</h1>
+    <p>CAUTION: 151 SOULS UNACCOUNTED FOR</p>
+</div>
+
+<div class="grid" id="hellGrid"></div>
+
+<script>
+    const pokemonNames = [
+        "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard",
+        "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree",
+        "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot",
+        "Rattata", "Raticate", "Spearow", "Fearow", "Ekans", "Arbok",
+        "Pikachu", "Raichu", "Sandshrew", "Sandslash", "Nidoran♀", "Nidorina",
+        "Nidoqueen", "Nidoran♂", "Nidorino", "Nidoking", "Clefairy", "Clefable",
+        "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Zubat", "Golbat",
+        "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venonat",
+        "Venomoth", "Diglett", "Dugtrio", "Meowth", "Persian", "Psyduck",
+        "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag",
+        "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", "Machop",
+        "Machoke", "Machamp", "Bellsprout", "Weepinbell", "Victreebel", "Tentacool",
+        "Tentacruel", "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash",
+        "Slowpoke", "Slowbro", "Magnemite", "Magneton", "Farfetch'd", "Doduo",
+        "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder",
+        "Cloyster", "Gastly", "Haunter", "Gengar", "Onix", "Drowzee",
+        "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode", "Exeggcute",
+        "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung",
+        "Koffing", "Weezing", "Rhyhorn", "Rhydon", "Chansey", "Tangela",
+        "Kangaskhan", "Horsea", "Seadra", "Goldeen", "Seaking", "Staryu",
+        "Starmie", "Mr. Mime", "Scyther", "Jynx", "Electabuzz", "Magmar",
+        "Pinsir", "Tauros", "Magikarp", "Gyarados", "Lapras", "Ditto",
+        "Eevee", "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte",
+        "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Snorlax", "Articuno",
+        "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew"
+    ];
+
+    const incidentTypes = [
+        "MISSING - 1996", "FATAL_CRASH", "DATA_PURGED", "HEART_STOPPED", 
+        "SIGNAL_LOST", "BODY_NOT_FOUND", "DELETED_BY_HOST", "BURIED_ALIVE"
+    ];
+
+    const grid = document.getElementById('hellGrid');
+
+    pokemonNames.forEach((name, index) => {
+        const id = index + 1;
+        const card = document.createElement('div');
+        card.className = 'card';
+        const status = incidentTypes[Math.floor(Math.random() * incidentTypes.length)];
+        
+        card.innerHTML = `
+            <div class="id-badge">#${id.toString().padStart(3, '0')}</div>
+            <img class="sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png">
+            <span class="name">${name}</span>
+            <div class="status">[ ${status} ]</div>
+        `;
+        grid.appendChild(card);
+    });
+</script>
+
+</body>
+</html>

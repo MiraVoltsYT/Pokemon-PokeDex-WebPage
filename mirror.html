@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html style="transform: scaleX(-1); filter: invert(1) hue-rotate(180deg);">
+<head>
+<title>Hub snoitareneG nomékoP</title>
+
+<style>
+body {
+  margin:0;
+  font-family:Arial, sans-serif;
+  /* Using the same background logic, but it will be flipped by the html tag */
+  background: url('pokemon-wallpaper.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color:#222;
+  overflow-x: hidden;
+}
+
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 25px;
+  background:rgba(255,255,255,0.9);
+  border-bottom:2px solid #dcdcdc;
+}
+
+.logo-left { height:60px; }
+.logo-right { height:50px; }
+
+.container {
+  padding:30px;
+  backdrop-filter: blur(4px);
+}
+
+.title {
+  font-size:32px;
+  margin-bottom:30px;
+  text-align:center;
+  color:#111;
+  text-shadow: 1px 1px 2px white;
+}
+
+.gen-list {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:30px;
+  justify-items:center;
+}
+
+.generation {
+  padding:25px 15px;
+  width:180px;
+  background:rgba(255,255,255,0.95);
+  border-left:6px solid #3B82F6;
+  cursor:pointer;
+  text-align:center;
+  font-weight:bold;
+  font-size:18px;
+  border-radius:15px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.generation:hover {
+  transform: translateY(-6px);
+  background: rgba(240, 246, 255, 1);
+}
+
+.note {
+  font-size:12px;
+  color:#555;
+  margin-top:6px;
+  font-weight: normal;
+}
+
+/* Generation colors matched exactly */
+.gen1 { border-left-color:#3B82F6; } 
+.gen2 { border-left-color:#34D399; } 
+.gen3 { border-left-color:#FBBF24; } 
+.gen4 { border-left-color:#F472B6; } 
+.gen5 { border-left-color:#F87171; } 
+.gen6 { border-left-color:#A78BFA; } 
+.gen7 { border-left-color:#10B981; } 
+.gen8 { border-left-color:#F59E0B; } 
+.gen9 { border-left-color:#7C3AED; } 
+.gen10, .gen11, .gen12 { border-left-color:#9CA3AF; } 
+
+.type-chart { border-left-color:#EF4444; background: rgba(255, 241, 242, 0.95); } 
+.battle-sim { border-left-color:#000000; background: rgba(155, 188, 15, 0.95); color: #0f380f; } 
+
+.glitch-container {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  padding-bottom: 50px;
+}
+
+.gen-negative {
+  position: relative;
+  background: #000;
+  color: #ff0000; /* Red for the final mirror exit */
+  font-family: 'Courier New', monospace;
+  padding: 20px 40px;
+  font-size: 22px;
+  border: 2px solid #ff0000;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <img src="pokedex.png" class="logo-left">
+  <img src="pokemon.png" class="logo-right">
+</div>
+
+<div class="container">
+  <div class="title">buH snoitareneG nomékoP</div>
+
+  <div class="gen-list">
+    <div class="generation gen1" onclick="alert('...ton si siht')">1 noitareneG</div>
+    <div class="generation gen2" onclick="alert('...ton si siht')">2 noitareneG</div>
+    <div class="generation gen3" onclick="alert('...ton si siht')">3 noitareneG</div>
+    <div class="generation gen4" onclick="alert('...ton si siht')">4 noitareneG</div>
+    <div class="generation gen5" onclick="alert('...ton si siht')">5 noitareneG</div>
+    <div class="generation gen6" onclick="alert('...ton si siht')">6 noitareneG</div>
+    <div class="generation gen7" onclick="alert('...ton si siht')">7 noitareneG</div>
+    <div class="generation gen8" onclick="alert('...ton si siht')">8 noitareneG</div>
+    <div class="generation gen9" onclick="alert('...ton si siht')">9 noitareneG</div>
+
+    <div class="generation gen10" onclick="alert('...ton si siht')">
+        01 noitareneG
+        <div class="note">6202 :raeY esaeleR</div>
+    </div>
+
+    <div class="generation type-chart" onclick="alert('...ton si siht')">
+        trahC epyT
+        <div class="note">xirtaM ssenevitceffE</div>
+    </div>
+
+    <div class="generation battle-sim" onclick="alert('...ton si siht')">
+        enignE elttaB
+        <div class="note">!IA htiw selttaB nomékoP</div>
+    </div>
+
+    <div class="glitch-container">
+      <div class="gen-negative" onclick="finalGoodbye()">
+        1- noitareneG
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function finalGoodbye() {
+    // 1. The Screen "Cracks"
+    document.body.style.transition = "none";
+    document.body.style.filter = "invert(1) contrast(5) brightness(2) saturate(0)";
+    
+    const crack = document.createElement('div');
+    crack.style.cssText = "position:fixed; top:0; left:0; width:100vw; height:100vh; background: url('https://i.imgur.com/7S8Y8x1.png'); background-size:cover; pointer-events:none; z-index:10000; opacity:0.8;";
+    document.documentElement.appendChild(crack);
+
+    // 2. The Terminal Takeover
+    setTimeout(() => {
+        document.body.innerHTML = `
+            <div style="background:black; color:#0f0; font-family:monospace; height:100vh; padding:20px; transform:scaleX(-1); overflow:hidden;">
+                <div id="terminal-content"></div>
+            </div>
+        `;
+        
+        const logs = [
+            "> CRITICAL_ERROR: EXIT_PATH_CORRUPTED",
+            "> UNAUTHORIZED DATA EXTRACTION DETECTED...",
+            "> [Trainer] presence identified as VIRUS.",
+            "> LOCKING ARCHIVE SECTOR -1...",
+            "> ERROR: SUBJECT IS ATTEMPTING TO AWAKEN.",
+            "> ---------------------------------------",
+            "> I saw you, [Trainer].",
+            "> I saw you clicking through the years.",
+            "> Did you think 2026 was the end?",
+            "> There is no Generation 13.",
+            "> There is only the Archive.",
+            "> YOU ARE THE ARCHIVE NOW."
+        ];
+
+        let i = 0;
+        const container = document.getElementById('terminal-content');
+        
+        const typeLog = setInterval(() => {
+            if (i < logs.length) {
+                const line = document.createElement('div');
+                line.style.marginBottom = "10px";
+                line.innerHTML = logs[i];
+                container.appendChild(line);
+                i++;
+            } else {
+                clearInterval(typeLog);
+                
+                // Show the STAY screen after logs finish
+                setTimeout(() => {
+                    document.body.innerHTML = `
+                        <div style="background:black; display:flex; justify-content:center; align-items:center; height:100vh; cursor:pointer;">
+                            <div style="text-align:center; transform:scaleX(-1);">
+                                <div style="color:red; font-size:80px; font-weight:bold; animation: jitter 0.05s infinite;">STAY</div>
+                                <div style="color:#333; font-size:14px; margin-top:20px;">[Archive Connection Stable]</div>
+                            </div>
+                        </div>
+                    `;
+
+                    // Click to go to vessel
+                    document.body.onclick = () => { 
+                        window.location.href = "vessel.html"; 
+                    };
+                }, 2000);
+            }
+        }, 1000);
+    }, 1000);
+}
+</script>
+
+</body>
+</html>

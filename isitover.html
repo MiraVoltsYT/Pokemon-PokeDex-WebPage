@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Pokémon Generations Hub</title>
+<title>????????</title>
 
 <style>
 body {
@@ -87,45 +87,10 @@ body {
 .type-chart { border-left-color:#EF4444; background: rgba(255, 241, 242, 0.95); } 
 .battle-sim { border-left-color:#000000; background: rgba(155, 188, 15, 0.95); color: #0f380f; } 
 
-/* --- AWARDS UI --- */
-#awards-box {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background: #000;
-  border: 2px solid #0f0;
-  color: #0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 20px;
-  z-index: 1000;
-}
-
-#awards-modal {
-  display: none;
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 250px;
-  background: rgba(0,0,0,0.9);
-  border: 2px solid #0f0;
-  padding: 15px;
-  color: #0f0;
-  font-family: 'Courier New', monospace;
-  z-index: 1000;
-}
-
-.award-row { margin-bottom: 10px; opacity: 0.2; }
-.award-row.unlocked { opacity: 1; color: #ff0; }
-
 /* --- GENERATION -1 GLITCH BUTTON SECTION --- */
 
 .glitch-container {
-  grid-column: 1 / -1; 
+  grid-column: 1 / -1; /* Makes it span the full width of the grid */
   display: flex;
   justify-content: center;
   margin-top: 50px;
@@ -146,8 +111,9 @@ body {
   box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
 }
 
+/* The glitching text effect */
 .gen-negative::before, .gen-negative::after {
-  content: "GENERATION -1";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -194,7 +160,7 @@ body {
 }
 
 .gen-negative:hover::before, .gen-negative:hover::after {
-  display: none; 
+  display: none; /* Stops the text glitch so the text is readable on hover */
 }
 
 </style>
@@ -208,76 +174,56 @@ body {
 </div>
 
 <div class="container">
-  <div class="title">Pokémon Generations Hub</div>
+  <div class="title">Reality Doesn't Exist... And YOU know it [Trainer].</div>
 
   <div class="gen-list">
-    <div class="generation gen1" onclick="location.href='gen1.html'">Generation 1</div>
-    <div class="generation gen2" onclick="location.href='gen2.html'">Generation 2</div>
-    <div class="generation gen3" onclick="location.href='gen3.html'">Generation 3</div>
-    <div class="generation gen4" onclick="location.href='gen4.html'">Generation 4</div>
-    <div class="generation gen5" onclick="location.href='gen5.html'">Generation 5</div>
-    <div class="generation gen6" onclick="location.href='gen6.html'">Generation 6</div>
-    <div class="generation gen7" onclick="location.href='gen7.html'">Generation 7</div>
-    <div class="generation gen8" onclick="location.href='gen8.html'">Generation 8</div>
-    <div class="generation gen9" onclick="location.href='gen9.html'">Generation 9</div>
+    <div class="generation gen1" onclick="alert('..........')">??????</div>
+    <div class="generation gen2" onclick="alert('..........')">??????</div>
+    <div class="generation gen3" onclick="alert('..........')">??????</div>
+    <div class="generation gen4" onclick="alert('..........')">??????</div>
+    <div class="generation gen5" onclick="alert('..........')">??????</div>
+    <div class="generation gen6" onclick="alert('..........')">??????</div>
+    <div class="generation gen7" onclick="alert('..........')">??????</div>
+    <div class="generation gen8" onclick="alert('..........')">??????</div>
+    <div class="generation gen9" onclick="alert('..........')">??????</div>
+    <div class="generation gen10" onclick="alert('..........')">??????</div>
+    <div class="generation gen11" onclick="alert('..........')">??????</div>
+    <div class="generation gen12" onclick="alert('..........')">??????</div>
 
-    <div class="generation gen10" onclick="location.href='gen10.html'">
-        Generation 10
-        <div class="note">Release Year: 2026</div>
+    <div class="generation gen10" onclick="location.href=''">
+        ?????????
+        <div class="note">Release Year: ????</div>
     </div>
 
-    <div class="generation gen11" onclick="location.href='gen11.html'">
-        Generation 11
-        <div class="note">Estimated: 2027–2030</div>
+    <div class="generation gen11" onclick="location.href=''">
+        ????????
+        <div class="note">Estimated: ?????</div>
     </div>
 
-    <div class="generation gen12" onclick="location.href='gen12.html'">
-        Generation 12
-        <div class="note">Estimated: Unknown</div>
+    <div class="generation gen12" onclick="location.href=''">
+        ???????
+        <div class="note">Estimated: ?????</div>
     </div>
 
-    <div class="generation type-chart" onclick="location.href='type-chart.html'">
-        Type Chart
-        <div class="note">Effectiveness Matrix</div>
+    <div class="generation type-chart" onclick="location.href=''">
+        ?????
+        <div class="note">???????</div>
     </div>
 
-    <div class="generation battle-sim" onclick="location.href='pokemon-battle-sim.html'">
-        Battle Engine
-        <div class="note">Pokemon Battles with AI!</div>
+    <div class="generation battle-sim" onclick="location.href=''">
+        ????????
+        <div class="note">??????</div>
     </div>
 
     <div class="glitch-container">
-      <div class="gen-negative" onclick="location.href='gen-1.html'">
-        Generation -1
+      <div class="gen-negative" onclick="location.href='HELL.html'">
+        HELL.
       </div>
     </div>
+    </div>
+
   </div>
 </div>
-
-<div id="awards-box" onclick="toggleAwards()">🏆</div>
-
-<div id="awards-modal">
-  <div style="border-bottom: 1px solid #0f0; margin-bottom: 10px;">AWARDS</div>
-  <div class="award-row" id="ach-patience">👑 PATIENCE</div>
-  <div class="award-row" id="ach-badluck">💀 BAD LUCK</div>
-  <div class="award-row" id="ach-secret">👾 TRUE EXIT</div>
-  <div class="award-row" id="ach-miravolt">MiraVoltsYT's Favourite Pokemon (???)</div>
-</div>
-
-<script> 
-function toggleAwards() { 
-  const modal = document.getElementById('awards-modal'); 
-  modal.style.display = (modal.style.display === 'block') ? 'none' : 'block'; 
-  if (modal.style.display === 'block') checkUnlocked(); 
-} 
-
-function checkUnlocked() { 
-  if (localStorage.getItem('patience_award')) document.getElementById('ach-patience').classList.add('unlocked'); 
-  if (localStorage.getItem('badluck_award')) document.getElementById('ach-badluck').classList.add('unlocked'); 
-  if (localStorage.getItem('trueexit_award')) document.getElementById('ach-secret').classList.add('unlocked'); 
-  if (localStorage.getItem('mira_mc_award')) document.getElementById('ach-miravolt').classList.add('unlocked'); 
-} 
-</script>
 
 </body>
 </html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FINAL_JUDGMENT</title>
+    <style>
+        body { 
+            background: #000; 
+            color: #f00; 
+            font-family: 'Courier New', monospace; 
+            height: 100vh; 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+            overflow: hidden;
+            cursor: none; 
+        }
+
+        .terminal-box {
+            width: 80%;
+            max-width: 900px;
+            border: 1px solid #300;
+            padding: 20px;
+            background: rgba(10, 0, 0, 0.9);
+            box-shadow: 0 0 50px #f00;
+        }
+
+        /* --- YOUR MIRA ROAST STYLES --- */
+        #mira-roast {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            min-height: 40px;
+            text-transform: uppercase;
+        }
+
+        .rainbow-text {
+            background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: rainbow 2s linear infinite;
+        }
+
+        @keyframes rainbow {
+            to { background-position: 200% center; }
+        }
+
+        #scrolling-logs {
+            height: 150px;
+            overflow: hidden;
+            margin-top: 20px;
+            border-top: 1px solid #300;
+            padding-top: 10px;
+            font-size: 12px;
+            color: #500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terminal-box">
+        <div style="background: #f00; color: #000; padding: 5px 15px; display: inline-block; font-weight: bold; margin-bottom: 15px;">
+            LOG_ID: NO_EXIT
+        </div>
+        
+        <div style="margin-bottom: 10px;">USER: ????</div>
+        <div style="margin-bottom: 10px;">JUDGMENT: MiraVoltsYT has revoked your privileges.</div>
+
+        <div id="mira-roast"></div>
+
+        <div id="scrolling-logs"></div>
+    </div>
+
+<script>
+    // 1. DISABLE LEAVING
+    window.onbeforeunload = function() {
+        return "Mira says you can't leave yet.";
+    };
+
+    // 2. MOUSE & BACK BUTTON LOCKS
+    history.pushState(null, null, location.href);
+    window.onpopstate = function() {
+        history.go(1);
+    };
+
+    document.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+    });
+
+    // 3. SCROLLING SYSTEM LOGS
+    const logBox = document.getElementById('scrolling-logs');
+    const systemMsgs = [
+    // --- GLITCH & DELETION ---
+    "ERROR: User.brain not found.",
+    "Bypassing firewalls... oh wait, you don't have any.",
+    "Formatting drive C:/USER/LOSER...",
+    "Injecting salt into save file...",
+    "Glitch.exe successfully installed.",
+    "Packet loss detected: mostly just common sense.",
+    "Overwriting your favorite memories...",
+    "Critical failure: User too bad at game.",
+    "System.NullReferenceException: Skill is null.",
+    "Deleting Hope.dmg...",
+    "Sending browser history to Professor Oak...",
+    "Blue Screen of Death scheduled for 3:00 AM.",
+    "Memory leak detected: Intelligence draining...",
+    "Corrupting character.png... you look better now.",
+    "Scanning for talent... 0% found.",
+    "Rebooting... just kidding, stay here.",
+    "Disconnecting user from reality...",
+    "Virus.js is currently laughing at you.",
+    "Hard drive screaming in agony...",
+    "Registry key 'DIGNITY' deleted.",
+
+    // --- POKÉMON & TRAINER TAUNTS ---
+    "Releasing all your Legendaries...",
+    "Trading your Shiny for a Magikarp...",
+    "Leveling up your frustration...",
+    "Emptying your Bag... you don't need those Full Restores.",
+    "Your Pokedex has been wiped. Start over.",
+    "Nurse Joy is tired of seeing your face.",
+    "Team Rocket actually felt bad for you.",
+    "Master Ball failed... how is that possible?",
+    "Your rival is already 10 parallel universes ahead of you.",
+    "Professor Oak: 'Now is not the time to be a loser!'",
+    "Wild MISSINGNO. is eating your code.",
+    "Teaching 'Splash' to your entire team...",
+    "Giving your Pokemon 'Everstones' for Christmas...",
+    "Your badges are made of plastic. We know.",
+    "Hyper Beam charging... targeting YOU.",
+    "Pokemon Center is closed for everyone except good players.",
+    "Your Pikachu just asked for a new trainer.",
+    "Entering Safari Zone: You've been pelted with rocks.",
+    "Softlocking your game... enjoy the music.",
+    "Checking IVs... everything is 0.",
+
+    // --- MIRA & HELL THEMES ---
+    "Mira is watching. Mira is unimpressed.",
+    "Adding another floor to Hell just for you.",
+    "The abyss called. It wants its personality back.",
+    "MiraVoltsYT has entered the chat. You should leave.",
+    "Hell's temperature increased by 10%.",
+    "Mira is currently deleting your hard work.",
+    "Satan is taking notes on your failures.",
+    "Welcome to the eternal loop. Hope you brought snacks.",
+    "Mira is reorganizing your files into 'Trash'.",
+    "The glitch isn't in the code, it's in you.",
+    "Mira found your secret achievement: 'Supreme Failure'.",
+    "Hell is just this website on repeat.",
+    "Mira is rewriting your biography. It's very short.",
+    "The shadows are moving. You aren't.",
+    "Mira says: 'Skill issue, lol'.",
+    "Hell's WiFi password is 'MiraIsQueen'. You'll never get it.",
+    "Your soul is being compressed into a .zip file.",
+    "Mira is currently mocking your CSS.",
+    "The fire is real. The exit is a lie.",
+    "MiraVoltsYT: 1 | User: -999",
+
+    // --- RANDOM CHAOS ---
+    "Counting your mistakes... please wait 4-5 business days.",
+    "Uploading 'Cringe_Compilation_Vol1.mp4'...",
+    "Searching for a reason to keep you here...",
+    "Sending your coordinates to Team Galactic...",
+    "Replacing all your text with '???'",
+    "Inverting your mouse... oh, you're still bad.",
+    "Hiding the exit button in a different generation...",
+    "Applying 'Burn' status to your ego.",
+    "Calculating the odds of you winning... 0.000001%.",
+    "Mira is yawning.",
+    "User detected. Mood: Disappointed.",
+    "Initiating 'Eternal Stare' protocol.",
+    "Your keyboard is now 100% Poison-type.",
+    "Changing your username to 'NoobMaster69'...",
+    "Mira is judging your team composition.",
+    "Warning: User is approaching maximum cringe levels.",
+    "Updating terms of service: You own nothing.",
+    "Downloading more RAM... psych, it's a virus.",
+    "Mira is deleting the 'Help' button.",
+    "You are the 1,000,000th loser! Click here for nothing.",
+
+    // --- SHORT & CREEPY ---
+    "Don't look behind you.",
+    "It's getting darker.",
+    "The code is bleeding.",
+    "Why are you still clicking?",
+    "I can see you.",
+    "The sprites are screaming.",
+    "Run. Run. Run.",
+    "Is it cold in here?",
+    "They're coming for your save file.",
+    "Stop.",
+    "Mira is laughing.",
+    "The Pokedex is hungry.",
+    "No more turns.",
+    "Game over. Permanently.",
+    "Wake up.",
+    "The glitch is spreading.",
+    "Your files are gone.",
+    "There is no 'Back' button.",
+    "Mira knows what you did.",
+    "Hell is home now."
+];
+
+    setInterval(() => {
+        if (logBox) {
+            const line = document.createElement('div');
+            line.innerText = `[${new Date().toLocaleTimeString()}] ${systemMsgs[Math.floor(Math.random() * systemMsgs.length)]}`;
+            logBox.prepend(line);
+            if (logBox.children.length > 10) logBox.lastElementChild.remove();
+        }
+    }, 800);
+
+    // 4. THE MIRA ROASTS
+    // NOTE: Changed 'roastBox' to match your ID 'mira-roast'
+    const displayBox = document.getElementById('mira-roast'); 
+    const roasts = [
+    "Even a Magikarp uses Splash more effectively than you use your brain.",
+    "Your win rate is lower than a shiny encounter chance.",
+    "Welcome to Hell. Don't worry, the WiFi is still better than your gameplay.",
+    "Error 404: Skill not found. Did you leave it in the PC box?",
+    "You’re like a Male Combee—completely useless and destined for nothing.",
+    "I’ve seen NPCs with more complex AI than your decision-making process.",
+    "Is your favorite move 'Self-Destruct'? Because you’re doing a great job ruining yourself.",
+    "The Pokedex says you’re an ‘Unskilled Loser’ type. Evolution is not recommended.",
+    "You’re the reason why some Pokémon trainers just stay in the first town.",
+    "Imagine being stuck in Hell and still being the most boring thing here.",
+    "Your strategy is about as solid as a Haunter’s physical body.",
+    "Trainer, your talent is like a Master Ball—completely wasted on a Pidgey.",
+    "Satan called, he wants you to stop embarrassing him with your presence.",
+    "If you were a Pokémon, your only move would be 'Lick'... the floor.",
+    "You’re like an Everstone: you’re never going to get any better.",
+    "I’d call you a Clownfish, but even they have a purpose in the ecosystem.",
+    "This isn't a glitch, it's just a visual representation of your failure.",
+    "A wild LOSER appeared! Wait, it’s just you again.",
+    "Even Mewtwo couldn't find a reason for you to exist.",
+    "You're the human equivalent of a 'Softlock'.",
+    "Did you come to Hell for the heat, or are you just naturally this burnt?",
+    "Your Pokedex is empty, just like your trophy cabinet.",
+    "Even Team Rocket would reject your application.",
+    "You’ve spent more time in this loop than a spin-tile in a Team Rocket hideout.",
+    "Breaking news: Local trainer enters Hell, somehow makes it worse.",
+    "You’re like a Pokémon with 0 IVs in every stat.",
+    "Go touch grass? Sorry, the only grass here is Poison-type and hates you.",
+    "You move slower than a paralyzed Slowbro in deep water.",
+    "I'd roast you, but the eternal flames are already doing a better job.",
+    "Is this your first time playing, or do you just enjoy losing?",
+    "Your life has less direction than a confused Zubat in a cave.",
+    "The only thing 'Legendary' about you is how quickly you give up.",
+    "You’re the 'MissingNo' of trainers—a mistake that shouldn't exist.",
+    "If failure was a Pokémon type, you’d be the Gym Leader.",
+    "You’re like a Max Repel—everyone stays as far away as possible.",
+    "Stuck in Hell? Honestly, it’s an upgrade from your previous rank.",
+    "Your tactical mind is more shallow than a Magikarp’s puddle.",
+    "I’ve seen Metapods have more intense battles than you.",
+    "You have the charisma of a Muk and the strength of a Sunkern.",
+    "Congratulations! You’ve unlocked the 'Eternal Loser' achievement.",
+    "Stop looking for an exit. You couldn't find it with a map and a Rotom-Dex.",
+    "Your potential is like a Hidden Machine—useless without someone else's help.",
+    "If brains were PP, you’d be struggling.",
+    "You’re like a Pokémon holding a Sticky Barb—nobody wants to touch you.",
+    "Even the devil thinks your 'glitch style' is just a cover for bad coding.",
+    "You’re a Pokéball with a 0% catch rate.",
+    "Why are you still here? Even the demons are getting bored of you.",
+    "Your ego is bigger than a Wailord but your skill is smaller than a Joltik.",
+    "You’re the reason the 'Run' button was invented.",
+    "Hell is just a room full of people like you—that’s the real torture.",
+    "You're like a Sunkern—the statistically weakest thing in existence.",
+    "Your brain is using 'Confusion'. It's super effective!",
+    "I’ve seen better moves from a paralyzed Slowpoke.",
+    "You’re the human version of a Trubbish, but less cute.",
+    "Your win rate is lower than the catch rate of a Beldum.",
+    "Even Team Yell wouldn't root for you.",
+    "You’re like a Pokémon with 'Truant'—you only show up half the time.",
+    "Is your ability 'Run Away'? Because you're doing a lot of it.",
+    "You’re the reason they had to put 'Common Sense' in the Pokedex.",
+    "Even a Level 1 Rattata could sweep your entire life.",
+    "Your personality has the 'Stench' ability.",
+    "You’re like a Shiny Pokémon: rare to see, but usually has terrible stats.",
+    "I’d trade you for a Magikarp, but that’s an insult to the fish.",
+    "Your strategy is about as deep as a Diglett’s hole.",
+    "You're like an HM01: nobody wants you, but we're forced to keep you around.",
+    "The only 'Evolution' you're doing is backwards.",
+    "You’re like a Feebas—ugly and hard to find a reason to care about.",
+    "Your IQ is lower than a Slowbro’s reaction time.",
+    "Even Professor Oak forgot who you are.",
+    "You’re the 'Youngster Joey' of trainers, but your Rattata isn't even top percentage.",
+    "Satan saw your gameplay and decided you needed your own private circle.",
+    "Hell was empty until you arrived. Now it's just annoying.",
+    "The demons are taking bets on how long you’ll stare at this screen.",
+    "You’re not 'trapped' here. We’re trapped here WITH you. Send help.",
+    "The fire isn't what's burning—it's the embarrassment of watching you.",
+    "Even the lost souls are making fun of your 'corrupted' CSS.",
+    "You’ve been here so long you’re starting to look like a MissingNo.",
+    "Is this Hell, or just your browser history come to life?",
+    "The exit is right behind you. Just kidding, there is no exit.",
+    "You're the only person here who managed to lose to a tutorial bot.",
+    "Hell is just a loop of your worst gaming moments.",
+    "If suffering was an esport, you'd be a world champion.",
+    "You’re like a ghost-type: dead, but still won't leave people alone.",
+    "The demons are unionizing because they don't want to watch you anymore.",
+    "Your soul is as empty as a spent Max Revive.",
+    "ERROR: User is a total scrub. Reboot suggested.",
+    "Your code is so messy even a glitch-type wouldn't touch it.",
+    "Skill issue detected in sector 7. Please uninstall life.",
+    "You’re a walking buffer overflow.",
+    "Your logic is more corrupted than a GBA cartridge in a toaster.",
+    "I'd fix your skill, but I don't deal with 'Unresolved Variables'.",
+    "Loading... Loading... Just kidding, you're just slow.",
+    "You're the 1% of bugs that developers refuse to fix.",
+    "Your brain is running on Internet Explorer speeds.",
+    "Syntax Error: Intelligence expected, 'Loser' found.",
+    "You’re a 404 error in human form.",
+    "Your life is just one giant 'Blue Screen of Death'.",
+    "I’ve seen 'Hello World' programs with more personality than you.",
+    "Your existence is a memory leak.",
+    "You're the reason we have to use 'Try-Catch' blocks.",
+    "Go touch grass. Oh wait, you probably can't find the door.",
+    "MiraVoltsYT 100 - You 0. Give up yet?",
+    "Your parents must have been 'Ditto' because you have no identity.",
+    "I'd call you a tool, but tools are actually useful.",
+    "You’re like a loading bar that gets stuck at 99%.",
+    "Is this your first time using a mouse, or are you just like this?",
+    "Even your shadow is trying to get away from you.",
+    "You’re the human equivalent of a participation trophy.",
+    "If you were any more useless, you'd be a rock-type without moves.",
+    "Your luck is so bad, you'd find a way to lose a coin toss.",
+    "I’ve seen smarter things at the bottom of a Muk’s footprint.",
+    "You’re like a Master Ball: you think you're special, but you're rarely used.",
+    "Are you still here? The abyss is getting tired of staring back.",
+    "You're the reason they put 'Do Not Drink' on shampoo bottles.",
+    "Your potential is like a hidden ability: it stays hidden forever.",
+    "You’re like a Pokémon with 1HP and no focus sash.",
+    "If failure was a currency, you'd be the richest person in Hell.",
+    "Even the 'B' button can't cancel how much of a loser you are.",
+    "You're like a Safari Zone encounter: annoying and likely to run away.",
+    "Your brain has fewer cells than a Solosis.",
+    "You’re the human version of a soft-lock.",
+    "I'd roast you, but I don't want to waste the CPU cycles.",
+    "You’re like a repel that only works on success.",
+    "Your 'pro gamer' moves are just you failing with style.",
+    "The Pokedex should list 'You' as the only known weakness to every type.",
+    "You move like a Snorlax on a treadmill.",
+    "Your logic is as flawed as a 'Splashing' Magikarp.",
+    "Even the RNG hates you.",
+    "You’re like a Pokémon holding an Iron Ball—just dragging everyone down.",
+    "I’ve seen better AI in a 1990s toaster.",
+    "Your life is a series of 'Critical Misses'.",
+    "You're like a Zubat in a cave: nobody asked for you to be here.",
+    "Even Gary Oak thinks you’re a loser.",
+    "Your win/loss ratio is a crime against humanity.",
+    "You’re like a Pokémon with only 'Splash' and 'Celebrate'.",
+    "Hell isn't the fire, it's just listening to you talk.",
+    "Your presence is a 'Lowered Stats' debuff for everyone nearby.",
+    "You’re a common spawn in a world of legendaries.",
+    "Your coding skills are more glitched than Cinnabar Island.",
+    "If you were a Pokémon, your catch rate would be 100% because nobody wants to struggle with you.",
+    "You’re like a Poké Flute: loud, annoying, and only used when absolutely necessary.",
+    "Your future is as bright as a cave without 'Flash'.",
+    "Even the 'Old Man' in Viridian City could beat you in a fight.",
+    "You’re like a Potion: a temporary fix for a permanent problem.",
+    "Your personality is a 'Burn' status effect.",
+    "You’re like a Pokémon Center: everyone comes to you when they’re tired of better people.",
+    "The only thing you’re 'Mastering' is the art of being a disappointment.",
+    "You’re like a Cherish Ball: looks fancy, but contains nothing valuable.",
+    "Your life is a 'Low Battery' warning.",
+    "Congratulations, you’ve officially hit rock bottom. Diglett says hi."
+];
+
+    // Turn text white after 1 second
+    setTimeout(() => {
+        if (displayBox) displayBox.classList.add('white-text');
+    }, 1000);
+
+    // Start the roast cycle and screen shake every 3 seconds
+    setInterval(() => {
+        if (displayBox && roasts.length > 0) {
+            const randomRoast = roasts[Math.floor(Math.random() * roasts.length)];
+            displayBox.innerText = `[Mira]: ${randomRoast}`;
+            
+            // Screen Shake Effect
+            document.body.style.transform = `translate(${Math.random() * 5}px, ${Math.random() * 5}px)`;
+            setTimeout(() => { 
+                document.body.style.transform = 'translate(0,0)'; 
+            }, 100);
+        }
+    }, 3000);
+</script>
+
+</body>
+</html>

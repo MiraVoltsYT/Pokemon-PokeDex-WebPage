@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TERMINAL_ERROR // INDEX #-0001 // [REDACTED]</title>
+    <style>
+        :root {
+            --bg-deep: #050505;
+            --panel-glass: rgba(10, 10, 10, 0.98);
+            --accent-glow: #00FF41;
+            --glitch-red: #FF0000;
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-dim: #444444;
+            --err-color: #ff003c;
+        }
+
+        body {
+            background: #000;
+            color: var(--text-main);
+            font-family: 'Courier New', monospace;
+            margin: 0; padding: 20px;
+            display: flex; justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden; /* Restored scrolling */
+        }
+
+        /* TV Static Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://media.giphy.com/media/oEI9uWUqWMrBK/giphy.gif');
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* --- MECHANICAL GLITCH LAYER --- */
+        .glitch-layer {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1001;
+        }
+
+        .static-strip {
+            position: absolute;
+            left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            /* Logic: Chromatic Aberration */
+            box-shadow: 3px 0 0 rgba(255,0,60,0.2), -3px 0 0 rgba(0,255,65,0.2);
+            display: none;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .btn-home {
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid var(--err-color);
+            color: var(--err-color); 
+            font-size: 10px; padding: 10px 14px;
+            border-radius: 6px; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .btn-home:hover {
+            background: rgba(255, 0, 60, 0.2);
+            text-shadow: 2px 0 var(--accent-glow), -2px 0 var(--glitch-red);
+            letter-spacing: 4px;
+            border-style: dashed;
+        }
+
+        .terminal-container {
+            width: 1400px;
+            background: var(--panel-glass);
+            border: 2px solid var(--err-color);
+            position: relative;
+            box-shadow: 0 0 80px rgba(255, 0, 60, 0.15);
+            z-index: 10;
+        }
+
+        .main-grid { display: grid; grid-template-columns: 340px 1fr 1fr 340px; }
+        .col { padding: 30px; border-right: 1px solid var(--border-subtle); }
+
+        @keyframes statVibrate {
+            0% { transform: translateX(0) scaleX(1); opacity: 1; }
+            25% { transform: translateX(-5px) scaleX(1.2); opacity: 0.8; }
+            50% { transform: translateX(10px) scaleX(0.8); opacity: 1; }
+            75% { transform: translateX(-8px) scaleX(1.1); opacity: 0.7; }
+            100% { transform: translateX(0) scaleX(1); opacity: 1; }
+        }
+
+        .sprite-display { 
+            text-align: center; padding: 20px;
+            background: #000;
+            border: 1px dashed var(--err-color);
+            position: relative;
+        }
+
+        .section-tag {
+            font-size: 10px; font-weight: 800; color: var(--err-color);
+            text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+        }
+
+        .archive-box {
+            background: rgba(20, 0, 0, 0.6); border: 1px solid rgba(255,0,0,0.3);
+            padding: 15px; font-size: 13px; color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .move-card {
+            background: rgba(255, 0, 60, 0.05);
+            border-left: 3px solid var(--err-color);
+            padding: 10px; margin-bottom: 8px;
+        }
+
+        .glitch-char { display: inline-block; min-width: 0.6em; }
+    </style>
+</head>
+<body onclick="startStatic()">
+
+<div class="glitch-layer" id="glitch-host"></div>
+<div class="scanlines"></div>
+
+<div class="terminal-container">
+    <div class="terminal-header" style="padding: 40px; border-bottom: 2px solid var(--err-color); background: rgba(255,0,0,0.02);">
+        <a href="gen-1.html" class="btn-home glitch-text">[!] RETURN_TO_NULL_INDEX_(-1)</a>
+        <h1 id="main-title" style="font-size: 60px; margin: 0; color: var(--err-color); letter-spacing: -2px;">MISSINGNO.</h1>
+        <div style="color: var(--err-color); font-size: 11px; font-weight: bold; letter-spacing: 5px;">FATAL_MEMORY_LEAK // ADDR_0x0000</div>
+    </div>
+
+    <div class="main-grid">
+        <div class="col">
+            <span class="section-tag">Visual Identity</span>
+            <div class="sprite-display">
+                <img src="err14S.webp" width="220" style="image-rendering: pixelated; filter: grayscale(0.5) contrast(2);">
+            </div>
+            
+            <span class="section-tag" style="margin-top:20px;">Biometric Specs</span>
+            <div id="specs" style="font-size: 12px; display: flex; flex-direction: column; gap: 10px;">
+                <p>GENUS: <span class="glitch-text">BIRD/NORMAL</span></p>
+                <p>HEIGHT: <span class="glitch-text">10.0 ft</span></p>
+                <p>WEIGHT: <span class="glitch-text">3507.2 lb</span></p>
+                <p>INDEX: <span class="glitch-text"># -0001</span></p>
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Anomalous Behavior</span>
+            <div class="archive-box glitch-text">
+                This entity does not exist within the physical Paldea or Kanto regions. It is a localized fracture in the fabric of reality. It displays no hunger or emotion, only a repetitive loop of data-reconstruction. Observation causes nearby hardware to emit high-pitched frequencies.
+            </div>
+            
+            <span class="section-tag">Visual Composition</span>
+            <div class="archive-box glitch-text" style="font-size: 11px; color: #666;">
+                The "body" is a geometric cluster of scrambled pixels and 8-bit tile maps. It appears two-dimensional yet occupies three-dimensional space. Shadows cast by this entity are often inverted or static-filled.
+            </div>
+
+            <span class="section-tag">Warning Traits</span>
+            <ul style="font-size: 11px; color: var(--err-color); line-height: 2;">
+                <li class="glitch-text">ITEM_6_SLOT_MULTIPLICATION</li>
+                <li class="glitch-text">HALL_OF_FAME_ERASURE</li>
+                <li class="glitch-text">AUDIO_BUFFER_OVERFLOW</li>
+            </ul>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Corrupted Attacks</span>
+            <div class="move-card"><b class="glitch-text">Water Gun (Corrupted)</b><br><small>Execution time: NULL ms</small></div>
+            <div class="move-card"><b class="glitch-text">Sky Attack</b><br><small>Source: 0x08F2</small></div>
+            <div class="move-card"><b class="glitch-text">TM55 / --</b><br><small>Unknown Byte Sequence</small></div>
+
+            <span class="section-tag" style="margin-top: 25px;">Stat Corruption</span>
+            <div id="stats-target"></div>
+        </div>
+
+        <div class="col">
+            <span class="section-tag">Kernel Data</span>
+            <div class="archive-box" style="font-size: 10px; font-family: monospace; color: #00FF41; border-color: #00FF41;">
+                0000: 00 01 4F 50<br>
+                0004: FF FF FF FF<br>
+                0008: 52 4F 4F 54<br>
+                000C: 2D 30 30 30<br>
+                0010: [MEM_CORRUPT]
+            </div>
+            <span class="section-tag">Reality Tether</span>
+            <div style="font-size: 9px; color: #444; text-align: center;">
+                [INDEX_-0001] is currently<br>UNSTABLE
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- MECHANICAL GLITCH LOGIC ---
+    function triggerHardwareGlitch() {
+        const host = document.getElementById('glitch-host');
+        const strip = document.createElement('div');
+        
+        strip.className = 'static-strip';
+        // Logic: Kept thin (2px - 15px) so words stay visible
+        strip.style.height = (Math.random() * 13 + 2) + 'px';
+        strip.style.top = (Math.random() * window.innerHeight) + 'px';
+        strip.style.display = 'block';
+        
+        // Logic: Horizontal Displacement
+        strip.style.transform = `translateX(${(Math.random() - 0.5) * 30}px)`;
+
+        host.appendChild(strip);
+        setTimeout(() => strip.remove(), 80);
+    }
+
+    setInterval(triggerHardwareGlitch, 200);
+
+    const glitchMap = {
+        'A': 'ÀÁÂÃÄÅĄ', 'B': 'ßß฿', 'C': 'ÇĆĈĊČ', 'D': 'ÐĎĐ', 'E': 'ÈÉÊËĘĚ', 
+        'F': 'Ƒ', 'G': 'ĜĞĠĢ', 'H': 'ĤĦ', 'I': 'ÌÍÎÏĨĪ', 'L': 'ĹĻĽĿŁ', 
+        'M': '₼', 'N': 'ÑŃŅŇ', 'O': 'ÒÓÔÕÖØ', 'P': '₱', 'R': 'ŔŖŘ', 
+        'S': 'ŠŞŚśşʂŝŜŞ̴̨̖', 'T': 'ŢŤŦ', 'U': 'ÙÚÛÜŨŪ', 'W': 'Ŵ', 'Y': 'ÝŶŸ', 
+        'Z': 'ŹŻŽ', 'a': 'àáâãäå', 'e': 'èéêë', 'i': 'ìíîï', 'o': 'òóôõö', 
+        'u': 'ùúûü', 's': 'śşŝš'
+    };
+
+    function startStatic() {
+        const audio = new Audio('https://www.soundjay.com/communication/tv-static-01.mp3');
+        audio.volume = 0.03;
+        audio.loop = true;
+        audio.play();
+    }
+
+    function prepareGlitchText() {
+        const elements = document.querySelectorAll('.glitch-text, #main-title');
+        elements.forEach(el => {
+            const text = el.innerText;
+            el.innerHTML = '';
+            [...text].forEach(char => {
+                const span = document.createElement('span');
+                span.className = 'glitch-char';
+                span.innerText = char;
+                span.dataset.orig = char;
+                el.appendChild(span);
+                
+                if (glitchMap[char] || char === ' ' || Math.random() > 0.8) {
+                    const randomTime = Math.random() * 7000 + 5000;
+                    setInterval(() => {
+                        const pool = glitchMap[char] || "ØX█▓░";
+                        span.innerText = pool[Math.floor(Math.random() * pool.length)];
+                        setTimeout(() => { span.innerText = span.dataset.orig; }, 500); 
+                    }, randomTime);
+                }
+            });
+        });
+    }
+
+    const stats = { 
+        HP: "Ø99", 
+        ATK: -1, 
+        DEF: 350, 
+        SPA: 6, 
+        SPD: 6, 
+        SPE: 29 
+    };
+
+    function renderStats() {
+        document.getElementById('stats-target').innerHTML = Object.entries(stats).map(([k, v]) => {
+            const isGlitched = (k === 'HP' || k === 'DEF');
+            const glitchStyle = isGlitched 
+                ? 'animation: statVibrate 0.1s infinite; width: 140%; filter: hue-rotate(90deg);' 
+                : `width: ${Math.max(0, (v/150)*100)}%`;
+            
+            return `
+                <div style="margin-bottom: 12px; position: relative;">
+                    <div style="display:flex; justify-content:space-between; font-size: 10px; font-weight: bold; margin-bottom: 4px;">
+                        <span class="glitch-text">${k}</span>
+                        <span class="glitch-text" style="${isGlitched ? 'color: #fff; text-shadow: 0 0 5px red;' : ''}">${v}</span>
+                    </div>
+                    <div style="height: 4px; background: rgba(255,0,0,0.1); overflow: visible;">
+                        <div style="height:100%; background:var(--err-color); box-shadow: 0 0 10px var(--err-color); transition: none; ${glitchStyle}"></div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    window.onload = () => {
+        renderStats();
+        prepareGlitchText();
+    };
+</script>
+
+</body>
+</html>

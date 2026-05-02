@@ -1,276 +1,574 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>National Dex - Research Terminal #1008 // Miraidon Biometric Hub</title>
+
     <style>
+
         :root {
+
             --bg-deep: #0a0510;
+
             --panel-glass: rgba(18, 13, 22, 0.9);
+
             --accent-glow: #a855f7; /* Neon Purple */
+
             --electric-blue: #3b82f6;
+
             --shiny-gold: #ffcc00;
+
             --dragon-depth: #4c1d95;
+
             --border-subtle: rgba(168, 85, 247, 0.2);
+
             --text-main: #f3e8ff;
+
             --text-dim: #a0a8b0;
+
             --electric: #F7D02C;
+
             --dragon: #6F35FC;
+
             --status-found: #a855f7;
+
             --status-missing: #444444;
+
             --error-red: #ff4444;
+
         }
+
+
 
         body {
+
             background: 
+
                 radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+
                 radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+
                 linear-gradient(135deg, #0a0510 0%, #0d1117 100%);
+
             color: var(--text-main);
+
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+
             margin: 0;
+
             padding: 20px;
+
             display: flex; justify-content: center;
+
             min-height: 100vh;
+
         }
+
+
 
         .terminal-container {
+
             width: 1400px;
+
             background: var(--panel-glass);
+
             backdrop-filter: blur(25px);
+
             border: 1px solid var(--border-subtle);
+
             border-radius: 16px;
+
             box-shadow: 0 0 100px rgba(20, 0, 30, 0.8), inset 0 0 20px rgba(168, 85, 247, 0.05);
+
             overflow: hidden;
+
             display: flex; flex-direction: column;
+
         }
+
+
 
         .terminal-header {
+
             padding: 40px;
+
             background: linear-gradient(to right, rgba(168, 85, 247, 0.08), transparent);
+
             border-bottom: 1px solid var(--border-subtle);
+
             display: flex; justify-content: space-between; align-items: flex-end;
+
         }
+
+
 
         .main-grid { display: grid; grid-template-columns: 340px 1fr 1fr 340px; }
+
         .col { padding: 30px; border-right: 1px solid var(--border-subtle); }
+
         .col:last-child { border-right: none; }
 
+
+
         .section-tag {
+
             font-size: 10px; font-weight: 800; color: var(--accent-glow);
+
             text-transform: uppercase; letter-spacing: 2.5px;
+
             margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+
         }
+
         .section-tag::after { content: ''; height: 1px; flex-grow: 1; background: var(--border-subtle); }
 
+
+
         .btn {
+
             background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle);
+
             color: var(--text-main); font-size: 10px; padding: 10px 14px;
+
             border-radius: 6px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
             text-transform: uppercase; letter-spacing: 1px;
+
             text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+
         }
+
         .btn:hover { background: rgba(168, 85, 247, 0.15); border-color: var(--accent-glow); box-shadow: 0 0 15px rgba(168, 85, 247, 0.2); }
+
         .btn-home { border-color: var(--text-dim); color: var(--text-dim); margin-bottom: 15px; }
+
         
+
         .btn-illegal {
+
             border-color: var(--error-red);
+
             color: var(--error-red);
+
             opacity: 0.6;
+
             font-weight: bold;
+
         }
+
         .btn-illegal:hover {
+
             background: rgba(255, 68, 68, 0.1);
+
             border-color: #ff0000;
+
             color: #fff;
+
             opacity: 1;
+
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+
         }
+
+
 
         .archive-box {
+
             background: rgba(0,0,0,0.4); border-radius: 10px; padding: 18px;
+
             font-size: 13.5px; line-height: 1.7; border: 1px solid rgba(255,255,255,0.05);
+
             margin-bottom: 25px; color: #ced4da;
+
         }
+
         
+
         .detail-list { font-size: 12.5px; color: var(--text-dim); padding-left: 20px; margin: 15px 0; }
+
         .detail-list li { margin-bottom: 10px; }
 
+
+
         .move-card {
+
             background: rgba(168, 85, 247, 0.05); border-radius: 8px; padding: 12px;
+
             margin-bottom: 10px; border: 1px solid rgba(168, 85, 247, 0.1);
+
         }
+
         .move-name { font-weight: bold; font-size: 11px; color: var(--electric-blue); text-transform: uppercase; }
 
+
+
         .game-cell {
+
             background: rgba(0,0,0,0.3); padding: 8px 10px; border-radius: 4px;
+
             display: flex; justify-content: space-between; align-items: center;
+
             border: 1px solid rgba(255,255,255,0.03); font-size: 10px;
+
         }
+
         .dot { width: 6px; height: 6px; border-radius: 50%; }
+
         .dot-inc { background: var(--status-found); box-shadow: 0 0 8px var(--status-found); }
+
         .dot-exc { background: var(--status-missing); opacity: 0.2; }
 
+
+
         .sprite-display { 
+
             text-align: center; padding: 20px; min-height: 220px; 
+
             background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+
         }
+
         .type-pill { padding: 5px 18px; border-radius: 4px; font-size: 11px; font-weight: 800; border: 1.5px solid; letter-spacing: 1px; }
+
         
+
         .terminal-footer {
+
             padding: 20px 40px;
+
             border-top: 1px solid var(--border-subtle);
+
             background: rgba(0,0,0,0.2);
+
             display: flex;
+
             justify-content: flex-end;
+
             align-items: center;
+
         }
+
     </style>
+
 </head>
+
 <body>
 
+
+
 <div class="terminal-container">
+
     <div class="terminal-header">
+
         <div>
+
             <a href="gen9.html" class="btn btn-home">⮌ RETURN TO TERMINAL INDEX</a>
+
             <div style="font-family: monospace; font-size: 12px; color: var(--accent-glow); letter-spacing: 5px; margin-bottom: 8px;">PARADOX_ARCHIVE_NODE_#1008</div>
+
             <h1 style="margin:0; font-size: 48px; letter-spacing: -1px; background: linear-gradient(to bottom, #fff, var(--accent-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">MIRAIDON</h1>
+
             <div style="display: flex; gap: 12px; margin-top: 15px;">
+
                 <span class="type-pill" style="color: var(--electric); border-color: var(--electric);">ELECTRIC</span>
+
                 <span class="type-pill" style="color: var(--dragon); border-color: var(--dragon);">DRAGON</span>
+
             </div>
+
         </div>
+
         <div style="text-align: right;">
+
             <div style="font-size: 10px; color: var(--accent-glow); letter-spacing: 2px; margin-bottom: 8px; font-weight: 800;">SYNTHETIC_VOCAL_CRY</div>
+
             <button class="btn" onclick="playCry()" style="padding: 12px 20px;">⏵ RUN CRY_EMULATION.EXE</button>
+
         </div>
+
     </div>
+
+
 
     <div class="main-grid">
-        <div class="col">
-            <span class="section-tag">Visual Reconstruction</span>
-            <div class="utility-bar">
-                <button id="shiny-btn" class="btn" onclick="toggleShiny()">Toggle Shiny Variant</button>
-            </div>
-            <div class="sprite-display">
-                <img id="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1008.png" width="260">
-            </div>
-            
-            <span class="section-tag">Core Specifications</span>
-            <div style="font-size: 12px; display: flex; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
-                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Paradox Name</span><strong style="color:var(--accent-glow)">Iron Serpent</strong></div>
-                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Height</span><strong>3.5 m</strong></div>
-                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Weight</span><strong>240.0 kg</strong></div>
-                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Ability</span><strong>Hadron Engine</strong></div>
-            </div>
-        </div>
 
         <div class="col">
-            <span class="section-tag">Temporal Archive</span>
-            <div class="archive-box">
-                This entity is said to be a future counterpart of Cyclizar. It possesses a metallic body and jet-like propulsion systems. Observation suggests it uses electricity to power its transformation between Drive Mode and Ultimate Mode.
+
+            <span class="section-tag">Visual Reconstruction</span>
+
+            <div class="utility-bar">
+
+                <button id="shiny-btn" class="btn" onclick="toggleShiny()">Toggle Shiny Variant</button>
+
             </div>
+
+            <div class="sprite-display">
+
+                <img id="poke-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1008.png" width="260">
+
+            </div>
+
+            
+
+            <span class="section-tag">Core Specifications</span>
+
+            <div style="font-size: 12px; display: flex; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
+
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Paradox Name</span><strong style="color:var(--accent-glow)">Iron Serpent</strong></div>
+
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Height</span><strong>3.5 m</strong></div>
+
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Weight</span><strong>240.0 kg</strong></div>
+
+                <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim)">Ability</span><strong>Hadron Engine</strong></div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="col">
+
+            <span class="section-tag">Temporal Archive</span>
+
+            <div class="archive-box">
+
+                This entity is said to be a future counterpart of Cyclizar. It possesses a metallic body and jet-like propulsion systems. Observation suggests it uses electricity to power its transformation between Drive Mode and Ultimate Mode.
+
+            </div>
+
+
 
             <span class="section-tag">Mechanical Anatomy</span>
+
             <ul class="detail-list">
+
                 <li><strong>Ocular:</strong> LED-patterned displays capable of projecting complex data.</li>
+
                 <li><strong>Chassis:</strong> Cobalt-blue composite plating with internal power conduits.</li>
+
                 <li><strong>Propulsion:</strong> Dual rear turbines allowing for Mach-speed traversal.</li>
+
                 <li><strong>Tail:</strong> High-voltage discharge cable used for Dragon-type energy channeling.</li>
+
             </ul>
 
+
+
             <span class="section-tag">Operational Log</span>
+
             <div class="archive-box" style="border-left: 4px solid var(--accent-glow); background: rgba(168, 85, 247, 0.05);">
+
                 Exhibits high intelligence and a preference for processed nutrients (Sandwiches). In combat, it automatically deploys an Electric Terrain to supercharge its internal systems.
+
             </div>
+
         </div>
 
+
+
         <div class="col">
+
             <span class="section-tag">High-Output Moveset</span>
+
             <div class="move-card">
+
                 <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+
                     <span class="move-name">Electro Drift</span><span style="font-size:9px; color:var(--text-dim);">Signature</span>
+
                 </div>
+
                 <div style="font-size:10px; color:var(--text-dim);">Piercing electric dash. Damage increases on super-effective hits.</div>
+
             </div>
+
             <div class="move-card">
+
                 <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+
                     <span class="move-name">Draco Meteor</span><span style="font-size:9px; color:var(--text-dim);">Overload</span>
+
                 </div>
+
                 <div style="font-size:10px; color:var(--text-dim);">Maximum dragon energy release. Causes temporary stat drop.</div>
+
             </div>
+
             <div class="move-card">
+
                 <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+
                     <span class="move-name">Volt Switch</span><span style="font-size:9px; color:var(--text-dim);">Tactical</span>
+
                 </div>
+
                 <div style="font-size:10px; color:var(--text-dim);">Attack followed by immediate tactical withdrawal.</div>
+
             </div>
+
+
 
             <span class="section-tag" style="margin-top: 25px;">Battle Potency</span>
+
             <div id="stats-target"></div>
+
         </div>
+
+
 
         <div class="col">
+
             <span class="section-tag">Era Compatibility</span>
+
             <div id="game-grid" style="display: grid; grid-template-columns: 1fr; gap: 5px;"></div>
 
+
+
             <span class="section-tag" style="margin-top: 30px;">System Features</span>
+
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+
                 <div style="font-size:9px; padding:10px; border:1px solid var(--accent-glow); text-align:center; border-radius:4px;">DRIVE MODE<br><small>Active</small></div>
+
                 <div style="font-size:9px; padding:10px; border:1px solid var(--electric-blue); text-align:center; border-radius:4px;">AQUATIC MODE<br><small>Active</small></div>
+
                 <div style="font-size:9px; padding:10px; border:1px solid #aa00ff; text-align:center; border-radius:4px;">GLIDE MODE<br><small>Active</small></div>
+
                 <div style="font-size:9px; padding:10px; border:1px solid #8b949e; text-align:center; border-radius:4px;">TERA: ELEC<br><small>Optimized</small></div>
+
             </div>
+
         </div>
+
     </div>
+
     
+
     <div class="terminal-footer">
+
         <a href="errormiraidon.html" class="btn btn-illegal">⚠ ACCESS RESTRICTED_ILLEGAL_DATA.LOG</a>
+
     </div>
+
 </div>
 
+
+
 <script>
+
     let isShiny = false;
+
     const sprite = document.getElementById('poke-sprite');
+
     const btn = document.getElementById('shiny-btn');
 
+
+
     function toggleShiny() {
+
         isShiny = !isShiny;
+
         sprite.src = isShiny 
+
             ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/1008.png"
+
             : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1008.png";
+
         btn.classList.toggle('shiny-active');
+
     }
+
+
 
     function playCry() {
+
         new Audio('https://play.pokemonshowdown.com/audio/cries/miraidon.mp3').play();
+
     }
 
+
+
     const stats = { HP: 100, ATK: 85, DEF: 100, SPA: 135, SPD: 115, SPE: 135 };
+
     document.getElementById('stats-target').innerHTML = Object.entries(stats).map(([k, v]) => `
+
         <div style="margin-bottom: 12px;">
+
             <div style="display:flex; justify-content:space-between; font-size: 10px; font-weight: bold; margin-bottom: 4px;">
+
                 <span style="color:var(--text-dim)">${k}</span><span>${v}</span>
+
             </div>
+
             <div style="height: 3px; background: rgba(255,255,255,0.05); border-radius: 1px;">
+
                 <div style="height:100%; width:${(v/150)*100}%; background:var(--accent-glow); box-shadow: 0 0 8px var(--accent-glow);"></div>
+
             </div>
+
         </div>
+
     `).join('');
+
+
 
     const registry = [
+
         { name: "Scarlet / Violet", found: true },
+
         { name: "Legends: Arceus", found: false },
+
         { name: "Sword / Shield", found: false },
+
         { name: "Brilliant Diamond / SP", found: false }
+
     ];
 
+
+
     document.getElementById('game-grid').innerHTML = registry.map(r => `
+
         <div class="game-cell">
+
             ${r.name}
+
             <div class="dot ${r.found ? 'dot-inc' : 'dot-exc'}"></div>
+
         </div>
+
     `).join('');
+
+    // --- MINECRAFT ACHIEVEMENT LOGIC ---
+    window.addEventListener('load', () => {
+        const popup = document.getElementById('mc-achievement');
+        
+        // Check if unlocked already
+        if (!localStorage.getItem('mira_mc_award')) {
+            setTimeout(() => {
+                // Slide in
+                popup.style.right = "20px";
+                
+                // Play MC level up sound (approximate)
+                const audio = new Audio('https://www.myinstants.com/media/sounds/minecraft_level_up.mp3');
+                audio.volume = 0.5;
+                audio.play().catch(()=>{});
+
+                // Mark as done
+                localStorage.setItem('mira_mc_award', 'true');
+
+                // Slide out after 5 seconds
+                setTimeout(() => {
+                    popup.style.right = "-300px";
+                }, 5000);
+            }, 2000);
+        }
+    });
 </script>
 
 </body>

@@ -6,13 +6,13 @@
     <style>
         :root {
             --glitch-red: #ff0000;
-            --dark-red: #350000; /* Darker, more ominous red */
+            --dark-red: #350000;
             --void-bg: #000000;
         }
 
         body {
             background-color: var(--void-bg);
-            color: #8b0000; /* Darker blood red */
+            color: #8b0000;
             font-family: 'Courier New', monospace;
             margin: 0;
             overflow-x: hidden;
@@ -20,9 +20,9 @@
                 linear-gradient(rgba(139, 0, 0, 0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(139, 0, 0, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
+            transition: background-color 2s;
         }
 
-        /* THE CREEPY OVERLAY - CONSTANT FAST SHAKE */
         #creepy-overlay {
             position: fixed;
             top: 50%;
@@ -86,6 +86,7 @@
         .nav-back {
             color: #5a0000; text-decoration: none; font-size: 11px;
             border: 1px solid #5a0000; padding: 5px 12px;
+            cursor: pointer;
         }
 
         .terminate-container {
@@ -110,82 +111,218 @@
             box-shadow: 0 0 15px #8b0000;
         }
 
-        .terminate-btn:hover {
-            background: #ff0000;
-            color: #000;
-            box-shadow: 0 0 30px #ff0000;
-            text-shadow: none;
+        #achievement-popup {
+            position: fixed;
+            top: 20px;
+            right: -450px;
+            width: 320px;
+            height: 70px;
+            background: #222;
+            border: 4px solid #000;
+            outline: 2px solid #555;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            z-index: 10000;
+            transition: right 0.6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
+            pointer-events: none;
         }
-
-        .terminate-btn:active {
-            transform: scale(0.95);
-            filter: invert(1);
-        }
-
+        #achievement-popup.show { right: 20px; }
+        .ach-icon { width: 50px; height: 50px; border: 2px solid #444; background: #000; display: flex; align-items: center; justify-content: center; }
+        .ach-icon img { width: 100%; filter: sepia(100%) saturate(500%) hue-rotate(-50deg); }
+        .ach-text { margin-left: 15px; }
+        .ach-title { color: #ffff00; font-size: 14px; font-weight: bold; margin: 0; }
+        .ach-desc { color: #ffffff; font-size: 11px; margin: 3px 0 0 0; }
     </style>
 </head>
 <body>
 
+<div id="achievement-popup">
+    <div class="ach-icon">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png">
+    </div>
+    <div class="ach-text">
+        <p class="ach-title">Bad Ending 3/10!</p>
+        <p class="ach-desc">They're all dead thanks to you.</p>
+    </div>
+</div>
+
 <div id="creepy-overlay">RUN</div>
 
 <div class="header">
-    <h2 style="margin:0; font-size: 18px; color: #4a0000;">[ SECTOR_-1_ILLEGAL_ACCESS ]</h2>
-    <a href="javascript:void(0)" onclick="this.innerHTML='SYSTEM_LOCKED'; this.style.color='red';" class="nav-back">TRY_TO_LEAVE</a>
+    <h2 id="secretReset" title="Double click to debug/reset" style="margin:0; font-size: 18px; color: #4a0000; cursor: crosshair;">[ SECTOR_-1_ILLEGAL_ACCESS ]</h2>
+    <h3 id="status-text" style="margin:0; font-size: 14px; color: #4a0000;">There's easter eggs!</h3>
+    <a href="javascript:void(0)" id="topExitBtn" onclick="handleExitAttempt(this)" class="nav-back">EXIT??</a>
 </div>
 
 <div class="pokedex-grid" id="voidGrid"></div>
 
 <div class="terminate-container">
-    <p style="color: #4a0000; font-size: 10px; margin-bottom: 10px;">SYSTEM_RECOVERY_PROTOCOL_v.09</p>
-    <a href="index.html" class="terminate-btn">тєямιηαтє ƒιℓє</a>
+    <a href="javascript:void(0)" id="termBtn" onclick="handleTerminate(this)" class="terminate-btn">тєямιηαтє ƒιℓє</a>
 </div>
 
 <script>
-    const grid = document.getElementById('voidGrid');
-    const overlay = document.getElementById('creepy-overlay');
-    
-    const horrorPhrases = [
-        "ᖇย几", "R̶̖͕̀͒...", "Ư̵̖...", "_N̢͉...", "ͶUЯ", "𝚁⃥𝚄⃥𝙽⃥", "𝕽 𝖀 𝕹", "𝐑⃥𝐔⃥𝐍⃥", "𝗥⃥𝘜̸𝗡⃥",
-        "H̢̻̰...", "Ĥί𝓭𝒆", "ĦĪĐɆ", "𝙷⃥𝙸⃥𝙳⃥𝙴⃥", "ꞪƗƉƐ", "𐋅ጎ𐌃ቹ",
-        "𐌍ዐ ቹ𐌔ር𐌀የ𐌄", "𝐍⃥𝐎⃥ 𝐄⃥𝐒⃥𝐂⃥𝐀⃥𝐏⃥𝐄⃥", "₦Ø Ɇ₴₵₳₱Ɇ", "ñÖ È§ÇÄþÈ",
-        "ﻮσσ𝓭 ˡย🅲𝓚", "G̶̡...", "⋊ƆU⅃ ᗡOOᎮ", "ᴳᴼₒᴰ ᴸᵤᶜₖ", "𝐺⃫𝑂⃫𝑂⃫𝐷⃫ 𝐿⃫𝑈⃫𝐶⃫𝐾⃫",
-        "ՌՕ ȶƱƦՌƗՌɢ ɮǞƇӃ", "ñÖ †ÚRñÌñG ßÄÇK", "几σ ｔยᖇ几ί几ﻮ Ⓑ𝕒🅲𝓚"
-    ];
+// --- 1. CORE STATE ---
+let totalTerminations = parseInt(localStorage.getItem('termCount')) || 0;
+let lockStatus = localStorage.getItem('voidLocked') || 'false'; 
+let isWaiting = false;
 
-    let cycleSpeed = 300; 
-    setInterval(() => {
-        let scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        let scrollPercent = window.scrollY / scrollHeight;
-        
-        if (scrollPercent > 0.05) {
-            const randomPhrase = horrorPhrases[Math.floor(Math.random() * horrorPhrases.length)];
-            overlay.innerHTML = randomPhrase;
-        }
-    }, cycleSpeed);
+// SECRET RESET (Double click the header title)
+document.getElementById('secretReset').ondblclick = function() {
+    localStorage.clear();
+    alert("SYSTEM_REBOOTED: All progress wiped.");
+    location.reload();
+};
 
-    window.onscroll = function() {
-        let scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        let scrollPercent = window.scrollY / scrollHeight;
-
-        overlay.style.color = `rgba(255, 0, 0, ${scrollPercent * 0.95})`; 
-        overlay.style.animationDuration = `${0.05 / (scrollPercent + 0.1)}s`;
-    };
-
-    const symbols = ["?", "Ø", "†", "Σ", "X", "░", "▓", "NaN", "塊", "∑", "∆", "𒀱", "𒅒", "𒄆"];
-    for (let i = 1; i <= 200; i++) {
-        const id = i.toString().padStart(4, '0');
-        const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-        const card = document.createElement('a');
-        card.href = `-${id}.html`;
-        card.className = 'glitch-card';
-        card.innerHTML = `
-            <div class="sprite-box">${randomSymbol}</div>
-            <div class="id-num"># -${id}</div>
-            <div class="name-err">VOID_ENTRY</div>
-        `;
-        grid.appendChild(card);
+window.onload = function() {
+    if (!localStorage.getItem('ach_ending_3')) {
+        localStorage.setItem('ach_ending_3', 'true');
+        const popup = document.getElementById('achievement-popup');
+        setTimeout(() => {
+            popup.classList.add('show');
+            setTimeout(() => { popup.classList.remove('show'); }, 6000);
+        }, 1500);
     }
-</script>
+};
 
+// --- 2. TERMINATE LOGIC (RE-ORDERED TO PREVENT STICKING) ---
+function handleTerminate(el) {
+    // If they are in the PERMANENT loop, skip to stillness
+    if (lockStatus === 'permanent') {
+        alert("Oh oh oh.. going so soon?");
+        startStillnessChallenge();
+        return;
+    }
+
+    // Step 1: Increment count
+    totalTerminations++;
+    localStorage.setItem('termCount', totalTerminations.toString());
+
+    // Step 2: Check standard progression alerts
+    if (totalTerminations === 5) {
+        alert("You really think i would forget?");
+        window.location.href = "index.html";
+        return;
+    } 
+    else if (totalTerminations === 8) {
+        alert("Stop... i know what your trying to do, and i won't let you");
+        window.location.href = "index.html";
+        return;
+    } 
+    else if (totalTerminations >= 10) {
+        // Only set lockStatus if it hasn't happened yet
+        if (lockStatus === 'false') {
+            localStorage.setItem('voidLocked', 'true');
+            alert("I WARNED YOU.");
+            location.reload();
+            return;
+        }
+    }
+
+    // Step 3: Handle the hint if they are locked out (Part 3)
+    if (lockStatus === 'true') {
+        alert("Your exit is hidden within the infinite of space, but if doubles and stood upright");
+        return;
+    }
+
+    // Default exit
+    window.location.href = "index.html";
+}
+
+function startStillnessChallenge() {
+    const statusText = document.getElementById('status-text');
+    statusText.innerHTML = "DON'T MOVE.";
+    statusText.style.fontSize = "24px";
+    statusText.style.color = "red";
+    let secondsStill = 0;
+    const challenge = setInterval(() => {
+        secondsStill++;
+        if (secondsStill >= 10) {
+            clearInterval(challenge);
+            const endings = ["memory_leak.html", "human_error.html", "void_callback.html", "unhandled_exception.html"];
+            window.location.href = endings[Math.floor(Math.random() * endings.length)];
+        }
+    }, 1000);
+    window.onmousemove = () => { if (secondsStill > 0 && secondsStill < 10) secondsStill = 0; };
+}
+
+function handleExitAttempt(el) {
+    if (isWaiting || lockStatus !== 'false') return;
+    isWaiting = true;
+    el.innerHTML = "ACCESS_DENIED";
+    setTimeout(() => { el.innerHTML = "EXIT??"; isWaiting = false; }, 1000);
+}
+
+const grid = document.getElementById('voidGrid');
+const symbols = ["?", "Ø", "†", "Σ", "X", "░", "▓", "NaN", "𒀱", "𒄆"];
+
+for (let i = 1; i <= 200; i++) {
+    const id = i.toString().padStart(4, '0');
+    const card = document.createElement('a');
+    card.className = 'glitch-card';
+    if (id === "0088") {
+        card.href = "javascript:void(0)";
+        card.onclick = () => {
+            if (lockStatus === 'true') {
+                alert("PROTOCOL_DECRYPTED: EXIT_GRANTED");
+                setTimeout(() => {
+                    alert("You Idiot... you really thought it would be that easy?");
+                    localStorage.setItem('voidLocked', 'permanent');
+                    location.reload();
+                }, 500);
+            }
+        };
+    } else { card.href = `-${id}.html`; }
+
+    const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+    card.innerHTML = `<div class="sprite-box">${symbol}</div><div class="id-num"># -${id}</div><div class="name-err">VOID_ENTRY</div>`;
+    grid.appendChild(card);
+}
+
+if (lockStatus === 'true' || lockStatus === 'permanent') {
+    document.getElementById('status-text').innerHTML = "YOU ARE NOT LEAVING.";
+    document.getElementById('topExitBtn').style.display = 'none';
+    if (lockStatus === 'permanent') {
+        document.body.style.backgroundColor = "#1a0000";
+        document.getElementById('termBtn').innerHTML = "STAY.";
+        const whispers = ["I see you", "Still here?", "Don't leave me...", "It's cold out there"];
+        setInterval(() => { document.getElementById('status-text').innerHTML = whispers[Math.floor(Math.random() * whispers.length)]; }, 8000);
+    }
+}
+
+const overlay = document.getElementById('creepy-overlay');
+const horrorPhrases = [
+    "H̸I̸D̸E̸", "N̾O̾ ̾E̾S̾C̾A̾P̾E̾", "尺ㄩ几", "𝒩𝒪 𝒯𝒰ℛ𝒩ℐ𝒩𝒢 ℬ𝒜𝒞𝒦", "ƓƟƟƉ ԼƲƇƘ",
+    "𝕽 𝖀 𝕹", "H̶I̶D̶E̶", "ñÖ È§ÇÄþÈ", "GФФD LЦᄃK", "N̶O̶ ̶E̶S_C_A_P_E̶",
+    "ЯЦП", "H̷I̷D̷E̷", "ñÖ †ÚRñÌñG ßÄÇK", "ⒼⓄⓄⒹ ⓁⓊⒸⓀ", "R̷̛̉U̵͗͑N̵̎͝",
+    "𐋅ጎ𐌃ቹ", "几ㄖ ㄒㄩ尺几丨几Ꮆ 乃卂匚Ҝ", "R̶U̶N̶", "ℋℐ𝒟ℰ", "𝐍⃥𝐎⃥ 𝐄⃥𝐒⃥𝐂⃥𝐀⃥𝐏⃥𝐄⃥",
+    "ムのの刀 ﾚu匚ズ", "R̸U̸N̸", "ҢĪÐЄ", "N̴O̴ ̴E̶S̶C̶A̶P̶E̴", "ᚱᚢᚾ",
+    "H͎I͎D͎E͎", "𝓝𝓞 𝓔𝓢𝓒𝓐𝓟𝓔", "ᚾᛚ ᛏᚢᚱᚾᛁᚾᚴ ᛒᛅᚴ", "𝐆𝐎𝐎𝐃 𝐋𝐔𝐂𝐊", "R̶͌̐U̴͑̆Ń̵̏",
+    "ĦĪĐɆ", "刀の モち匚丹ㄗメ", "𝚁⃥𝚄⃥𝙽⃥", "H̲I̲D̲E̲", "ℕ𝕆 𝔼𝕊ℂ𝔸ℙ𝔼",
+    "G̶O̶O̶D̶ ̶L̶U̶C̶K̶", "尺ひ刀", "H̴I̴D̴E̴", "ƝƟ ƮƲƦƝƖƝƓ ƁƛƇƘ", "ℛ𝒰𝒩",
+    "🄸🄳🄴🄷", "几σ ｔยᖇ几ί几ﻮ Ⓑ𝕒🅲𝓚", "R̷U̷N̷", "𝒢𝒪𝒪𝒟 ℒ𝒰𝒞𝒦", "H̷̛̉I̵͗͑D̵̎͝E̸̽͗",
+    "N̸O̸ ̸E̸S̸C̸A̸P̸E̸", "Яᵾи", "んﾉり乇", "ᚴᚢᚦ ᛚᚢᚴ", "𐌍ዐ ቹ𐌔ር𐌀የ𐌄",
+    "R̶̖͕̀͒...", "𝕳𝕴𝕯𝕰", "𝐍𝐎 𝐄𝐒𝐂𝐀𝐏𝐄", "ПӨ ƬЦЯПIПG BΛᄃK", "⋊ƆU⅃ ᗡOOᎮ",
+    "Ư̵̖...", "H̶͌̐I̴͑̆D̵́̏E̵̐̇", "几ㄖ 乇丂匚卂卩乇", "G̷O̷O̷D̷ ̷L̷U̷C̷K̷", "𝕽𝖀𝕹",
+    "H̳I̳D̳E̳", "N̷̛̉O̵͗͑ ̵̎͝T̸̽͗Ǘ̷͘R̴̉̀N̸̛͠I̵͋̐N̵͛͋G̵̐͗ ̵̎͝B̸̽͗Ä̷́͘C̴̉̀K̸̛͠", "𝓡𝓤𝓝", "G͎O͎O͎D͎ ͎L͎U͎C͎K͎", "R̲U_N̲",
+    "ĦĪĐɆ", "N͠O͠ ͠E͠S_C_A_P_E͠", "ᚾᛚ ᛁᛋᚴᛅᛒᛁ", "𝒩𝒪 ℰ𝒮𝒞𝒜𝒫ℰ", "𝐑⃥𝐔⃥𝐍⃥",
+    "H͓̽I͓̽D͓̽E͓̽", "𝐆𝐎𝐎𝐃 𝐋𝐔𝐂𝐊", "N̸O̸ ̸T̸U̸R̸N̸I̸N̸G̸ ̸B̸A̸C̸K̸", "ⓇⓊⓃ", "𝓡𝓤𝓝",
+    "H͠I͠D͠E͠", "₦Ø Ɇ₴₵₳₱Ɇ", "G̴O̴O̴D̴ ̴L̶U̶C̶K̴", "ЯƱП", "🄽🄾 🅃🅄🅁🄽🄸🄽🄿 🄱🄰🄲🄺",
+    "R͎U͎N͎", "𝓗𝓘𝓓𝓔", "𝒩𝒪 𝒯𝒰ℛ𝒩ℐ𝒩𝒢 ℬ𝒜𝒞𝒦", "𝔾𝕆𝕆𝐃 𝕃𝕌ℂ𝕂", "𝕹𝕺 𝕰𝕾𝕮𝕬𝕻𝕰",
+    "R̳U̳N̲", "ＨＩＤＥ", "ИФ ЄЅᄃДРЄ", "ᴳᴼₒᴰ ᴸᵤᶜₖ", "ＲＵＮ",
+    "H̾I̾D̾E̾", "N̷O̷ ̷E̷S_C_A_P_E̷", "GӨӨD ӨЦᄃK", "ℝ𝕌ℕ", "[̲̅H][̲̅I][̲̅D][̲̅E]",
+    "ƝƟ ЄƧƇƛƤЄ", "ＮＯ ＴＵＲＮＩＮＧ ＢＡＣＫ", "ﻮσσ𝓭 ˡย🅲𝓚", "R͓̽U͓̽N͓̽", "ҢĪÐЄ",
+    "N̴O̴ ̴E̸S_C_A_P_E̴", "ИФ ТЦЯИIИG БДСК", "ⒽⒾⒹⒺ", "𝐑𝐔𝐍", "𝒣ℐ𝒟ℰ",
+    "N̷O̷ ̷T̷U̷R̷N̷I̷N̷G̷ ̷B̸A̸C_K̷", "G̴̃O̵͗̈́O̵͋͝D̵̅̍ ̷̿̅L̵͋͝U̵̅̍C̵̄̓K̵̆͗", "R͠U͠N̲", "𝓝𝓞 𝓣𝓤𝓡𝓝𝓘𝓝𝓖 𝓑𝓐𝓒𝓚", "𝕹𝕺 𝕿𝖀𝕽𝕹𝕴𝕹𝕲 𝕭𝕬𝕮𝕶"
+];
+setInterval(() => {
+    let scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight || 1);
+    if (scrollPercent > 0.05) {
+        overlay.innerHTML = horrorPhrases[Math.floor(Math.random() * horrorPhrases.length)];
+        overlay.style.color = `rgba(255, 0, 0, ${scrollPercent})`;
+    }
+}, 250);
+</script>
 </body>
 </html>
